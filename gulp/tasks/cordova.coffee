@@ -5,7 +5,7 @@ shell = require 'gulp-shell'
 
 
 # Adds all SHELL_GLOBALS as ENV variables.
-# Returns string like `env BUNDLE_ID="com.jtomaszewski.ionicstarter.development" BUNDLE_NAME="IonicStarterDev" `
+# Returns string like `env BUNDLE_ID="com.jtomaszewski.songaday.development" BUNDLE_NAME="SongADay" `
 generateEnvCommand = ->
   cmd = "env "
   for k, v of SHELL_GLOBALS

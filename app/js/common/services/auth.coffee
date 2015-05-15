@@ -1,4 +1,4 @@
-angular.module("ionicstarter")
+angular.module("songaday")
 
 .service 'Auth', ($http, PromiseFactory) ->
   USER_EMAIL_CACHE_KEY = "user_email"

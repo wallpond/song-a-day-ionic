@@ -21,7 +21,7 @@ module.exports = new class GulpConfig
         AVAILABLE_PLATFORMS: ["ios", "android"]
 
         # The name of your angular app you're going to use in `angular.module("")`
-        ANGULAR_APP_NAME: "ionicstarter"
+        ANGULAR_APP_NAME: "songaday"
 
         # Base path to this project's directory. Generated automatically.
         APP_ROOT: exec("pwd").stdout.trim() + "/"
@@ -79,7 +79,7 @@ module.exports = new class GulpConfig
 
         # If you want to upload sourcemaps to Rollbar, just set a random URL prefix
         # (we'll modify payloads on iOS/Android so the URL to js scripts will be always the same)
-        ROLLBAR_SOURCEMAPS_URL_PREFIX: "https://ionicstarter.com"
+        ROLLBAR_SOURCEMAPS_URL_PREFIX: "https://songadays.com"
 
         # Important: leave it as false, even if you want to have the sourcemaps uploaded.
         # gulp.task("deploy:rollbar-sourcemaps") automatically sets it as true - only when it's needed.
@@ -88,14 +88,14 @@ module.exports = new class GulpConfig
 
         # If defined, we'll deploy the app to testfairy after compiling the release.
         # TESTFAIRY_API_KEY: "123"
-        # TESTFAIRY_TESTER_GROUPS: "IonicStarterTesters"
+        # TESTFAIRY_TESTER_GROUPS: "testGroup"
       },
 
       development: {
         ENV: "development"
 
-        BUNDLE_ID: "com.jtomaszewski.ionicstarter.development"
-        BUNDLE_NAME: "IonicStarterDev"
+        BUNDLE_ID: "com.paulwand.songaday.development"
+        BUNDLE_NAME: "SongADay"
 
         # Automatically connect to weinre on application's startup
         # (this way you can debug your application on your PC even if it's running from mobile ;) )
@@ -106,25 +106,25 @@ module.exports = new class GulpConfig
       production: {
         ENV: "production"
 
-        BUNDLE_ID: "com.jtomaszewski.ionicstarter.production"
-        BUNDLE_NAME: "IonicStarter"
+        BUNDLE_ID: "com.paulwand.songaday.production"
+        BUNDLE_NAME: "SongADay"
 
         COMPRESS_ASSETS: true
 
         # If those 2 variables are defined, the app will be deployed to the remote server after compiling the release.
-        # ANDROID_DEPLOY_APPBIN_PATH: "deploy@ionicstarter.com:/u/apps/ionicstarter/shared/public/uploads/ionicstarter-production.apk"
-        # ANDROID_DEPLOY_APPBIN_URL: "http://ionicstarter.com/uploads/ionicstarter-production.apk"
+        # ANDROID_DEPLOY_APPBIN_PATH: "deploy@songaday.com:/u/apps/songaday/shared/public/uploads/songaday-production.apk"
+        # ANDROID_DEPLOY_APPBIN_URL: "http://songaday.com/uploads/songaday-production.apk"
 
         # If those 2 variables are defined, the app will be deployed to the remote server after compiling the release.
-        # IOS_DEPLOY_APPBIN_PATH: "deploy@ionicstarter.com:/u/apps/ionicstarter/shared/public/uploads/ionicstarter-production.ipa"
-        # IOS_DEPLOY_APPBIN_URL: "http://ionicstarter.com/uploads/ionicstarter-production.ipa"
+        # IOS_DEPLOY_APPBIN_PATH: "deploy@songaday.com:/u/apps/songaday/shared/public/uploads/songaday-production.ipa"
+        # IOS_DEPLOY_APPBIN_URL: "http://songaday.com/uploads/songaday-production.ipa"
 
         # Required for the release to be signed with correct certificate.
-        IOS_PROVISIONING_PROFILE: "keys/ios/ionicstarterstaging.mobileprovision"
+        IOS_PROVISIONING_PROFILE: "keys/ios/songadaystaging.mobileprovision"
 
         # CORDOVA_GOOGLE_ANALYTICS_ID: "UA-123123-2"
         # GOOGLE_ANALYTICS_ID: "UA-123123-1"
-        # GOOGLE_ANALYTICS_HOST: "ionicstarter.com"
+        # GOOGLE_ANALYTICS_HOST: "songaday.com"
       }
     }
 
@@ -171,6 +171,9 @@ module.exports = new class GulpConfig
         vendor: [
           "assets/components/ionic/release/js/ionic.js"
           "assets/components/angular/angular.js"
+          "assets/components/firebase/firebase.js"
+          "assets/components/ngvideo/dist/ng-video.min.js"
+          "assets/components/angularfire/dist/angularfire.min.js"
           "assets/components/angular-animate/angular-animate.js"
           "assets/components/angular-sanitize/angular-sanitize.js"
           "assets/components/angular-ui-router/release/angular-ui-router.js"

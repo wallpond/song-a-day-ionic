@@ -1,0 +1,19 @@
+html
+  body
+    //
+        This template loads for the 'tab.adopt' state (app.js)
+    ion-view(view-title='Account Settings')
+      ion-content(has-header='true', has-tabs='true')
+        .list.list-inset
+          label.item.item-input
+            span.input-label Alias
+            input(type='text')
+          label.item.item-input
+            input-label Statement
+            input(type='email')
+          label.item.item-input
+            span.input-label Avatar
+            input(type='file')
+          label.item.item-input
+            span.input-label Banner
+            input(type='file')

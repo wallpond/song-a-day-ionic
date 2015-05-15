@@ -1,4 +1,4 @@
-angular.module("ionicstarter")
+angular.module("songaday")
 
 .factory 'FormFactory', ($q) ->
 

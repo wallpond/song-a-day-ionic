@@ -1,0 +1,13 @@
+html
+  body
+    //
+        This template loads for the 'tab.song-detail' state (app.js)
+        'song' is a $scope variable created in the SongCtrl controller (controllers.js)
+        The SongCtrl pulls data from the Songs service (service.js)
+        The Songs service returns an array of song data
+    ion-view(view-title='{{artist.alias}}')
+      ion-content(has-header='true', padding='true')
+        img(height='200px',ng-src='{{artist.avatar}}')
+        img(ng-src='{{artist.banner}}')
+        h2 {{artist.alias}}
+        p {{artist.statement}}

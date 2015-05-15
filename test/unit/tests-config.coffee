@@ -3,7 +3,7 @@
 #   ignoreLeaks: true
 
 window.GLOBALS =
-  ANGULAR_APP_NAME: "ionicstarter"
+  ANGULAR_APP_NAME: "songaday"
   ENV: 'test'
 
 beforeEach module(GLOBALS.ANGULAR_APP_NAME)

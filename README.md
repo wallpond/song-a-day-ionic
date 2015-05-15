@@ -22,8 +22,8 @@
 # How to install
 
 ```
-git clone jtomaszewski/ionicstarter-mobile
-cd ionicstarter-mobile
+git clone jtomaszewski/songaday-mobile
+cd songaday-mobile
 git submodule update --init --recursive
 
 # install dependencies
@@ -82,9 +82,9 @@ I recommend [tmux](http://tmux.sourceforge.net/) for handling multiple terminal 
 
   * Also, make sure you have all the keys and certificates needed stored in `keys/android/` and `keys/ios/`:
 
-    * `keys/android/ionicstarter.keystore`
-    * `keys/ios/ionicstarter_staging.mobileprovision`
-    * `keys/ios/ionicstarter_production.mobileprovision`
+    * `keys/android/songaday.keystore`
+    * `keys/ios/songaday_staging.mobileprovision`
+    * `keys/ios/songaday_production.mobileprovision`
 
 2. Ensure, you have [configured ios/android platform with Cordova](http://cordova.apache.org/docs/en/edge/guide_cli_index.md.html), f.e. by running `gulp cordova:platform-add:[ios|android]`.
 

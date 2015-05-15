@@ -1,0 +1,14 @@
+html
+  body
+    ion-view(view-title='songs')
+      ion-content(has-header='true', padding='true')
+        ion-list
+          ion-item.item-thumbnail-left(ng-repeat='song in songs|reverse')
+            img(ng-src='{{song.artist.avatar}}')
+            h2 {{song.title}}
+            p {{song.blurb}}
+            button(ng-click='listen(song)') listen
+            ion-list(ng-repeat='comment in song.comments')
+              img(ng-src='{{comment.author.avatar}}')
+              p {{comment.author.alias}}
+              p {{comment.comment}}
