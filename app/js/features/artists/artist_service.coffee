@@ -19,3 +19,4 @@ angular.module("songaday")
     artist=$firebaseObject(ref)
     console.log(artist)
     return artist
+  

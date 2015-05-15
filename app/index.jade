@@ -63,7 +63,7 @@ html
     //- If you need to include any cordova plugins' js files, add them here:
     //- script(id="cdv-plugin-fb-connect-js" src="cdv-plugin-fb-connect.js")
 
-  body
+  body(ng-controller='AppCtrl')
     //
             The nav bar that will be updated as we navigate between views
             Additional attributes set its look, nav-bar animation and icons
@@ -75,7 +75,11 @@ html
             have templates inline in this html file if you'd like).
     ion-nav-view
     ion-footer-bar
-      button back
-      button stop
-      button play
-      button save
+      .ion-nav-buttons
+        button.button.button-icon.icon.ion-skip-backward(ng-click='previous()') 
+        button.button.button-icon.icon.ion-stop(ng-click='stop()')
+        button.button.button-icon.icon.ion-pause(ng-click='pause()')
+        button.button.button-icon.icon.ion-play(ng-click='play()')
+        button.button.button-icon.icon.ion-skip-forward(ng-click='next()')
+        .video(ng-video,ng-model="player")
+        ng-video-screen

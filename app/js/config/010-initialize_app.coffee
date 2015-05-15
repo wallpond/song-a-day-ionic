@@ -7,6 +7,7 @@ app = angular.module(GLOBALS.ANGULAR_APP_NAME, [
   "angulartics.google.analytics.cordova"
   "firebase"
   "ngVideo"
+  "angularMoment"
 ])
 
 .constant('FBURL', 'https://song-a-day.firebaseio.com/')

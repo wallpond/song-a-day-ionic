@@ -16,3 +16,10 @@ ion-side-menus
               | Songs
             ion-item(nav-clear='', menu-close='', href='#/app/account')
               | Account
+      ion-side-menu(side='right')
+        header.bar.bar-header.bar-stable
+          h1.title Playlist
+        ion-content.has-header
+          ion-list
+            ion-item(ng-repeat='song in playlist')
+              {{song.title}}

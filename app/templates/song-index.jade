@@ -7,7 +7,7 @@ html
             img(ng-src='{{song.artist.avatar}}')
             h2 {{song.title}}
             p {{song.blurb}}
-            button(ng-click='listen(song)') listen
+            button(ng-click='go(song)') listen
             ion-list(ng-repeat='comment in song.comments')
               img(ng-src='{{comment.author.avatar}}')
               p {{comment.author.alias}}

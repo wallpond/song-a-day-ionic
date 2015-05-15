@@ -13,13 +13,16 @@ angular.module("songaday")
   console.log(FBURL)
   # Some fake testing data
   songs = $firebaseArray(ref)
-  songs.$loaded ()->
-    console.log(songs)
   all: ->
-    console.log(songs)
     songs
 
   get: (songId) ->
     ref = new Firebase(FBURL+'/songs/'+songId)
 
     $firebaseObject(ref)
+  getList:(songList) ->
+    playlist = []
+    console.log(songList)
+    for songId of songList
+      playlist.push(this.get(songId))
+    playlist

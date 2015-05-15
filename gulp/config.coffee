@@ -173,6 +173,8 @@ module.exports = new class GulpConfig
           "assets/components/angular/angular.js"
           "assets/components/firebase/firebase.js"
           "assets/components/ngvideo/dist/ng-video.min.js"
+          "assets/components/moment/moment.js"
+          "assets/components/angular-moment/angular-moment.js"
           "assets/components/angularfire/dist/angularfire.min.js"
           "assets/components/angular-animate/angular-animate.js"
           "assets/components/angular-sanitize/angular-sanitize.js"
