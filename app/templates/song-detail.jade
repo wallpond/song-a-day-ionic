@@ -10,7 +10,7 @@ html
         img(height='200px',ng-src='{{song.artist.avatar}}')
         h2 {{song.title}}
         p {{song.blurb}}
-        audio(src='{{song.media.src|trust}}',controls)
+        button(ng-click='queue(song)') queue
         ion-list(ng-repeat='comment in song.comments')
           img(ng-src='{{comment.author.avatar}}')
           p {{comment.author.alias}}

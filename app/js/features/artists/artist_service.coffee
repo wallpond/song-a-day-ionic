@@ -9,14 +9,17 @@ angular.module("songaday")
   ref = new Firebase(FBURL+'artists')
     .orderByChild("songs")
   console.log(FBURL)
-  # Some fake testing data
+  this.loading=true
   artists = $firebaseArray(ref)
   all: ->
+    artists.$loaded( ()->
+      this.loading=false
+    )
     artists
+
 
   get: (artistId) ->
     ref = new Firebase(FBURL+'/artists/'+artistId)
     artist=$firebaseObject(ref)
     console.log(artist)
     return artist
-  

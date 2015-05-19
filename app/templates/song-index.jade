@@ -2,12 +2,13 @@ html
   body
     ion-view(view-title='songs')
       ion-content(has-header='true', padding='true')
+        loader
         ion-list
-          ion-item.item-thumbnail-left(ng-repeat='song in songs|reverse')
+          ion-item.item-thumbnail-left(ng-repeat='song in songs |orderBy:"-timestamp"')
             img(ng-src='{{song.artist.avatar}}')
             h2 {{song.title}}
             p {{song.blurb}}
-            button(ng-click='go(song)') listen
+            button(ng-click='queue(song);') queue
             ion-list(ng-repeat='comment in song.comments')
               img(ng-src='{{comment.author.avatar}}')
               p {{comment.author.alias}}

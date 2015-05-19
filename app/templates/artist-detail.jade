@@ -7,6 +7,7 @@ html
         The Songs service returns an array of song data
     ion-view(view-title='{{artist.alias}}')
       ion-content(has-header='true', padding='true')
+        loader
         img(height='200px',ng-src='{{artist.avatar}}')
         img(ng-src='{{artist.banner}}')
         h2 {{artist.alias}}

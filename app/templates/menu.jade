@@ -1,9 +1,14 @@
 ion-side-menus
       ion-pane(ion-side-menu-content='')
         ion-nav-bar.bar-stable
+          ion-nav-buttons(side="left")
+            button(menu-toggle="left") menu
+          ion-nav-buttons(side="right")
+            button(menu-toggle="right") playlist
           ion-nav-back-button.button-clear
             i.icon.ion-chevron-left
             |  Back
+  
         ion-nav-view(name='main-content', animation='slide-left-right')
       ion-side-menu(side='left')
         header.bar.bar-header.bar-stable
@@ -21,5 +26,14 @@ ion-side-menus
           h1.title Playlist
         ion-content.has-header
           ion-list
-            ion-item(ng-repeat='song in playlist')
+            ion-item(ng-class='$index==ctrl.currentSong?"active":""',ng-repeat='song in ctrl.playlist track by song.$id',ng-click='ctrl.setNowPlaying($index)')
               {{song.title}}
+            ion-item
+              videogular(vg-player-ready="ctrl.onPlayerReady($API)")
+                vg-media(vg-src='ctrl.config.sources',vg-auto-play='true', vg-tracks='ctrl.config.tracks')
+                vg-volume
+                  vg-mute-button
+                  vg-volume-bar
+                vg-fullscreen-button              
+                vg-buffering
+                vg-controls
