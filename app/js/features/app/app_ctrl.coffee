@@ -1,7 +1,7 @@
 angular.module("songaday")
 
 # A simple controller that shows a tapped item's data
-.controller "AppCtrl", ($sce,AccountService,$state,$rootScope,$scope, $stateParams,$timeout) ->
+.controller "AppCtrl", ($sce,SongService,AccountService,$state,$rootScope,$scope, $stateParams,$timeout) ->
   ctrl = this
   ctrl.state = null
   ctrl.API = null
@@ -11,7 +11,10 @@ angular.module("songaday")
   $timeout (()->
     ionic.trigger('resize')),100
 
-
+  $rootScope.comment= (song,comment_text)->
+    myself=$rootScope.myself
+    comment={comment:comment_text,author:{alias:myself.alias,avatar:myself.avatar,key:myself.$id}}
+    SongService.comment(song,comment)
   $rootScope.login = ()->
     console.log('login')
     AccountService.login()

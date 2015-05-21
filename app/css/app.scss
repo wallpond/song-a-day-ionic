@@ -24,3 +24,49 @@ loader{
 .comment .text:before{
   content:":";
 }
+
+.comments{
+  float:left;
+}
+.item{
+  border-style:none!important;
+}
+.info{
+  white-space: pre;
+}
+.right{
+  float:right;
+}
+.when-large {
+	  @media (max-width: 768px) {
+      display:none;
+	  }
+	}
+.when-small {
+	  @media (min-width: 768px) {
+      display:none;
+	  }
+	}
+.always{
+  display:inline!important;
+}
+.transmit {
+        animation:myfirst 5s;
+      -moz-animation:myfirst 5s infinite; /* Firefox */
+    -webkit-animation:myfirst 5s infinite; /* Safari and Chrome */
+      }
+
+
+      @-moz-keyframes myfirst /* Firefox */
+    {
+    0%   {background:purple;}
+    50%  {background:teal;}
+    100%   {background:red;}
+    }
+
+        @-webkit-keyframes myfirst /* Safari and Chrome */
+    {
+    0%   {background:aliceblue;}
+    50%  {background:white;}
+    100%   {background:aliceblue;}
+    }

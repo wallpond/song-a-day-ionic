@@ -8,10 +8,13 @@ ionic.Platform.ready ->
   angular.bootstrap document, [GLOBALS.ANGULAR_APP_NAME]
 
 
-app.run ($log, $timeout,$rootScope, Auth) ->
+app.run ($log, $timeout,$rootScope, Auth,AccountService) ->
   $log.debug "Ionic app \"#{GLOBALS.ANGULAR_APP_NAME}\" has just started (app.run)!" unless GLOBALS.ENV == "test"
   Auth.$onAuth (user)->
     $rootScope.loggedIn = !!user
+
+  AccountService.refresh (myself)->
+    $rootScope.myself=myself
 
     # Finally, let's show the app, by hiding the splashscreen
   # (it should be visible up until this moment)

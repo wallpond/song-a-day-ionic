@@ -13,5 +13,3 @@ html
         p {{song.blurb}}
         button.button.button-icon.icon.ion-play(ng-click='playNow(song)')
         .comments(ng-include="'templates/comments.html'")
-        input.comment(ng-model='newComment')
-        button.button(ng-click='comment(song,newComment)',ng-enter='comment(song,newComment)') comment

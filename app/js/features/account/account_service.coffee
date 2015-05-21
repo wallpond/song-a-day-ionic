@@ -16,7 +16,8 @@ angular.module("songaday")
     promise_auth.then (authObject)->
       my_id = CryptoJS.SHA1(authObject.google.email).toString().substring 0,11
       me=$firebaseObject(ref.child('artists/'+my_id))
-      cb(me)
+      me.$loaded ()->
+        cb(me)
   mySelf:->
     me
 

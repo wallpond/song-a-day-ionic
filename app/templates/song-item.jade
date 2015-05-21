@@ -1,5 +1,7 @@
 img.avatar(ng-src='{{song.artist.avatar}}?default=404',err-src='/assets/img/song-a-day.png',alt='{{song.artist.alias}}',ng-click='showArtist(song.artist.key)')
 h2 {{song.title}}
-p {{song.blurb}}
-.item-icon-right.abbr(am-time-ago='song.timestamp')
-.comments(ng-include="'templates/comments.html'")
+button.when-large.button.button-icon.icon.ion-play(ng-click='queue(song)')
+
+span.right(am-time-ago='song.timestamp')
+p.info {{song.info}}
+.comments(ng-include="'templates/comments.html'").when-large

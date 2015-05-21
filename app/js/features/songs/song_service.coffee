@@ -14,7 +14,10 @@ angular.module("songaday")
   songs = $firebaseArray(ref)
   all: ->
     songs
-
+  comment: (song,comment)->
+    commentsRef=new Firebase(FBURL+'songs/'+song.$id+'/comments')
+    comments=$firebaseArray(commentsRef)
+    comments.$add(comment)
   get: (songId) ->
     ref = new Firebase(FBURL+'/songs/'+songId)
 

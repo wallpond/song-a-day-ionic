@@ -1,6 +1,8 @@
 ion-list
-  span(ng-repeat='comment in song.comments')
-    img(ng-src='{{comment.author.avatar}}')
-    .comment 
+  ion-item(ng-repeat='comment in song.comments')
+    .comment.item-input
       span.alias {{comment.author.alias}}
       span.text {{comment.comment}}
+  ion-item(ng-show='loggedIn')    
+    label.item.item-input
+      input(type='text',ng-model='newComment',placeholder='comment...',enter-submit='comment(song,newComment);newComment=""')
