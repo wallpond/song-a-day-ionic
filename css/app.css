@@ -1,0 +1,77 @@
+@import url(ionic.css);
+loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  font-size: 80px; }
+
+.avatar {
+  border-radius: 100%;
+  width: 100px;
+  height: 100px; }
+
+.comment {
+  display: block; }
+
+.item-icon-center {
+  text-align: center; }
+
+.alias {
+  font-weight: bold; }
+
+.comment .text:before {
+  content: ":"; }
+
+.comments {
+  float: left; }
+
+.item {
+  border-style: none !important; }
+
+.info {
+  white-space: pre; }
+
+.right {
+  float: right; }
+
+@media (max-width: 768px) {
+  .when-large {
+    display: none; } }
+
+@media (min-width: 768px) {
+  .when-small {
+    display: none; } }
+
+.always {
+  display: inline !important; }
+
+.transmit {
+  animation: myfirst 5s;
+  -moz-animation: myfirst 5s infinite;
+  /* Firefox */
+  -webkit-animation: myfirst 5s infinite;
+  /* Safari and Chrome */ }
+
+@-moz-keyframes myfirst {
+  0% {
+    background: purple; }
+
+  50% {
+    background: teal; }
+
+  100% {
+    background: red; } }
+
+@-webkit-keyframes myfirst {
+  0% {
+    background: aliceblue; }
+
+  50% {
+    background: white; }
+
+  100% {
+    background: aliceblue; } }
+
+
+/*# sourceMappingURL=app.css.map */
