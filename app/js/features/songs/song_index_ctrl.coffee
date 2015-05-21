@@ -7,6 +7,3 @@ angular.module("songaday")
   $scope.songs.$loaded(()->
     $scope.loading=false
   )
-
-  $scope.go = (song) ->
-    $state.go 'app.song-detail', songId: song.$id

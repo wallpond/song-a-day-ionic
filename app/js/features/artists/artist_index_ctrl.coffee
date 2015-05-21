@@ -7,5 +7,3 @@ angular.module("songaday")
   $scope.artists.$loaded(()->
     $scope.loading=false
   )
-  $scope.navigate = (artist) ->
-    $state.go 'app.artist-detail', artistId: artist.$id

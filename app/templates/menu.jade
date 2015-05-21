@@ -1,39 +1,61 @@
 ion-side-menus
       ion-pane(ion-side-menu-content='')
         ion-nav-bar.bar-stable
+          ion-nav-buttons(side="left",expose-aside-when='large')
+            button.button.button-icon.icon.ion-navicon-round(menu-toggle="left")
           ion-nav-buttons(side="left")
-            button(menu-toggle="left") menu
+            .nav(show-when='large')
+              button(nav-clear='', menu-close='', ui-sref='app.mission')
+                | Mission
+              button(nav-clear='', menu-close='', ui-sref='app.artists')
+                | Songwriters
+              button(nav-clear='', menu-close='', ui-sref='app.songs')
+                | Songs
+              
           ion-nav-buttons(side="right")
-            button(menu-toggle="right") playlist
+            .small-nav(show-when='large')
+              button.button.button-icon.icon.ion-ios-musical-notes(menu-toggle="right",show-when='small') ♬
+            .large-nav(show-when='large')
+              button(nav-clear='', menu-close='', ui-sref='app.transmit')
+                | Transmit
+              button(nav-clear='', menu-close='', ui-sref='app.account')
+                | Account
+
           ion-nav-back-button.button-clear
             i.icon.ion-chevron-left
             |  Back
   
         ion-nav-view(name='main-content', animation='slide-left-right')
-      ion-side-menu(side='left')
+      ion-side-menu(side='right',enable-menu-with-back-views='true')
         header.bar.bar-header.bar-stable
-          h1.title Left
+          h1.title Song a Day
+          
         ion-content.has-header
           ion-list
             ion-item(nav-clear='', menu-close='', ui-sref='app.artists')
               | Songwriters
             ion-item(nav-clear='', menu-close='', ui-sref='app.songs')
               | Songs
-            ion-item(nav-clear='', menu-close='', href='#/app/account')
+            ion-item(nav-clear='', menu-close='', ui-sref='app.account')
               | Account
-      ion-side-menu(side='right')
+            ion-item(nav-clear='', menu-close='', ui-sref='app.mission')
+              | Mission
+            ion-item(nav-clear='', menu-close='', ui-sref='app.transmit')
+              | Transmit 🎼🎶 
+      ion-side-menu(side='left',enable-menu-with-back-views='true')
         header.bar.bar-header.bar-stable
           h1.title Playlist
         ion-content.has-header
+          videogular(vg-player-ready="ctrl.onPlayerReady($API)")
+            vg-media(vg-src='ctrl.config.sources',vg-type="audio",vg-auto-play='true', vg-tracks='ctrl.config.tracks')
           ion-list
+            ion-item(align-title="center")
+              .item-icon-left
+                button.button.button-icon.icon.ion-skip-backward(ng-click='ctrl.previous()') 
+              .item-icon-center
+                button.button.button-icon.icon.ion-pause(ng-class='ctrl.API.currentState=="play"?"ion-pause":"ion-play"',ng-click='ctrl.API.playPause()')
+              .item-icon-right
+                button.button.button-icon.icon.ion-skip-forward(ng-show='ctrl.playlist.length!="play"',ng-click='ctrl.next()')
+
             ion-item(ng-class='$index==ctrl.currentSong?"active":""',ng-repeat='song in ctrl.playlist track by song.$id',ng-click='ctrl.setNowPlaying($index)')
               {{song.title}}
-            ion-item
-              videogular(vg-player-ready="ctrl.onPlayerReady($API)")
-                vg-media(vg-src='ctrl.config.sources',vg-auto-play='true', vg-tracks='ctrl.config.tracks')
-                vg-volume
-                  vg-mute-button
-                  vg-volume-bar
-                vg-fullscreen-button              
-                vg-buffering
-                vg-controls

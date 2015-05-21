@@ -6,19 +6,11 @@ html
         The SongCtrl pulls data from the Songs service (service.js)
         The Songs service returns an array of song data
     ion-view(view-title='{{artist.alias}}')
-      ion-content(has-header='true', padding='true')
+      ion-content(has-header='true', padding='true',overflow-scroll="true")
         loader
-        img(height='200px',ng-src='{{artist.avatar}}')
+        img.avatar(height='150px',ng-src='{{artist.avatar}}')
         img(ng-src='{{artist.banner}}')
-        h2 {{artist.alias}}
-        p {{artist.statement}}
+        h2.alias {{artist.alias}}
+        p.statement {{artist.statement}}
         ion-list
-          ion-item.item-thumbnail-left(ng-repeat='song in songs|reverse')
-            img(ng-src='{{song.artist.avatar}}')
-            h2 {{song.title}}
-            p {{song.blurb}}
-            button(ng-click='listen(song)') listen
-            ion-list(ng-repeat='comment in song.comments')
-              img(ng-src='{{comment.author.avatar}}')
-              p {{comment.author.alias}}
-              p {{comment.comment}}
+          ion-item.item-thumbnail-left(ng-include="'templates/song-item.html'",ng-repeat='song in songs |orderBy:"-timestamp"',ng-click='queue(song)')

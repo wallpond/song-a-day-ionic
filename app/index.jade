@@ -76,9 +76,7 @@ html
     ion-nav-view
 
     ion-footer-bar(align-title="center")
-      .title
-        button.button.button-icon.icon.ion-skip-backward(ng-click='previous()') 
-        button.button.button-icon.icon.ion-stop(ng-click='stop()')
-        button.button.button-icon.icon.ion-pause(ng-click='pause()')
-        button.button.button-icon.icon.ion-play(ng-click='play()')
-        button.button.button-icon.icon.ion-skip-forward(ng-click='next()')
+      .buttons
+        button(ng-click='login()',ng-show='!loggedIn') login
+        button(ng-click='logout()',ng-show='loggedIn') logout
+    

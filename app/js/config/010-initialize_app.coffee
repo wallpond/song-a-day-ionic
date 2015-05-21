@@ -7,6 +7,7 @@ app = angular.module(GLOBALS.ANGULAR_APP_NAME, [
   "angulartics.google.analytics.cordova"
   "firebase"
   "angularMoment"
+  "ngS3upload"
   "com.2fdevs.videogular"
   "com.2fdevs.videogular.plugins.controls"
   "com.2fdevs.videogular.plugins.poster"

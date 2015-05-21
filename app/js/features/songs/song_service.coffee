@@ -10,7 +10,6 @@ angular.module("songaday")
   ref = new Firebase(FBURL+'songs')
     .orderByChild("timestamp")
     .limitToLast(limit)
-  console.log(FBURL)
   # Some fake testing data
   songs = $firebaseArray(ref)
   all: ->
@@ -22,7 +21,6 @@ angular.module("songaday")
     $firebaseObject(ref)
   getList:(songList) ->
     playlist = []
-    console.log(songList)
     for songId of songList
       playlist.push(this.get(songId))
     playlist

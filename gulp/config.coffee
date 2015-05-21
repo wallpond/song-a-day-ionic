@@ -176,6 +176,7 @@ module.exports = new class GulpConfig
           "assets/components/videogular-buffering/vg-buffering.js"
           "assets/components/videogular-controls/vg-controls.js"
           "assets/components/lodash/lodash.js"
+          "assets/components/ng-s3upload/build/ng-s3upload.js"
           "assets/components/videogular-poster/vg-poster.js"
           "assets/components/moment/moment.js"
           "assets/components/angular-moment/angular-moment.js"
@@ -184,7 +185,7 @@ module.exports = new class GulpConfig
           "assets/components/angular-sanitize/angular-sanitize.js"
           "assets/components/angular-ui-router/release/angular-ui-router.js"
           "assets/components/ionic/release/js/ionic-angular.js"
-
+          "assets/components/cryptojslib/rollups/sha1.js"
           # Here add any vendor files that should be included in vendor.js
           # (f.e. bower components)
 

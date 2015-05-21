@@ -4,16 +4,16 @@ html
         This template loads for the 'tab.adopt' state (app.js)
     ion-view(view-title='Account Settings')
       ion-content(has-header='true', has-tabs='true')
-        .list.list-inset
+        .list.list-inset(ng-if='loggedIn')
           label.item.item-input
             span.input-label Alias
-            input(type='text')
+            input(type='text',ng-model='me.alias')
           label.item.item-input
             span.input-label Statement
-            input(type='email')
+            input(type='text',ng-model='me.statement')
           label.item.item-input
             span.input-label Avatar
-            input(type='file')
+            div(theme='image',s3-upload, bucket='s3Bucket', ng-model='me.avatar', s3-upload-options='{ acl:"private",getOptionsUri: awsParamsURI, folder: awsFolder}')
           label.item.item-input
             span.input-label Banner
-            input(type='file')
+            div(theme='image',s3-upload, bucket='s3Bucket', ng-model='me.wall', s3-upload-options='{ acl:"private",getOptionsUri: awsParamsURI, folder: awsFolder}')

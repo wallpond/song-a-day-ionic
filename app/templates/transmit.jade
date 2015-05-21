@@ -1,0 +1,18 @@
+html
+  body
+    ion-view(view-title='transmit')
+      ion-content(has-header='true', padding='true')
+        div(ng-hide='song')
+          legend Transmit a song
+          label.item.item-input
+            span.input-label Title
+            input(ng-model='transmission.title',type='text')
+          label.item.item-input
+            span.input-label Info
+            input(ng-model='transmission.info',type='text')
+          label.item.item-input
+            span.input-label Media
+            div(s3-accept='audio/*' ,theme='song',s3-upload, bucket='s3Bucket', ng-model='media', s3-upload-options='{ acl:"private",getOptionsUri: awsParamsURI, folder: awsFolder}')
+            p {{media}}
+        button.transmit(ng-show='ready',ng-click='transmit(transmission)')
+          | Transmit

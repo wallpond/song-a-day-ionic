@@ -18,7 +18,8 @@
     "ng-s3upload": "~0.1.2",
     "angular-moment": "~0.10.1",
     "videogular": "~1.2.1",
-    "lodash": "~3.9.0"
+    "lodash": "~3.9.0",
+    "cryptojs": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.3.6"

@@ -48,8 +48,15 @@ angular.module("songaday")
     views:
       "main-content":
         templateUrl: "templates/account.html"
+        controller: "AccountCtrl"
 
-  .state "apps.mission",
+  .state "app.transmit",
+    url: "/transmit"
+    views:
+      "main-content":
+        templateUrl: "templates/transmit.html"
+        controller: "TransmitCtrl"
+  .state "app.mission",
     url: "/mission"
     views:
       "main-content":
