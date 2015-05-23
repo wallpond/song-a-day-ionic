@@ -56,6 +56,20 @@ angular.module("songaday")
       "main-content":
         templateUrl: "templates/transmit.html"
         controller: "TransmitCtrl"
+
+  .state "app.now-playing",
+    url: "/playing"
+    views:
+      "main-content":
+        templateUrl: "templates/now-playing.html"
+        controller: "PlayerCtrl"
+  .state "app.record",
+    url: "/record"
+    views:
+      "main-content":
+        templateUrl: "templates/record.html"
+        controller: "RecordCtrl"
+
   .state "app.mission",
     url: "/mission"
     views:

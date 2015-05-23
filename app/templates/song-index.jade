@@ -4,4 +4,4 @@ html
       ion-content(overflow-scroll="true",has-header='true', padding='true')
         loader
         ion-list
-          ion-item.item-thumbnail-left(ng-click='showSong(song)',ng-disabled='true',ng-include="'templates/song-item.html'",ng-repeat='song in songs |orderBy:"-timestamp"')
+          ion-item.item-thumbnail-left(ng-include="'templates/song-item.html'",ng-repeat='song in songs |orderBy:"-timestamp"')

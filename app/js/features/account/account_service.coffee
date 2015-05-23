@@ -14,6 +14,9 @@ angular.module("songaday")
     console.log(auth)
   refresh:(cb) ->
     promise_auth.then (authObject)->
+      if authObject==null|| typeof authObject.google == 'undefined'
+        cb({})
+        return
       my_id = CryptoJS.SHA1(authObject.google.email).toString().substring 0,11
       me=$firebaseObject(ref.child('artists/'+my_id))
       me.$loaded ()->

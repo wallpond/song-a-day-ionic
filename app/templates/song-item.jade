@@ -1,7 +1,10 @@
-img.avatar(ng-src='{{song.artist.avatar}}?default=404',err-src='/assets/img/song-a-day.png',alt='{{song.artist.alias}}',ng-click='showArtist(song.artist.key)')
-h2 {{song.title}}
-button.when-large.button.button-icon.icon.ion-play(ng-click='queue(song)')
+img.avatar(ng-src='{{song.artist.avatar}}?default=404',err-src='/img/song-a-day.png',alt='{{song.artist.alias}}',ng-click='showArtist(song.artist.key)')
+h2 
+  span.alias {{song.artist.alias}} 
+  span.title {{song.title}}
 
-span.right(am-time-ago='song.timestamp')
+p.right(am-time-ago='song.timestamp').when-large
+p.right(am-time-ago='song.timestamp').when-large
+button.when-large.button.button-icon.icon.ion-play(ng-click='queue(song)')
 p.info {{song.info}}
 .comments(ng-include="'templates/comments.html'").when-large

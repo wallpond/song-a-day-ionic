@@ -12,9 +12,11 @@ angular.module("songaday")
     ionic.trigger('resize')),100
 
   $rootScope.comment= (song,comment_text)->
-    myself=$rootScope.myself
-    comment={comment:comment_text,author:{alias:myself.alias,avatar:myself.avatar,key:myself.$id}}
-    SongService.comment(song,comment)
+    AccountService.refresh (myself) ->
+      console.log(myself)
+      comment={comment:comment_text,author:{alias:myself.alias,avatar:myself.avatar,key:myself.$id}}
+      console.log(comment)
+      SongService.comment(song,comment)
   $rootScope.login = ()->
     console.log('login')
     AccountService.login()
@@ -38,7 +40,7 @@ angular.module("songaday")
     ctrl.setNowPlaying ctrl.currentSong
   ctrl.previous= ()->
     ctrl.currentSong--
-    if ctrl.currentSong <= 0
+    if ctrl.currentSong < 0
       ctrl.currentSong = ctrl.playlist.length
     ctrl.setNowPlaying ctrl.currentSong
 
@@ -63,23 +65,27 @@ angular.module("songaday")
 
   ctrl.onCompleteVideo = ->
     ctrl.isCompleted = true
+    console.log('COMPLETED')
     ctrl.next()
     return
 
   ctrl.config =
     preload: 'none'
-    sources:[]
-    theme: url: 'http://www.videogular.com/styles/themes/default/latest/videogular.css'
+    sources:[{media:"/audio/startup.mp3",type:"audio/mp3"}]
+    
 
   ctrl.setNowPlaying = (index) ->
     ctrl.API.stop()
     ctrl.currentSong = index
     m = ctrl.playlist[index].media
-    console.log(m)
     ctrl.config.sources = [{src:$sce.trustAsResourceUrl(m.src),type:m.type}]
-    console.log(ctrl.config)
+    console.log(ctrl.API)
     $timeout (()->
-      ctrl.API.play() ),200
+      ctrl.API.play()
+      if _(m.type).contains('video')
+        if !ctrl.API.isFullScreen
+          ctrl.API.toggleFullScreen()
+      ),200
     return
 
   return

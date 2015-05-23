@@ -11,6 +11,8 @@ loader{
   border-radius:100%;
   width:100px;
   height:100px;
+  cursor: pointer;
+
 }
 .comment{
   display:block;
@@ -24,7 +26,19 @@ loader{
 .comment .text:before{
   content:":";
 }
-
+.cinema{
+  background-color:black;
+}
+.cinema video{
+    pointer-events: none;
+    opacity:50%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+}
 .comments{
   float:left;
 }
@@ -32,8 +46,13 @@ loader{
   border-style:none!important;
 }
 .info{
-  white-space: pre;
+  white-space: pre!important;
 }
+
+.comment{
+  white-space:pre-line!important;
+}
+
 .right{
   float:right;
 }
