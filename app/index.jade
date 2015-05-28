@@ -71,10 +71,12 @@ html
     ion-nav-view
 
     ion-footer-bar(align-title="center")
+      .buttons.left
+        button(ng-click='ctrl.API.toggleFullScreen()',ng-show='ctrl.playlist.length').button.button-icon.ion-arrow-expand
       .title
         a.button.button-icon.ion-button.ion-mic-c(href='#/app/record')
           
       .buttons.right
-        button(ng-click='login()',ng-show='!loggedIn') login
+        button(ng-click='login()',ng-show='!loggedIn').ion-login.button-icon
         button(ng-click='logout()',ng-show='loggedIn') logout
     

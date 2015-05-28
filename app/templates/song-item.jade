@@ -4,7 +4,7 @@ h2
   span.title {{song.title}}
 
 p.right(am-time-ago='song.timestamp').when-large
-p.right(am-time-ago='song.timestamp').when-large
-button.when-large.button.button-icon.icon.ion-play(ng-click='queue(song)')
+button.when-large.button.button-icon.icon.ion-play(ng-click='play(song)')
+button.when-large.button.button-icon.icon.ion-plus(ng-click='queue(song)')
 p.info {{song.info}}
 .comments(ng-include="'templates/comments.html'").when-large

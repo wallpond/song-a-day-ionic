@@ -27,12 +27,15 @@ angular.module("songaday")
     $state.go 'app.artist-detail', artistId: artist.$id
   $scope.showSong = (song) ->
     $state.go 'app.song-detail', songId: song.$id
+  $scope.showNowPlaying = () ->
+    $state.go 'app.song-detail', songId: ctrl.nowPlaying().$id
+    
 
   ctrl.nowPlaying = ()->
     if ctrl.currentSong < ctrl.playlist.length
-      ctrl.playlist[ctrl.currentSong]
+      return ctrl.playlist[ctrl.currentSong]
     else
-      {"artist":{"avatar":""}}
+      return {artist:{"alias":"","avatar":""},$id:""}
   ctrl.next= ()->
     ctrl.currentSong++
     if ctrl.currentSong >= ctrl.playlist.length
@@ -45,7 +48,7 @@ angular.module("songaday")
     ctrl.setNowPlaying ctrl.currentSong
 
 
-  $rootScope.playNow = (song)->
+  $rootScope.play = (song)->
     if !_(ctrl.playlist).includes(song)
       ctrl.playlist.push(song)
     else
@@ -72,7 +75,7 @@ angular.module("songaday")
   ctrl.config =
     preload: 'none'
     sources:[{media:"/audio/startup.mp3",type:"audio/mp3"}]
-    
+
 
   ctrl.setNowPlaying = (index) ->
     ctrl.API.stop()

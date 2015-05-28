@@ -47,7 +47,7 @@ ion-side-menus
         ion-content.has-header
           videogular.cinema(vg-player-ready="ctrl.onPlayerReady($API)")
             vg-media(vg-use-native-controls='true',vg-src='ctrl.config.sources',vg-type="video",vg-auto-play='true')
-          ion-list
+          .list
             ion-item(align-title="center")
               .item-icon-left
                 button.button.button-icon.icon.ion-skip-backward(ng-click='ctrl.previous()') 
@@ -56,5 +56,5 @@ ion-side-menus
               .item-icon-right
                 button.button.button-icon.icon.ion-skip-forward(ng-show='ctrl.playlist.length!="play"',ng-click='ctrl.next()')
 
-            ion-item(ng-class='$index==ctrl.currentSong?"active":""',ng-repeat='song in ctrl.playlist track by song.$id',ng-click='ctrl.setNowPlaying($index)')
-              {{song.title}}
+            ion-item(ng-class='$index==ctrl.currentSong?"active":""',ng-repeat='song in ctrl.playlist track by song.$id',ng-click='ctrl.setNowPlaying($index);showNowPlaying()')
+              | {{song.title}}

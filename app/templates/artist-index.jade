@@ -6,6 +6,10 @@ html
         ion-list(show-reorder='shouldShowReorder')
           ion-item.item-thumbnail-left(ng-if='artist.songs | length',ng-repeat='artist in artists',ng-click='showArtist(artist)')
             img.avatar(ng-src='{{artist.avatar}}')
+            h2 {{artist.songs.length}}
+            button.when-large.button-icon.icon.ion-play(ng-click='queueArtist(artist)')
+            button.when-large.button-icon.icon.ion-plus(ng-click='playArtist(artist)')
+
             h2 {{artist.alias}}
             p {{artist.statement}}
-            p {{songCount(artist.songs)}}
+            p {{artist.songs.length}}

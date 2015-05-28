@@ -3,7 +3,8 @@ A simple example service that returns some data.
 ###
 angular.module("songaday")
 
-.factory "TransmitService",($firebaseObject,$firebaseArray,FBURL) ->
+.factory "TransmitService",($firebaseObject,
+    $firebaseArray,FBURL,S3Uploader, ngS3Config) ->
 
   # Might use a resource here that returns a JSON array
   ref = new Firebase(FBURL+'/songs')
@@ -27,4 +28,22 @@ angular.module("songaday")
     last_transmission=$firebaseObject(ref)
     last_transmission.$loaded (err) ->
       callback(last_transmission)
-    return
+  uploadBlob:(blob)->
+    S3Uploader.getUploadOptions(opts.getOptionsUri).then (s3Options) ->
+      S3Uploader.upload(scope, s3Uri,
+        key, opts.acl, selectedFile.type,
+        s3Options.key, s3Options.policy,
+        s3Options.signature, selectedFile ).then (->
+        file_URL= s3Uri + key
+        scope.filename = ngModel.$viewValue
+        console.log file_URL
+        if opts.enableValidation
+          ngModel.$setValidity 'uploading', true
+          ngModel.$setValidity 'succeeded', true
+        return
+      ), ->
+        scope.filename = ngModel.$viewValue
+        if opts.enableValidation
+          ngModel.$setValidity 'uploading', true
+          ngModel.$setValidity 'succeeded', false
+        return

@@ -185,8 +185,6 @@ module.exports = new class GulpConfig
           "assets/components/angular-ui-router/release/angular-ui-router.js"
           "assets/components/ionic/release/js/ionic-angular.js"
           "assets/components/cryptojslib/rollups/sha1.js"
-          "js/libmp3lame.js"
-          "assets/components/cryptojslib/rollups/sha1.js"
           # Here add any vendor files that should be included in vendor.js
           # (f.e. bower components)
 
