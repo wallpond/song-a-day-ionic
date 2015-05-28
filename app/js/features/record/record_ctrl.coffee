@@ -2,26 +2,18 @@ angular.module("songaday")
 
 # A simple controller that shows a tapped item's data
 .controller "RecordCtrl", ($rootScope,$scope,$window, $stateParams,TransmitService, RecordService) ->
+  rec_ctrl = this
   audio_context={}
+
   recorder = {}
   $scope.recording = false
-  $scope.recording_file_uri=false
+  $rootScope.recording_file_uri=false
   $scope.upload = ()->
-    TransmitService.uploadBlob($scope.mp3Blob)
   $rootScope.onCompleteEncode = (e)->
     __log 'encoded.'
-    $scope.mp3Blob = new Blob([ new Uint8Array(e.data.buf) ], type: 'audio/mp3')
-    encode64 = (buffer) ->
-      binary = ''
-      bytes = new Uint8Array(buffer)
-      len = bytes.byteLength
-      i = 0
-      while i < len
-        binary += String.fromCharCode(bytes[i])
-        i++
-      window.btoa binary
+    mp3Blob = new Blob([ new Uint8Array(e.data.buf) ], type: 'audio/mp3')
     $scope.readyToTransmit = true
-    $scope.recording_file_uri = 'data:audio/mp3;base64,' + encode64(e.data.buf)
+    TransmitService.uploadBlob(mp3Blob)
     $scope.$apply()
 
   fetchFile = (fs)->
@@ -73,6 +65,21 @@ angular.module("songaday")
 
   export_wav = ()->
     recorder && recorder.exportWAV (blob)->
+      fileReader = new FileReader
+      fileReader.onload = ->
+        arrayBuffer = @result
+        buffer = new Uint8Array(arrayBuffer)
+        binary = ''
+        bytes = new Uint8Array(buffer)
+        len = bytes.byteLength
+        i = 0
+        while i < len
+          binary += String.fromCharCode(bytes[i])
+          i++
+        data = window.btoa binary
+        $rootScope.wav_file_uri = 'data:audio/wav;base64,' + data
+        $scope.$apply()
+      fileReader.readAsArrayBuffer blob
       recorder.clear()
 
 

@@ -4,8 +4,6 @@ angular.module('songaday')
 .factory 'RecordService', ($rootScope,$window, $http) ->
   WORKER_PATH = 'js/recorderWorker.js'
   encoderWorker = new Worker('js/mp3Worker.js')
-  $rootScope.onCompleteEncode = (e)->
-    console.log(e)
   Recorder : (source, cfg) ->
     config = cfg or {}
     bufferLen = config.bufferLen or 4096
@@ -130,7 +128,7 @@ angular.module('songaday')
 
     worker.onmessage = (e) ->
       blob = e.data
-      #console.log("the blob " +  blob + " " + blob.size + " " + blob.type);
+      console.log("the blob " +  blob + " " + blob.size + " " + blob.type);
       arrayBuffer = undefined
       fileReader = new FileReader
 
@@ -138,9 +136,7 @@ angular.module('songaday')
         arrayBuffer = @result
         buffer = new Uint8Array(arrayBuffer)
         data = parseWav(buffer)
-        console.log data
         console.log 'Converting to Mp3'
-        log.innerHTML += '\n' + 'Converting to Mp3'
         encoderWorker.postMessage
           cmd: 'init'
           config:

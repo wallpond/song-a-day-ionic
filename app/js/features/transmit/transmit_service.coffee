@@ -29,11 +29,25 @@ angular.module("songaday")
     last_transmission.$loaded (err) ->
       callback(last_transmission)
   uploadBlob:(blob)->
-    S3Uploader.getUploadOptions(opts.getOptionsUri).then (s3Options) ->
-      S3Uploader.upload(scope, s3Uri,
-        key, opts.acl, selectedFile.type,
+    s3Uri = 'https://' + @s3Bucket() + '.s3.amazonaws.com/'
+
+    S3Uploader.getUploadOptions(@awsParamsURI()).then (s3Options) ->
+      key = s3Options.folder + (new Date()).getTime() + '-' +
+        S3Uploader.randomString(16) + ".mp3"
+      opts = angular.extend({
+        submitOnChange: true
+        getOptionsUri: '/getS3Options'
+        getManualOptions: null
+        acl: 'private'
+        uploadingKey: 'uploading'
+        folder: 'songs/'
+        enableValidation: true
+        targetFilename: null
+      }, opts)
+      S3Uploader.upload(@, s3Uri,
+        key, opts.acl, blob.type,
         s3Options.key, s3Options.policy,
-        s3Options.signature, selectedFile ).then (->
+        s3Options.signature, blob ).then (->
         file_URL= s3Uri + key
         scope.filename = ngModel.$viewValue
         console.log file_URL
