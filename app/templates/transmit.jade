@@ -2,7 +2,9 @@ html
   body
     ion-view(view-title='transmit')
       ion-content.transmit(has-header='true', padding='true')
-        div(ng-hide='song')
+        div(ng-if='!loggedIn')
+          button(ng-click='login()') log in
+        div(ng-hide='song',ng-if='loggedIn')
           h2 Transmit a song
           label.item.item-input
             span.input-label Title

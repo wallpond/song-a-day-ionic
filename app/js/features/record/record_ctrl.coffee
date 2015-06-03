@@ -1,19 +1,44 @@
 angular.module("songaday")
 
 # A simple controller that shows a tapped item's data
-.controller "RecordCtrl", ($rootScope,$scope,$window, $stateParams,TransmitService, RecordService) ->
+.controller "RecordCtrl", ($rootScope,$scope,$window, AccountService, $stateParams,TransmitService, RecordService) ->
   rec_ctrl = this
   audio_context={}
-
+  $rootScope.stop()
   recorder = {}
   $scope.recording = false
   $rootScope.recording_file_uri=false
-  $scope.upload = ()->
+  TransmitService.lastTransmission (song)->
+    console.log(song)
+  $scope.transmit = () ->
+    __log('uploading mp3')
+    AccountService.refresh (myself) ->
+      TransmitService.uploadBlob $rootScope.mp3Blob, (file_uri) ->
+        __log 'mp3 uploaded'
+        song = {}
+        song['media'] = {'src':file_uri,type:'audio/mp3'}
+        song['info'] = $scope.transmission.info or ''
+        song['title'] = $scope.transmission.title or '~untitled'
+        song['media'] = $scope.transmission.media
+        song['user_id'] = myself.user_id
+        song['timestamp'] = (new Date()).toISOString()
+        song['$priority'] = -1 * Math.floor(new Date().getTime()/1000)
+        song['artist'] =
+          'alias': myself.alias or ''
+          'key': myself.$id
+          'avatar': myself.avatar or ''
+        TransmitService.transmit song, (new_id) ->
+          myself.songs[new_id]=true
+          myself.$save()
+          __log 'complete'
+
+
   $rootScope.onCompleteEncode = (e)->
     __log 'encoded.'
-    mp3Blob = new Blob([ new Uint8Array(e.data.buf) ], type: 'audio/mp3')
+    $rootScope.mp3Blob = new Blob([ new Uint8Array(e.data.buf) ], type: 'audio/mp3')
     $scope.readyToTransmit = true
-    TransmitService.uploadBlob(mp3Blob)
+    $rootScope.mp3Blob.name=$scope.title+'.mp3'
+
     $scope.$apply()
 
   fetchFile = (fs)->
@@ -25,6 +50,7 @@ angular.module("songaday")
     #  file_protocol= "content://"
     $window.resolveLocalFileSystemURI file_protocol + file.fullPath, (obj) ->
       window.file_obj = obj
+      RecordService.
       __log obj
       $scope.file=obj
   captureError = (error) ->
@@ -34,7 +60,6 @@ angular.module("songaday")
 
 
   __log = (msg) ->
-    console.log(msg)
     $scope.message = (msg)
   $scope.startNativeRecording = () ->
     # start audio capture

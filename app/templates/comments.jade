@@ -3,5 +3,5 @@ ion-list
     p.comment 
       span.alias {{comment.author.alias}}
       span.text {{comment.comment}}
-  label.item.item-input(ng-show='loggedIn')
+  label.comment_input.item.item-input(ng-show='loggedIn')
     input(type='text',placeholder='comment...',ng-model='newComment',enter-submit="comment(song,newComment)")

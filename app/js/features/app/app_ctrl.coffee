@@ -20,16 +20,19 @@ angular.module("songaday")
   $rootScope.login = ()->
     console.log('login')
     AccountService.login()
+  $rootScope.logout = ()->
+    console.log('login')
+    AccountService.logout()
   $rootScope.showArtist = (artist) ->
     if typeof artist == 'string'
       $state.go 'app.artist-detail', artistId: artist
       return
     $state.go 'app.artist-detail', artistId: artist.$id
-  $scope.showSong = (song) ->
+  $rootScope.showSong = (song) ->
     $state.go 'app.song-detail', songId: song.$id
   $scope.showNowPlaying = () ->
     $state.go 'app.song-detail', songId: ctrl.nowPlaying().$id
-    
+
 
   ctrl.nowPlaying = ()->
     if ctrl.currentSong < ctrl.playlist.length
@@ -51,8 +54,11 @@ angular.module("songaday")
   $rootScope.play = (song)->
     if !_(ctrl.playlist).includes(song)
       ctrl.playlist.push(song)
+      ctrl.setNowPlaying _.indexOf(ctrl.playlist,song)
     else
       ctrl.setNowPlaying _.indexOf(ctrl.playlist,song)
+  $rootScope.stop = ->
+    ctrl.API.stop()
 
   $rootScope.queue = (song)->
     if _(ctrl.playlist).includes(song)
@@ -78,11 +84,11 @@ angular.module("songaday")
 
 
   ctrl.setNowPlaying = (index) ->
+    console.log(ctrl.API)
     ctrl.API.stop()
     ctrl.currentSong = index
     m = ctrl.playlist[index].media
     ctrl.config.sources = [{src:$sce.trustAsResourceUrl(m.src),type:m.type}]
-    console.log(ctrl.API)
     $timeout (()->
       ctrl.API.play()
       if _(m.type).contains('video')

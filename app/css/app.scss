@@ -7,6 +7,18 @@ loader{
   margin:auto;
   font-size:80px;
 }
+.artist{
+  display:inline-block;
+}
+.artist-info{
+  position:absolute;
+  background-color:white;
+  border-radius: 20px;
+}
+.artists{
+  display:inline-block;
+}
+
 .avatar{
   border-radius:100%;
   width:100px;
@@ -22,6 +34,25 @@ loader{
 }
 .alias{
   font-weight: bold;
+}
+.artist_statement{
+  -webkit-text-fill-color: black; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  font-size: 2.0em;
+  font-weight: bold;
+}
+.artist_alias{
+  font-size: 6.0em;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+.artist_song{
+  background-color:rgba(255,255,255,.7)
+}
+.artist_song .comment_input{
+  background: transparent;
 }
 .comment .text:before{
   content:":";

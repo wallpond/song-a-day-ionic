@@ -4,20 +4,20 @@ ion-side-menus
           ion-nav-buttons(side="left",expose-aside-when='large')
             button.button.button-icon.icon.ion-music-note.when-small(menu-toggle="left")
             .nav.when-large
-              button(nav-clear='', menu-close='', ui-sref='app.mission')
+              button.button.button-light(nav-clear='', menu-close='', ui-sref='app.mission')
                 | Mission
-              button(nav-clear='', menu-close='', ui-sref='app.artists')
+              button.button.button-light(nav-clear='', menu-close='', ui-sref='app.artists')
                 | Songwriters
-              button(nav-clear='', menu-close='', ui-sref='app.songs')
+              button.button.button-light(nav-clear='', menu-close='', ui-sref='app.songs')
                 | Songs
               
           ion-nav-buttons(side="right")
             .small-nav.when-small
               button.button.button-icon.icon.ion-navicon-round(menu-toggle="right") 
             .large-nav.when-large
-              button(nav-clear='', menu-close='', ui-sref='app.transmit')
+              button.button.button-light(nav-clear='', menu-close='', ui-sref='app.transmit')
                 | Transmit
-              button(nav-clear='', menu-close='', ui-sref='app.account')
+              button.button.button-light(nav-clear='', menu-close='', ui-sref='app.account')
                 | Account
 
           ion-nav-back-button.button-clear

@@ -3,12 +3,11 @@ A simple example service that returns some data.
 ###
 angular.module("songaday")
 
-.factory "TransmitService",($firebaseObject,
-    $firebaseArray,FBURL,S3Uploader, ngS3Config) ->
+.factory "TransmitService",($rootScope,$firebaseObject,
+    $firebaseArray,FBURL,S3Uploader, ngS3Config,SongService,AccountService) ->
 
   # Might use a resource here that returns a JSON array
-  ref = new Firebase(FBURL+'/songs')
-
+  ref = new Firebase(FBURL+'songs').limit(4)
   cloudFrontURI:() ->
     'd1hmps6uc7xmb3.cloudfront.net'
   awsParamsURI: () ->
@@ -18,17 +17,22 @@ angular.module("songaday")
   s3Bucket:()->
     'songadays'
   transmit:(song,callback) ->
-    ref.push song,(complete)->
-      my_songs = new Firebase(FBURL+'/artists/'+artist.$id+'/songs')
-      my_songs.child(song.$id).set(true)
-      callback(song.$id)
-  lastTransmission:(artist,callback) ->
-    console.log(artist)
-    ref = new Firebase(FBURL+'/artists/'+artist.$id+'/songs')
-    last_transmission=$firebaseObject(ref)
-    last_transmission.$loaded (err) ->
-      callback(last_transmission)
-  uploadBlob:(blob)->
+    songs = SongService.some()
+    songs.$loaded ()->
+      songs.$add(song).then (new_ref) ->
+        console.log(new_ref)
+        callback(new_ref.key())
+    return
+  lastTransmission:(callback) ->
+    AccountService.refresh (myself) ->
+      ref = new Firebase (FBURL+'/artists/'+myself.$id + '/songs')
+      SongServervice.getList(myself.songs)
+
+      last_transmission=$firebaseObject(ref)
+      last_transmission.$loaded (err) ->
+        if callback
+          callback last_transmission
+  uploadBlob:(blob,callback)->
     s3Uri = 'https://' + @s3Bucket() + '.s3.amazonaws.com/'
 
     S3Uploader.getUploadOptions(@awsParamsURI()).then (s3Options) ->
@@ -44,20 +48,11 @@ angular.module("songaday")
         enableValidation: true
         targetFilename: null
       }, opts)
-      S3Uploader.upload(@, s3Uri,
+      S3Uploader.upload($rootScope, s3Uri,
         key, opts.acl, blob.type,
         s3Options.key, s3Options.policy,
         s3Options.signature, blob ).then (->
         file_URL= s3Uri + key
-        scope.filename = ngModel.$viewValue
-        console.log file_URL
-        if opts.enableValidation
-          ngModel.$setValidity 'uploading', true
-          ngModel.$setValidity 'succeeded', true
+        callback(file_URL)
         return
-      ), ->
-        scope.filename = ngModel.$viewValue
-        if opts.enableValidation
-          ngModel.$setValidity 'uploading', true
-          ngModel.$setValidity 'succeeded', false
-        return
+      )

@@ -9,7 +9,8 @@ app = angular.module(GLOBALS.ANGULAR_APP_NAME, [
   "angularMoment"
   "ngS3upload"
   "com.2fdevs.videogular"
-  "com.2fdevs.videogular.plugins.buffering"
+  "com.2fdevs.videogular.plugins.buffering",
+  "angular-scroll-complete"
 ])
 
 .constant('FBURL', 'https://song-a-day.firebaseio.com/')

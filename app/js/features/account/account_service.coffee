@@ -8,14 +8,13 @@ angular.module("songaday")
   # Might use a resource here that returns a JSON array
   ref = new Firebase(FBURL)
   loading = true
-  promise_auth = Auth.$waitForAuth()
   me={}
   loggedIn: ->
     console.log(auth)
   refresh:(cb) ->
-    promise_auth.then (authObject)->
+    Auth.$waitForAuth().then (authObject) ->
       if authObject==null|| typeof authObject.google == 'undefined'
-        cb({})
+        console.log("NOT LOGGED IN")
         return
       my_id = CryptoJS.SHA1(authObject.google.email).toString().substring 0,11
       me=$firebaseObject(ref.child('artists/'+my_id))
@@ -24,7 +23,8 @@ angular.module("songaday")
   mySelf:->
     me
 
-
+  logout: ->
+    Auth.$unauth()
   login: ->
     provider='google'
     Auth.$authWithOAuthPopup(provider, scope: "email").then ((authObject) ->
@@ -33,6 +33,6 @@ angular.module("songaday")
       me = $firebaseObject(ref.child('artists/'+my_id))
       return
     ), (error) ->
-      console.log(errer)
+      console.log(error)
       # Handle error
       return

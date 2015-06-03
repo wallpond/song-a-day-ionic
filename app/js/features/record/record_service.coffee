@@ -128,7 +128,6 @@ angular.module('songaday')
 
     worker.onmessage = (e) ->
       blob = e.data
-      console.log("the blob " +  blob + " " + blob.size + " " + blob.type);
       arrayBuffer = undefined
       fileReader = new FileReader
 

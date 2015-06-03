@@ -172,6 +172,7 @@ module.exports = new class GulpConfig
           "assets/components/ionic/release/js/ionic.js"
           "assets/components/angular/angular.js"
           "assets/components/firebase/firebase.js"
+          "assets/components/firebase-util/dist/firebase-util.js"
           "assets/components/videogular/videogular.js"
           "assets/components/videogular-buffering/vg-buffering.js"
           "assets/components/lodash/lodash.js"
@@ -185,6 +186,7 @@ module.exports = new class GulpConfig
           "assets/components/angular-ui-router/release/angular-ui-router.js"
           "assets/components/ionic/release/js/ionic-angular.js"
           "assets/components/cryptojslib/rollups/sha1.js"
+          "assets/components/angular-scroll-complete/angular-scroll-complete.js"
           # Here add any vendor files that should be included in vendor.js
           # (f.e. bower components)
 

@@ -3,13 +3,10 @@ html
     ion-view(view-title='songwriters')
       ion-content(has-header='true', padding='true',overflow-scroll="true",)
         loader
-        ion-list(show-reorder='shouldShowReorder')
-          ion-item.item-thumbnail-left(ng-if='artist.songs | length',ng-repeat='artist in artists',ng-click='showArtist(artist)')
-            img.avatar(ng-src='{{artist.avatar}}')
-            h2 {{artist.songs.length}}
-            button.when-large.button-icon.icon.ion-play(ng-click='queueArtist(artist)')
-            button.when-large.button-icon.icon.ion-plus(ng-click='playArtist(artist)')
-
-            h2 {{artist.alias}}
-            p {{artist.statement}}
-            p {{artist.songs.length}}
+        ul.artists
+          li.artist(ng-show='artist.songs',ng-mouseleave="showArtistInfo = false",ng-mouseenter='showArtistInfo = true',ng-repeat='artist in artists',ng-click='showArtist(artist)')
+            img.avatar(ng-src='{{artist.avatar}}?default=404',err-src='/img/song-a-day.png')     
+            .artist-info(ng-show='showArtistInfo')       
+              h2 {{artist.alias}}
+              p {{artist.statement}}
+              p {{artist.songs.length}}

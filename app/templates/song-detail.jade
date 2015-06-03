@@ -10,8 +10,8 @@ html
         button.button.button-icon.icon(ng-click='showArtist(song.artist.key)')
           img.avatar(height='200px',ng-src='{{song.artist.avatar}}')
         h2 {{song.title}}
-        p {{song.blurb}}
-        button.button.button-icon.icon.ion-play(ng-click='playNow(song)')
+        p {{song.info}}
+        button.button.button-icon.icon.ion-play(ng-click='play(song)')
         .comments(ng-include="'templates/comments.html'")
         input.comment(ng-model='newComment')
         button.button(ng-click='comment(song,newComment)',ng-enter='comment(song,newComment)') comment
