@@ -6743,7 +6743,7 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
    * Toggle the left menu to open 100%
    */
   self.toggleLeft = function(shouldOpen) {
-    if (!self.left.isEnabled) return;
+    if (isAsideExposed || !self.left.isEnabled) return;
     var openAmount = self.getOpenAmount();
     if (arguments.length === 0) {
       shouldOpen = openAmount <= 0;
@@ -6760,7 +6760,7 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
    * Toggle the right menu to open 100%
    */
   self.toggleRight = function(shouldOpen) {
-    if (!self.right.isEnabled) return;
+    if (isAsideExposed || !self.right.isEnabled) return;
     var openAmount = self.getOpenAmount();
     if (arguments.length === 0) {
       shouldOpen = openAmount >= 0;

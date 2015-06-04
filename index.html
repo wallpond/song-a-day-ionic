@@ -6,16 +6,16 @@
     <title>SongADay</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="white-translucent">
-    <link href="css/app.css?v=1432241182424" rel="stylesheet">
+    <link href="css/app.css?v=1433447379723" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="apple-touch-icon" href="img/favicon.png">
     <script>
-      GLOBALS = {"ANGULAR_APP_NAME":"songaday","BUNDLE_NAME":"SongADay","BUNDLE_VERSION":"1.0.0","CODE_VERSION":"6511166e01e61a43042bb9a325c77315db951079","DEPLOY_TIME":1432241182424,"ENV":"development","ROLLBAR_SOURCEMAPS_URL_PREFIX":"https://songadays.com","WEINRE_ADDRESS":"192.168.1.40:31173"};
+      GLOBALS = {"ANGULAR_APP_NAME":"songaday","BUNDLE_NAME":"SongADay","BUNDLE_VERSION":"1.0.0","CODE_VERSION":"4f55a8433f6636a5a7281d01bfa9d1e4f241c050","DEPLOY_TIME":1433447379723,"ENV":"development","ROLLBAR_SOURCEMAPS_URL_PREFIX":"https://songadays.com","WEINRE_ADDRESS":"192.168.101.126:31173"};
       
     </script>
-    <script src="js/vendor.js?v=1432241182424"></script>
-    <script src="js/app_templates.js?v=1432241182424"></script>
-    <script src="js/app.js?v=1432241182424"></script>
+    <script src="js/vendor.js?v=1433447379723"></script>
+    <script src="js/app_templates.js?v=1433447379723"></script>
+    <script src="js/app.js?v=1433447379723"></script>
     <script id="cordova-js" src="cordova.js"></script>
   </head>
   <body ng-controller="AppCtrl as ctrl">
@@ -23,18 +23,16 @@
     The nav bar that will be updated as we navigate between views
     Additional attributes set its look, nav-bar animation and icons
     Icons provided by Ionicons: http://ionicons.com/
-    
-    -->
-    <!--
-    The views will be rendered in the <nav-view> directive below
-    Templates are in the /templates folder (but you could also
-    have templates inline in this html file if you'd like).
     -->
     <ion-nav-view></ion-nav-view>
     <ion-footer-bar align-title="center">
-      <div class="buttons">
-        <button ng-click="login()" ng-show="!loggedIn">login</button>
-        <button ng-click="logout()" ng-show="loggedIn">logout</button>
+      <div class="buttons left">
+        <button ng-click="ctrl.API.toggleFullScreen()" ng-show="ctrl.playlist.length" class="button button-icon ion-arrow-expand"></button>
+      </div>
+      <div class="title"><a href="#/app/record" class="button button-icon ion-button ion-mic-c"></a></div>
+      <div class="buttons right">
+        <button ng-click="login()" ng-show="!loggedIn" class="button button-light">login</button>
+        <button ng-click="logout()" ng-show="loggedIn" class="button button-light">logout</button>
       </div>
     </ion-footer-bar>
   </body>

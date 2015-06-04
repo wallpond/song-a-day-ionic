@@ -48,7 +48,7 @@
 (function() {
   var app;
 
-  app = angular.module(GLOBALS.ANGULAR_APP_NAME, [GLOBALS.ANGULAR_APP_NAME + ".templates", "ionic", "angulartics.google.analytics", "angulartics.google.analytics.cordova", "firebase", "angularMoment", "ngS3upload", "com.2fdevs.videogular", "com.2fdevs.videogular.plugins.controls", "com.2fdevs.videogular.plugins.poster"]).constant('FBURL', 'https://song-a-day.firebaseio.com/');
+  app = angular.module(GLOBALS.ANGULAR_APP_NAME, [GLOBALS.ANGULAR_APP_NAME + ".templates", "ionic", "angulartics.google.analytics", "angulartics.google.analytics.cordova", "firebase", "angularMoment", "ngS3upload", "com.2fdevs.videogular", "com.2fdevs.videogular.plugins.buffering", "angular-scroll-complete"]).constant('FBURL', 'https://song-a-day.firebaseio.com/');
 
 }).call(this);
 
@@ -580,10 +580,11 @@ A simple example service that returns some data.
 
 (function() {
   angular.module('songaday').filter('trust', function($sce) {
-    (function(url) {});
-    if (url) {
-      return $sce.trustAsResourceUrl(url);
-    }
+    return function(url) {
+      if (url) {
+        return $sce.trustAsResourceUrl(url);
+      }
+    };
   });
 
 }).call(this);
@@ -613,18 +614,21 @@ A simple example service that returns some data.
 
 (function() {
   angular.module("songaday").factory("AccountService", function($rootScope, $firebaseObject, Auth, FBURL) {
-    var loading, me, promise_auth, ref;
+    var loading, me, ref;
     ref = new Firebase(FBURL);
     loading = true;
-    promise_auth = Auth.$waitForAuth();
     me = {};
     return {
       loggedIn: function() {
         return console.log(auth);
       },
       refresh: function(cb) {
-        return promise_auth.then(function(authObject) {
+        return Auth.$waitForAuth().then(function(authObject) {
           var my_id;
+          if (authObject === null || typeof authObject.google === 'undefined') {
+            console.log("NOT LOGGED IN");
+            return;
+          }
           my_id = CryptoJS.SHA1(authObject.google.email).toString().substring(0, 11);
           me = $firebaseObject(ref.child('artists/' + my_id));
           return me.$loaded(function() {
@@ -634,6 +638,9 @@ A simple example service that returns some data.
       },
       mySelf: function() {
         return me;
+      },
+      logout: function() {
+        return Auth.$unauth();
       },
       login: function() {
         var provider;
@@ -645,7 +652,7 @@ A simple example service that returns some data.
           my_id = CryptoJS.SHA1(authObject.google.email).toString().substring(0, 11);
           me = $firebaseObject(ref.child('artists/' + my_id));
         }), function(error) {
-          console.log(errer);
+          console.log(error);
         });
       }
     };
@@ -666,21 +673,28 @@ A simple example service that returns some data.
       return ionic.trigger('resize');
     }), 100);
     $rootScope.comment = function(song, comment_text) {
-      var comment, myself;
-      myself = $rootScope.myself;
-      comment = {
-        comment: comment_text,
-        author: {
-          alias: myself.alias,
-          avatar: myself.avatar,
-          key: myself.$id
-        }
-      };
-      return SongService.comment(song, comment);
+      return AccountService.refresh(function(myself) {
+        var comment;
+        console.log(myself);
+        comment = {
+          comment: comment_text,
+          author: {
+            alias: myself.alias,
+            avatar: myself.avatar,
+            key: myself.$id
+          }
+        };
+        console.log(comment);
+        return SongService.comment(song, comment);
+      });
     };
     $rootScope.login = function() {
       console.log('login');
       return AccountService.login();
+    };
+    $rootScope.logout = function() {
+      console.log('login');
+      return AccountService.logout();
     };
     $rootScope.showArtist = function(artist) {
       if (typeof artist === 'string') {
@@ -693,9 +707,14 @@ A simple example service that returns some data.
         artistId: artist.$id
       });
     };
-    $scope.showSong = function(song) {
+    $rootScope.showSong = function(song) {
       return $state.go('app.song-detail', {
         songId: song.$id
+      });
+    };
+    $scope.showNowPlaying = function() {
+      return $state.go('app.song-detail', {
+        songId: ctrl.nowPlaying().$id
       });
     };
     ctrl.nowPlaying = function() {
@@ -703,9 +722,11 @@ A simple example service that returns some data.
         return ctrl.playlist[ctrl.currentSong];
       } else {
         return {
-          "artist": {
+          artist: {
+            "alias": "",
             "avatar": ""
-          }
+          },
+          $id: ""
         };
       }
     };
@@ -718,17 +739,21 @@ A simple example service that returns some data.
     };
     ctrl.previous = function() {
       ctrl.currentSong--;
-      if (ctrl.currentSong <= 0) {
+      if (ctrl.currentSong < 0) {
         ctrl.currentSong = ctrl.playlist.length;
       }
       return ctrl.setNowPlaying(ctrl.currentSong);
     };
-    $rootScope.playNow = function(song) {
+    $rootScope.play = function(song) {
       if (!_(ctrl.playlist).includes(song)) {
-        return ctrl.playlist.push(song);
+        ctrl.playlist.push(song);
+        return ctrl.setNowPlaying(_.indexOf(ctrl.playlist, song));
       } else {
         return ctrl.setNowPlaying(_.indexOf(ctrl.playlist, song));
       }
+    };
+    $rootScope.stop = function() {
+      return ctrl.API.stop();
     };
     $rootScope.queue = function(song) {
       if (_(ctrl.playlist).includes(song)) {
@@ -745,30 +770,37 @@ A simple example service that returns some data.
     };
     ctrl.onCompleteVideo = function() {
       ctrl.isCompleted = true;
+      console.log('COMPLETED');
       ctrl.next();
     };
     ctrl.config = {
       preload: 'none',
-      sources: [],
-      theme: {
-        url: 'http://www.videogular.com/styles/themes/default/latest/videogular.css'
-      }
+      sources: [
+        {
+          media: "/audio/startup.mp3",
+          type: "audio/mp3"
+        }
+      ]
     };
     ctrl.setNowPlaying = function(index) {
       var m;
+      console.log(ctrl.API);
       ctrl.API.stop();
       ctrl.currentSong = index;
       m = ctrl.playlist[index].media;
-      console.log(m);
       ctrl.config.sources = [
         {
           src: $sce.trustAsResourceUrl(m.src),
           type: m.type
         }
       ];
-      console.log(ctrl.config);
       $timeout((function() {
-        return ctrl.API.play();
+        ctrl.API.play();
+        if (_(m.type).contains('video')) {
+          if (!ctrl.API.isFullScreen) {
+            return ctrl.API.toggleFullScreen();
+          }
+        }
       }), 200);
     };
   });
@@ -780,8 +812,8 @@ A simple example service that returns some data.
     $scope.artist = ArtistService.get($stateParams.artistId);
     $scope.loading = true;
     return $scope.artist.$loaded(function() {
-      $scope.loading = false;
-      return $scope.songs = SongService.getList($scope.artist.songs);
+      $scope.songs = SongService.getList($scope.artist.songs);
+      return $scope.loading = false;
     });
   });
 
@@ -789,7 +821,7 @@ A simple example service that returns some data.
 
 (function() {
   angular.module("songaday").controller("ArtistIndexCtrl", function($scope, $state, ArtistService) {
-    $scope.artists = ArtistService.all();
+    $scope.artists = ArtistService.some();
     $scope.loading = true;
     return $scope.artists.$loaded(function() {
       return $scope.loading = false;
@@ -806,11 +838,11 @@ A simple example service that returns some data.
 (function() {
   angular.module("songaday").factory("ArtistService", function($firebaseObject, $firebaseArray, FBURL) {
     var artists, ref;
-    ref = new Firebase(FBURL + 'artists').orderByChild("songs");
+    ref = new Firebase(FBURL + 'artists');
     this.loading = true;
     artists = $firebaseArray(ref);
     return {
-      all: function() {
+      some: function() {
         artists.$loaded(function() {
           return this.loading = false;
         });
@@ -874,6 +906,343 @@ A simple example service that returns some data.
 }).call(this);
 
 (function() {
+  angular.module("songaday").controller("RecordCtrl", function($rootScope, $scope, $state, $window, AccountService, $stateParams, TransmitService, RecordService) {
+    var __log, audio_context, captureError, captureSuccess, export_wav, fetchFile, rec_ctrl, recorder, startUserMedia;
+    rec_ctrl = this;
+    audio_context = {};
+    try {
+      $rootScope.stop();
+    } catch (_error) {}
+    recorder = {};
+    $rootScope.recording = false;
+    $rootScope.recording_file_uri = false;
+    TransmitService.lastTransmission(function(song) {
+      return console.log(song);
+    });
+    $scope.transmit = function() {
+      __log('uploading mp3');
+      return AccountService.refresh(function(myself) {
+        return TransmitService.uploadBlob($rootScope.mp3Blob, function(file_uri) {
+          var song;
+          __log('mp3 uploaded');
+          song = {};
+          console.log(file_uri);
+          song['media'] = {
+            'src': file_uri,
+            type: 'audio/mp3'
+          };
+          song['info'] = $scope.transmission.info || '';
+          song['title'] = $scope.transmission.title || '~untitled';
+          song['user_id'] = myself.user_id;
+          song['timestamp'] = (new Date()).toISOString();
+          song['$priority'] = -1 * Math.floor(new Date().getTime() / 1000);
+          song['artist'] = {
+            'alias': myself.alias || '',
+            'key': myself.$id,
+            'avatar': myself.avatar || ''
+          };
+          return TransmitService.transmit(song, function(new_id) {
+            myself.songs[new_id] = true;
+            myself.$save();
+            __log('complete');
+            return $state.go('app.song-index');
+          });
+        });
+      });
+    };
+    $rootScope.onCompleteEncode = function(e) {
+      if ($rootScope.recording) {
+        return;
+      }
+      __log('encoded.');
+      $rootScope.mp3Blob = new Blob([new Uint8Array(e.data.buf)], {
+        type: 'audio/mp3'
+      });
+      $scope.readyToTransmit = true;
+      $rootScope.mp3Blob.name = $scope.title + '.mp3';
+      return $scope.$apply();
+    };
+    fetchFile = function(fs) {
+      return console.log(fs);
+    };
+    captureSuccess = function(mediaFiles) {
+      var file_protocol;
+      $window.file = mediaFiles[0];
+      file_protocol = "file://";
+      return $window.resolveLocalFileSystemURI(file_protocol + file.fullPath, function(obj) {
+        window.file_obj = obj;
+        RecordService.__log(obj);
+        return $scope.file = obj;
+      });
+    };
+    captureError = function(error) {
+      navigator.notification.alert('Error: ' + error.code, null, 'Capture Error');
+      __log(error);
+    };
+    __log = function(msg) {
+      return $scope.message = msg;
+    };
+    $scope.startNativeRecording = function() {
+      return navigator.device.capture.captureAudio(captureSuccess, captureError, {
+        limit: 1
+      });
+    };
+    $scope.tryHTML5Recording = function() {
+      __log('init html5 recording');
+      window.AudioContext = window.AudioContext || window.webkitAudioContext;
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+      window.URL = window.URL || window.webkitURL;
+      audio_context = new AudioContext;
+      __log('Audio context...');
+      __log(navigator.getUserMedia ? 'ready.' : ':( sad browser!');
+      return navigator.getUserMedia({
+        audio: true
+      }, startUserMedia, function(e) {
+        __log('No live audio input: ' + e);
+      });
+    };
+    startUserMedia = function(stream) {
+      var input;
+      input = audio_context.createMediaStreamSource(stream);
+      __log('Media stream created.');
+      __log('input sample rate ' + input.context.sampleRate);
+      recorder = new RecordService.Recorder(input);
+      __log(recorder);
+      __log('Recorder initialised.');
+    };
+    export_wav = function() {
+      return recorder && recorder.exportWAV(function(blob) {
+        var fileReader;
+        fileReader = new FileReader;
+        fileReader.onload = function() {
+          var arrayBuffer, binary, buffer, bytes, data, i, len;
+          arrayBuffer = this.result;
+          buffer = new Uint8Array(arrayBuffer);
+          binary = '';
+          bytes = new Uint8Array(buffer);
+          len = bytes.byteLength;
+          i = 0;
+          while (i < len) {
+            binary += String.fromCharCode(bytes[i]);
+            i++;
+          }
+          data = window.btoa(binary);
+          $rootScope.wav_file_uri = 'data:audio/wav;base64,' + data;
+          return $scope.$apply();
+        };
+        fileReader.readAsArrayBuffer(blob);
+        return recorder.clear();
+      });
+    };
+    $scope.startRecording = function(button) {
+      recorder && recorder.record();
+      $rootScope.recording = true;
+      __log('Recording...');
+      $scope.readyToTransmit = false;
+    };
+    $scope.stopRecording = function(button) {
+      $rootScope.recording = false;
+      recorder && recorder.stop();
+      __log('Stopped recording.');
+      export_wav();
+      __log('encoding media...');
+    };
+    if (_(ionic.Platform.platforms).contains('browser')) {
+      return $scope.tryHTML5Recording();
+    } else {
+      return $scope.startNativeRecording();
+    }
+  });
+
+}).call(this);
+
+(function() {
+  angular.module('songaday').factory('RecordService', function($rootScope, $window, $http) {
+    var WORKER_PATH, encoderWorker;
+    WORKER_PATH = 'js/recorderWorker.js';
+    encoderWorker = new Worker('js/mp3Worker.js');
+    return {
+      Recorder: function(source, cfg) {
+        var Uint8ArrayToFloat32Array, bufferLen, config, currCallback, encode64, parseWav, recording, uploadAudio, worker;
+        config = cfg || {};
+        bufferLen = config.bufferLen || 4096;
+        encode64 = function(buffer) {
+          var binary, bytes, i, len;
+          binary = '';
+          bytes = new Uint8Array(buffer);
+          len = bytes.byteLength;
+          i = 0;
+          while (i < len) {
+            binary += String.fromCharCode(bytes[i]);
+            i++;
+          }
+          return window.btoa(binary);
+        };
+        parseWav = function(wav) {
+          var readInt;
+          readInt = function(i, bytes) {
+            var ret, shft;
+            ret = 0;
+            shft = 0;
+            while (bytes) {
+              ret += wav[i] << shft;
+              shft += 8;
+              i++;
+              bytes--;
+            }
+            return ret;
+          };
+          if (readInt(20, 2) !== 1) {
+            throw 'Invalid compression code, not PCM';
+          }
+          if (readInt(22, 2) !== 1) {
+            throw 'Invalid number of channels, not 1';
+          }
+          return {
+            sampleRate: readInt(24, 4),
+            bitsPerSample: readInt(34, 2),
+            samples: wav.subarray(44)
+          };
+        };
+        Uint8ArrayToFloat32Array = function(u8a) {
+          var f32Buffer, i, value;
+          f32Buffer = new Float32Array(u8a.length);
+          i = 0;
+          while (i < u8a.length) {
+            value = u8a[i << 1] + (u8a[(i << 1) + 1] << 8);
+            if (value >= 0x8000) {
+              value |= ~0x7FFF;
+            }
+            f32Buffer[i] = value / 0x8000;
+            i++;
+          }
+          return f32Buffer;
+        };
+        uploadAudio = function(mp3Data) {
+          var reader;
+          reader = new FileReader;
+          reader.onload = function(event) {
+            var fd, mp3Name;
+            fd = new FormData;
+            mp3Name = encodeURIComponent('audio_recording_' + (new Date).getTime() + '.mp3');
+            console.log('mp3name = ' + mp3Name);
+            fd.append('fname', mp3Name);
+            fd.append('data', event.target.result);
+            $.ajax({
+              type: 'POST',
+              url: 'upload.php',
+              data: fd,
+              processData: false,
+              contentType: false
+            }).done(function(data) {
+              log.innerHTML += '\n' + data;
+            });
+          };
+          reader.readAsDataURL(mp3Data);
+        };
+        this.context = source.context;
+        this.node = (this.context.createScriptProcessor || this.context.createJavaScriptNode).call(this.context, bufferLen, 2, 2);
+        worker = new Worker(config.workerPath || WORKER_PATH);
+        worker.postMessage({
+          command: 'init',
+          config: {
+            sampleRate: this.context.sampleRate
+          }
+        });
+        recording = false;
+        currCallback = void 0;
+        this.node.onaudioprocess = function(e) {
+          if (!recording) {
+            return;
+          }
+          worker.postMessage({
+            command: 'record',
+            buffer: [e.inputBuffer.getChannelData(0)]
+          });
+        };
+        this.configure = function(cfg) {
+          var prop;
+          for (prop in cfg) {
+            if (cfg.hasOwnProperty(prop)) {
+              config[prop] = cfg[prop];
+            }
+          }
+        };
+        this.record = function() {
+          recording = true;
+        };
+        this.stop = function() {
+          recording = false;
+        };
+        this.clear = function() {
+          worker.postMessage({
+            command: 'clear'
+          });
+        };
+        this.getBuffer = function(cb) {
+          currCallback = cb || config.callback;
+          worker.postMessage({
+            command: 'getBuffer'
+          });
+        };
+        this.exportWAV = function(cb, type) {
+          currCallback = cb || config.callback;
+          type = type || config.type || 'audio/wav';
+          if (!currCallback) {
+            throw new Error('Callback not set');
+          }
+          worker.postMessage({
+            command: 'exportWAV',
+            type: type
+          });
+        };
+        worker.onmessage = function(e) {
+          var arrayBuffer, blob, fileReader;
+          blob = e.data;
+          arrayBuffer = void 0;
+          fileReader = new FileReader;
+          fileReader.onload = function() {
+            var buffer, data;
+            arrayBuffer = this.result;
+            buffer = new Uint8Array(arrayBuffer);
+            data = parseWav(buffer);
+            console.log('Converting to Mp3');
+            encoderWorker.postMessage({
+              cmd: 'init',
+              config: {
+                mode: 3,
+                channels: 1,
+                samplerate: data.sampleRate,
+                bitrate: data.bitsPerSample
+              }
+            });
+            encoderWorker.postMessage({
+              cmd: 'encode',
+              buf: Uint8ArrayToFloat32Array(data.samples)
+            });
+            encoderWorker.postMessage({
+              cmd: 'finish'
+            });
+            encoderWorker.onmessage = function(e) {
+              if (e.data.cmd === 'data') {
+                console.log('Done converting to Mp3');
+                console.log($rootScope);
+                $rootScope.onCompleteEncode(e);
+              }
+            };
+          };
+          fileReader.readAsArrayBuffer(blob);
+          currCallback(blob);
+        };
+        source.connect(this.node);
+        return this.node.connect(this.context.destination);
+      }
+    };
+  });
+
+}).call(this);
+
+(function() {
   angular.module("songaday").controller("SongDetailCtrl", function($scope, $stateParams, SongService) {
     $scope.loading = false;
     $scope.song = SongService.get($stateParams.songId);
@@ -886,11 +1255,18 @@ A simple example service that returns some data.
 
 (function() {
   angular.module("songaday").controller("SongIndexCtrl", function($state, $scope, SongService) {
-    $scope.songs = SongService.all();
+    $scope.songs = SongService.some();
     $scope.loading = true;
-    return $scope.songs.$loaded(function() {
+    $scope.songs.$loaded(function() {
       return $scope.loading = false;
     });
+    return $scope.loadMore = function() {
+      console.log('loading more');
+      $scope.loading = true;
+      return SongService.more(function() {
+        return $scope.loading = false;
+      });
+    };
   });
 
 }).call(this);
@@ -902,19 +1278,26 @@ A simple example service that returns some data.
 
 (function() {
   angular.module("songaday").factory("SongService", function($firebaseObject, $firebaseArray, FBURL) {
-    var limit, ref, songs;
-    limit = 17;
-    ref = new Firebase(FBURL + 'songs').orderByChild("timestamp").limitToLast(limit);
-    songs = $firebaseArray(ref);
+    var limit, ref, scroll, scrollRef, songs;
+    limit = 7;
+    ref = new Firebase(FBURL + 'songs');
+    scrollRef = new Firebase.util.Scroll(ref, '$priority');
+    scroll = scrollRef.scroll;
+    songs = $firebaseArray(scrollRef);
     return {
-      all: function() {
+      some: function() {
+        this.more();
         return songs;
+      },
+      more: function() {
+        return scroll.next(limit);
       },
       comment: function(song, comment) {
         var comments, commentsRef;
         commentsRef = new Firebase(FBURL + 'songs/' + song.$id + '/comments');
         comments = $firebaseArray(commentsRef);
-        return comments.$add(comment);
+        comments.$add(comment);
+        return comment = {};
       },
       get: function(songId) {
         ref = new Firebase(FBURL + '/songs/' + songId);
@@ -934,24 +1317,21 @@ A simple example service that returns some data.
 }).call(this);
 
 (function() {
-  angular.module("songaday").controller("TransmitCtrl", function($scope, TransmitService, $timeout, AccountService) {
+  angular.module("songaday").controller("TransmitCtrl", function($scope, TransmitService, $state, $timeout, AccountService) {
     $scope.awsParamsURI = TransmitService.awsParamsURI();
     $scope.awsFolder = TransmitService.awsFolder();
     $scope.s3Bucket = TransmitService.s3Bucket();
     $scope.transmission = {
       media: {}
     };
-    AccountService.refresh(function(myself) {
-      return TransmitService.lastTransmission(myself, function(last_song) {
-        $scope.lastTransmission = last_song;
-        return console.log(last_song);
+    TransmitService.lastTransmission(function(last_song) {
+      return AccountService.refresh(function(myself) {
+        return $scope.lastTransmission = last_song;
       });
     });
     $scope.$on('s3upload:success', function(e) {
       $scope.ready = true;
-      console.log($scope.media);
       $timeout((function() {
-        console.log(e);
         $scope.transmission.media.src = e.targetScope['filename'];
         return $scope.transmission.media.type = e.targetScope['filetype'];
       }), 100);
@@ -960,19 +1340,20 @@ A simple example service that returns some data.
       return AccountService.refresh(function(myself) {
         song = {};
         song['info'] = $scope.transmission.info || '';
-        song['title'] = $scope.transmission.title || 'untitled';
-        song['timestamp'] = (new Date).toISOString();
+        song['title'] = $scope.transmission.title || '~untitled';
         song['media'] = $scope.transmission.media;
         song['user_id'] = myself.user_id;
+        song['timestamp'] = (new Date()).toISOString();
+        song['$priority'] = -1 * Math.floor(new Date().getTime() / 1000);
         song['artist'] = {
           'alias': myself.alias || '',
           'key': myself.$id,
           'avatar': myself.avatar || ''
         };
-        console.log(song, myself);
         return TransmitService.transmit(song, function(new_id) {
           myself.songs[new_id] = true;
-          return myself.$save();
+          myself.$save();
+          return $state.go('app.song-index');
         });
       });
     };
@@ -986,12 +1367,12 @@ A simple example service that returns some data.
  */
 
 (function() {
-  angular.module("songaday").factory("TransmitService", function($firebaseObject, $firebaseArray, FBURL) {
+  angular.module("songaday").factory("TransmitService", function($rootScope, $firebaseObject, $firebaseArray, FBURL, S3Uploader, ngS3Config, SongService, AccountService) {
     var ref;
-    ref = new Firebase(FBURL + '/songs');
+    ref = new Firebase(FBURL + 'songs').limit(4);
     return {
       cloudFrontURI: function() {
-        return 'd1hmps6uc7xmb3.cloudfront.net';
+        return 'http://d1hmps6uc7xmb3.cloudfront.net/';
       },
       awsParamsURI: function() {
         return '/config/aws.json';
@@ -1003,20 +1384,49 @@ A simple example service that returns some data.
         return 'songadays';
       },
       transmit: function(song, callback) {
-        return ref.push(song, function(complete) {
-          var my_songs;
-          my_songs = new Firebase(FBURL + '/artists/' + artist.$id + '/songs');
-          my_songs.child(song.$id).set(true);
-          return callback(song.$id);
+        var songs;
+        songs = SongService.some();
+        songs.$loaded(function() {
+          console.log(song);
+          return songs.$add(song).then(function(new_ref) {
+            console.log(new_ref);
+            return callback(new_ref.key());
+          });
         });
       },
-      lastTransmission: function(artist, callback) {
-        var last_transmission;
-        console.log(artist);
-        ref = new Firebase(FBURL + '/artists/' + artist.$id + '/songs');
-        last_transmission = $firebaseObject(ref);
-        last_transmission.$loaded(function(err) {
-          return callback(last_transmission);
+      lastTransmission: function(callback) {
+        return AccountService.refresh(function(myself) {
+          var last_transmission, my_songs;
+          ref = new Firebase(FBURL + '/artists/' + myself.$id + '/songs');
+          my_songs = SongService.getList(myself.songs);
+          last_transmission = $firebaseObject(ref);
+          return last_transmission.$loaded(function(err) {
+            if (callback) {
+              return callback(last_transmission);
+            }
+          });
+        });
+      },
+      uploadBlob: function(blob, callback) {
+        var cloudFront, s3Uri;
+        cloudFront = this.cloudFrontURI();
+        s3Uri = 'https://' + this.s3Bucket() + '.s3.amazonaws.com/';
+        return S3Uploader.getUploadOptions(this.awsParamsURI()).then(function(s3Options) {
+          var key, opts;
+          key = s3Options.folder + (new Date()).getTime() + '-' + S3Uploader.randomString(16) + ".mp3";
+          opts = angular.extend({
+            submitOnChange: true,
+            getOptionsUri: '/getS3Options',
+            getManualOptions: null,
+            acl: 'private',
+            uploadingKey: 'uploading',
+            folder: 'songs/',
+            enableValidation: true,
+            targetFilename: null
+          }, opts);
+          return S3Uploader.upload($rootScope, s3Uri, key, opts.acl, blob.type, s3Options.key, s3Options.policy, s3Options.signature, blob).then(function(obj) {
+            callback(cloudFront + key);
+          });
         });
       }
     };
@@ -1076,6 +1486,22 @@ A simple example service that returns some data.
         "main-content": {
           templateUrl: "templates/transmit.html",
           controller: "TransmitCtrl"
+        }
+      }
+    }).state("app.now-playing", {
+      url: "/playing",
+      views: {
+        "main-content": {
+          templateUrl: "templates/now-playing.html",
+          controller: "PlayerCtrl"
+        }
+      }
+    }).state("app.record", {
+      url: "/record",
+      views: {
+        "main-content": {
+          templateUrl: "templates/record.html",
+          controller: "RecordCtrl"
         }
       }
     }).state("app.mission", {

@@ -6,10 +6,22 @@ loader {
   margin: auto;
   font-size: 80px; }
 
+.artist {
+  display: inline-block; }
+
+.artist-info {
+  position: absolute;
+  background-color: white;
+  border-radius: 20px; }
+
+.artists {
+  display: inline-block; }
+
 .avatar {
   border-radius: 100%;
   width: 100px;
-  height: 100px; }
+  height: 100px;
+  cursor: pointer; }
 
 .comment {
   display: block; }
@@ -20,8 +32,42 @@ loader {
 .alias {
   font-weight: bold; }
 
+.artist_statement {
+  -webkit-text-fill-color: black;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  font-size: 2em;
+  font-weight: bold; }
+
+.artist_alias {
+  font-size: 6em;
+  -webkit-text-fill-color: white;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black; }
+
+.artist_song {
+  background-color: rgba(255, 255, 255, 0.7); }
+
+.artist_song .comment_input {
+  background: transparent; }
+
 .comment .text:before {
   content: ":"; }
+
+.cinema {
+  background-color: black; }
+
+.cinema video {
+  pointer-events: none;
+  opacity: 50%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%; }
 
 .comments {
   float: left; }
@@ -30,7 +76,10 @@ loader {
   border-style: none !important; }
 
 .info {
-  white-space: pre; }
+  white-space: pre !important; }
+
+.comment {
+  white-space: pre-line !important; }
 
 .right {
   float: right; }

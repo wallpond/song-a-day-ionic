@@ -33809,7 +33809,7 @@ var styleDirective = valueFn({
 })(window, document);
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}</style>');
-/*! @license Firebase v2.2.4
+/*! @license Firebase v2.2.6
     License: https://www.firebase.com/terms/terms-of-service.html */
 (function() {var h,aa=this;function n(a){return void 0!==a}function ba(){}function ca(a){a.ub=function(){return a.tf?a.tf:a.tf=new a}}
 function da(a){var b=typeof a;if("object"==b)if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);if("[object Window]"==c)return"object";if("[object Array]"==c||"number"==typeof a.length&&"undefined"!=typeof a.splice&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("splice"))return"array";if("[object Function]"==c||"undefined"!=typeof a.call&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("call"))return"function"}else return"null";
@@ -33839,11 +33839,11 @@ h.X=function(a,b,c,d,e){return new fc(null!=a?a:this.key,null!=b?b:this.value,nu
 h.Na=function(a,b,c){var d,e;e=this;d=c(a,e.key);e=0>d?e.X(null,null,null,e.left.Na(a,b,c),null):0===d?e.X(null,b,null,null,null):e.X(null,null,null,null,e.right.Na(a,b,c));return hc(e)};function ic(a){if(a.left.e())return bc;a.left.fa()||a.left.left.fa()||(a=jc(a));a=a.X(null,null,null,ic(a.left),null);return hc(a)}
 h.remove=function(a,b){var c,d;c=this;if(0>b(a,c.key))c.left.e()||c.left.fa()||c.left.left.fa()||(c=jc(c)),c=c.X(null,null,null,c.left.remove(a,b),null);else{c.left.fa()&&(c=kc(c));c.right.e()||c.right.fa()||c.right.left.fa()||(c=lc(c),c.left.left.fa()&&(c=kc(c),c=lc(c)));if(0===b(a,c.key)){if(c.right.e())return bc;d=gc(c.right);c=c.X(d.key,d.value,null,null,ic(c.right))}c=c.X(null,null,null,null,c.right.remove(a,b))}return hc(c)};h.fa=function(){return this.color};
 function hc(a){a.right.fa()&&!a.left.fa()&&(a=mc(a));a.left.fa()&&a.left.left.fa()&&(a=kc(a));a.left.fa()&&a.right.fa()&&(a=lc(a));return a}function jc(a){a=lc(a);a.right.left.fa()&&(a=a.X(null,null,null,null,kc(a.right)),a=mc(a),a=lc(a));return a}function mc(a){return a.right.X(null,null,a.color,a.X(null,null,!0,null,a.right.left),null)}function kc(a){return a.left.X(null,null,a.color,null,a.X(null,null,!0,a.left.right,null))}
-function lc(a){return a.X(null,null,!a.color,a.left.X(null,null,!a.left.color,null,null),a.right.X(null,null,!a.right.color,null,null))}function nc(){}h=nc.prototype;h.X=function(){return this};h.Na=function(a,b){return new fc(a,b,null)};h.remove=function(){return this};h.count=function(){return 0};h.e=function(){return!0};h.ha=function(){return!1};h.Rc=function(){return null};h.ec=function(){return null};h.fa=function(){return!1};var bc=new nc;function oc(a,b){return a&&"object"===typeof a?(J(".sv"in a,"Unexpected leaf node or priority contents"),b[a[".sv"]]):a}function pc(a,b){var c=new qc;rc(a,new K(""),function(a,e){c.mc(a,sc(e,b))});return c}function sc(a,b){var c=a.A().K(),c=oc(c,b),d;if(a.N()){var e=oc(a.Ba(),b);return e!==a.Ba()||c!==a.A().K()?new tc(e,L(c)):a}d=a;c!==a.A().K()&&(d=d.da(new tc(c)));a.U(M,function(a,c){var e=sc(c,b);e!==c&&(d=d.Q(a,e))});return d};function K(a,b){if(1==arguments.length){this.o=a.split("/");for(var c=0,d=0;d<this.o.length;d++)0<this.o[d].length&&(this.o[c]=this.o[d],c++);this.o.length=c;this.Y=0}else this.o=a,this.Y=b}function N(a,b){var c=O(a);if(null===c)return b;if(c===O(b))return N(G(a),G(b));throw Error("INTERNAL ERROR: innerPath ("+b+") is not within outerPath ("+a+")");}function O(a){return a.Y>=a.o.length?null:a.o[a.Y]}function uc(a){return a.o.length-a.Y}
-function G(a){var b=a.Y;b<a.o.length&&b++;return new K(a.o,b)}function vc(a){return a.Y<a.o.length?a.o[a.o.length-1]:null}h=K.prototype;h.toString=function(){for(var a="",b=this.Y;b<this.o.length;b++)""!==this.o[b]&&(a+="/"+this.o[b]);return a||"/"};h.slice=function(a){return this.o.slice(this.Y+(a||0))};h.parent=function(){if(this.Y>=this.o.length)return null;for(var a=[],b=this.Y;b<this.o.length-1;b++)a.push(this.o[b]);return new K(a,0)};
-h.w=function(a){for(var b=[],c=this.Y;c<this.o.length;c++)b.push(this.o[c]);if(a instanceof K)for(c=a.Y;c<a.o.length;c++)b.push(a.o[c]);else for(a=a.split("/"),c=0;c<a.length;c++)0<a[c].length&&b.push(a[c]);return new K(b,0)};h.e=function(){return this.Y>=this.o.length};h.Z=function(a){if(uc(this)!==uc(a))return!1;for(var b=this.Y,c=a.Y;b<=this.o.length;b++,c++)if(this.o[b]!==a.o[c])return!1;return!0};
-h.contains=function(a){var b=this.Y,c=a.Y;if(uc(this)>uc(a))return!1;for(;b<this.o.length;){if(this.o[b]!==a.o[c])return!1;++b;++c}return!0};var F=new K("");function wc(a,b){this.Qa=a.slice();this.Ea=Math.max(1,this.Qa.length);this.kf=b;for(var c=0;c<this.Qa.length;c++)this.Ea+=xc(this.Qa[c]);yc(this)}wc.prototype.push=function(a){0<this.Qa.length&&(this.Ea+=1);this.Qa.push(a);this.Ea+=xc(a);yc(this)};wc.prototype.pop=function(){var a=this.Qa.pop();this.Ea-=xc(a);0<this.Qa.length&&--this.Ea};
-function yc(a){if(768<a.Ea)throw Error(a.kf+"has a key path longer than 768 bytes ("+a.Ea+").");if(32<a.Qa.length)throw Error(a.kf+"path specified exceeds the maximum depth that can be written (32) or object contains a cycle "+zc(a));}function zc(a){return 0==a.Qa.length?"":"in property '"+a.Qa.join(".")+"'"};function Ac(){this.wc={}}Ac.prototype.set=function(a,b){null==b?delete this.wc[a]:this.wc[a]=b};Ac.prototype.get=function(a){return u(this.wc,a)?this.wc[a]:null};Ac.prototype.remove=function(a){delete this.wc[a]};Ac.prototype.uf=!0;function Bc(a){this.Ec=a;this.Md="firebase:"}h=Bc.prototype;h.set=function(a,b){null==b?this.Ec.removeItem(this.Md+a):this.Ec.setItem(this.Md+a,B(b))};h.get=function(a){a=this.Ec.getItem(this.Md+a);return null==a?null:mb(a)};h.remove=function(a){this.Ec.removeItem(this.Md+a)};h.uf=!1;h.toString=function(){return this.Ec.toString()};function Cc(a){try{if("undefined"!==typeof window&&"undefined"!==typeof window[a]){var b=window[a];b.setItem("firebase:sentinel","cache");b.removeItem("firebase:sentinel");return new Bc(b)}}catch(c){}return new Ac}var Dc=Cc("localStorage"),P=Cc("sessionStorage");function Ec(a,b,c,d,e){this.host=a.toLowerCase();this.domain=this.host.substr(this.host.indexOf(".")+1);this.lb=b;this.Cb=c;this.Tg=d;this.Ld=e||"";this.Oa=Dc.get("host:"+a)||this.host}function Fc(a,b){b!==a.Oa&&(a.Oa=b,"s-"===a.Oa.substr(0,2)&&Dc.set("host:"+a.host,a.Oa))}Ec.prototype.toString=function(){var a=(this.lb?"https://":"http://")+this.host;this.Ld&&(a+="<"+this.Ld+">");return a};var Gc=function(){var a=1;return function(){return a++}}();function J(a,b){if(!a)throw Hc(b);}function Hc(a){return Error("Firebase (2.2.4) INTERNAL ASSERT FAILED: "+a)}
+function lc(a){return a.X(null,null,!a.color,a.left.X(null,null,!a.left.color,null,null),a.right.X(null,null,!a.right.color,null,null))}function nc(){}h=nc.prototype;h.X=function(){return this};h.Na=function(a,b){return new fc(a,b,null)};h.remove=function(){return this};h.count=function(){return 0};h.e=function(){return!0};h.ha=function(){return!1};h.Rc=function(){return null};h.ec=function(){return null};h.fa=function(){return!1};var bc=new nc;function oc(a,b){return a&&"object"===typeof a?(J(".sv"in a,"Unexpected leaf node or priority contents"),b[a[".sv"]]):a}function pc(a,b){var c=new qc;rc(a,new K(""),function(a,e){c.mc(a,sc(e,b))});return c}function sc(a,b){var c=a.A().K(),c=oc(c,b),d;if(a.N()){var e=oc(a.Ba(),b);return e!==a.Ba()||c!==a.A().K()?new tc(e,L(c)):a}d=a;c!==a.A().K()&&(d=d.da(new tc(c)));a.U(M,function(a,c){var e=sc(c,b);e!==c&&(d=d.Q(a,e))});return d};function K(a,b){if(1==arguments.length){this.n=a.split("/");for(var c=0,d=0;d<this.n.length;d++)0<this.n[d].length&&(this.n[c]=this.n[d],c++);this.n.length=c;this.Y=0}else this.n=a,this.Y=b}function N(a,b){var c=O(a);if(null===c)return b;if(c===O(b))return N(G(a),G(b));throw Error("INTERNAL ERROR: innerPath ("+b+") is not within outerPath ("+a+")");}function O(a){return a.Y>=a.n.length?null:a.n[a.Y]}function uc(a){return a.n.length-a.Y}
+function G(a){var b=a.Y;b<a.n.length&&b++;return new K(a.n,b)}function vc(a){return a.Y<a.n.length?a.n[a.n.length-1]:null}h=K.prototype;h.toString=function(){for(var a="",b=this.Y;b<this.n.length;b++)""!==this.n[b]&&(a+="/"+this.n[b]);return a||"/"};h.slice=function(a){return this.n.slice(this.Y+(a||0))};h.parent=function(){if(this.Y>=this.n.length)return null;for(var a=[],b=this.Y;b<this.n.length-1;b++)a.push(this.n[b]);return new K(a,0)};
+h.w=function(a){for(var b=[],c=this.Y;c<this.n.length;c++)b.push(this.n[c]);if(a instanceof K)for(c=a.Y;c<a.n.length;c++)b.push(a.n[c]);else for(a=a.split("/"),c=0;c<a.length;c++)0<a[c].length&&b.push(a[c]);return new K(b,0)};h.e=function(){return this.Y>=this.n.length};h.Z=function(a){if(uc(this)!==uc(a))return!1;for(var b=this.Y,c=a.Y;b<=this.n.length;b++,c++)if(this.n[b]!==a.n[c])return!1;return!0};
+h.contains=function(a){var b=this.Y,c=a.Y;if(uc(this)>uc(a))return!1;for(;b<this.n.length;){if(this.n[b]!==a.n[c])return!1;++b;++c}return!0};var F=new K("");function wc(a,b){this.Qa=a.slice();this.Ea=Math.max(1,this.Qa.length);this.kf=b;for(var c=0;c<this.Qa.length;c++)this.Ea+=xc(this.Qa[c]);yc(this)}wc.prototype.push=function(a){0<this.Qa.length&&(this.Ea+=1);this.Qa.push(a);this.Ea+=xc(a);yc(this)};wc.prototype.pop=function(){var a=this.Qa.pop();this.Ea-=xc(a);0<this.Qa.length&&--this.Ea};
+function yc(a){if(768<a.Ea)throw Error(a.kf+"has a key path longer than 768 bytes ("+a.Ea+").");if(32<a.Qa.length)throw Error(a.kf+"path specified exceeds the maximum depth that can be written (32) or object contains a cycle "+zc(a));}function zc(a){return 0==a.Qa.length?"":"in property '"+a.Qa.join(".")+"'"};function Ac(){this.wc={}}Ac.prototype.set=function(a,b){null==b?delete this.wc[a]:this.wc[a]=b};Ac.prototype.get=function(a){return u(this.wc,a)?this.wc[a]:null};Ac.prototype.remove=function(a){delete this.wc[a]};Ac.prototype.uf=!0;function Bc(a){this.Ec=a;this.Md="firebase:"}h=Bc.prototype;h.set=function(a,b){null==b?this.Ec.removeItem(this.Md+a):this.Ec.setItem(this.Md+a,B(b))};h.get=function(a){a=this.Ec.getItem(this.Md+a);return null==a?null:mb(a)};h.remove=function(a){this.Ec.removeItem(this.Md+a)};h.uf=!1;h.toString=function(){return this.Ec.toString()};function Cc(a){try{if("undefined"!==typeof window&&"undefined"!==typeof window[a]){var b=window[a];b.setItem("firebase:sentinel","cache");b.removeItem("firebase:sentinel");return new Bc(b)}}catch(c){}return new Ac}var Dc=Cc("localStorage"),P=Cc("sessionStorage");function Ec(a,b,c,d,e){this.host=a.toLowerCase();this.domain=this.host.substr(this.host.indexOf(".")+1);this.lb=b;this.Cb=c;this.Tg=d;this.Ld=e||"";this.Oa=Dc.get("host:"+a)||this.host}function Fc(a,b){b!==a.Oa&&(a.Oa=b,"s-"===a.Oa.substr(0,2)&&Dc.set("host:"+a.host,a.Oa))}Ec.prototype.toString=function(){var a=(this.lb?"https://":"http://")+this.host;this.Ld&&(a+="<"+this.Ld+">");return a};var Gc=function(){var a=1;return function(){return a++}}();function J(a,b){if(!a)throw Hc(b);}function Hc(a){return Error("Firebase (2.2.6) INTERNAL ASSERT FAILED: "+a)}
 function Ic(a){try{var b;if("undefined"!==typeof atob)b=atob(a);else{gb();for(var c=eb,d=[],e=0;e<a.length;){var f=c[a.charAt(e++)],g=e<a.length?c[a.charAt(e)]:0;++e;var k=e<a.length?c[a.charAt(e)]:64;++e;var l=e<a.length?c[a.charAt(e)]:64;++e;if(null==f||null==g||null==k||null==l)throw Error();d.push(f<<2|g>>4);64!=k&&(d.push(g<<4&240|k>>2),64!=l&&d.push(k<<6&192|l))}if(8192>d.length)b=String.fromCharCode.apply(null,d);else{a="";for(c=0;c<d.length;c+=8192)a+=String.fromCharCode.apply(null,Wa(d,c,
 c+8192));b=a}}return b}catch(m){Bb("base64Decode failed: ",m)}return null}function Jc(a){var b=Kc(a);a=new La;a.update(b);var b=[],c=8*a.be;56>a.$b?a.update(a.Id,56-a.$b):a.update(a.Id,a.Wa-(a.$b-56));for(var d=a.Wa-1;56<=d;d--)a.le[d]=c&255,c/=256;Ma(a,a.le);for(d=c=0;5>d;d++)for(var e=24;0<=e;e-=8)b[c]=a.R[d]>>e&255,++c;return fb(b)}
 function Lc(a){for(var b="",c=0;c<arguments.length;c++)b=fa(arguments[c])?b+Lc.apply(null,arguments[c]):"object"===typeof arguments[c]?b+B(arguments[c]):b+arguments[c],b+=" ";return b}var Ab=null,Mc=!0;function Bb(a){!0===Mc&&(Mc=!1,null===Ab&&!0===P.get("logging_enabled")&&Nc(!0));if(Ab){var b=Lc.apply(null,arguments);Ab(b)}}function Oc(a){return function(){Bb(a,arguments)}}
@@ -33854,12 +33854,12 @@ function Tc(a){if("complete"===document.readyState)a();else{var b=!1,c=function(
 function Sb(a,b){if(a===b)return 0;if("[MIN_NAME]"===a||"[MAX_NAME]"===b)return-1;if("[MIN_NAME]"===b||"[MAX_NAME]"===a)return 1;var c=Uc(a),d=Uc(b);return null!==c?null!==d?0==c-d?a.length-b.length:c-d:-1:null!==d?1:a<b?-1:1}function Vc(a,b){if(b&&a in b)return b[a];throw Error("Missing required key ("+a+") in object: "+B(b));}
 function Wc(a){if("object"!==typeof a||null===a)return B(a);var b=[],c;for(c in a)b.push(c);b.sort();c="{";for(var d=0;d<b.length;d++)0!==d&&(c+=","),c+=B(b[d]),c+=":",c+=Wc(a[b[d]]);return c+"}"}function Xc(a,b){if(a.length<=b)return[a];for(var c=[],d=0;d<a.length;d+=b)d+b>a?c.push(a.substring(d,a.length)):c.push(a.substring(d,d+b));return c}function Yc(a,b){if(ea(a))for(var c=0;c<a.length;++c)b(c,a[c]);else r(a,b)}
 function Zc(a){J(!Sc(a),"Invalid JSON number");var b,c,d,e;0===a?(d=c=0,b=-Infinity===1/a?1:0):(b=0>a,a=Math.abs(a),a>=Math.pow(2,-1022)?(d=Math.min(Math.floor(Math.log(a)/Math.LN2),1023),c=d+1023,d=Math.round(a*Math.pow(2,52-d)-Math.pow(2,52))):(c=0,d=Math.round(a/Math.pow(2,-1074))));e=[];for(a=52;a;--a)e.push(d%2?1:0),d=Math.floor(d/2);for(a=11;a;--a)e.push(c%2?1:0),c=Math.floor(c/2);e.push(b?1:0);e.reverse();b=e.join("");c="";for(a=0;64>a;a+=8)d=parseInt(b.substr(a,8),2).toString(16),1===d.length&&
-(d="0"+d),c+=d;return c.toLowerCase()}var $c=/^-?\d{1,10}$/;function Uc(a){return $c.test(a)&&(a=Number(a),-2147483648<=a&&2147483647>=a)?a:null}function Cb(a){try{a()}catch(b){setTimeout(function(){Q("Exception was thrown by user callback.",b.stack||"");throw b;},Math.floor(0))}}function R(a,b){if(ha(a)){var c=Array.prototype.slice.call(arguments,1).slice();Cb(function(){a.apply(null,c)})}};function Kc(a){for(var b=[],c=0,d=0;d<a.length;d++){var e=a.charCodeAt(d);55296<=e&&56319>=e&&(e-=55296,d++,J(d<a.length,"Surrogate pair missing trail surrogate."),e=65536+(e<<10)+(a.charCodeAt(d)-56320));128>e?b[c++]=e:(2048>e?b[c++]=e>>6|192:(65536>e?b[c++]=e>>12|224:(b[c++]=e>>18|240,b[c++]=e>>12&63|128),b[c++]=e>>6&63|128),b[c++]=e&63|128)}return b}function xc(a){for(var b=0,c=0;c<a.length;c++){var d=a.charCodeAt(c);128>d?b++:2048>d?b+=2:55296<=d&&56319>=d?(b+=4,c++):b+=3}return b};function ad(a){var b={},c={},d={},e="";try{var f=a.split("."),b=mb(Ic(f[0])||""),c=mb(Ic(f[1])||""),e=f[2],d=c.d||{};delete c.d}catch(g){}return{Wg:b,Ac:c,data:d,Ng:e}}function bd(a){a=ad(a).Ac;return"object"===typeof a&&a.hasOwnProperty("iat")?w(a,"iat"):null}function cd(a){a=ad(a);var b=a.Ac;return!!a.Ng&&!!b&&"object"===typeof b&&b.hasOwnProperty("iat")};function dd(a){this.V=a;this.g=a.n.g}function ed(a,b,c,d){var e=[],f=[];Oa(b,function(b){"child_changed"===b.type&&a.g.xd(b.Je,b.Ja)&&f.push(new D("child_moved",b.Ja,b.Ya))});fd(a,e,"child_removed",b,d,c);fd(a,e,"child_added",b,d,c);fd(a,e,"child_moved",f,d,c);fd(a,e,"child_changed",b,d,c);fd(a,e,Eb,b,d,c);return e}function fd(a,b,c,d,e,f){d=Pa(d,function(a){return a.type===c});Xa(d,q(a.eg,a));Oa(d,function(c){var d=gd(a,c,f);Oa(e,function(e){e.Jf(c.type)&&b.push(e.createEvent(d,a.V))})})}
+(d="0"+d),c+=d;return c.toLowerCase()}var $c=/^-?\d{1,10}$/;function Uc(a){return $c.test(a)&&(a=Number(a),-2147483648<=a&&2147483647>=a)?a:null}function Cb(a){try{a()}catch(b){setTimeout(function(){Q("Exception was thrown by user callback.",b.stack||"");throw b;},Math.floor(0))}}function R(a,b){if(ha(a)){var c=Array.prototype.slice.call(arguments,1).slice();Cb(function(){a.apply(null,c)})}};function Kc(a){for(var b=[],c=0,d=0;d<a.length;d++){var e=a.charCodeAt(d);55296<=e&&56319>=e&&(e-=55296,d++,J(d<a.length,"Surrogate pair missing trail surrogate."),e=65536+(e<<10)+(a.charCodeAt(d)-56320));128>e?b[c++]=e:(2048>e?b[c++]=e>>6|192:(65536>e?b[c++]=e>>12|224:(b[c++]=e>>18|240,b[c++]=e>>12&63|128),b[c++]=e>>6&63|128),b[c++]=e&63|128)}return b}function xc(a){for(var b=0,c=0;c<a.length;c++){var d=a.charCodeAt(c);128>d?b++:2048>d?b+=2:55296<=d&&56319>=d?(b+=4,c++):b+=3}return b};function ad(a){var b={},c={},d={},e="";try{var f=a.split("."),b=mb(Ic(f[0])||""),c=mb(Ic(f[1])||""),e=f[2],d=c.d||{};delete c.d}catch(g){}return{Wg:b,Ac:c,data:d,Ng:e}}function bd(a){a=ad(a).Ac;return"object"===typeof a&&a.hasOwnProperty("iat")?w(a,"iat"):null}function cd(a){a=ad(a);var b=a.Ac;return!!a.Ng&&!!b&&"object"===typeof b&&b.hasOwnProperty("iat")};function dd(a){this.V=a;this.g=a.o.g}function ed(a,b,c,d){var e=[],f=[];Oa(b,function(b){"child_changed"===b.type&&a.g.xd(b.Je,b.Ja)&&f.push(new D("child_moved",b.Ja,b.Ya))});fd(a,e,"child_removed",b,d,c);fd(a,e,"child_added",b,d,c);fd(a,e,"child_moved",f,d,c);fd(a,e,"child_changed",b,d,c);fd(a,e,Eb,b,d,c);return e}function fd(a,b,c,d,e,f){d=Pa(d,function(a){return a.type===c});Xa(d,q(a.eg,a));Oa(d,function(c){var d=gd(a,c,f);Oa(e,function(e){e.Jf(c.type)&&b.push(e.createEvent(d,a.V))})})}
 function gd(a,b,c){"value"!==b.type&&"child_removed"!==b.type&&(b.Nd=c.qf(b.Ya,b.Ja,a.g));return b}dd.prototype.eg=function(a,b){if(null==a.Ya||null==b.Ya)throw Hc("Should only compare child_ events.");return this.g.compare(new E(a.Ya,a.Ja),new E(b.Ya,b.Ja))};function hd(){this.eb={}}
 function id(a,b){var c=b.type,d=b.Ya;J("child_added"==c||"child_changed"==c||"child_removed"==c,"Only child changes supported for tracking");J(".priority"!==d,"Only non-priority child changes can be tracked.");var e=w(a.eb,d);if(e){var f=e.type;if("child_added"==c&&"child_removed"==f)a.eb[d]=new D("child_changed",b.Ja,d,e.Ja);else if("child_removed"==c&&"child_added"==f)delete a.eb[d];else if("child_removed"==c&&"child_changed"==f)a.eb[d]=new D("child_removed",e.Je,d);else if("child_changed"==c&&
-"child_added"==f)a.eb[d]=new D("child_added",b.Ja,d);else if("child_changed"==c&&"child_changed"==f)a.eb[d]=new D("child_changed",b.Ja,d,e.Je);else throw Hc("Illegal combination of changes: "+b+" occurred after "+e);}else a.eb[d]=b};function jd(a,b,c){this.Pb=a;this.qb=b;this.sb=c||null}h=jd.prototype;h.Jf=function(a){return"value"===a};h.createEvent=function(a,b){var c=b.n.g;return new Fb("value",this,new S(a.Ja,b.lc(),c))};h.Ub=function(a){var b=this.sb;if("cancel"===a.ye()){J(this.qb,"Raising a cancel event on a listener with no cancel callback");var c=this.qb;return function(){c.call(b,a.error)}}var d=this.Pb;return function(){d.call(b,a.Wd)}};h.ff=function(a,b){return this.qb?new Gb(this,a,b):null};
+"child_added"==f)a.eb[d]=new D("child_added",b.Ja,d);else if("child_changed"==c&&"child_changed"==f)a.eb[d]=new D("child_changed",b.Ja,d,e.Je);else throw Hc("Illegal combination of changes: "+b+" occurred after "+e);}else a.eb[d]=b};function jd(a,b,c){this.Pb=a;this.qb=b;this.sb=c||null}h=jd.prototype;h.Jf=function(a){return"value"===a};h.createEvent=function(a,b){var c=b.o.g;return new Fb("value",this,new S(a.Ja,b.lc(),c))};h.Ub=function(a){var b=this.sb;if("cancel"===a.ye()){J(this.qb,"Raising a cancel event on a listener with no cancel callback");var c=this.qb;return function(){c.call(b,a.error)}}var d=this.Pb;return function(){d.call(b,a.Wd)}};h.ff=function(a,b){return this.qb?new Gb(this,a,b):null};
 h.matches=function(a){return a instanceof jd?a.Pb&&this.Pb?a.Pb===this.Pb&&a.sb===this.sb:!0:!1};h.sf=function(){return null!==this.Pb};function kd(a,b,c){this.ga=a;this.qb=b;this.sb=c}h=kd.prototype;h.Jf=function(a){a="children_added"===a?"child_added":a;return("children_removed"===a?"child_removed":a)in this.ga};h.ff=function(a,b){return this.qb?new Gb(this,a,b):null};
-h.createEvent=function(a,b){J(null!=a.Ya,"Child events should have a childName.");var c=b.lc().w(a.Ya);return new Fb(a.type,this,new S(a.Ja,c,b.n.g),a.Nd)};h.Ub=function(a){var b=this.sb;if("cancel"===a.ye()){J(this.qb,"Raising a cancel event on a listener with no cancel callback");var c=this.qb;return function(){c.call(b,a.error)}}var d=this.ga[a.rd];return function(){d.call(b,a.Wd,a.Nd)}};
+h.createEvent=function(a,b){J(null!=a.Ya,"Child events should have a childName.");var c=b.lc().w(a.Ya);return new Fb(a.type,this,new S(a.Ja,c,b.o.g),a.Nd)};h.Ub=function(a){var b=this.sb;if("cancel"===a.ye()){J(this.qb,"Raising a cancel event on a listener with no cancel callback");var c=this.qb;return function(){c.call(b,a.error)}}var d=this.ga[a.rd];return function(){d.call(b,a.Wd,a.Nd)}};
 h.matches=function(a){if(a instanceof kd){if(!this.ga||!a.ga)return!0;if(this.sb===a.sb){var b=pa(a.ga);if(b===pa(this.ga)){if(1===b){var b=qa(a.ga),c=qa(this.ga);return c===b&&(!a.ga[b]||!this.ga[c]||a.ga[b]===this.ga[c])}return oa(this.ga,function(b,c){return a.ga[c]===b})}}}return!1};h.sf=function(){return null!==this.ga};function ld(a){this.g=a}h=ld.prototype;h.G=function(a,b,c,d,e){J(a.Ic(this.g),"A node must be indexed if only a child is updated");d=a.M(b);if(d.Z(c))return a;null!=e&&(c.e()?a.Ha(b)?id(e,new D("child_removed",d,b)):J(a.N(),"A child remove without an old child only makes sense on a leaf node"):d.e()?id(e,new D("child_added",c,b)):id(e,new D("child_changed",c,b,d)));return a.N()&&c.e()?a:a.Q(b,c).mb(this.g)};
 h.ta=function(a,b,c){null!=c&&(a.N()||a.U(M,function(a,e){b.Ha(a)||id(c,new D("child_removed",e,a))}),b.N()||b.U(M,function(b,e){if(a.Ha(b)){var f=a.M(b);f.Z(e)||id(c,new D("child_changed",e,b,f))}else id(c,new D("child_added",e,b))}));return b.mb(this.g)};h.da=function(a,b){return a.e()?C:a.da(b)};h.Ga=function(){return!1};h.Vb=function(){return this};function md(a){this.Ae=new ld(a.g);this.g=a.g;var b;a.la?(b=nd(a),b=a.g.Oc(od(a),b)):b=a.g.Sc();this.dd=b;a.na?(b=pd(a),a=a.g.Oc(qd(a),b)):a=a.g.Pc();this.Fc=a}h=md.prototype;h.matches=function(a){return 0>=this.g.compare(this.dd,a)&&0>=this.g.compare(a,this.Fc)};h.G=function(a,b,c,d,e){this.matches(new E(b,c))||(c=C);return this.Ae.G(a,b,c,d,e)};h.ta=function(a,b,c){b.N()&&(b=C);var d=b.mb(this.g),d=d.da(C),e=this;b.U(M,function(a,b){e.matches(new E(a,b))||(d=d.Q(a,C))});return this.Ae.ta(a,d,c)};
 h.da=function(a){return a};h.Ga=function(){return!0};h.Vb=function(){return this.Ae};function rd(a){this.ra=new md(a);this.g=a.g;J(a.ia,"Only valid if limit has been set");this.ja=a.ja;this.Jb=!sd(a)}h=rd.prototype;h.G=function(a,b,c,d,e){this.ra.matches(new E(b,c))||(c=C);return a.M(b).Z(c)?a:a.Db()<this.ja?this.ra.Vb().G(a,b,c,d,e):td(this,a,b,c,d,e)};
@@ -33882,7 +33882,7 @@ h.toString=function(){return".priority"};var M=new Td;function Ud(){}ma(Ud,Od);h
 h.compare=function(a,b){var c=a.S.Cc(b.S);return 0===c?Sb(a.name,b.name):c};h.Hc=function(){return!0};h.xd=function(a,b){return!a.Z(b)};h.Sc=function(){return Qd};h.Pc=function(){return Xd};h.Oc=function(a,b){var c=L(a);return new E(b,c)};h.toString=function(){return".value"};var Yd=new Wd;function Zd(){this.Rb=this.na=this.Lb=this.la=this.ia=!1;this.ja=0;this.Nb="";this.dc=null;this.xb="";this.ac=null;this.vb="";this.g=M}var $d=new Zd;function sd(a){return""===a.Nb?a.la:"l"===a.Nb}function od(a){J(a.la,"Only valid if start has been set");return a.dc}function nd(a){J(a.la,"Only valid if start has been set");return a.Lb?a.xb:"[MIN_NAME]"}function qd(a){J(a.na,"Only valid if end has been set");return a.ac}
 function pd(a){J(a.na,"Only valid if end has been set");return a.Rb?a.vb:"[MAX_NAME]"}function ae(a){var b=new Zd;b.ia=a.ia;b.ja=a.ja;b.la=a.la;b.dc=a.dc;b.Lb=a.Lb;b.xb=a.xb;b.na=a.na;b.ac=a.ac;b.Rb=a.Rb;b.vb=a.vb;b.g=a.g;return b}h=Zd.prototype;h.Ge=function(a){var b=ae(this);b.ia=!0;b.ja=a;b.Nb="";return b};h.He=function(a){var b=ae(this);b.ia=!0;b.ja=a;b.Nb="l";return b};h.Ie=function(a){var b=ae(this);b.ia=!0;b.ja=a;b.Nb="r";return b};
 h.Xd=function(a,b){var c=ae(this);c.la=!0;n(a)||(a=null);c.dc=a;null!=b?(c.Lb=!0,c.xb=b):(c.Lb=!1,c.xb="");return c};h.qd=function(a,b){var c=ae(this);c.na=!0;n(a)||(a=null);c.ac=a;n(b)?(c.Rb=!0,c.vb=b):(c.Yg=!1,c.vb="");return c};function be(a,b){var c=ae(a);c.g=b;return c}function ce(a){var b={};a.la&&(b.sp=a.dc,a.Lb&&(b.sn=a.xb));a.na&&(b.ep=a.ac,a.Rb&&(b.en=a.vb));if(a.ia){b.l=a.ja;var c=a.Nb;""===c&&(c=sd(a)?"l":"r");b.vf=c}a.g!==M&&(b.i=a.g.toString());return b}
-function de(a){return!(a.la||a.na||a.ia)}function ee(a){var b={};if(de(a)&&a.g==M)return b;var c;a.g===M?c="$priority":a.g===Yd?c="$value":(J(a.g instanceof Rd,"Unrecognized index type!"),c=a.g.toString());b.orderBy=B(c);a.la&&(b.startAt=B(a.dc),a.Lb&&(b.startAt+=","+B(a.xb)));a.na&&(b.endAt=B(a.ac),a.Rb&&(b.endAt+=","+B(a.vb)));a.ia&&(sd(a)?b.limitToFirst=a.ja:b.limitToLast=a.ja);return b}h.toString=function(){return B(ce(this))};function fe(a,b){this.yd=a;this.cc=b}fe.prototype.get=function(a){var b=w(this.yd,a);if(!b)throw Error("No index defined for "+a);return b===Pd?null:b};function ge(a,b,c){var d=na(a.yd,function(d,f){var g=w(a.cc,f);J(g,"Missing index implementation for "+f);if(d===Pd){if(g.Hc(b.S)){for(var k=[],l=c.Wb(Qb),m=H(l);m;)m.name!=b.name&&k.push(m),m=H(l);k.push(b);return he(k,ud(g))}return Pd}g=c.get(b.name);k=d;g&&(k=k.remove(new E(b.name,g)));return k.Na(b,b.S)});return new fe(d,a.cc)}
+function de(a){return!(a.la||a.na||a.ia)}function ee(a){var b={};if(de(a)&&a.g==M)return b;var c;a.g===M?c="$priority":a.g===Yd?c="$value":a.g===Vd?c="$key":(J(a.g instanceof Rd,"Unrecognized index type!"),c=a.g.toString());b.orderBy=B(c);a.la&&(b.startAt=B(a.dc),a.Lb&&(b.startAt+=","+B(a.xb)));a.na&&(b.endAt=B(a.ac),a.Rb&&(b.endAt+=","+B(a.vb)));a.ia&&(sd(a)?b.limitToFirst=a.ja:b.limitToLast=a.ja);return b}h.toString=function(){return B(ce(this))};function fe(a,b){this.yd=a;this.cc=b}fe.prototype.get=function(a){var b=w(this.yd,a);if(!b)throw Error("No index defined for "+a);return b===Pd?null:b};function ge(a,b,c){var d=na(a.yd,function(d,f){var g=w(a.cc,f);J(g,"Missing index implementation for "+f);if(d===Pd){if(g.Hc(b.S)){for(var k=[],l=c.Wb(Qb),m=H(l);m;)m.name!=b.name&&k.push(m),m=H(l);k.push(b);return he(k,ud(g))}return Pd}g=c.get(b.name);k=d;g&&(k=k.remove(new E(b.name,g)));return k.Na(b,b.S)});return new fe(d,a.cc)}
 function ie(a,b,c){var d=na(a.yd,function(a){if(a===Pd)return a;var d=c.get(b.name);return d?a.remove(new E(b.name,d)):a});return new fe(d,a.cc)}var je=new fe({".priority":Pd},{".priority":M});function tc(a,b){this.C=a;J(n(this.C)&&null!==this.C,"LeafNode shouldn't be created with null/undefined value.");this.ba=b||C;ke(this.ba);this.Bb=null}h=tc.prototype;h.N=function(){return!0};h.A=function(){return this.ba};h.da=function(a){return new tc(this.C,a)};h.M=function(a){return".priority"===a?this.ba:C};h.oa=function(a){return a.e()?this:".priority"===O(a)?this.ba:C};h.Ha=function(){return!1};h.qf=function(){return null};
 h.Q=function(a,b){return".priority"===a?this.da(b):b.e()&&".priority"!==a?this:C.Q(a,b).da(this.ba)};h.G=function(a,b){var c=O(a);if(null===c)return b;if(b.e()&&".priority"!==c)return this;J(".priority"!==c||1===uc(a),".priority must be the last token in a path");return this.Q(c,C.G(G(a),b))};h.e=function(){return!1};h.Db=function(){return 0};h.K=function(a){return a&&!this.A().e()?{".value":this.Ba(),".priority":this.A().K()}:this.Ba()};
 h.hash=function(){if(null===this.Bb){var a="";this.ba.e()||(a+="priority:"+le(this.ba.K())+":");var b=typeof this.C,a=a+(b+":"),a="number"===b?a+Zc(this.C):a+this.C;this.Bb=Jc(a)}return this.Bb};h.Ba=function(){return this.C};h.Cc=function(a){if(a===C)return 1;if(a instanceof T)return-1;J(a.N(),"Unknown node type");var b=typeof a.C,c=typeof this.C,d=Na(me,b),e=Na(me,c);J(0<=d,"Unknown leaf type: "+b);J(0<=e,"Unknown leaf type: "+c);return d===e?"object"===c?0:this.C<a.C?-1:this.C===a.C?0:1:e-d};
@@ -33897,11 +33897,11 @@ d.Q(b,c)}});return d.da(L(c))}var f=[],g=!1,k=a;hb(k,function(a){if("string"!==t
 function qe(a){this.count=parseInt(Math.log(a+1)/pe,10);this.hf=this.count-1;this.bg=a+1&parseInt(Array(this.count+1).join("1"),2)}function re(a){var b=!(a.bg&1<<a.hf);a.hf--;return b}
 function he(a,b,c,d){function e(b,d){var f=d-b;if(0==f)return null;if(1==f){var m=a[b],v=c?c(m):m;return new fc(v,m.S,!1,null,null)}var m=parseInt(f/2,10)+b,f=e(b,m),y=e(m+1,d),m=a[m],v=c?c(m):m;return new fc(v,m.S,!1,f,y)}a.sort(b);var f=function(b){function d(b,g){var k=v-b,y=v;v-=b;var y=e(k+1,y),k=a[k],I=c?c(k):k,y=new fc(I,k.S,g,null,y);f?f.left=y:m=y;f=y}for(var f=null,m=null,v=a.length,y=0;y<b.count;++y){var I=re(b),vd=Math.pow(2,b.count-(y+1));I?d(vd,!1):(d(vd,!1),d(vd,!0))}return m}(new qe(a.length));
 return null!==f?new ac(d||b,f):new ac(d||b)}function le(a){return"number"===typeof a?"number:"+Zc(a):"string:"+a}function ke(a){if(a.N()){var b=a.K();J("string"===typeof b||"number"===typeof b||"object"===typeof b&&u(b,".sv"),"Priority must be a string or number.")}else J(a===Sd||a.e(),"priority of unexpected type.");J(a===Sd||a.A().e(),"Priority nodes can't have a priority of their own.")}var C=new T(new ac(Tb),null,je);function se(){T.call(this,new ac(Tb),C,je)}ma(se,T);h=se.prototype;
-h.Cc=function(a){return a===this?0:1};h.Z=function(a){return a===this};h.A=function(){return this};h.M=function(){return C};h.e=function(){return!1};var Sd=new se,Qd=new E("[MIN_NAME]",C),Xd=new E("[MAX_NAME]",Sd);function Id(a,b){this.D=a;this.Ud=b}function Fd(a,b,c,d){return new Id(new sb(b,c,d),a.Ud)}function Jd(a){return a.D.$?a.D.j():null}Id.prototype.u=function(){return this.Ud};function tb(a){return a.Ud.$?a.Ud.j():null};function te(a,b){this.V=a;var c=a.n,d=new ld(c.g),c=de(c)?new ld(c.g):c.ia?new rd(c):new md(c);this.Gf=new zd(c);var e=b.u(),f=b.D,g=d.ta(C,e.j(),null),k=c.ta(C,f.j(),null);this.Ka=new Id(new sb(k,f.$,c.Ga()),new sb(g,e.$,d.Ga()));this.Za=[];this.ig=new dd(a)}function ue(a){return a.V}h=te.prototype;h.u=function(){return this.Ka.u().j()};h.hb=function(a){var b=tb(this.Ka);return b&&(de(this.V.n)||!a.e()&&!b.M(O(a)).e())?b.oa(a):null};h.e=function(){return 0===this.Za.length};h.Ob=function(a){this.Za.push(a)};
+h.Cc=function(a){return a===this?0:1};h.Z=function(a){return a===this};h.A=function(){return this};h.M=function(){return C};h.e=function(){return!1};var Sd=new se,Qd=new E("[MIN_NAME]",C),Xd=new E("[MAX_NAME]",Sd);function Id(a,b){this.D=a;this.Ud=b}function Fd(a,b,c,d){return new Id(new sb(b,c,d),a.Ud)}function Jd(a){return a.D.$?a.D.j():null}Id.prototype.u=function(){return this.Ud};function tb(a){return a.Ud.$?a.Ud.j():null};function te(a,b){this.V=a;var c=a.o,d=new ld(c.g),c=de(c)?new ld(c.g):c.ia?new rd(c):new md(c);this.Gf=new zd(c);var e=b.u(),f=b.D,g=d.ta(C,e.j(),null),k=c.ta(C,f.j(),null);this.Ka=new Id(new sb(k,f.$,c.Ga()),new sb(g,e.$,d.Ga()));this.Za=[];this.ig=new dd(a)}function ue(a){return a.V}h=te.prototype;h.u=function(){return this.Ka.u().j()};h.hb=function(a){var b=tb(this.Ka);return b&&(de(this.V.o)||!a.e()&&!b.M(O(a)).e())?b.oa(a):null};h.e=function(){return 0===this.Za.length};h.Ob=function(a){this.Za.push(a)};
 h.kb=function(a,b){var c=[];if(b){J(null==a,"A cancel should cancel all event registrations.");var d=this.V.path;Oa(this.Za,function(a){(a=a.ff(b,d))&&c.push(a)})}if(a){for(var e=[],f=0;f<this.Za.length;++f){var g=this.Za[f];if(!g.matches(a))e.push(g);else if(a.sf()){e=e.concat(this.Za.slice(f+1));break}}this.Za=e}else this.Za=[];return c};
 h.bb=function(a,b,c){a.type===Cd&&null!==a.source.Ib&&(J(tb(this.Ka),"We should always have a full cache before handling merges"),J(Jd(this.Ka),"Missing event cache, even though we have a server cache"));var d=this.Ka;a=this.Gf.bb(d,a,b,c);b=this.Gf;c=a.he;J(c.D.j().Ic(b.I.g),"Event snap not indexed");J(c.u().j().Ic(b.I.g),"Server snap not indexed");J(Hb(a.he.u())||!Hb(d.u()),"Once a server snap is complete, it should never go back");this.Ka=a.he;return ve(this,a.cg,a.he.D.j(),null)};
-function we(a,b){var c=a.Ka.D,d=[];c.j().N()||c.j().U(M,function(a,b){d.push(new D("child_added",b,a))});c.$&&d.push(Db(c.j()));return ve(a,d,c.j(),b)}function ve(a,b,c,d){return ed(a.ig,b,c,d?[d]:a.Za)};function xe(a,b,c){this.type=Cd;this.source=a;this.path=b;this.children=c}xe.prototype.Wc=function(a){if(this.path.e())return a=this.children.subtree(new K(a)),a.e()?null:a.value?new Ub(this.source,F,a.value):new xe(this.source,F,a);J(O(this.path)===a,"Can't get a merge for a child not on the path of the operation");return new xe(this.source,G(this.path),this.children)};xe.prototype.toString=function(){return"Operation("+this.path+": "+this.source.toString()+" merge: "+this.children.toString()+")"};var Vb=0,Cd=1,Xb=2,$b=3;function ye(a,b,c,d){this.ve=a;this.of=b;this.Ib=c;this.af=d;J(!d||b,"Tagged queries must be from server.")}var Yb=new ye(!0,!1,null,!1),ze=new ye(!1,!0,null,!1);ye.prototype.toString=function(){return this.ve?"user":this.af?"server(queryID="+this.Ib+")":"server"};function Ae(a,b){this.f=Oc("p:rest:");this.H=a;this.Gb=b;this.Fa=null;this.aa={}}function Be(a,b){if(n(b))return"tag$"+b;var c=a.n;J(de(c)&&c.g==M,"should have a tag if it's not a default query.");return a.path.toString()}h=Ae.prototype;
-h.xf=function(a,b,c,d){var e=a.path.toString();this.f("Listen called for "+e+" "+a.wa());var f=Be(a,c),g={};this.aa[f]=g;a=ee(a.n);var k=this;Ce(this,e+".json",a,function(a,b){var v=b;404===a&&(a=v=null);null===a&&k.Gb(e,v,!1,c);w(k.aa,f)===g&&d(a?401==a?"permission_denied":"rest_error:"+a:"ok",null)})};h.Of=function(a,b){var c=Be(a,b);delete this.aa[c]};h.P=function(a,b){this.Fa=a;var c=ad(a),d=c.data,c=c.Ac&&c.Ac.exp;b&&b("ok",{auth:d,expires:c})};h.ee=function(a){this.Fa=null;a("ok",null)};
+function we(a,b){var c=a.Ka.D,d=[];c.j().N()||c.j().U(M,function(a,b){d.push(new D("child_added",b,a))});c.$&&d.push(Db(c.j()));return ve(a,d,c.j(),b)}function ve(a,b,c,d){return ed(a.ig,b,c,d?[d]:a.Za)};function xe(a,b,c){this.type=Cd;this.source=a;this.path=b;this.children=c}xe.prototype.Wc=function(a){if(this.path.e())return a=this.children.subtree(new K(a)),a.e()?null:a.value?new Ub(this.source,F,a.value):new xe(this.source,F,a);J(O(this.path)===a,"Can't get a merge for a child not on the path of the operation");return new xe(this.source,G(this.path),this.children)};xe.prototype.toString=function(){return"Operation("+this.path+": "+this.source.toString()+" merge: "+this.children.toString()+")"};var Vb=0,Cd=1,Xb=2,$b=3;function ye(a,b,c,d){this.ve=a;this.of=b;this.Ib=c;this.af=d;J(!d||b,"Tagged queries must be from server.")}var Yb=new ye(!0,!1,null,!1),ze=new ye(!1,!0,null,!1);ye.prototype.toString=function(){return this.ve?"user":this.af?"server(queryID="+this.Ib+")":"server"};function Ae(a,b){this.f=Oc("p:rest:");this.H=a;this.Gb=b;this.Fa=null;this.aa={}}function Be(a,b){if(n(b))return"tag$"+b;var c=a.o;J(de(c)&&c.g==M,"should have a tag if it's not a default query.");return a.path.toString()}h=Ae.prototype;
+h.xf=function(a,b,c,d){var e=a.path.toString();this.f("Listen called for "+e+" "+a.wa());var f=Be(a,c),g={};this.aa[f]=g;a=ee(a.o);var k=this;Ce(this,e+".json",a,function(a,b){var v=b;404===a&&(a=v=null);null===a&&k.Gb(e,v,!1,c);w(k.aa,f)===g&&d(a?401==a?"permission_denied":"rest_error:"+a:"ok",null)})};h.Of=function(a,b){var c=Be(a,b);delete this.aa[c]};h.P=function(a,b){this.Fa=a;var c=ad(a),d=c.data,c=c.Ac&&c.Ac.exp;b&&b("ok",{auth:d,expires:c})};h.ee=function(a){this.Fa=null;a("ok",null)};
 h.Le=function(){};h.Bf=function(){};h.Gd=function(){};h.put=function(){};h.yf=function(){};h.Te=function(){};
 function Ce(a,b,c,d){c=c||{};c.format="export";a.Fa&&(c.auth=a.Fa);var e=(a.H.lb?"https://":"http://")+a.H.host+b+"?"+jb(c);a.f("Sending REST request for "+e);var f=new XMLHttpRequest;f.onreadystatechange=function(){if(d&&4===f.readyState){a.f("REST Response for "+e+" received. status:",f.status,"response:",f.responseText);var b=null;if(200<=f.status&&300>f.status){try{b=mb(f.responseText)}catch(c){Q("Failed to parse JSON response for "+e+": "+f.responseText)}d(null,b)}else 401!==f.status&&404!==
 f.status&&Q("Got unsuccessful REST response for "+e+" Status: "+f.status),d(f.status);d=null}};f.open("GET",e,!0);f.send()};function De(a,b){this.value=a;this.children=b||Ee}var Ee=new ac(function(a,b){return a===b?0:a<b?-1:1});function Fe(a){var b=Nd;r(a,function(a,d){b=b.set(new K(d),a)});return b}h=De.prototype;h.e=function(){return null===this.value&&this.children.e()};function Ge(a,b,c){if(null!=a.value&&c(a.value))return{path:F,value:a.value};if(b.e())return null;var d=O(b);a=a.children.get(d);return null!==a?(b=Ge(a,G(b),c),null!=b?{path:(new K(d)).w(b.path),value:b.value}:null):null}
@@ -33919,13 +33919,13 @@ h.Xa=function(a,b,c){a=a.w(b);var d=Ue(this.T,a);return null!=d?d:rb(c,b)?We(thi
 function Ze(a,b){return a.Ia?a.path.contains(b):!!ua(a.children,function(c,d){return a.path.w(d).contains(b)})}function af(a){return a.visible}
 function $e(a,b,c){for(var d=Re,e=0;e<a.length;++e){var f=a[e];if(b(f)){var g=f.path;if(f.Ia)c.contains(g)?(g=N(c,g),d=Se(d,g,f.Ia)):g.contains(c)&&(g=N(g,c),d=Se(d,F,f.Ia.oa(g)));else if(f.children)if(c.contains(g))g=N(c,g),d=Te(d,g,f.children);else{if(g.contains(c))if(g=N(g,c),g.e())d=Te(d,F,f.children);else if(f=w(f.children,O(g)))f=f.oa(G(g)),d=Se(d,F,f)}else throw Hc("WriteRecord should have .snap or .children");}}return d}function bf(a,b){this.Mb=a;this.W=b}h=bf.prototype;
 h.ua=function(a,b,c){return this.W.ua(this.Mb,a,b,c)};h.xc=function(a){return this.W.xc(this.Mb,a)};h.hd=function(a,b,c){return this.W.hd(this.Mb,a,b,c)};h.sc=function(a){return this.W.sc(this.Mb.w(a))};h.me=function(a,b,c,d,e){return this.W.me(this.Mb,a,b,c,d,e)};h.Xa=function(a,b){return this.W.Xa(this.Mb,a,b)};h.w=function(a){return new bf(this.Mb.w(a),this.W)};function cf(){this.ya={}}h=cf.prototype;h.e=function(){return wa(this.ya)};h.bb=function(a,b,c){var d=a.source.Ib;if(null!==d)return d=w(this.ya,d),J(null!=d,"SyncTree gave us an op for an invalid query."),d.bb(a,b,c);var e=[];r(this.ya,function(d){e=e.concat(d.bb(a,b,c))});return e};h.Ob=function(a,b,c,d,e){var f=a.wa(),g=w(this.ya,f);if(!g){var g=c.ua(e?d:null),k=!1;g?k=!0:(g=d instanceof T?c.xc(d):C,k=!1);g=new te(a,new Id(new sb(g,k,!1),new sb(d,e,!1)));this.ya[f]=g}g.Ob(b);return we(g,b)};
-h.kb=function(a,b,c){var d=a.wa(),e=[],f=[],g=null!=df(this);if("default"===d){var k=this;r(this.ya,function(a,d){f=f.concat(a.kb(b,c));a.e()&&(delete k.ya[d],de(a.V.n)||e.push(a.V))})}else{var l=w(this.ya,d);l&&(f=f.concat(l.kb(b,c)),l.e()&&(delete this.ya[d],de(l.V.n)||e.push(l.V)))}g&&null==df(this)&&e.push(new U(a.k,a.path));return{Hg:e,jg:f}};function ef(a){return Pa(ra(a.ya),function(a){return!de(a.V.n)})}h.hb=function(a){var b=null;r(this.ya,function(c){b=b||c.hb(a)});return b};
-function ff(a,b){if(de(b.n))return df(a);var c=b.wa();return w(a.ya,c)}function df(a){return va(a.ya,function(a){return de(a.V.n)})||null};function gf(a){this.sa=Nd;this.Hb=new Ye;this.$e={};this.kc={};this.Mc=a}function hf(a,b,c,d,e){var f=a.Hb,g=e;J(d>f.Lc,"Stacking an older write on top of newer ones");n(g)||(g=!0);f.za.push({path:b,Ia:c,ie:d,visible:g});g&&(f.T=Se(f.T,b,c));f.Lc=d;return e?jf(a,new Ub(Yb,b,c)):[]}function kf(a,b,c,d){var e=a.Hb;J(d>e.Lc,"Stacking an older merge on top of newer ones");e.za.push({path:b,children:c,ie:d,visible:!0});e.T=Te(e.T,b,c);e.Lc=d;c=Fe(c);return jf(a,new xe(Yb,b,c))}
+h.kb=function(a,b,c){var d=a.wa(),e=[],f=[],g=null!=df(this);if("default"===d){var k=this;r(this.ya,function(a,d){f=f.concat(a.kb(b,c));a.e()&&(delete k.ya[d],de(a.V.o)||e.push(a.V))})}else{var l=w(this.ya,d);l&&(f=f.concat(l.kb(b,c)),l.e()&&(delete this.ya[d],de(l.V.o)||e.push(l.V)))}g&&null==df(this)&&e.push(new U(a.k,a.path));return{Hg:e,jg:f}};function ef(a){return Pa(ra(a.ya),function(a){return!de(a.V.o)})}h.hb=function(a){var b=null;r(this.ya,function(c){b=b||c.hb(a)});return b};
+function ff(a,b){if(de(b.o))return df(a);var c=b.wa();return w(a.ya,c)}function df(a){return va(a.ya,function(a){return de(a.V.o)})||null};function gf(a){this.sa=Nd;this.Hb=new Ye;this.$e={};this.kc={};this.Mc=a}function hf(a,b,c,d,e){var f=a.Hb,g=e;J(d>f.Lc,"Stacking an older write on top of newer ones");n(g)||(g=!0);f.za.push({path:b,Ia:c,ie:d,visible:g});g&&(f.T=Se(f.T,b,c));f.Lc=d;return e?jf(a,new Ub(Yb,b,c)):[]}function kf(a,b,c,d){var e=a.Hb;J(d>e.Lc,"Stacking an older merge on top of newer ones");e.za.push({path:b,children:c,ie:d,visible:!0});e.T=Te(e.T,b,c);e.Lc=d;c=Fe(c);return jf(a,new xe(Yb,b,c))}
 function lf(a,b,c){c=c||!1;b=a.Hb.Od(b);return null==b?[]:jf(a,new Wb(b,c))}function mf(a,b,c){c=Fe(c);return jf(a,new xe(ze,b,c))}function nf(a,b,c,d){d=of(a,d);if(null!=d){var e=pf(d);d=e.path;e=e.Ib;b=N(d,b);c=new Ub(new ye(!1,!0,e,!0),b,c);return qf(a,d,c)}return[]}function rf(a,b,c,d){if(d=of(a,d)){var e=pf(d);d=e.path;e=e.Ib;b=N(d,b);c=Fe(c);c=new xe(new ye(!1,!0,e,!0),b,c);return qf(a,d,c)}return[]}
-gf.prototype.Ob=function(a,b){var c=a.path,d=null,e=!1;Me(this.sa,c,function(a,b){var f=N(a,c);d=b.hb(f);e=e||null!=df(b);return!d});var f=this.sa.get(c);f?(e=e||null!=df(f),d=d||f.hb(F)):(f=new cf,this.sa=this.sa.set(c,f));var g;null!=d?g=!0:(g=!1,d=C,Pe(this.sa.subtree(c),function(a,b){var c=b.hb(F);c&&(d=d.Q(a,c))}));var k=null!=ff(f,a);if(!k&&!de(a.n)){var l=sf(a);J(!(l in this.kc),"View does not exist, but we have a tag");var m=tf++;this.kc[l]=m;this.$e["_"+m]=l}g=f.Ob(a,b,new bf(c,this.Hb),
+gf.prototype.Ob=function(a,b){var c=a.path,d=null,e=!1;Me(this.sa,c,function(a,b){var f=N(a,c);d=b.hb(f);e=e||null!=df(b);return!d});var f=this.sa.get(c);f?(e=e||null!=df(f),d=d||f.hb(F)):(f=new cf,this.sa=this.sa.set(c,f));var g;null!=d?g=!0:(g=!1,d=C,Pe(this.sa.subtree(c),function(a,b){var c=b.hb(F);c&&(d=d.Q(a,c))}));var k=null!=ff(f,a);if(!k&&!de(a.o)){var l=sf(a);J(!(l in this.kc),"View does not exist, but we have a tag");var m=tf++;this.kc[l]=m;this.$e["_"+m]=l}g=f.Ob(a,b,new bf(c,this.Hb),
 d,g);k||e||(f=ff(f,a),g=g.concat(uf(this,a,f)));return g};
-gf.prototype.kb=function(a,b,c){var d=a.path,e=this.sa.get(d),f=[];if(e&&("default"===a.wa()||null!=ff(e,a))){f=e.kb(a,b,c);e.e()&&(this.sa=this.sa.remove(d));e=f.Hg;f=f.jg;b=-1!==Ua(e,function(a){return de(a.n)});var g=Ke(this.sa,d,function(a,b){return null!=df(b)});if(b&&!g&&(d=this.sa.subtree(d),!d.e()))for(var d=vf(d),k=0;k<d.length;++k){var l=d[k],m=l.V,l=wf(this,l);this.Mc.Xe(m,xf(this,m),l.ud,l.J)}if(!g&&0<e.length&&!c)if(b)this.Mc.Zd(a,null);else{var v=this;Oa(e,function(a){a.wa();var b=v.kc[sf(a)];
-v.Mc.Zd(a,b)})}yf(this,e)}return f};gf.prototype.ua=function(a,b){var c=this.Hb,d=Ke(this.sa,a,function(b,c){var d=N(b,a);if(d=c.hb(d))return d});return c.ua(a,d,b,!0)};function vf(a){return Ie(a,function(a,c,d){if(c&&null!=df(c))return[df(c)];var e=[];c&&(e=ef(c));r(d,function(a){e=e.concat(a)});return e})}function yf(a,b){for(var c=0;c<b.length;++c){var d=b[c];if(!de(d.n)){var d=sf(d),e=a.kc[d];delete a.kc[d];delete a.$e["_"+e]}}}
+gf.prototype.kb=function(a,b,c){var d=a.path,e=this.sa.get(d),f=[];if(e&&("default"===a.wa()||null!=ff(e,a))){f=e.kb(a,b,c);e.e()&&(this.sa=this.sa.remove(d));e=f.Hg;f=f.jg;b=-1!==Ua(e,function(a){return de(a.o)});var g=Ke(this.sa,d,function(a,b){return null!=df(b)});if(b&&!g&&(d=this.sa.subtree(d),!d.e()))for(var d=vf(d),k=0;k<d.length;++k){var l=d[k],m=l.V,l=wf(this,l);this.Mc.Xe(m,xf(this,m),l.ud,l.J)}if(!g&&0<e.length&&!c)if(b)this.Mc.Zd(a,null);else{var v=this;Oa(e,function(a){a.wa();var b=v.kc[sf(a)];
+v.Mc.Zd(a,b)})}yf(this,e)}return f};gf.prototype.ua=function(a,b){var c=this.Hb,d=Ke(this.sa,a,function(b,c){var d=N(b,a);if(d=c.hb(d))return d});return c.ua(a,d,b,!0)};function vf(a){return Ie(a,function(a,c,d){if(c&&null!=df(c))return[df(c)];var e=[];c&&(e=ef(c));r(d,function(a){e=e.concat(a)});return e})}function yf(a,b){for(var c=0;c<b.length;++c){var d=b[c];if(!de(d.o)){var d=sf(d),e=a.kc[d];delete a.kc[d];delete a.$e["_"+e]}}}
 function uf(a,b,c){var d=b.path,e=xf(a,b);c=wf(a,c);b=a.Mc.Xe(b,e,c.ud,c.J);d=a.sa.subtree(d);if(e)J(null==df(d.value),"If we're adding a query, it shouldn't be shadowed");else for(e=Ie(d,function(a,b,c){if(!a.e()&&b&&null!=df(b))return[ue(df(b))];var d=[];b&&(d=d.concat(Qa(ef(b),function(a){return a.V})));r(c,function(a){d=d.concat(a)});return d}),d=0;d<e.length;++d)c=e[d],a.Mc.Zd(c,xf(a,c));return b}
 function wf(a,b){var c=b.V,d=xf(a,c);return{ud:function(){return(b.u()||C).hash()},J:function(b){if("ok"===b){if(d){var f=c.path;if(b=of(a,d)){var g=pf(b);b=g.path;g=g.Ib;f=N(b,f);f=new Zb(new ye(!1,!0,g,!0),f);b=qf(a,b,f)}else b=[]}else b=jf(a,new Zb(ze,c.path));return b}f="Unknown Error";"too_big"===b?f="The data requested exceeds the maximum size that can be accessed with a single request.":"permission_denied"==b?f="Client doesn't have permission to access the desired data.":"unavailable"==b&&
 (f="The service is unavailable");f=Error(b+": "+f);f.code=b.toUpperCase();return a.kb(c,null,f)}}}function sf(a){return a.path.toString()+"$"+a.wa()}function pf(a){var b=a.indexOf("$");J(-1!==b&&b<a.length-1,"Bad queryKey.");return{Ib:a.substr(b+1),path:new K(a.substr(0,b))}}function of(a,b){var c=a.$e,d="_"+b;return d in c?c[d]:void 0}function xf(a,b){var c=sf(b);return w(a.kc,c)}var tf=1;
@@ -33954,7 +33954,7 @@ var l=qg(a);if(l!==qg(this.options.relay_url))c&&setTimeout(function(){c(Error("
 zg.isAvailable=function(){return"postMessage"in window&&!lg()&&!(kg()||"undefined"!==typeof navigator&&(navigator.userAgent.match(/Windows Phone/)||window.Windows&&/^ms-appx:/.test(location.href))||"undefined"!==typeof navigator&&"undefined"!==typeof window&&(navigator.userAgent.match(/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i)||navigator.userAgent.match(/CriOS/)||navigator.userAgent.match(/Twitter for iPhone/)||navigator.userAgent.match(/FBAN\/FBIOS/)||window.navigator.standalone))&&!("undefined"!==
 typeof navigator&&navigator.userAgent.match(/PhantomJS/))};zg.prototype.Bc=function(){return"popup"};function Ag(a){a.method||(a.method="GET");a.headers||(a.headers={});a.headers.content_type||(a.headers.content_type="application/json");a.headers.content_type=a.headers.content_type.toLowerCase();this.options=a}
 Ag.prototype.open=function(a,b,c){function d(){c&&(c(yg("REQUEST_INTERRUPTED")),c=null)}var e=new XMLHttpRequest,f=this.options.method.toUpperCase(),g;og(window,"beforeunload",d);e.onreadystatechange=function(){if(c&&4===e.readyState){var a;if(200<=e.status&&300>e.status){try{a=mb(e.responseText)}catch(b){}c(null,a)}else 500<=e.status&&600>e.status?c(yg("SERVER_ERROR")):c(yg("NETWORK_ERROR"));c=null;pg(window,"beforeunload",d)}};if("GET"===f)a+=(/\?/.test(a)?"":"?")+jb(b),g=null;else{var k=this.options.headers.content_type;
-"application/json"===k&&(g=B(b));"application/x-www-form-urlencoded"===k&&(g=jb(b))}e.open(f,a,!0);a={"X-Requested-With":"XMLHttpRequest",Accept:"application/json;text/plain"};za(a,this.options.headers);for(var l in a)e.setRequestHeader(l,a[l]);e.send(g)};Ag.isAvailable=function(){return!!window.XMLHttpRequest&&"string"===typeof(new XMLHttpRequest).responseType&&(!("undefined"!==typeof navigator&&(navigator.userAgent.match(/MSIE/)||navigator.userAgent.match(/Trident/)))||mg())};Ag.prototype.Bc=function(){return"json"};function Bg(a){this.oc=Ga()+Ga()+Ga();this.Df=a}
+"application/json"===k&&(g=B(b));"application/x-www-form-urlencoded"===k&&(g=jb(b))}e.open(f,a,!0);a={"X-Requested-With":"XMLHttpRequest",Accept:"application/json;text/plain"};za(a,this.options.headers);for(var l in a)e.setRequestHeader(l,a[l]);e.send(g)};Ag.isAvailable=function(){return!!window.XMLHttpRequest&&(!("undefined"!==typeof navigator&&(navigator.userAgent.match(/MSIE/)||navigator.userAgent.match(/Trident/)))||mg())};Ag.prototype.Bc=function(){return"json"};function Bg(a){this.oc=Ga()+Ga()+Ga();this.Df=a}
 Bg.prototype.open=function(a,b,c){function d(){c&&(c(yg("USER_CANCELLED")),c=null)}var e=this,f=Rc(fg),g;b.requestId=this.oc;b.redirectTo=f.scheme+"://"+f.host+"/blank/page.html";a+=/\?/.test(a)?"":"?";a+=jb(b);(g=window.open(a,"_blank","location=no"))&&ha(g.addEventListener)?(g.addEventListener("loadstart",function(a){var b;if(b=a&&a.url)a:{try{var m=document.createElement("a");m.href=a.url;b=m.host===f.host&&"/blank/page.html"===m.pathname;break a}catch(v){}b=!1}b&&(a=rg(a.url),g.removeEventListener("exit",
 d),g.close(),a=new gg(null,null,{requestId:e.oc,requestKey:a}),e.Df.requestWithCredential("/auth/session",a,c),c=null)}),g.addEventListener("exit",d)):c(yg("TRANSPORT_UNAVAILABLE"))};Bg.isAvailable=function(){return kg()};Bg.prototype.Bc=function(){return"redirect"};function Cg(a){a.callback_parameter||(a.callback_parameter="callback");this.options=a;window.__firebase_auth_jsonp=window.__firebase_auth_jsonp||{}}
 Cg.prototype.open=function(a,b,c){function d(){c&&(c(yg("REQUEST_INTERRUPTED")),c=null)}function e(){setTimeout(function(){window.__firebase_auth_jsonp[f]=void 0;wa(window.__firebase_auth_jsonp)&&(window.__firebase_auth_jsonp=void 0);try{var a=document.getElementById(f);a&&a.parentNode.removeChild(a)}catch(b){}},1);pg(window,"beforeunload",d)}var f="fn"+(new Date).getTime()+Math.floor(99999*Math.random());b[this.options.callback_parameter]="__firebase_auth_jsonp."+f;a+=(/\?/.test(a)?"":"?")+jb(b);
@@ -33968,12 +33968,12 @@ function Gg(a){var b=P.get("redirect_request_id");if(b){var c=P.get("redirect_cl
 h.re=function(a,b){Ng(this);var c=ig(a);c.ab._method="POST";this.pc("/users",c,function(a,c){a?R(b,a):R(b,a,c)})};h.Se=function(a,b){var c=this;Ng(this);var d="/users/"+encodeURIComponent(a.email),e=ig(a);e.ab._method="DELETE";this.pc(d,e,function(a,d){!a&&d&&d.uid&&c.nb&&c.nb.uid&&c.nb.uid===d.uid&&Lg(c);R(b,a)})};h.oe=function(a,b){Ng(this);var c="/users/"+encodeURIComponent(a.email)+"/password",d=ig(a);d.ab._method="PUT";d.ab.password=a.newPassword;this.pc(c,d,function(a){R(b,a)})};
 h.ne=function(a,b){Ng(this);var c="/users/"+encodeURIComponent(a.oldEmail)+"/email",d=ig(a);d.ab._method="PUT";d.ab.email=a.newEmail;d.ab.password=a.password;this.pc(c,d,function(a){R(b,a)})};h.Ue=function(a,b){Ng(this);var c="/users/"+encodeURIComponent(a.email)+"/password",d=ig(a);d.ab._method="POST";this.pc(c,d,function(a){R(b,a)})};h.pc=function(a,b,c){Qg(this,[Ag,Cg],a,b,c)};
 function Og(a,b,c,d,e){Qg(a,b,c,d,function(b,c){!b&&c&&c.token&&c.uid?Kg(a,c.token,c,d.ld,function(a,b){a?R(e,a):R(e,null,b)}):R(e,b||yg("UNKNOWN_ERROR"))})}
-function Qg(a,b,c,d,e){b=Pa(b,function(a){return"function"===typeof a.isAvailable&&a.isAvailable()});0===b.length?setTimeout(function(){R(e,yg("TRANSPORT_UNAVAILABLE"))},0):(b=new (b.shift())(d.ce),d=ib(d.ab),d.v="js-2.2.4",d.transport=b.Bc(),d.suppress_status_codes=!0,a=sg()+"/"+a.H.Cb+c,b.open(a,d,function(a,b){if(a)R(e,a);else if(b&&b.error){var c=Error(b.error.message);c.code=b.error.code;c.details=b.error.details;R(e,c)}else R(e,null,b)}))}
+function Qg(a,b,c,d,e){b=Pa(b,function(a){return"function"===typeof a.isAvailable&&a.isAvailable()});0===b.length?setTimeout(function(){R(e,yg("TRANSPORT_UNAVAILABLE"))},0):(b=new (b.shift())(d.ce),d=ib(d.ab),d.v="js-2.2.6",d.transport=b.Bc(),d.suppress_status_codes=!0,a=sg()+"/"+a.H.Cb+c,b.open(a,d,function(a,b){if(a)R(e,a);else if(b&&b.error){var c=Error(b.error.message);c.code=b.error.code;c.details=b.error.details;R(e,c)}else R(e,null,b)}))}
 function Hg(a,b){var c=null!==a.nb||null!==b;a.nb=b;c&&a.de("auth_status",b);a.Ke(null!==b)}h.ze=function(a){J("auth_status"===a,'initial event must be of type "auth_status"');return this.Re?null:[this.nb]};function Ng(a){var b=a.H;if("firebaseio.com"!==b.domain&&"firebaseio-demo.com"!==b.domain&&"auth.firebase.com"===fg)throw Error("This custom Firebase server ('"+a.H.domain+"') does not support delegated login.");};function Rg(a){this.hc=a;this.Kd=[];this.Qb=0;this.pe=-1;this.Fb=null}function Sg(a,b,c){a.pe=b;a.Fb=c;a.pe<a.Qb&&(a.Fb(),a.Fb=null)}function Tg(a,b,c){for(a.Kd[b]=c;a.Kd[a.Qb];){var d=a.Kd[a.Qb];delete a.Kd[a.Qb];for(var e=0;e<d.length;++e)if(d[e]){var f=a;Cb(function(){f.hc(d[e])})}if(a.Qb===a.pe){a.Fb&&(clearTimeout(a.Fb),a.Fb(),a.Fb=null);break}a.Qb++}};function Ug(a,b,c){this.qe=a;this.f=Oc(a);this.ob=this.pb=0;this.Va=Ob(b);this.Vd=c;this.Gc=!1;this.gd=function(a){b.host!==b.Oa&&(a.ns=b.Cb);var c=[],f;for(f in a)a.hasOwnProperty(f)&&c.push(f+"="+a[f]);return(b.lb?"https://":"http://")+b.Oa+"/.lp?"+c.join("&")}}var Vg,Wg;
 Ug.prototype.open=function(a,b){this.gf=0;this.ka=b;this.zf=new Rg(a);this.zb=!1;var c=this;this.rb=setTimeout(function(){c.f("Timed out trying to connect.");c.ib();c.rb=null},Math.floor(3E4));Tc(function(){if(!c.zb){c.Ta=new Xg(function(a,b,d,k,l){Yg(c,arguments);if(c.Ta)if(c.rb&&(clearTimeout(c.rb),c.rb=null),c.Gc=!0,"start"==a)c.id=b,c.Ff=d;else if("close"===a)b?(c.Ta.Td=!1,Sg(c.zf,b,function(){c.ib()})):c.ib();else throw Error("Unrecognized command received: "+a);},function(a,b){Yg(c,arguments);
 Tg(c.zf,a,b)},function(){c.ib()},c.gd);var a={start:"t"};a.ser=Math.floor(1E8*Math.random());c.Ta.fe&&(a.cb=c.Ta.fe);a.v="5";c.Vd&&(a.s=c.Vd);"undefined"!==typeof location&&location.href&&-1!==location.href.indexOf("firebaseio.com")&&(a.r="f");a=c.gd(a);c.f("Connecting via long-poll to "+a);Zg(c.Ta,a,function(){})}})};
-Ug.prototype.start=function(){var a=this.Ta,b=this.Ff;a.rg=this.id;a.sg=b;for(a.ke=!0;$g(a););a=this.id;b=this.Ff;this.fc=document.createElement("iframe");var c={dframe:"t"};c.id=a;c.pw=b;this.fc.src=this.gd(c);this.fc.style.display="none";document.body.appendChild(this.fc)};Ug.isAvailable=function(){return!Wg&&!("object"===typeof window&&window.chrome&&window.chrome.extension&&!/^chrome/.test(window.location.href))&&!("object"===typeof Windows&&"object"===typeof Windows.Ug)&&(Vg||!0)};h=Ug.prototype;
-h.Bd=function(){};h.cd=function(){this.zb=!0;this.Ta&&(this.Ta.close(),this.Ta=null);this.fc&&(document.body.removeChild(this.fc),this.fc=null);this.rb&&(clearTimeout(this.rb),this.rb=null)};h.ib=function(){this.zb||(this.f("Longpoll is closing itself"),this.cd(),this.ka&&(this.ka(this.Gc),this.ka=null))};h.close=function(){this.zb||(this.f("Longpoll is being closed."),this.cd())};
+Ug.prototype.start=function(){var a=this.Ta,b=this.Ff;a.rg=this.id;a.sg=b;for(a.ke=!0;$g(a););a=this.id;b=this.Ff;this.fc=document.createElement("iframe");var c={dframe:"t"};c.id=a;c.pw=b;this.fc.src=this.gd(c);this.fc.style.display="none";document.body.appendChild(this.fc)};Ug.isAvailable=function(){return Vg||!Wg&&"undefined"!==typeof document&&!("object"===typeof window&&window.chrome&&window.chrome.extension&&!/^chrome/.test(window.location.href))&&!("object"===typeof Windows&&"object"===typeof Windows.Ug)};
+h=Ug.prototype;h.Bd=function(){};h.cd=function(){this.zb=!0;this.Ta&&(this.Ta.close(),this.Ta=null);this.fc&&(document.body.removeChild(this.fc),this.fc=null);this.rb&&(clearTimeout(this.rb),this.rb=null)};h.ib=function(){this.zb||(this.f("Longpoll is closing itself"),this.cd(),this.ka&&(this.ka(this.Gc),this.ka=null))};h.close=function(){this.zb||(this.f("Longpoll is being closed."),this.cd())};
 h.send=function(a){a=B(a);this.pb+=a.length;Lb(this.Va,"bytes_sent",a.length);a=Kc(a);a=fb(a,!0);a=Xc(a,1840);for(var b=0;b<a.length;b++){var c=this.Ta;c.$c.push({Jg:this.gf,Rg:a.length,jf:a[b]});c.ke&&$g(c);this.gf++}};function Yg(a,b){var c=B(b).length;a.ob+=c;Lb(a.Va,"bytes_received",c)}
 function Xg(a,b,c,d){this.gd=d;this.jb=c;this.Oe=new cg;this.$c=[];this.se=Math.floor(1E8*Math.random());this.Td=!0;this.fe=Gc();window["pLPCommand"+this.fe]=a;window["pRTLPCB"+this.fe]=b;a=document.createElement("iframe");a.style.display="none";if(document.body){document.body.appendChild(a);try{a.contentWindow.document||Bb("No IE domain setting required")}catch(e){a.src="javascript:void((function(){document.open();document.domain='"+document.domain+"';document.close();})())"}}else throw"Document body has not initialized. Wait to initialize Firebase until after the document is ready.";
 a.contentDocument?a.gb=a.contentDocument:a.contentWindow?a.gb=a.contentWindow.document:a.document&&(a.gb=a.document);this.Ca=a;a="";this.Ca.src&&"javascript:"===this.Ca.src.substr(0,11)&&(a='<script>document.domain="'+document.domain+'";\x3c/script>');a="<html><body>"+a+"</body></html>";try{this.Ca.gb.open(),this.Ca.gb.write(a),this.Ca.gb.close()}catch(f){Bb("frame writing exception"),f.stack&&Bb(f.stack),Bb(f)}}
@@ -33994,13 +33994,13 @@ function uh(a){0>=a.Lf?(a.f("Secondary connection is healthy."),a.Ab=!0,a.F.Bd()
 function ph(a,b){a.F=new b("c:"+a.id+":"+a.ef++,a.H,a.Vd);a.Lf=b.responsesRequiredToBeHealthy||0;a.F.open(mh(a,a.F),nh(a,a.F));setTimeout(function(){a.F&&(a.f("Timed out trying to upgrade."),a.F.close())},Math.floor(6E4))}function oh(a,b,c){a.f("Realtime connection established.");a.L=b;a.Ua=1;a.Vc&&(a.Vc(c),a.Vc=null);0===a.Qe?(a.f("Primary connection is healthy."),a.Ab=!0):setTimeout(function(){th(a)},Math.floor(5E3))}
 function th(a){a.Ab||1!==a.Ua||(a.f("sending ping on primary."),vh(a,{t:"c",d:{t:"p",d:{}}}))}function vh(a,b){if(1!==a.Ua)throw"Connection is not connected";a.fd.send(b)}kh.prototype.close=function(){2!==this.Ua&&(this.f("Closing realtime connection."),this.Ua=2,rh(this),this.ka&&(this.ka(),this.ka=null))};function rh(a){a.f("Shutting down all connections");a.L&&(a.L.close(),a.L=null);a.F&&(a.F.close(),a.F=null);a.vd&&(clearTimeout(a.vd),a.vd=null)};function wh(a,b,c,d){this.id=xh++;this.f=Oc("p:"+this.id+":");this.wf=this.De=!1;this.aa={};this.pa=[];this.Xc=0;this.Uc=[];this.ma=!1;this.$a=1E3;this.Cd=3E5;this.Gb=b;this.Tc=c;this.Ne=d;this.H=a;this.We=null;this.Qd={};this.Ig=0;this.mf=!0;this.Kc=this.Fe=null;yh(this,0);Mf.ub().Eb("visible",this.zg,this);-1===a.host.indexOf("fblocal")&&Lf.ub().Eb("online",this.xg,this)}var xh=0,zh=0;h=wh.prototype;
 h.Da=function(a,b,c){var d=++this.Ig;a={r:d,a:a,b:b};this.f(B(a));J(this.ma,"sendRequest call when we're not connected not allowed.");this.Sa.Da(a);c&&(this.Qd[d]=c)};h.xf=function(a,b,c,d){var e=a.wa(),f=a.path.toString();this.f("Listen called for "+f+" "+e);this.aa[f]=this.aa[f]||{};J(!this.aa[f][e],"listen() called twice for same path/queryId.");a={J:d,ud:b,Fg:a,tag:c};this.aa[f][e]=a;this.ma&&Ah(this,a)};
-function Ah(a,b){var c=b.Fg,d=c.path.toString(),e=c.wa();a.f("Listen on "+d+" for "+e);var f={p:d};b.tag&&(f.q=ce(c.n),f.t=b.tag);f.h=b.ud();a.Da("q",f,function(f){var k=f.d,l=f.s;if(k&&"object"===typeof k&&u(k,"w")){var m=w(k,"w");ea(m)&&0<=Na(m,"no_index")&&Q("Using an unspecified index. Consider adding "+('".indexOn": "'+c.n.g.toString()+'"')+" at "+c.path.toString()+" to your security rules for better performance")}(a.aa[d]&&a.aa[d][e])===b&&(a.f("listen response",f),"ok"!==l&&Bh(a,d,e),b.J&&
+function Ah(a,b){var c=b.Fg,d=c.path.toString(),e=c.wa();a.f("Listen on "+d+" for "+e);var f={p:d};b.tag&&(f.q=ce(c.o),f.t=b.tag);f.h=b.ud();a.Da("q",f,function(f){var k=f.d,l=f.s;if(k&&"object"===typeof k&&u(k,"w")){var m=w(k,"w");ea(m)&&0<=Na(m,"no_index")&&Q("Using an unspecified index. Consider adding "+('".indexOn": "'+c.o.g.toString()+'"')+" at "+c.path.toString()+" to your security rules for better performance")}(a.aa[d]&&a.aa[d][e])===b&&(a.f("listen response",f),"ok"!==l&&Bh(a,d,e),b.J&&
 b.J(l,k))})}h.P=function(a,b,c){this.Fa={fg:a,nf:!1,yc:b,jd:c};this.f("Authenticating using credential: "+a);Ch(this);(b=40==a.length)||(a=ad(a).Ac,b="object"===typeof a&&!0===w(a,"admin"));b&&(this.f("Admin auth credential detected.  Reducing max reconnect time."),this.Cd=3E4)};h.ee=function(a){delete this.Fa;this.ma&&this.Da("unauth",{},function(b){a(b.s,b.d)})};
-function Ch(a){var b=a.Fa;a.ma&&b&&a.Da("auth",{cred:b.fg},function(c){var d=c.s;c=c.d||"error";"ok"!==d&&a.Fa===b&&delete a.Fa;b.nf?"ok"!==d&&b.jd&&b.jd(d,c):(b.nf=!0,b.yc&&b.yc(d,c))})}h.Of=function(a,b){var c=a.path.toString(),d=a.wa();this.f("Unlisten called for "+c+" "+d);if(Bh(this,c,d)&&this.ma){var e=ce(a.n);this.f("Unlisten on "+c+" for "+d);c={p:c};b&&(c.q=e,c.t=b);this.Da("n",c)}};h.Le=function(a,b,c){this.ma?Dh(this,"o",a,b,c):this.Uc.push({Zc:a,action:"o",data:b,J:c})};
+function Ch(a){var b=a.Fa;a.ma&&b&&a.Da("auth",{cred:b.fg},function(c){var d=c.s;c=c.d||"error";"ok"!==d&&a.Fa===b&&delete a.Fa;b.nf?"ok"!==d&&b.jd&&b.jd(d,c):(b.nf=!0,b.yc&&b.yc(d,c))})}h.Of=function(a,b){var c=a.path.toString(),d=a.wa();this.f("Unlisten called for "+c+" "+d);if(Bh(this,c,d)&&this.ma){var e=ce(a.o);this.f("Unlisten on "+c+" for "+d);c={p:c};b&&(c.q=e,c.t=b);this.Da("n",c)}};h.Le=function(a,b,c){this.ma?Dh(this,"o",a,b,c):this.Uc.push({Zc:a,action:"o",data:b,J:c})};
 h.Bf=function(a,b,c){this.ma?Dh(this,"om",a,b,c):this.Uc.push({Zc:a,action:"om",data:b,J:c})};h.Gd=function(a,b){this.ma?Dh(this,"oc",a,null,b):this.Uc.push({Zc:a,action:"oc",data:null,J:b})};function Dh(a,b,c,d,e){c={p:c,d:d};a.f("onDisconnect "+b,c);a.Da(b,c,function(a){e&&setTimeout(function(){e(a.s,a.d)},Math.floor(0))})}h.put=function(a,b,c,d){Eh(this,"p",a,b,c,d)};h.yf=function(a,b,c,d){Eh(this,"m",a,b,c,d)};
 function Eh(a,b,c,d,e,f){d={p:c,d:d};n(f)&&(d.h=f);a.pa.push({action:b,If:d,J:e});a.Xc++;b=a.pa.length-1;a.ma?Fh(a,b):a.f("Buffering put: "+c)}function Fh(a,b){var c=a.pa[b].action,d=a.pa[b].If,e=a.pa[b].J;a.pa[b].Gg=a.ma;a.Da(c,d,function(d){a.f(c+" response",d);delete a.pa[b];a.Xc--;0===a.Xc&&(a.pa=[]);e&&e(d.s,d.d)})}h.Te=function(a){this.ma&&(a={c:a},this.f("reportStats",a),this.Da("s",a,function(a){"ok"!==a.s&&this.f("reportStats","Error sending stats: "+a.d)}))};
 h.Fd=function(a){if("r"in a){this.f("from server: "+B(a));var b=a.r,c=this.Qd[b];c&&(delete this.Qd[b],c(a.b))}else{if("error"in a)throw"A server-side error has occurred: "+a.error;"a"in a&&(b=a.a,c=a.b,this.f("handleServerMessage",b,c),"d"===b?this.Gb(c.p,c.d,!1,c.t):"m"===b?this.Gb(c.p,c.d,!0,c.t):"c"===b?Gh(this,c.p,c.q):"ac"===b?(a=c.s,b=c.d,c=this.Fa,delete this.Fa,c&&c.jd&&c.jd(a,b)):"sd"===b?this.We?this.We(c):"msg"in c&&"undefined"!==typeof console&&console.log("FIREBASE: "+c.msg.replace("\n",
-"\nFIREBASE: ")):Pc("Unrecognized action received from server: "+B(b)+"\nAre you using the latest client?"))}};h.Vc=function(a){this.f("connection ready");this.ma=!0;this.Kc=(new Date).getTime();this.Ne({serverTimeOffset:a-(new Date).getTime()});this.mf&&(a={},a["sdk.js."+"2.2.4".replace(/\./g,"-")]=1,kg()&&(a["framework.cordova"]=1),this.Te(a));Hh(this);this.mf=!1;this.Tc(!0)};
+"\nFIREBASE: ")):Pc("Unrecognized action received from server: "+B(b)+"\nAre you using the latest client?"))}};h.Vc=function(a){this.f("connection ready");this.ma=!0;this.Kc=(new Date).getTime();this.Ne({serverTimeOffset:a-(new Date).getTime()});this.mf&&(a={},a["sdk.js."+"2.2.6".replace(/\./g,"-")]=1,kg()&&(a["framework.cordova"]=1),this.Te(a));Hh(this);this.mf=!1;this.Tc(!0)};
 function yh(a,b){J(!a.Sa,"Scheduling a connect when we're already connected/ing?");a.Sb&&clearTimeout(a.Sb);a.Sb=setTimeout(function(){a.Sb=null;Ih(a)},Math.floor(b))}h.zg=function(a){a&&!this.uc&&this.$a===this.Cd&&(this.f("Window became visible.  Reducing delay."),this.$a=1E3,this.Sa||yh(this,0));this.uc=a};h.xg=function(a){a?(this.f("Browser went online."),this.$a=1E3,this.Sa||yh(this,0)):(this.f("Browser went offline.  Killing connection."),this.Sa&&this.Sa.close())};
 h.Cf=function(){this.f("data client disconnected");this.ma=!1;this.Sa=null;for(var a=0;a<this.pa.length;a++){var b=this.pa[a];b&&"h"in b.If&&b.Gg&&(b.J&&b.J("disconnect"),delete this.pa[a],this.Xc--)}0===this.Xc&&(this.pa=[]);this.Qd={};Jh(this)&&(this.uc?this.Kc&&(3E4<(new Date).getTime()-this.Kc&&(this.$a=1E3),this.Kc=null):(this.f("Window isn't visible.  Delaying reconnect."),this.$a=this.Cd,this.Fe=(new Date).getTime()),a=Math.max(0,this.$a-((new Date).getTime()-this.Fe)),a*=Math.random(),this.f("Trying to reconnect in "+
 a+"ms"),yh(this,a),this.$a=Math.min(this.Cd,1.3*this.$a));this.Tc(!1)};function Ih(a){if(Jh(a)){a.f("Making a connection attempt");a.Fe=(new Date).getTime();a.Kc=null;var b=q(a.Fd,a),c=q(a.Vc,a),d=q(a.Cf,a),e=a.id+":"+zh++;a.Sa=new kh(e,a.H,b,c,d,function(b){Q(b+" ("+a.H.toString()+")");a.wf=!0})}}h.yb=function(){this.De=!0;this.Sa?this.Sa.close():(this.Sb&&(clearTimeout(this.Sb),this.Sb=null),this.ma&&this.Cf())};h.qc=function(){this.De=!1;this.$a=1E3;this.Sa||yh(this,0)};
@@ -34029,23 +34029,23 @@ function di(a,b){var c=b.Ba();if(null!==c){for(var d=[],e=[],f=-1,g=0;g<c.length
 X.prototype.set=function(a,b){x("Firebase.onDisconnect().set",1,2,arguments.length);Yf("Firebase.onDisconnect().set",this.qa);Rf("Firebase.onDisconnect().set",a,this.qa,!1);A("Firebase.onDisconnect().set",2,b,!0);Sh(this.ad,this.qa,a,b)};X.prototype.set=X.prototype.set;
 X.prototype.Kb=function(a,b,c){x("Firebase.onDisconnect().setWithPriority",2,3,arguments.length);Yf("Firebase.onDisconnect().setWithPriority",this.qa);Rf("Firebase.onDisconnect().setWithPriority",a,this.qa,!1);Uf("Firebase.onDisconnect().setWithPriority",2,b);A("Firebase.onDisconnect().setWithPriority",3,c,!0);Th(this.ad,this.qa,a,b,c)};X.prototype.setWithPriority=X.prototype.Kb;
 X.prototype.update=function(a,b){x("Firebase.onDisconnect().update",1,2,arguments.length);Yf("Firebase.onDisconnect().update",this.qa);if(ea(a)){for(var c={},d=0;d<a.length;++d)c[""+d]=a[d];a=c;Q("Passing an Array to Firebase.onDisconnect().update() is deprecated. Use set() if you want to overwrite the existing data, or an Object with integer keys if you really do want to only update some of the children.")}Tf("Firebase.onDisconnect().update",a,this.qa);A("Firebase.onDisconnect().update",2,b,!0);
-Uh(this.ad,this.qa,a,b)};X.prototype.update=X.prototype.update;function Y(a,b,c,d){this.k=a;this.path=b;this.n=c;this.jc=d}
+Uh(this.ad,this.qa,a,b)};X.prototype.update=X.prototype.update;function Y(a,b,c,d){this.k=a;this.path=b;this.o=c;this.jc=d}
 function ei(a){var b=null,c=null;a.la&&(b=od(a));a.na&&(c=qd(a));if(a.g===Vd){if(a.la){if("[MIN_NAME]"!=nd(a))throw Error("Query: When ordering by key, you may only pass one argument to startAt(), endAt(), or equalTo().");if("string"!==typeof b)throw Error("Query: When ordering by key, the argument passed to startAt(), endAt(),or equalTo() must be a string.");}if(a.na){if("[MAX_NAME]"!=pd(a))throw Error("Query: When ordering by key, you may only pass one argument to startAt(), endAt(), or equalTo().");if("string"!==
 typeof c)throw Error("Query: When ordering by key, the argument passed to startAt(), endAt(),or equalTo() must be a string.");}}else if(a.g===M){if(null!=b&&!Qf(b)||null!=c&&!Qf(c))throw Error("Query: When ordering by priority, the first argument passed to startAt(), endAt(), or equalTo() must be a valid priority value (null, a number, or a string).");}else if(J(a.g instanceof Rd||a.g===Yd,"unknown index type."),null!=b&&"object"===typeof b||null!=c&&"object"===typeof c)throw Error("Query: First argument passed to startAt(), endAt(), or equalTo() cannot be an object.");
 }function fi(a){if(a.la&&a.na&&a.ia&&(!a.ia||""===a.Nb))throw Error("Query: Can't combine startAt(), endAt(), and limit(). Use limitToFirst() or limitToLast() instead.");}function gi(a,b){if(!0===a.jc)throw Error(b+": You can't combine multiple orderBy calls.");}Y.prototype.lc=function(){x("Query.ref",0,0,arguments.length);return new U(this.k,this.path)};Y.prototype.ref=Y.prototype.lc;
 Y.prototype.Eb=function(a,b,c,d){x("Query.on",2,4,arguments.length);Vf("Query.on",a,!1);A("Query.on",2,b,!1);var e=hi("Query.on",c,d);if("value"===a)Vh(this.k,this,new jd(b,e.cancel||null,e.Ma||null));else{var f={};f[a]=b;Vh(this.k,this,new kd(f,e.cancel,e.Ma))}return b};Y.prototype.on=Y.prototype.Eb;
 Y.prototype.gc=function(a,b,c){x("Query.off",0,3,arguments.length);Vf("Query.off",a,!0);A("Query.off",2,b,!0);lb("Query.off",3,c);var d=null,e=null;"value"===a?d=new jd(b||null,null,c||null):a&&(b&&(e={},e[a]=b),d=new kd(e,null,c||null));e=this.k;d=".info"===O(this.path)?e.zd.kb(this,d):e.O.kb(this,d);xb(e.ea,this.path,d)};Y.prototype.off=Y.prototype.gc;
 Y.prototype.Ag=function(a,b){function c(g){f&&(f=!1,e.gc(a,c),b.call(d.Ma,g))}x("Query.once",2,4,arguments.length);Vf("Query.once",a,!1);A("Query.once",2,b,!1);var d=hi("Query.once",arguments[2],arguments[3]),e=this,f=!0;this.Eb(a,c,function(b){e.gc(a,c);d.cancel&&d.cancel.call(d.Ma,b)})};Y.prototype.once=Y.prototype.Ag;
-Y.prototype.Ge=function(a){Q("Query.limit() being deprecated. Please use Query.limitToFirst() or Query.limitToLast() instead.");x("Query.limit",1,1,arguments.length);if(!ga(a)||Math.floor(a)!==a||0>=a)throw Error("Query.limit: First argument must be a positive integer.");if(this.n.ia)throw Error("Query.limit: Limit was already set (by another call to limit, limitToFirst, orlimitToLast.");var b=this.n.Ge(a);fi(b);return new Y(this.k,this.path,b,this.jc)};Y.prototype.limit=Y.prototype.Ge;
-Y.prototype.He=function(a){x("Query.limitToFirst",1,1,arguments.length);if(!ga(a)||Math.floor(a)!==a||0>=a)throw Error("Query.limitToFirst: First argument must be a positive integer.");if(this.n.ia)throw Error("Query.limitToFirst: Limit was already set (by another call to limit, limitToFirst, or limitToLast).");return new Y(this.k,this.path,this.n.He(a),this.jc)};Y.prototype.limitToFirst=Y.prototype.He;
-Y.prototype.Ie=function(a){x("Query.limitToLast",1,1,arguments.length);if(!ga(a)||Math.floor(a)!==a||0>=a)throw Error("Query.limitToLast: First argument must be a positive integer.");if(this.n.ia)throw Error("Query.limitToLast: Limit was already set (by another call to limit, limitToFirst, or limitToLast).");return new Y(this.k,this.path,this.n.Ie(a),this.jc)};Y.prototype.limitToLast=Y.prototype.Ie;
-Y.prototype.Bg=function(a){x("Query.orderByChild",1,1,arguments.length);if("$key"===a)throw Error('Query.orderByChild: "$key" is invalid.  Use Query.orderByKey() instead.');if("$priority"===a)throw Error('Query.orderByChild: "$priority" is invalid.  Use Query.orderByPriority() instead.');if("$value"===a)throw Error('Query.orderByChild: "$value" is invalid.  Use Query.orderByValue() instead.');Wf("Query.orderByChild",1,a,!1);gi(this,"Query.orderByChild");var b=be(this.n,new Rd(a));ei(b);return new Y(this.k,
-this.path,b,!0)};Y.prototype.orderByChild=Y.prototype.Bg;Y.prototype.Cg=function(){x("Query.orderByKey",0,0,arguments.length);gi(this,"Query.orderByKey");var a=be(this.n,Vd);ei(a);return new Y(this.k,this.path,a,!0)};Y.prototype.orderByKey=Y.prototype.Cg;Y.prototype.Dg=function(){x("Query.orderByPriority",0,0,arguments.length);gi(this,"Query.orderByPriority");var a=be(this.n,M);ei(a);return new Y(this.k,this.path,a,!0)};Y.prototype.orderByPriority=Y.prototype.Dg;
-Y.prototype.Eg=function(){x("Query.orderByValue",0,0,arguments.length);gi(this,"Query.orderByValue");var a=be(this.n,Yd);ei(a);return new Y(this.k,this.path,a,!0)};Y.prototype.orderByValue=Y.prototype.Eg;
-Y.prototype.Xd=function(a,b){x("Query.startAt",0,2,arguments.length);Rf("Query.startAt",a,this.path,!0);Wf("Query.startAt",2,b,!0);var c=this.n.Xd(a,b);fi(c);ei(c);if(this.n.la)throw Error("Query.startAt: Starting point was already set (by another call to startAt or equalTo).");n(a)||(b=a=null);return new Y(this.k,this.path,c,this.jc)};Y.prototype.startAt=Y.prototype.Xd;
-Y.prototype.qd=function(a,b){x("Query.endAt",0,2,arguments.length);Rf("Query.endAt",a,this.path,!0);Wf("Query.endAt",2,b,!0);var c=this.n.qd(a,b);fi(c);ei(c);if(this.n.na)throw Error("Query.endAt: Ending point was already set (by another call to endAt or equalTo).");return new Y(this.k,this.path,c,this.jc)};Y.prototype.endAt=Y.prototype.qd;
-Y.prototype.hg=function(a,b){x("Query.equalTo",1,2,arguments.length);Rf("Query.equalTo",a,this.path,!1);Wf("Query.equalTo",2,b,!0);if(this.n.la)throw Error("Query.equalTo: Starting point was already set (by another call to endAt or equalTo).");if(this.n.na)throw Error("Query.equalTo: Ending point was already set (by another call to endAt or equalTo).");return this.Xd(a,b).qd(a,b)};Y.prototype.equalTo=Y.prototype.hg;
-Y.prototype.toString=function(){x("Query.toString",0,0,arguments.length);for(var a=this.path,b="",c=a.Y;c<a.o.length;c++)""!==a.o[c]&&(b+="/"+encodeURIComponent(String(a.o[c])));a=this.k.toString()+(b||"/");b=jb(ee(this.n));return a+=b.replace(/^&/,"")};Y.prototype.toString=Y.prototype.toString;Y.prototype.wa=function(){var a=Wc(ce(this.n));return"{}"===a?"default":a};
+Y.prototype.Ge=function(a){Q("Query.limit() being deprecated. Please use Query.limitToFirst() or Query.limitToLast() instead.");x("Query.limit",1,1,arguments.length);if(!ga(a)||Math.floor(a)!==a||0>=a)throw Error("Query.limit: First argument must be a positive integer.");if(this.o.ia)throw Error("Query.limit: Limit was already set (by another call to limit, limitToFirst, orlimitToLast.");var b=this.o.Ge(a);fi(b);return new Y(this.k,this.path,b,this.jc)};Y.prototype.limit=Y.prototype.Ge;
+Y.prototype.He=function(a){x("Query.limitToFirst",1,1,arguments.length);if(!ga(a)||Math.floor(a)!==a||0>=a)throw Error("Query.limitToFirst: First argument must be a positive integer.");if(this.o.ia)throw Error("Query.limitToFirst: Limit was already set (by another call to limit, limitToFirst, or limitToLast).");return new Y(this.k,this.path,this.o.He(a),this.jc)};Y.prototype.limitToFirst=Y.prototype.He;
+Y.prototype.Ie=function(a){x("Query.limitToLast",1,1,arguments.length);if(!ga(a)||Math.floor(a)!==a||0>=a)throw Error("Query.limitToLast: First argument must be a positive integer.");if(this.o.ia)throw Error("Query.limitToLast: Limit was already set (by another call to limit, limitToFirst, or limitToLast).");return new Y(this.k,this.path,this.o.Ie(a),this.jc)};Y.prototype.limitToLast=Y.prototype.Ie;
+Y.prototype.Bg=function(a){x("Query.orderByChild",1,1,arguments.length);if("$key"===a)throw Error('Query.orderByChild: "$key" is invalid.  Use Query.orderByKey() instead.');if("$priority"===a)throw Error('Query.orderByChild: "$priority" is invalid.  Use Query.orderByPriority() instead.');if("$value"===a)throw Error('Query.orderByChild: "$value" is invalid.  Use Query.orderByValue() instead.');Wf("Query.orderByChild",1,a,!1);gi(this,"Query.orderByChild");var b=be(this.o,new Rd(a));ei(b);return new Y(this.k,
+this.path,b,!0)};Y.prototype.orderByChild=Y.prototype.Bg;Y.prototype.Cg=function(){x("Query.orderByKey",0,0,arguments.length);gi(this,"Query.orderByKey");var a=be(this.o,Vd);ei(a);return new Y(this.k,this.path,a,!0)};Y.prototype.orderByKey=Y.prototype.Cg;Y.prototype.Dg=function(){x("Query.orderByPriority",0,0,arguments.length);gi(this,"Query.orderByPriority");var a=be(this.o,M);ei(a);return new Y(this.k,this.path,a,!0)};Y.prototype.orderByPriority=Y.prototype.Dg;
+Y.prototype.Eg=function(){x("Query.orderByValue",0,0,arguments.length);gi(this,"Query.orderByValue");var a=be(this.o,Yd);ei(a);return new Y(this.k,this.path,a,!0)};Y.prototype.orderByValue=Y.prototype.Eg;
+Y.prototype.Xd=function(a,b){x("Query.startAt",0,2,arguments.length);Rf("Query.startAt",a,this.path,!0);Wf("Query.startAt",2,b,!0);var c=this.o.Xd(a,b);fi(c);ei(c);if(this.o.la)throw Error("Query.startAt: Starting point was already set (by another call to startAt or equalTo).");n(a)||(b=a=null);return new Y(this.k,this.path,c,this.jc)};Y.prototype.startAt=Y.prototype.Xd;
+Y.prototype.qd=function(a,b){x("Query.endAt",0,2,arguments.length);Rf("Query.endAt",a,this.path,!0);Wf("Query.endAt",2,b,!0);var c=this.o.qd(a,b);fi(c);ei(c);if(this.o.na)throw Error("Query.endAt: Ending point was already set (by another call to endAt or equalTo).");return new Y(this.k,this.path,c,this.jc)};Y.prototype.endAt=Y.prototype.qd;
+Y.prototype.hg=function(a,b){x("Query.equalTo",1,2,arguments.length);Rf("Query.equalTo",a,this.path,!1);Wf("Query.equalTo",2,b,!0);if(this.o.la)throw Error("Query.equalTo: Starting point was already set (by another call to endAt or equalTo).");if(this.o.na)throw Error("Query.equalTo: Ending point was already set (by another call to endAt or equalTo).");return this.Xd(a,b).qd(a,b)};Y.prototype.equalTo=Y.prototype.hg;
+Y.prototype.toString=function(){x("Query.toString",0,0,arguments.length);for(var a=this.path,b="",c=a.Y;c<a.n.length;c++)""!==a.n[c]&&(b+="/"+encodeURIComponent(String(a.n[c])));return this.k.toString()+(b||"/")};Y.prototype.toString=Y.prototype.toString;Y.prototype.wa=function(){var a=Wc(ce(this.o));return"{}"===a?"default":a};
 function hi(a,b,c){var d={cancel:null,Ma:null};if(b&&c)d.cancel=b,A(a,3,d.cancel,!0),d.Ma=c,lb(a,4,d.Ma);else if(b)if("object"===typeof b&&null!==b)d.Ma=b;else if("function"===typeof b)d.cancel=b;else throw Error(z(a,3,!0)+" must either be a cancel callback or a context object.");return d};var Z={};Z.vc=wh;Z.DataConnection=Z.vc;wh.prototype.Og=function(a,b){this.Da("q",{p:a},b)};Z.vc.prototype.simpleListen=Z.vc.prototype.Og;wh.prototype.gg=function(a,b){this.Da("echo",{d:a},b)};Z.vc.prototype.echo=Z.vc.prototype.gg;wh.prototype.interrupt=wh.prototype.yb;Z.Sf=kh;Z.RealTimeConnection=Z.Sf;kh.prototype.sendRequest=kh.prototype.Da;kh.prototype.close=kh.prototype.close;
 Z.og=function(a){var b=wh.prototype.put;wh.prototype.put=function(c,d,e,f){n(f)&&(f=a());b.call(this,c,d,e,f)};return function(){wh.prototype.put=b}};Z.hijackHash=Z.og;Z.Rf=Ec;Z.ConnectionTarget=Z.Rf;Z.wa=function(a){return a.wa()};Z.queryIdentifier=Z.wa;Z.qg=function(a){return a.k.Ra.aa};Z.listens=Z.qg;Z.ue=function(a){a.ue()};Z.forceRestClient=Z.ue;function U(a,b){var c,d,e;if(a instanceof Kh)c=a,d=b;else{x("new Firebase",1,2,arguments.length);d=Rc(arguments[0]);c=d.Qg;"firebase"===d.domain&&Qc(d.host+" is no longer supported. Please use <YOUR FIREBASE>.firebaseio.com instead");c||Qc("Cannot parse Firebase url. Please use https://<YOUR FIREBASE>.firebaseio.com");d.lb||"undefined"!==typeof window&&window.location&&window.location.protocol&&-1!==window.location.protocol.indexOf("https:")&&Q("Insecure Firebase access from a secure page. Please use https in calls to new Firebase().");
 c=new Ec(d.host,d.lb,c,"ws"===d.scheme||"wss"===d.scheme);d=new K(d.Zc);e=d.toString();var f;!(f=!p(c.host)||0===c.host.length||!Pf(c.Cb))&&(f=0!==e.length)&&(e&&(e=e.replace(/^\/*\.info(\/|$)/,"/")),f=!(p(e)&&0!==e.length&&!Of.test(e)));if(f)throw Error(z("new Firebase",1,!1)+'must be a valid firebase URL and the path can\'t contain ".", "#", "$", "[", or "]".');if(b)if(b instanceof W)e=b;else if(p(b))e=W.ub(),c.Ld=b;else throw Error("Expected a valid Firebase.Context for second argument to new Firebase()");
@@ -34070,11 +34070,4692 @@ U.prototype.re=function(a,b){x("Firebase.createUser",2,2,arguments.length);ag("F
 U.prototype.removeUser=U.prototype.Se;U.prototype.oe=function(a,b){x("Firebase.changePassword",2,2,arguments.length);ag("Firebase.changePassword",1,a,!1);bg("Firebase.changePassword",a,"email");bg("Firebase.changePassword",a,"oldPassword");bg("Firebase.changePassword",a,"newPassword");A("Firebase.changePassword",2,b,!1);this.k.P.oe(a,b)};U.prototype.changePassword=U.prototype.oe;
 U.prototype.ne=function(a,b){x("Firebase.changeEmail",2,2,arguments.length);ag("Firebase.changeEmail",1,a,!1);bg("Firebase.changeEmail",a,"oldEmail");bg("Firebase.changeEmail",a,"newEmail");bg("Firebase.changeEmail",a,"password");A("Firebase.changeEmail",2,b,!1);this.k.P.ne(a,b)};U.prototype.changeEmail=U.prototype.ne;
 U.prototype.Ue=function(a,b){x("Firebase.resetPassword",2,2,arguments.length);ag("Firebase.resetPassword",1,a,!1);bg("Firebase.resetPassword",a,"email");A("Firebase.resetPassword",2,b,!1);this.k.P.Ue(a,b)};U.prototype.resetPassword=U.prototype.Ue;U.goOffline=function(){x("Firebase.goOffline",0,0,arguments.length);W.ub().yb()};U.goOnline=function(){x("Firebase.goOnline",0,0,arguments.length);W.ub().qc()};
-function Nc(a,b){J(!b||!0===a||!1===a,"Can't turn on custom loggers persistently.");!0===a?("undefined"!==typeof console&&("function"===typeof console.log?Ab=q(console.log,console):"object"===typeof console.log&&(Ab=function(a){console.log(a)})),b&&P.set("logging_enabled",!0)):a?Ab=a:(Ab=null,P.remove("logging_enabled"))}U.enableLogging=Nc;U.ServerValue={TIMESTAMP:{".sv":"timestamp"}};U.SDK_VERSION="2.2.4";U.INTERNAL=V;U.Context=W;U.TEST_ACCESS=Z;})();
+function Nc(a,b){J(!b||!0===a||!1===a,"Can't turn on custom loggers persistently.");!0===a?("undefined"!==typeof console&&("function"===typeof console.log?Ab=q(console.log,console):"object"===typeof console.log&&(Ab=function(a){console.log(a)})),b&&P.set("logging_enabled",!0)):a?Ab=a:(Ab=null,P.remove("logging_enabled"))}U.enableLogging=Nc;U.ServerValue={TIMESTAMP:{".sv":"timestamp"}};U.SDK_VERSION="2.2.6";U.INTERNAL=V;U.Context=W;U.TEST_ACCESS=Z;})();
 
+
+/*!
+ * Firebase-util:  A set of experimental power tools for Firebase.
+ *
+ * Version: 0.2.4
+ * URL: https://github.com/firebase/firebase-util
+ * Date: 2015-04-15T01:10:41.880Z
+ * License: MIT http://firebase.mit-license.org/
+ */
+
+require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function (global){
+// place fbutil onto Firebase.util namespace
+// if we are in the browser and Firebase exists
+if( global.Firebase ) {
+  global.Firebase.util = require('firebase-util');
+}
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"firebase-util":undefined}],2:[function(require,module,exports){
+
+exports.NormalizedCollection = require('./libs/NormalizedCollection.js');
+},{"./libs/NormalizedCollection.js":6}],3:[function(require,module,exports){
+'use strict';
+
+var NormalizedSnapshot = require('./NormalizedSnapshot');
+var util = require('../../common/');
 
 /**
- * @license videogular v1.2.1 http://videogular.com
+ * A Record represents a set of merged data. The hierarchy of a normalized Collection
+ * can be traversed as normal using parent() and child() calls:
+ *    - RecordSet: The root of a normalized collection; a set of merged Firebase paths
+ *    - Record: A child of RecordSet obtained by calling .child(recordId)
+ *    - RecordField: A child of Record or RecordField which represents a wrapped Firebase path (no longer normalized)
+ *
+ * We wrap all of these levels, including the RecordField's, so that the
+ * parent() and child() calls work as expected and return the normalized chain instead
+ * of reverting to the underlying Firebase instances.
+ *
+ * AbstractRecord provides common functionality around observables, event handling, and field maps
+ * used by all three implementations.
+ *
+ * @param fieldMap the field map applied to Record objects
+ * @param {String} name
+ * @param {String} url
+ * @constructor
+ */
+function AbstractRecord(fieldMap, name, url) {
+  var self = this;
+  self._ref = null;
+  self._map = fieldMap;
+  self._name = name;
+  self._url = url;
+  self._obs = new util.Observable(
+    ['value', 'child_added', 'child_removed', 'child_moved', 'child_changed'],
+    {
+      onAdd: function(event) {
+        var count = self._obs.getObservers(event).length;
+        if( count === 1 ) {
+          self._start(event, self._obs.getObservers().length);
+        }
+      },
+      onRemove: function(event) {
+        var count = self._obs.getObservers(event).length;
+        if( count === 0 ) {
+          self._stop(event, self._obs.getObservers().length);
+        }
+      }
+    }
+  );
+  self.eventHandlers = {
+    'value': util.bind(self._trigger, self, 'value'),
+    'child_added': util.bind(self._trigger, self, 'child_added'),
+    'child_changed': util.bind(self._trigger, self, 'child_changed'),
+    'child_removed': util.bind(self._trigger, self, 'child_removed'),
+    'child_moved': util.bind(self._trigger, self, 'child_moved')
+  };
+}
+
+AbstractRecord.prototype = {
+  /**
+   * Called internally by AbstractRecord whenever the first listener
+   * is attached for a given event. Also includes a count of the
+   * total number of listeners
+   *
+   * @param {string} type
+   * @param {int} totalListeners
+   * @abstract
+   */
+  _start: abstract('_start'),
+
+  /**
+   * Called internally by AbstractRecord whenever
+   * the last listener is detached for a given type. Also provides
+   * the total listener count
+   *
+   * @param {string} type
+   * @param {int} totalListeners
+   * @abstract
+   */
+  _stop:  abstract('_stop'),
+
+  /**
+   * Should return true if the snapshots provided contain the child key and if it
+   * exists in the fields for this record type.
+   *
+   * @param {Array} snapshots
+   * @param {string} key
+   * @abstract
+   */
+  hasChild: abstract('hasChild'),
+
+  /**
+   * Given a list of snapshots to iterate, returns the valid keys
+   * which exist in both the snapshots and the field map, in the
+   * order they should be iterated.
+   *
+   * Calls iterator with a {string|number} key for the next field to
+   * iterate only.
+   *
+   * If iterator returns true, this method should abort and return true,
+   * otherwise it should return false (same as Snapshot.forEach).
+   *
+   * @param {Array} snaps
+   * @param {function} iterator
+   * @param {object} [context]
+   * @return {boolean} true if aborted
+   * @abstract
+   */
+  forEachKey: abstract('forEach'),
+
+  /**
+   * When .child() is called on a Snapshot, this will reconcile
+   * the correct refs and data for each child and return an array
+   * containing the child snapshots for the specified key. For
+   * a RecordSet, this should return children for all the fields
+   * in the field map. For a Record, this should return a child
+   * from the correct snapshot, or the first if the child is not
+   * in the map.
+   *
+   * @param {Array} snaps
+   * @param {string} key
+   * @abstract
+   */
+  getChildSnaps: abstract('getChildSnaps'),
+
+  /**
+   * This should take all the data from a set of snapshots and
+   * merge it together appropriately. For a RecordSet, this should
+   * return records ordered by the first reference. For a Record,
+   * this should return the fields in the field map.
+   *
+   * @param {Array} snaps
+   * @param {boolean} isExport
+   * @abstract
+   */
+  mergeData: abstract('mergeData'),
+
+  /**
+   * Returns the specific implementing class for this instance.
+   *
+   * @returns {Function}
+   */
+  getClass: abstract('getClass'),
+
+  /**
+   * Saves data back to the correct paths
+   *
+   * @param data
+   * @param {Object} props an object with callback[, context][, isUpdate]
+   */
+  saveData: abstract('saveData'),
+
+  /**
+   * Returns the priority for a given set of snapshots
+   * @param {Array} snapshots
+   * @return {int|string}
+   */
+  getPriority: abstract('getPriority'),
+
+  /**
+   * This returns the appropriate AbstractRecord type in the chain. Note that references
+   * created here will not be usable until setRef() is called, so this should only be used
+   * for passing into a Query. Use .child() for everything else.
+   *
+   * @param {String} childName
+   * @return {AbstractRecord}
+   */
+  makeChild: abstract('makeChild'),
+
+  /**
+   * @param {string} event
+   * @param {function} callback
+   * @param {function} [cancel]
+   * @param {object} [context]
+   */
+  watch: function(event, callback, cancel, context) {
+    this._obs.observe(event, callback, cancel, context);
+  },
+
+  /**
+   * @param {string} event
+   * @param {function} [callback]
+   * @param {object} [context]
+   */
+  unwatch: function(event, callback, context) {
+    this._obs.stopObserving(event, callback, context);
+  },
+
+  getFieldMap: function() {
+    return this._map;
+  },
+
+  getPathManager: function() {
+    return this._map.getPathManager();
+  },
+
+  setRef: function(ref) {
+    this._ref = ref;
+  },
+
+  getRef: function() {
+    return this._ref;
+  },
+
+  /**
+   * @param {String} key
+   * @returns {Record}
+   */
+  child: function(key) {
+    return this.getRef().ref().child(key).$getRecord();
+  },
+
+  /**
+   * Returns an appropriate path name or merged set of names for this record type.
+   * @return {String}
+   */
+  getName: function() {
+    return this._name;
+  },
+
+  /**
+   * Returns a Firebase URL or a merged set of URLs for the Record
+   * @return {String}
+   */
+  getUrl: function() {
+    return this._url;
+  },
+
+  _trigger: function(event, id, snaps, prev) {
+    var ref, args;
+    if( event === 'value' ) {
+      snaps = id;
+      id = null;
+      ref = this.getRef();
+      prev = null;
+    }
+    else {
+      if( util.isObject(id) ) {
+        snaps = id;
+        id = snaps.key();
+      }
+      ref = this.getRef().ref().child(id);
+    }
+    //todo probably just have the record types pass in the final snapshot to _trigger
+    //todo instead of this coupled and crazy dance
+    if( snaps instanceof NormalizedSnapshot ) {
+      args = [event, snaps];
+    }
+    else {
+      if( util.isObject(snaps) && !util.isArray(snaps) && typeof snaps.val === 'function' ) {
+        snaps = [snaps];
+      }
+      args = [event, new NormalizedSnapshot(ref, snaps)];
+    }
+    if( event === 'child_added' || event === 'child_moved' ) {
+      args.push(prev);
+    }
+    util.log.debug('AbstractRecord._trigger: event=%s, id=%s, snaps=%d, prev=%s', event, id, snaps.length, prev);
+    this._obs.triggerEvent.apply(this._obs, args);
+  },
+
+  /**
+   * @param {string} event
+   * @returns {function}
+   */
+  handler: function(event) {
+    return this.eventHandlers[event];
+  },
+
+  /**
+   * @param {object} error
+   */
+  _cancel: function(error) {
+    util.error(error);
+    this._obs.abortObservers(error);
+  }
+};
+
+function abstract(method) {
+  return function() {
+    throw new Error('Classes implementing AbstractRecord must declare ' + method);
+  };
+}
+
+module.exports = AbstractRecord;
+},{"../../common/":24,"./NormalizedSnapshot":8}],4:[function(require,module,exports){
+'use strict';
+
+var util = require('../../common');
+var PathManager = require('./PathManager');
+
+function FieldMap(pathManager) {
+  this.fields = {};
+  this.length = 0;
+  this.pathMgr = pathManager;
+}
+
+FieldMap.prototype = {
+  add: function(fieldProps) {
+    var f = new Field(parseProps(fieldProps, this.pathMgr));
+    if( this.fields.hasOwnProperty(f.alias) ) {
+      throw new Error('Duplicate field alias ' + f.alias + '(' + f.key + ')');
+    }
+    if( f.path === null ) {
+      throw new Error('Invalid path specified for field ' + f.key + '; it was not in the paths ' +
+        'provided, which are : ' + this.pathMgr.getPathNames().join(','));
+    }
+    var dep = f.path.getDependency();
+    if(dep !== null && getDepField(this.fields, dep) === null) {
+      throw new Error('Dynamic paths must reference a field declared in the map. Please add ' +
+        FieldMap.key(dep.path, dep.field) + ' to the select() criteria before using it in a ' +
+        'dynamic field');
+    }
+    this.fields[f.alias] = f;
+    this.length++;
+  },
+
+  forEach: function(callback, context) {
+    return util.find(this.fields, callback, context) !== util.undef;
+  },
+
+  getField: function(fieldName) {
+    return this.fields[fieldName]||null;
+  },
+
+  getPath: function(pathName) {
+    return this.getPathManager().getPath(pathName);
+  },
+
+  getPathManager: function() {
+    return this.pathMgr;
+  },
+
+  pathFor: function(fieldName) {
+    var f = this.getField(fieldName);
+    return f? f.path : this.pathMgr.first();
+  },
+
+  fieldsFor: function(pathName) {
+    return util.filter(util.toArray(this.fields), function(f) {
+      return f.pathName === pathName;
+    });
+  },
+
+  aliasFor: function(url) {
+    var f = util.find(this.fields, function(f) {
+      return f.url === url;
+    }, this);
+    return f? f.alias : null;
+  },
+
+  /**
+   * Pulls data out of a snapshot aliased by the field map. Only keys in the field map
+   * will be returned. Always returns an object. Does not return a priority at the root
+   * level but will return priorities for all children. If the snapshot contains a primitive,
+   * an empty object will be returned.
+   *
+   * This is not intended to provide finalized values but instead to provide an object representation
+   * of each snapshot useful for merging snapshot data into a finalized value (see Record.mergeData)
+   *
+   * @param {object} snapshot a Firebase snapshot
+   * @param {boolean} [isExport]
+   * @returns {object}
+   */
+  extractData: function(snapshot, isExport) {
+    var out = {};
+    var pathName = this.pathMgr.getPathName(snapshot.ref().toString());
+    if( pathName === null && snapshot.ref().parent() !== null ) {
+      var parentPath = this.pathMgr.getPathFor(snapshot.ref().parent().toString());
+      if( parentPath && parentPath.hasDependency() ) {
+        pathName = parentPath.name();
+      }
+    }
+    var fx = isExport? 'exportVal' : 'val';
+    util.each(this.fieldsFor(pathName), function(f) {
+      switch(f.id) {
+        case '$key':
+          putIn(out, f.alias, snapshot.key());
+          break;
+        case '$value':
+          putIn(out, f.alias, snapshot[fx]());
+          break;
+        default:
+          if( snapshot.hasChild(f.id) ) {
+            putIn(out, f.alias, snapshot.child(f.id)[fx]());
+          }
+      }
+    });
+    return out;
+  },
+
+  /**
+   * Given an array of snapshots and an aliased fieldName, this will return the appropriate
+   * snapshot containing the corresponding field. If no snapshot matches a field in this map,
+   * it will return null.
+   *
+   * @param {Array} snaps a list of Firebase snapshots
+   * @param {String} fieldName
+   * @returns {object|null}
+   */
+  snapFor: function(snaps, fieldName) {
+    var url;
+    var path = this.pathFor(fieldName);
+    if( !path ) { return null; }
+    var dep = path.getDependency();
+    if( dep !== null ) {
+      var depField = getDepField(this.fields, dep);
+      var depSnap = this.snapFor(snaps, depField.alias);
+      if( depSnap ) {
+        if (dep.field === '$key') {
+          url = path.child(depSnap.key()).url();
+        }
+        else if (dep.field === '$value') {
+          url = path.child(depSnap.val()).url();
+        }
+        else {
+          url = path.child(depSnap.child(dep.field).val()).url();
+        }
+      }
+    }
+    else {
+      url = path.url();
+    }
+    if( url ) {
+      return util.find(snaps, function (snap) {
+          return snap.ref().toString() === url;
+        }) || null;
+    }
+    else {
+      return null;
+    }
+  },
+
+  /**
+   * Since data can be nested under child keys, this method returns a map of fields->data which
+   * is flattened for each key.
+   *
+   * @param {object} data
+   * @returns {object} an array containing [ [Path, Object]... ] where each object is a key/value store
+   */
+  denest: function(data) {
+    var out = {};
+    util.each(this.getPathManager().getPaths(), function(p) {
+      out[p.name()] = { path: p, data: {} };
+    });
+
+    this.forEach(function(field) {
+      var val = getOut(data, field.alias);
+      if( val !== util.undef ) {
+        switch(field.id) {
+          case '$value':
+            out[field.pathName].data = val;
+            break;
+          case '$key':
+            // do nothing
+            break;
+          default:
+            out[field.pathName].data[field.id] = val;
+        }
+      }
+    });
+    return out;
+  },
+
+  idFor: function(fieldName) {
+    var f = this.getField(fieldName);
+    if( !f ) { return fieldName; }
+    return f.id;
+  }
+};
+
+FieldMap.key = function(path, field) {
+  if( typeof path !== 'string' ) {
+    path = path.name();
+  }
+  return path + '.' + field;
+};
+
+FieldMap.fieldMap = function(map, fieldName) {
+  var childPath;
+  var field = map.getField(fieldName);
+  if( field ) {
+    childPath = field.path;
+    if( field.id !== '$value' ) {
+      childPath = childPath.child(field.id);
+    }
+  }
+  else {
+    childPath = map.pathFor(fieldName).child(fieldName);
+  }
+  var pm = new PathManager([childPath]);
+  var fm = new FieldMap(pm);
+  fm.add({key: FieldMap.key(childPath, '$value'), alias: fieldName});
+  return fm;
+};
+
+/**
+ * Fetch a list of paths suitable for use in a Record.
+ *
+ * @param {FieldMap} map to be copied
+ * @param {string} recordId the push id for the record
+ * @returns {FieldMap} a copy of the field map with paths ajusted down to the child node
+ */
+FieldMap.recordMap = function(map, recordId) {
+  var mgr = map.getPathManager();
+  var paths = util.map(mgr.getPaths(), function(p) {
+    return p.normChild(recordId);
+  });
+  var childMap = new FieldMap(new PathManager(paths));
+  map.forEach(function(field) {
+    childMap.add({key: field.key, alias: field.alias});
+  });
+  return childMap;
+};
+
+function getDepField(fields, dep) {
+  return util.find(fields, function(field) {
+    return field.pathName === dep.path && field.id === dep.field;
+  }) || null;
+}
+
+function Field(props) {
+  // these properties are considered public and accessed directly by other classes
+  this.path = props.path;
+  this.id = props.id;
+  this.key = props.key;
+  this.alias = props.alias;
+  this.url = props.url;
+  this.pathName = props.pathName;
+  this.isNested = props.alias.indexOf('.') >= 0;
+}
+
+function parseProps(propsRaw, pathMgr) {
+  if( propsRaw instanceof Field ) {
+    return util.pick(propsRaw, ['path', 'id', 'key', 'alias', 'pathName', 'url']);
+  }
+  else if( typeof(propsRaw) === 'string' ) {
+    propsRaw = { key: propsRaw };
+  }
+  var parts = propsRaw.key.split('.');
+  var path = pathMgr.getPath(parts[0]);
+  return {
+    pathName: parts[0],
+    id: parts[1],
+    key: propsRaw.key,
+    alias: propsRaw.alias || parts[1],
+    path: path,
+    //todo-dynamic-keys this isn't correct for dynamic fields :(
+    //todo-dynamic-keys and probably not for $value and $key either
+    url: path? path.url() + '/' + parts[1] : null
+  };
+}
+
+function putIn(data, alias, val) {
+  if( val === null ) { return; }
+  if( alias.indexOf('.') > 0 ) {
+    var parts = alias.split('.').reverse(), p;
+    while(parts.length > 1 && (p = parts.pop())) {
+      data = data[p] = util.has(data, p)? data[p] : {};
+    }
+    alias = parts.pop();
+  }
+  data[alias] = val;
+}
+
+function getOut(data, alias) {
+  var key = alias;
+  if( !util.isObject(data) ) { return util.undef; }
+  var val = data[alias];
+  if( alias.indexOf('.') > 0 ) {
+    var parts = alias.split('.').reverse();
+    val = data;
+    while(parts.length) {
+      key = parts.pop();
+      val = util.isObject(val) && val.hasOwnProperty(key)? val[key] : util.undef;
+    }
+  }
+  return val;
+}
+
+module.exports = FieldMap;
+},{"../../common":24,"./PathManager":10}],5:[function(require,module,exports){
+'use strict';
+
+var util = require('../../common');
+
+function Filter() {
+  this.criteria = [];
+  util.each(arguments, this.add, this);
+}
+
+Filter.prototype = {
+  add: function(fn) {
+    this.criteria.push(
+      new Condition(fn)
+    );
+  },
+  test: function(recordData, key, priority) {
+    return util.contains(this.criteria, function(cond) {
+      return !cond.test(recordData, key, priority);
+    }) === false;
+  }
+};
+
+function Condition(fn) {
+  this.match = fn;
+}
+
+Condition.prototype.test = function(data, key, priority) {
+  return this.match(data, key, priority) === true;
+};
+
+module.exports = Filter;
+},{"../../common":24}],6:[function(require,module,exports){
+'use strict';
+
+var util          = require('../../common');
+var PathManager   = require('./PathManager');
+var Filter        = require('./Filter');
+var FieldMap      = require('./FieldMap');
+var NormalizedRef = require('./NormalizedRef');
+var RecordSet     = require('./RecordSet');
+
+/**
+ * @param {...object} path
+ * @constructor
+ */
+function NormalizedCollection(path) { //jshint unused:vars
+  assertPaths(arguments);
+  this.pathMgr = new PathManager(arguments);
+  this.map = new FieldMap(this.pathMgr);
+  this.filters = new Filter();
+  this.finalized = false;
+}
+
+NormalizedCollection.prototype = {
+  select: function(fieldName) { //jshint unused:vars
+    assertNotFinalized(this, 'select');
+    var args = util.args('NormalizedCollection.select', arguments, 1);
+    util.each(args.restAsList(0, ['string', 'object']), function(f) {
+      assertValidField(f);
+      this.map.add(f);
+    }, this);
+    return this;
+  },
+
+  filter: function(matchFn) { //jshint unused:vars
+    assertNotFinalized(this, 'filter');
+    var args = util.args('NormalizedCollection.filter', arguments, 1, 1);
+    this.filters.add(
+      args.nextReq('function')
+    );
+    return this;
+  },
+
+  ref: function() {
+    if( !this.map.length ) {
+      throw new Error('Must call select() with at least one field' +
+        ' before creating a ref');
+    }
+    this.finalized = true;
+    if( util.log.isInfoEnabled() ) {
+      util.log.info('NormalizedRef created using %s', buildDebugString(this));
+    }
+    var recordSet = new RecordSet(this.map, this.filters);
+    return new NormalizedRef(recordSet);
+  }
+};
+
+function assertPaths(args) {
+  if( args.length < 1 ) {
+    throw new Error('Must provide at least one path definition');
+  }
+  function notValidRef(p) {
+    if( util.isArray(p) ) {
+      p = p[0];
+    }
+    return !util.isFirebaseRef(p);
+  }
+  if( util.contains(args, notValidRef) ) {
+    throw new Error('Each argument to the NormalizedCollection constructor must be a ' +
+      'valid Firebase reference or an Array containing a Firebase ref as the first argument');
+  }
+}
+
+function assertNotFinalized(self, m) {
+  if( self.finalized ) {
+    throw new Error('Cannot call ' + m + '() after ref() has been invoked');
+  }
+}
+
+function buildDebugString(nc) {
+  var paths = [];
+  var selects = [];
+  var filter = '';
+
+  util.each(nc.pathMgr.getPaths(), function(p) {
+    var dep = p.getDependency();
+    paths.push(
+      util.printf('\t"%s%s"%s',
+        p.url(),
+        p.id() === p.name()? '' : ' as ' + p.name(),
+        dep? '-> ' + dep.path + '.' + dep.field : ''
+      )
+    );
+  });
+
+  nc.map.forEach(function(f) {
+    selects.push(util.printf('"%s%s"', f.key, f.alias === f.id? '' : ' as ' + f.alias));
+    if( selects.length % 5 === 0 ) {
+      selects.push('\n');
+    }
+  });
+
+  if(nc.filters.criteria.length > 0) {
+    filter = util.printf('<%s filters applied>', nc.filters.criteria.length);
+  }
+
+  return util.printf('NormalizedCollection(\n%s\n).select(%s)%s.ref()', paths.join('\n'), selects.join(', '), filter);
+}
+
+function assertValidField(f) {
+  var k;
+  if( typeof f === 'string' ) {
+    k = f;
+  }
+  else {
+    k = util.has(f, 'key')? f.key : util.undef;
+  }
+  if( typeof k !== 'string' || k.indexOf('.') <= 0 ) {
+    throw new Error('Each field passed to NormalizedCollection.select() must either be a string ' +
+    'in the format "pathAlias.fieldId", or an object in the format ' +
+    '{key: "pathAlias.fieldId", alias: "any_name_for_field"}, but I received ' + JSON.stringify(f));
+  }
+}
+
+module.exports = NormalizedCollection;
+},{"../../common":24,"./FieldMap":4,"./Filter":5,"./NormalizedRef":7,"./PathManager":10,"./RecordSet":14}],7:[function(require,module,exports){
+'use strict';
+
+var util      = require('../../common');
+var Query     = require('./Query');
+
+function NormalizedRef(record, parent) {
+  this._super(this, record);
+  this._parent = parent||null;
+  this._key = record.getName();
+  this._toString = record.getUrl();
+}
+
+util.inherits(NormalizedRef, Query, {
+  'child': function(fieldName) {
+    var parts = fieldName.split('/').reverse(); // pop is faster than shift
+    var parent = this;
+    var ref = this;
+    while(parts.length) {
+      var key = parts.pop();
+      ref = new NormalizedRef(ref.$getRecord().makeChild(key), parent);
+      parent = ref;
+    }
+    return ref;
+  },
+
+  'parent': function() {
+    return this._parent;
+  },
+
+  'root': function() {
+    var p = this;
+    while(p.parent() !== null) {
+      p = p.parent();
+    }
+    return p;
+  },
+
+  /** @deprecated */
+  'name': function() {
+    console.warn('The name() function has been deprecated. Use key() instead.');
+    return this.key();
+  },
+
+  'key': function() {
+    return this._key;
+  },
+
+  'toString': function() {
+    return this._toString;
+  },
+
+  //todo have set, update, push, remove attempt to revert any partial commits
+  //todo by running a transaction and, if the value is still the "new" partial
+  //todo value, then revert it to the old complete value
+
+  'set': function(data, callback, context) {
+    this.$getRecord().saveData(data, {callback: callback, context: context, isUpdate: false});
+  },
+
+  'update': function(data, callback, context) {
+    this.$getRecord().saveData(data, {callback: callback, context: context, isUpdate: true});
+  },
+
+  'remove': function(callback, context) {
+    this.$getRecord().saveData(null, {callback: callback, context: context, isUpdate: false});
+  },
+
+  'push': function(data, callback, context) { // jshint unused:false
+    var uid = this.$getMaster().push().key();
+    var child = this.child(uid);
+    if( arguments.length ) {
+      child.set.apply(child, arguments);
+    }
+    return child;
+  },
+
+  'setWithPriority': function(data, priority, callback, context) {
+    this.$getRecord().saveData(data, {
+      callback: callback, context: context, isUpdate: false, priority: priority
+    });
+  },
+
+  'setPriority': function(priority, callback, context) {
+    this.$getMaster().setPriority(priority, callback, context);
+  },
+
+  /****************************
+   * WRAPPER FUNCTIONS
+   ****************************/
+  'auth': wrapMaster('auth'),
+  'unauth': wrapMaster('unauth'),
+  'authWithCustomToken': wrapMaster('authWithCustomToken'),
+  'authAnonymously': wrapMaster('authAnonymously'),
+  'authWithPassword': wrapMaster('authWithPassword'),
+  'authWithOAuthPopup': wrapMaster('authWithOAuthPopup'),
+  'authWithOAuthRedirect': wrapMaster('authWithOAuthRedirect'),
+  'authWithOAuthToken': wrapMaster('authWithOAuthToken'),
+  'getAuth': wrapMaster('getAuth'),
+  'onAuth': wrapMaster('onAuth'),
+  'offAuth': wrapMaster('offAuth'),
+  'createUser': wrapMaster('createUser'),
+  'changePassword': wrapMaster('changePassword'),
+  'removeUser': wrapMaster('removeUser'),
+  'resetPassword': wrapMaster('resetPassword'),
+  'changeEmail': wrapMaster('changeEmail'),
+
+  'goOffline': wrapAll('goOffline'),
+  'goOnline': wrapAll('goOnline'),
+
+  /****************************
+   * UNSUPPORTED FUNCTIONS
+   ***************************/
+  'transaction': notSupported('transaction'), //todo use field map to pick fields and apply to each
+  'onDisconnect': notSupported('onDisconnect') //todo use field map to pick fields and apply to each
+});
+
+function wrapAll(method) {
+  return function() {
+    var args = util.toArray(arguments);
+    util.each(this.$getPaths(), function(p) {
+      var ref = p.ref();
+      ref[method].apply(ref, args);
+    });
+  };
+}
+
+function wrapMaster(method) {
+  return function() {
+    var args = util.toArray(arguments);
+    var ref = this.$getMaster();
+    return ref[method].apply(ref, args);
+  };
+}
+
+function notSupported(method) {
+  return function() {
+    throw new Error(method + ' is not supported for NormalizedCollection references. ' +
+      'Try calling it on the original reference used to create the NormalizedCollection instead.');
+  };
+}
+
+module.exports = NormalizedRef;
+},{"../../common":24,"./Query":11}],8:[function(require,module,exports){
+'use strict';
+
+var util = require('../../common');
+
+function NormalizedSnapshot(ref, snaps) {
+  this._ref = ref;
+  this._rec = ref.$getRecord();
+  if( !util.isArray(snaps) ) {
+    throw new Error('Must provide an array of snapshots to merge');
+  }
+  this._pri = this._rec.getPriority(snaps);
+  this._snaps = snaps;
+}
+
+NormalizedSnapshot.prototype = {
+  val: function() {
+    if( !this._snaps.length ) {
+      return null;
+    }
+    return this._rec.mergeData(this._snaps, false);
+  },
+
+  child: function(key) {
+    var snap;
+    // keys may contain / to separate nested child paths
+    // so make a list of child keys (we reverse it once
+    // as this is faster than unshift() on each iteration)
+    var childParts = key.split('/').reverse();
+    // grab the first key and get the child snapshot
+    var firstChildName = childParts.pop();
+    snap = new NormalizedSnapshot(
+      this._ref.child(firstChildName),
+      this._rec.getChildSnaps(this._snaps, firstChildName)
+    );
+    // iterate any nested keys and keep calling child on them
+    while(childParts.length) {
+      snap = snap.child(childParts.pop());
+    }
+    return snap;
+  },
+
+  forEach: function(cb, context) {
+    return this._rec.forEachKey(this._snaps, function(childId, childAlias) {
+      if( childId === '$value' || childId === '$key' ) { return false; }
+      return cb.call(context, this.child(childAlias));
+    }, this);
+  },
+
+  hasChild: function(key) {
+    //todo optimize and/or memoize?
+    var parts = key.split('/').reverse();
+    var res = parts.length > 0;
+    var nextRef = this._ref;
+    var nsnap = this;
+    while(res && parts.length) {
+      var nextKey = parts.pop();
+      res = nextRef.$getRecord().hasChild(nsnap._snaps, nextKey);
+      if( res && parts.length ) {
+        nextRef = nextRef.child(nextKey);
+        nsnap = nsnap.child(nextKey);
+      }
+    }
+    return res;
+  },
+
+  /**
+   * Returns true if this snapshot has any child data. Does not return true for $key or $value
+   * fields.
+   *
+   * @returns {boolean}
+   */
+  hasChildren: function() {
+    // if there are any keys to iterate, and that key is not $key or $value
+    // then we have children
+    return this._rec.forEachKey(this._snaps, function(id) {
+      return id !== '$key' && id !== '$value';
+    });
+  },
+
+  /** @deprecated */
+  name: function() {
+    console.warn('name() has been deprecated. Use key() instead.');
+    return this.key();
+  },
+
+  key: function() {
+    return this._rec.getName();
+  },
+
+  numChildren: function() {
+    //todo-bug does not account for nested aliases (they will change the count here)
+    var ct = 0;
+    this._rec.forEachKey(this._snaps, function(id) {
+      if( id !== '$key' && id !== '$value' ) { ct++; }
+    });
+    return ct;
+  },
+
+  ref: function() { return this._ref.ref(); },
+
+  getPriority: function() { return this._pri; },
+
+  exportVal: function() {
+    return this._rec.mergeData(this._snaps, true);
+  },
+
+  exists: function() {
+    return this.val() !== null;
+  }
+};
+
+module.exports = NormalizedSnapshot;
+},{"../../common":24}],9:[function(require,module,exports){
+'use strict';
+
+var util = require('../../common');
+
+function Path(pathProps, parent) {
+  var props = parseProps(pathProps);
+  this._ref = props.ref;
+  this._alias = props.alias;
+  this._dep = props.dep;
+  this._parent = parent || null;
+}
+
+Path.prototype = {
+  ref: function() { return this._ref; },
+  reff: function() { return this.ref().ref(); },
+  child: function(key) {
+    return new Path(this.reff().child(key), this);
+  },
+  normChild: function(key) {
+    var dep = this.getDependency();
+    if( dep !== null ) {
+      return new Path([this.reff(), this.name(), dep.path+'.'+dep.field], this);
+    }
+    else {
+      return new Path([this.reff().child(key), this.name()], this);
+    }
+  },
+  hasDependency: function() {
+    return this._dep !== null;
+  },
+  getDependency: function() {
+    return this._dep;
+  },
+  url: function() { return this.reff().toString(); },
+  name: function() { return this._alias; },
+  id: function() { return this.reff().key(); },
+  parent: function() { return this._parent; },
+  clone: function() {
+    return new Path([this._ref, this._alias, this._dep], this._parent);
+  }
+};
+
+function parseProps(props) {
+  var ref, alias, dep = null;
+  if( util.isArray(props) ) {
+    ref = props[0];
+    alias = props[1];
+    dep = props[2];
+  }
+  else if( util.isFunction(props.ref) ) {
+    ref = props.ref();
+  }
+  else {
+    ref = props;
+  }
+  return {
+    ref: ref, alias: alias||ref.key(), dep: parseDep(dep)
+  };
+}
+
+function parseDep(dep) {
+  if(util.isObject(dep) ) {
+    return dep;
+  }
+  else if( dep ) {
+    var parts = dep.split('.');
+    return { path: parts[0], field: parts[1] };
+  }
+  return null;
+}
+
+module.exports = Path;
+},{"../../common":24}],10:[function(require,module,exports){
+'use strict';
+
+var Path = require('./Path');
+var util = require('../../common');
+
+function PathManager(paths) {
+  this.paths = [];
+  this.pathsByUrl = {};
+  this.deps = {};
+  this.pathNames = [];
+  util.each(paths, this.add, this);
+}
+
+PathManager.prototype = {
+  add: function(pathProps) {
+    var path = pathProps instanceof Path? pathProps.clone() : new Path(pathProps);
+    if( !this.paths.length && path.hasDependency() ) {
+      throw new Error('The master path (i.e. the first) may not declare a dependency.' +
+        ' Perhaps you have put the wrong path first in the list?');
+    }
+    if( util.has(this.pathsByUrl, path.url()) ) {
+      throw new Error('Duplicate path: ' + path.url());
+    }
+    if( util.contains(this.pathNames, path.name()) ) {
+      throw new Error('Duplicate path name. The .key() value for each path must be unique, or you ' +
+          'can give each a path an alias by using [firebaseRef, alias] in the constructor. The aliases ' +
+          'must also be unique.');
+    }
+    this._map(path);
+    this.paths.push(path);
+    this.pathsByUrl[path.url()] = path.name();
+    this.pathNames.push(path.name());
+  },
+
+  count: function() {
+    return this.paths.length;
+  },
+
+  first: function() {
+    return this.paths[0];
+  },
+
+  getPath: function(pathName) {
+    return util.find(this.paths, function(p) {
+      return p.name() === pathName;
+    })||null;
+  },
+
+  getPathFor: function(url) {
+    var n = this.getPathName(url);
+    return n? this.getPath(n) : null;
+  },
+
+  getPaths: function() {
+    return this.paths.slice();
+  },
+
+  getPathName: function(url) {
+    return this.pathsByUrl[url] || null;
+  },
+
+  getPathNames: function() {
+    return this.pathNames.slice();
+  },
+
+  getUrls: function() {
+    return util.keys(this.pathsByUrl);
+  },
+
+  //todo remove?
+  getDependencyGraph: function() {
+    return util.extend(true, this.deps);
+  },
+
+  _map: function(path) {
+    var first = this.first();
+    var dep = path.getDependency();
+    if( !dep && first ) {
+      dep = { path: first.name(), field: '$key' };
+    }
+    if( dep ) {
+      this.deps[path.name()] = dep;
+      this._assertNotCircularDep(path.name());
+    }
+  },
+
+  _assertNotCircularDep: function(pathName) {
+    var map = [pathName], dep = this.deps[pathName];
+    while(util.isDefined(dep)) {
+      var p = dep.path;
+      if(util.contains(map, p)) {
+        map.push(p); // adds it into the error message chain
+        throw new Error('Circular dependencies in paths: ' + depChain(map, this.deps));
+      }
+      map.push(p);
+      dep = util.val(this.deps, p);
+    }
+  }
+};
+
+function depChain(map, deps) {
+  return util.map(map, function(p) {
+    return deps[p].path + '.' + deps[p].field;
+  }).join(' >> ');
+}
+
+module.exports = PathManager;
+},{"../../common":24,"./Path":9}],11:[function(require,module,exports){
+'use strict';
+
+var util = require('../../common');
+var Transmogrifier = require('./Transmogrifier');
+
+function Query(ref, record) {
+  var self = this;
+  self._ref = ref;
+  self._rec = record;
+  // necessary because util.inherit() can only call classes with an empty constructor
+  // so we can't depend on the params existing for that call
+  if( record ) { record.setRef(self); } //todo don't like this here, is awkward coupling
+}
+
+Query.prototype = {
+  'on': function(event, callback, cancel, context) {
+    if( arguments.length === 3 && util.isObject(cancel) ) {
+      context = cancel;
+      cancel = util.undef;
+    }
+    this.$getRecord().watch(event, callback, cancel, context);
+  },
+
+  'once': function(event, callback, cancel, context) {
+    var self = this;
+    if( arguments.length === 3 && util.isObject(cancel) ) {
+      context = cancel;
+      cancel = util.undef;
+    }
+    function successHandler(snap) {
+      self.off(event, successHandler);
+      callback.call(context, snap);
+    }
+
+    function cancelHandler(err) {
+      if( typeof(cancel) === 'function' && err !== null ) {
+        cancel.call(context, err);
+      }
+    }
+
+    this.on(event, successHandler, cancelHandler);
+  },
+
+  'off': function(event, callback, context) {
+    this.$getRecord().unwatch(event, callback, context);
+  },
+
+  /************************************
+   * Wrapped functions
+   ************************************/
+
+  'orderByChild': function() {
+    return this.$replicate('orderByChild', util.toArray(arguments));
+  },
+
+  'orderByKey': function() {
+    return this.$replicate('orderByKey', util.toArray(arguments));
+  },
+
+  'orderByPriority': function() {
+    return this.$replicate('orderByPriority', util.toArray(arguments));
+  },
+
+  'limitToFirst': function() {
+    return this.$replicate('limitToFirst', util.toArray(arguments));
+  },
+
+  'limitToLast': function() {
+    return this.$replicate('limitToLast', util.toArray(arguments));
+  },
+
+  /** @deprecated */
+  'limit': function() {
+    return this.$replicate('limit', util.toArray(arguments));
+  },
+
+  'startAt': function() {
+    return this.$replicate('startAt', util.toArray(arguments));
+  },
+
+  'endAt': function() {
+    return this.$replicate('endAt', util.toArray(arguments));
+  },
+
+  'equalTo': function() {
+    return this.$replicate('equalTo', util.toArray(arguments));
+  },
+
+  'ref': function() { return this._ref; },
+
+  /****************************
+   * PACKAGE FUNCTIONS (not API)
+   ***************************/
+
+  /** @returns {Record} */
+  '$getRecord': function() { return this._rec; },
+
+  /** @return {Firebase} */
+  '$getMaster': function() { return this._rec.getPathManager().first().ref(); },
+
+  /** @return {Array} */
+  '$getPaths': function() { return this._rec.getPathManager().getPaths(); },
+
+  /**
+   * @param {String} method
+   * @param {Array|arguments} args
+   * @returns {Query}
+   */
+  '$replicate': function(method, args) {
+    var rec = this.$getRecord();
+    var ref = this.$getMaster();
+    ref = ref[method].apply(ref, args);
+    return new Query(this._ref, Transmogrifier.replicate(rec, ref));
+  }
+};
+
+util.registerFirebaseWrapper(Query);
+module.exports = Query;
+},{"../../common":24,"./Transmogrifier":16}],12:[function(require,module,exports){
+'use strict';
+
+var FieldMap           = require('./FieldMap');
+var RecordField        = require('./RecordField');
+var AbstractRecord     = require('./AbstractRecord');
+var util               = require('../../common');
+
+function Record(fieldMap) {
+  var name = fieldMap.getPathManager().first().id();
+  var url = util.mergeToString(fieldMap.getPathManager().getUrls());
+  this._super(fieldMap, name, url);
+  this._eventManagers = {};
+  util.log.debug('Record created', this.getName(), this.getUrl());
+}
+
+util.inherits(Record, AbstractRecord, {
+  makeChild: function(key) {
+    var fm = FieldMap.fieldMap(this.getFieldMap(), key);
+    return new RecordField(fm);
+  },
+
+  hasChild: function(snaps, key) {
+    var field = this.getFieldMap().getField(key);
+    if( !field ) { return false; }
+    var snap = this.getFieldMap().snapFor(snaps, key);
+    return snap !== null && snap.hasChild(key);
+  },
+
+  getChildSnaps: function(snaps, fieldName) {
+    var child;
+    var snap = this.getFieldMap().snapFor(snaps, fieldName);
+    var field = this.getFieldMap().getField(fieldName);
+    if( !field ) {
+      child = snap.child(fieldName);
+    }
+    else {
+      switch(field.id) {
+        case '$key':
+          throw new Error('Cannot get child snapshot from key (not a real child element)');
+        case '$value':
+          child = snap;
+          break;
+        default:
+          child = snap.child(field.id);
+      }
+    }
+    return [child];
+  },
+
+  /**
+   * Given a list of snapshots to iterate, returns the valid keys
+   * which exist in both the snapshots and the field map, in the
+   * order they should be iterated.
+   *
+   * Calls iterator with a {string|number} key for the next field to
+   * iterate only.
+   *
+   * If iterator returns true, this method should abort and return true,
+   * otherwise it should return false (same as Snapshot.forEach).
+   *
+   * @param {Array} snaps
+   * @param {function} iterator
+   * @param {object} [context]
+   * @return {boolean} true if aborted
+   * @abstract
+   */
+  forEachKey: function(snaps, iterator, context) {
+    function shouldIterate(snap, fieldId) {
+      switch(fieldId) {
+        case '$key':
+          return true;
+        case '$value':
+          return snap && snap.val() !== null;
+        default:
+          return snap && snap.hasChild(fieldId);
+      }
+    }
+    var map = this.getFieldMap();
+    return map.forEach(function(field) {
+      var snap = map.snapFor(snaps, field.alias);
+      if( shouldIterate(snap, field.id) ) {
+        return iterator.call(context, field.id, field.alias) === true;
+      }
+      return false;
+    });
+  },
+
+  /**
+   * Merge the data by iterating the snapshots in reverse order
+   * so that keys from later paths do not overwrite keys from earlier paths
+   *
+   * @param {Array} snaps list of snapshots to be merged
+   * @param {boolean} isExport true if exportVal() was called
+   * @returns {Object}
+   */
+  mergeData: function(snaps, isExport) {
+    var map = this.getFieldMap();
+    var data = util.extend.apply(null, util.map(snaps, function(ss) {
+      return map.extractData(ss, isExport);
+    }));
+    if( isExport && snaps.length > 0 && snaps[0].getPriority() !== null ) {
+      if( !util.isObject(data) ) {
+        data = {'.value': data};
+      }
+      data['.priority'] = snaps[0].getPriority();
+    }
+    return data;
+  },
+
+  getPriority: function(snaps) {
+    return snaps[0].getPriority();
+  },
+
+  getClass: function() { return Record; },
+
+  saveData: function(data, props) {
+    var q = util.queue();
+    var map = this.getFieldMap();
+    var paths = this.getPathManager().getPaths();
+    if( props.isUpdate && !util.isObject(data) ) {
+      throw new Error('First argument to update() command must be an object');
+    }
+    if( data === null ) {
+      util.each(paths, function(p) {
+        if( !p.hasDependency() ) {
+          p.reff().remove(q.getHandler());
+        }
+      });
+    }
+    else if(util.isObject(data)) {
+      var denestedData = map.denest(data);
+      util.each(denestedData, function(parts) {
+        var path = parts.path;
+        var dataForPath = parts.data;
+        var ref = this._writeRef(denestedData, path);
+        if( ref !== null ) {
+          if( !util.isEmpty(dataForPath) || !props.isUpdate ) {
+            if( !util.isObject(dataForPath) ) {
+              dataForPath = {'.value': dataForPath};
+            }
+            if( !props.isUpdate ) {
+              addEmptyFields(map, path, dataForPath);
+            }
+            if( util.isDefined(props.priority) ) {
+              dataForPath['.priority'] = props.priority;
+            }
+            if( util.has(dataForPath, '.value') ) {
+              ref.set(dataForPath, q.getHandler());
+            }
+            else {
+              ref.update(dataForPath, q.getHandler());
+            }
+          }
+        }
+        else {
+          util.log.info('No dynamic key found for master', paths[0].ref().toString(), 'with dynamic path', path.ref().toString());
+        }
+      }, this);
+    }
+    else if( paths.length === 1 ) {
+      if( util.isDefined(props.priority) ) {
+        paths[0].ref().setWithPriority(data, props.priority, q.getHandler());
+      }
+      else {
+        paths[0].ref().set(data, q.getHandler());
+      }
+    }
+    else {
+      throw new Error('Cannot set multiple paths to a non-object value. ' +
+        'Since this is a NormalizedCollection, the data will be split between the paths. ' +
+        'But I can\'t split a primitive value');
+    }
+    q.handler(props.callback||util.noop, props.context);
+  },
+
+  getName: function() {
+    return this._name;
+  },
+
+  getUrl: function() {
+    return this._url;
+  },
+
+  _start: function(event) {
+    if( !util.has(this._eventManagers, event) ) {
+      util.log.debug('Record._start: event=%s, url=%s', event, this.getUrl());
+      this._eventManagers[event] = event === 'value'?
+        new ValueEventManager(this) : new ChildEventManager(event, this);
+    }
+    this._eventManagers[event].start();
+  },
+
+  _stop:   function(event) {
+    if (util.has(this._eventManagers, event)) {
+      util.log.debug('Record._stop: event=%s, url=%s', event, this.getUrl());
+      this._eventManagers[event].stop();
+    }
+  },
+
+  _writeRef: function(denestedData, path) {
+    var ref = path.reff();
+    var dep = path.getDependency();
+    if( dep !== null ) {
+      var depPath = this.getPathManager().getPath(dep.path);
+      var key = this._depKey(denestedData, depPath, dep.field);
+      ref = key === null? null : ref.child(key);
+    }
+    return ref;
+  },
+
+  _depKey: function(denestedData, path, fieldId) {
+    var key;
+    var dat = denestedData[path.name()].data;
+    switch(fieldId) {
+      case '$key':
+        key = path.id();
+        break;
+      case '$value':
+        key = util.has(dat, '.value')? dat['.value'] : util.isEmpty(dat)? null : dat;
+        break;
+      default:
+        key = util.has(dat, fieldId)? dat[fieldId] : null;
+    }
+    var type = typeof key;
+    if( key !== null && type !== 'string' ) {
+      throw new Error(
+          'Dynamic key values must be a string. Type was ' +
+          type + ' for ' + path.ref().toString() + '->' + fieldId
+      );
+    }
+    return key;
+  }
+});
+
+function ValueEventManager(rec) {
+  this.rec = rec;
+  this.pm = rec.getPathManager();
+  this.running = false;
+  this._init();
+}
+
+ValueEventManager.prototype = {
+  start: function() {
+    if( !this.running ) {
+      this.running = true;
+      util.each(this.pm.getPathNames(), this._startPath, this);
+    }
+  },
+
+  stop: function() {
+    if( this.running ) {
+      this.running = false;
+      util.each(this.subs, function(fn) {
+        fn();
+      });
+      this._init();
+    }
+  },
+
+  update: function(pathName, snap) {
+    this.snaps[pathName] = snap;
+    this._checkLoadState();
+    util.log('Record.ValueEventManager.update: url=%s, loadCompleted=%s', snap.ref().toString(), this.loadCompleted);
+    if( this.loadCompleted ) {
+      this.rec.handler('value')(util.toArray(this.snaps));
+    }
+  },
+
+  _startPath: function(pathName) {
+    var self = this;
+    var path = self.pm.getPath(pathName);
+    var fn = util.bind(self.update, self, pathName);
+    if( path.hasDependency() ) {
+      var dyno = new Dyno(path, this.rec.getFieldMap(), 'value', fn);
+      this.subs.push(dyno.dispose);
+    }
+    else {
+      path.ref().on('value', fn);
+      self.subs.push(function() {
+        path.ref().off('value', fn);
+      });
+    }
+  },
+
+  _checkLoadState: function() {
+    if( this.loadCompleted ) { return; }
+    var snaps = this.snaps;
+    var pathNames = this.pm.getPathNames();
+    this.loadCompleted = !util.contains(pathNames, function(p) {
+      return !snaps.hasOwnProperty(p);
+    });
+  },
+
+  _init: function() {
+    this.loadCompleted = false;
+    this.snaps = {};
+    this.subs = [];
+  }
+};
+
+function ChildEventManager(event, rec) {
+  this.event = event;
+  this.rec = rec;
+  this.map = rec.getFieldMap();
+  this.pm = rec.getPathManager();
+  this.subs = [];
+  this.dyno = null;
+}
+
+ChildEventManager.prototype = {
+  start: function() {
+    util.each(this.pm.getPathNames(), function(pathName) {
+      var event = this.event;
+      var path = this.pm.getPath(pathName);
+      var fn = util.bind(this.update, this);
+      if( path.hasDependency() ) {
+        this.dyno = new Dyno(path, this.map, event, fn);
+        this.subs.push(this.dyno.dispose);
+      }
+      else {
+        path.ref().on(event, fn);
+        this.subs.push(function() {
+          path.ref().off(event, fn);
+        });
+      }
+    }, this);
+  },
+
+  stop: function() {
+    util.each(this.subs, function(fn) {
+      fn();
+    });
+    this.subs = [];
+  },
+
+  update: function(snap, prev) {
+    if( snap !== null && this.map.aliasFor(snap.ref().toString()) !== null ) {
+      var args = [snap.key(), snap];
+      if( prev !== util.undef ) { args.push(prev); }
+      util.log('Record.ChildEventManager.update: event=%s, key=%s/%s', this.event, snap.ref().parent().key(), snap.key());
+      this.rec.handler(this.event).apply(this.rec, args);
+    }
+  }
+};
+
+/**
+ * Process a path which depends on the value of another field. We have
+ * to monitor the field it depends on for value events and update
+ * the ref that we listen on whenever the id is modified.
+ *
+ * @param {Path} path
+ * @param {FieldMap } fieldMap
+ * @param {string} event
+ * @param {function} updateFn
+ * @constructor
+ */
+function Dyno(path, fieldMap, event, updateFn) {
+  var dep = path.getDependency();
+  var depPath = fieldMap.getPath(dep.path);
+  var depRef = depPath.ref();
+  if( dep.field === '$key' ) {
+    throw new Error('Dynamic paths do not support $key (you should probably just join on this path)');
+  }
+  if( dep.field !== '$value' ) {
+    depRef = depRef.child(dep.field);
+  }
+  var ref;
+
+  // establish our listener at the field which contains the id of our ref
+  var depFn = depRef.on('value', function(snap) {
+    if( ref && ref.key() !== snap.val() ) {
+      util.log.debug('Record.Dyno: stopped monitoring %s', ref.toString());
+      // any time the id changes, remove the old listener
+      ref.off(event, updateFn);
+      updateFn(null);
+    }
+    if( snap.val() !== null ) {
+      // establish our listener at the correct dynamic id for values
+      ref = path.ref().child(snap.val());
+      ref.on(event, updateFn);
+      util.log('Record.Dyno: monitoring %s', ref.toString()); //debug
+    }
+  });
+
+  // create a dispose method that can turn off all our event listeners
+  // when _stop is called
+  this.dispose = function() {
+    depRef.off('value', depFn);
+    if( ref ) {
+      ref.off(event, updateFn);
+    }
+  };
+}
+
+function addEmptyFields(map, path, dataToSave) {
+  util.each(map.fieldsFor(path.name()), function(f) {
+    switch(f.id) {
+      case '$key':
+        // ignore key
+        break;
+      case '$value':
+        if( !util.has(dataToSave, '.value') ) {
+          dataToSave['.value'] = null;
+        }
+        break;
+      default:
+        if( !util.has(dataToSave, f.id) ) {
+          dataToSave[f.id] = null;
+        }
+    }
+  });
+}
+
+module.exports = Record;
+},{"../../common":24,"./AbstractRecord":3,"./FieldMap":4,"./RecordField":13}],13:[function(require,module,exports){
+'use strict';
+
+var PathManager        = require('./PathManager');
+var FieldMap           = require('./FieldMap');
+var AbstractRecord     = require('./AbstractRecord');
+var util               = require('../../common');
+
+function RecordField(fieldMap) {
+  this.path = fieldMap.getPathManager().first();
+  this._super(fieldMap, this.path.name(), this.path.url());
+  if( fieldMap.getPathManager().count() !== 1 ) {
+    throw new Error('RecordField must have exactly one path, but we got '+ fieldMap.getPathManager().count());
+  }
+  if( fieldMap.length !== 1 ) {
+    throw new Error('RecordField must have exactly one field, but we found '+ fieldMap.length);
+  }
+  util.log.debug('RecordField created', this.getName(), this.getUrl());
+}
+
+util.inherits(RecordField, AbstractRecord, {
+  makeChild: function(key) {
+    var pm = new PathManager([this.path.child(key)]);
+    var fm = new FieldMap(pm);
+    fm.add({key: FieldMap.key(pm.first(), '$value'), alias: key});
+    return new RecordField(fm);
+  },
+
+  hasChild: function(snaps, key) {
+    return snaps[0].hasChild(key);
+  },
+
+  getChildSnaps: function(snaps, fieldName) {
+    // there is exactly one snap and there are no aliases to deal with
+    return [snaps[0].child(fieldName)];
+  },
+
+  /**
+   * There is nothing to merge at this level because there is only one
+   * path and no field map
+   *
+   * @param {Array} snaps list of snapshots to be merged
+   * @param {boolean} isExport true if exportVal() was called
+   * @returns {Object}
+   */
+  mergeData: function(snaps, isExport) {
+    return isExport? snaps[0].exportVal() : snaps[0].val();
+  },
+
+  getPriority: function(snaps) {
+    return snaps[0].getPriority();
+  },
+
+  /**
+   * Iterates all keys of snapshot.
+   *
+   * Calls iterator with a {string|number} key for the next field to
+   * iterate only.
+   *
+   * If iterator returns true, this method should abort and return true,
+   * otherwise it should return false (same as Snapshot.forEach).
+   *
+   * @param {Array} snaps
+   * @param {function} iterator
+   * @param {object} [context]
+   * @return {boolean} true if aborted
+   * @abstract
+   */
+  forEachKey: function(snaps, iterator, context) {
+    var firstSnap = snaps[0];
+    return firstSnap.forEach(function(ss) {
+      iterator.call(context, ss.key(), ss.key());
+    });
+  },
+
+  saveData: function(data, opts) {
+    var ref = this.path.ref();
+    if( opts.isUpdate ) {
+      if( !util.isObject(data) ) {
+        throw new Error('When using update(), the data must be an object.');
+      }
+      if( util.has(opts, 'priority') ) {
+        data['.priority'] = opts.priority;
+      }
+      ref.update(data, wrapCallback(opts));
+    }
+    else if( util.has(opts, 'priority') ) {
+      ref.setWithPriority(data, opts.priority, wrapCallback(opts));
+    }
+    else {
+      ref.set(data, wrapCallback(opts));
+    }
+  },
+
+  getClass: function() { return RecordField; },
+
+  _start: function(event) {
+    this.path.ref().on(event, this.handler(event), this._cancel, this);
+  },
+
+  _stop:   function(event) {
+    this.path.ref().off(event, this.handler(event), this);
+  }
+});
+
+function wrapCallback(opts) {
+  if( opts.callback ) {
+    return function() {
+      opts.callback.apply(opts.context, arguments);
+    };
+  }
+  else {
+    return util.noop;
+  }
+}
+
+module.exports = RecordField;
+},{"../../common":24,"./AbstractRecord":3,"./FieldMap":4,"./PathManager":10}],14:[function(require,module,exports){
+'use strict';
+
+var Record = require('./Record');
+var AbstractRecord = require('./AbstractRecord');
+var util = require('../../common');
+var FieldMap = require('./FieldMap');
+var RecordSetEventManager = require('./RecordSetEventManager');
+
+/**
+ * A "Record" (see AbstractRecord) represents a merged set of data used by NormalizedRef.
+ * It is used by NormalizedRef to create snapshots and monitor Firebase for data changes.
+ *
+ * A RecordSet represents the root level of NormalizedCollection's output. It is a list of
+ * collections (from multiple paths in Firebase) to be joined together.
+ *
+ * This is, for the purposes of a NormalizedCollections, the root of the data. Calls to parent()
+ * from here should return null, just like they would from the root of a Firebase. This is because
+ * the parent of a normalized collection is ambiguous, so there is no higher level of data.
+ *
+ * @param fieldMap this is the field map to be applied to each Record created when calling child()
+ * @param whereClause this filters the output data and events
+ * @constructor
+ */
+function RecordSet(fieldMap, whereClause) {
+  var name = util.mergeToString(fieldMap.getPathManager().getPathNames());
+  var url = util.mergeToString(fieldMap.getPathManager().getUrls());
+
+  // AbstractRecord makes this observable and abstracts some common impl details
+  // between RecordSet, Record, and RecordField
+  this._super(fieldMap, name, url);
+
+  // Used to filter the merged data and determine which merged Records should trigger events and
+  // which ones should be ignored
+  this.filters = whereClause;
+
+  // the RecordSetEventManager handles Firebase events and calls event handlers on
+  // this RecordSet appropriately. See RecordSetEventManager for more details
+  this.monitor = new RecordSetEventManager(this);
+}
+
+util.inherits(RecordSet, AbstractRecord, {
+  makeChild: function(key) {
+    var fm = FieldMap.recordMap(this.getFieldMap(), key);
+    return new Record(fm);
+  },
+
+  /**
+   * Override AbstractRecord's hasChild since we are dealing
+   * with record ids at this level. We use the master list to determine
+   * if records exist, so it's a pretty straightforward hasChild
+   * on the first snapshot.
+   *
+   * @param {Array} snaps a list of array snapshots to test for child
+   * @param {string} key
+   */
+  hasChild: function(snaps, key) {
+    return util.contains(snaps, function(s) {
+      return s.key() === key;
+    });
+  },
+
+  getChildSnaps: function(snapsArray, recordId) {
+    return util.filter(snapsArray, function(s) {
+      return s.key() === recordId;
+    });
+  },
+
+  /**
+   * Since the snapshots attached to this level are records, there isn't much
+   * to do for a merge. Just put them all together.
+   *
+   * @param {Array} snaps list of snapshots to be merged
+   * @param {boolean} isExport true if exportVal() was called
+   * @returns {Object}
+   */
+  mergeData: function(snaps, isExport) {
+    var self = this;
+    var out = {};
+    util.each(snaps, function(snap) {
+      if( snap.val() !== null && self.filters.test(snap.val(), snap.key(), snap.getPriority()) ) {
+        out[snap.key()] = isExport? snap.exportVal() : snap.val();
+      }
+    });
+    return out;
+  },
+
+  getPriority: function() {
+    return null;
+  },
+
+  /**
+   * Given a list of snapshots to iterate, returns the valid keys
+   * which exist in both the snapshots and the field map, in the
+   * order they should be iterated.
+   *
+   * Calls iterator with a {string|number} key for the next field to
+   * iterate only.
+   *
+   * If iterator returns true, this method should abort and return true,
+   * otherwise it should return false (same as Snapshot.forEach).
+   *
+   * @param {Array} snaps
+   * @param {function} iterator
+   * @param {object} [context]
+   * @return {boolean} true if aborted
+   * @abstract
+   */
+  forEachKey: function(snaps, iterator, context) {
+    snaps.forEach(function(snap) {
+      return iterator.call(context, snap.key(), snap.key());
+    });
+  },
+
+  getClass: function() { return RecordSet; },
+
+  /**
+   * Saving a record set is done by grabbing each child record and calling save against that.
+   * This is the easiest approach since we must distribute fields to each appropriate path.
+   * It might be more efficient to bulk these into a single write op, and perhaps we should
+   * explore that if this proves to be slow.
+   *
+   * @param data
+   * @param {Object} opts
+   */
+  saveData: function(data, opts) {
+    var q = util.queue();
+    if( data === null ) {
+      util.each(this.getPathManager().getPaths(), function(path) {
+        path.ref().remove(q.getHandler());
+      });
+    }
+    else if( !util.isObject(data) ) {
+      throw new Error('Calls to set() or update() on a NormalizedCollection must pass either ' +
+          'null or an object value. There is no way to split a primitive value between the paths');
+    }
+    else {
+      util.each(data, function(v, k) {
+        if( k === '.value' || k === '.priority' ) {
+          throw new Error('Cannot use .priority or .value on the root path of a NormalizedCollection. ' +
+              'You probably meant to sort the records anyway (i.e. one level lower).');
+        }
+        this.child(k).saveData(v, {isUpdate: opts.isUpdate, callback: q.getHandler()});
+      }, this);
+      if( opts.priority ) {
+        this.getPathManager().first().ref().setPriority(opts.priority, q.getHandler());
+      }
+    }
+    q.handler(opts.callback||util.noop, opts.context);
+  },
+
+  /**
+   * Return the correct child key for a snapshot by determining if its corresponding path
+   * has dependencies. If so, we look up the id and return that child, otherwise, we just
+   * return the child for the recordId.
+   *
+   * If a dependency exists, but the required field is null or invalid, then we just return
+   * null in place of the snapshot.
+   *
+   * @private
+   */
+  _getChildKey: function(snap, snapsArray, recordId) {
+    var key = recordId;
+    var path = this.getPathManager().getPathFor(snap.ref().toString());
+    // resolve any dependencies to determine the child key's value
+    if( path.hasDependency() ) {
+      var dep = path.getDependency();
+      var depPath = this.getFieldMap().getPath(dep.path);
+      if( !depPath ) {
+        throw new Error('Invalid dependency path. ' + snap.ref.toString() +
+        ' depends on ' + dep.path +
+        ', but that alias does not exist in the paths provided.');
+      }
+      var depSnap = util.find(snapsArray, function(snap) {
+        return snap.ref().toString() === depPath.url();
+      });
+      if( depSnap ) {
+        depSnap = depSnap.child(recordId);
+        if( dep.field !== '$value' ) {
+          depSnap = depSnap.child(dep.field);
+        }
+        key = depSnap.val();
+      }
+      else {
+        key = null;
+      }
+    }
+    return key;
+  },
+
+  _start: function() {
+    this.monitor.start();
+  },
+
+  _stop:   function(event, count) {
+    if( count === 0 ) { this.monitor.stop(); }
+  }
+});
+
+module.exports = RecordSet;
+},{"../../common":24,"./AbstractRecord":3,"./FieldMap":4,"./Record":12,"./RecordSetEventManager":15}],15:[function(require,module,exports){
+'use strict';
+
+var util = require('../../common');
+
+/**
+ * Monitors the references attached to a RecordSet and maintains a cache of
+ * current snapshots (inside RecordList below). Any time there is an update, this calls
+ * RecordSet.handler() to invoke the correct event types (child_added, child_removed, value, et al)
+ * on the RecordSet object.
+ *
+ * @param parentRec
+ * @constructor
+ */
+function RecordSetEventManager(parentRec) {
+  var pm = parentRec.getPathManager();
+  this.masterRef = pm.first().ref();
+  this.url = this.masterRef.toString();
+  this.recList = new RecordList(parentRec, this.url);
+  this.running = false;
+}
+
+RecordSetEventManager.prototype = {
+  start: function() {
+    if( !this.running ) {
+      util.log('RecordSetEventManager: Loading normalized records from master list %s', this.url);
+      this.running = true;
+      this.masterRef.on('child_added',   this._add,    this);
+      this.masterRef.on('child_removed', this._remove, this);
+      this.masterRef.on('child_moved',   this._move,   this);
+      /**
+       * This depends on the fact that all child_added events on a given path will be triggered
+       * before
+       */
+      this.masterRef.once('value', this.recList.masterPathLoaded, this.recList);
+    }
+    return this;
+  },
+
+  stop: function() {
+    if( this.running ) {
+      util.log('RecordSetEventManager: Stopped monitoring master list %s', this.url);
+      this.running = false;
+      this.masterRef.off('child_added',   this._add,    this);
+      this.masterRef.off('child_removed', this._remove, this);
+      this.masterRef.off('child_moved',   this._move,   this);
+      this.recList.unloaded();
+    }
+    return this;
+  },
+
+  _add: function(snap, prevChild) {
+    this.recList.add(snap.key(), prevChild);
+  },
+
+  _remove: function(snap) {
+    this.recList.remove(snap.key());
+  },
+
+  _move: function(snap, prevChild) {
+    this.recList.move(snap.key(), prevChild);
+  }
+};
+
+function RecordList(observable, url) {
+  this.obs = observable;
+  this.url = url;
+  this._reset();
+}
+
+RecordList.prototype = {
+  add: function(key, prevChild) {
+    util.log.debug('RecordList.add: key=%s, prevChild=%s', key, prevChild);
+    var rec = this.obs.child(key);
+    var fn = util.bind(this._valueUpdated, this, key);
+    this.loading[key] = {rec: rec, prev: prevChild, fn: fn};
+    if( !this.loadComplete ) {
+      this.initialKeysLeft.push(key);
+    }
+    rec.watch('value', fn);
+  },
+
+  remove: function(key) {
+    util.log.debug('RecordList.remove: key=%s', key);
+    var oldSnap = this._dropRecord(key);
+    if( oldSnap !== null ) {
+      this._notify('child_removed', key, oldSnap);
+    }
+  },
+
+  move: function(key, prevChild) {
+    if(util.has(this.recs, key)) {
+      var currPos = util.indexOf(this.recIds, key);
+      this.recIds.splice(currPos, 1);
+      this._putAfter(key, prevChild);
+      this._notify('child_moved', key);
+    }
+  },
+
+  masterPathLoaded: function() {
+    util.log.debug('RecordList: Initial data has been loaded from master list at %s', this.url);
+    this.masterLoaded = true;
+    this._checkLoadState();
+  },
+
+  unloaded: function() {
+    this._reset();
+  },
+
+  findKey: function(key) {
+    //todo cache these lookups in a weak map?
+    return util.indexOf(this.recIds, key);
+  },
+
+  _reset: function() {
+    util.each(this.recs, function(rec, key) {
+      this.remove(key);
+    }, this);
+    this.recs = {};
+    this.recIds = [];
+    this.snaps = {};
+    this.loading = {};
+    this.loadComplete = false;
+    this.initialKeysLeft = [];
+    this.masterLoaded = false;
+  },
+
+  _valueUpdated: function(key, snap) {
+    this.snaps[key] = snap;
+    if(util.has(this.loading, key)) {
+      // newly added record
+      var r = this.loading[key];
+      delete this.loading[key];
+      if( this.obs.filters.test(snap.val(), key, snap.getPriority()) ) {
+        this.recs[key] = r.rec;
+        this._putAfter(key, r.prev);
+        this._checkLoadState(key);
+        this._notify('child_added', key);
+      }
+      else {
+        util.log('RecordList: Filtered key %s', key);
+        r.rec.unwatch('value', r.fn);
+      }
+    }
+    else if(util.has(this.recs, key)) {
+      // a changed record
+      this._notify('child_changed', key);
+    }
+    else {
+      util.log('RecordList: Orphan key %s ignored. Probably a concurrent edit.', key);
+    }
+  },
+
+  _notify: function(event, key, oldSnap) {
+    var args = [key];
+    // do not fetch prev child for other events as it costs an indexOf
+    switch(event) {
+      case 'child_added':
+      case 'child_moved':
+        var prev = this._getPrevChild(key);
+        args.push(this.snaps[key], prev);
+        break;
+      case 'child_changed':
+        args.push(this.snaps[key]);
+        break;
+      case 'child_removed':
+        args.push(oldSnap);
+        break;
+      default:
+        throw new Error('Invalid event type ' + event + ' for key ' + key);
+    }
+    util.log('RecordList._notify: event=%s, key=%s, prev=%s', event, key, prev);
+    this.obs.handler(event).apply(this.obs, args);
+    this._notifyValue();
+  },
+
+  _notifyValue: function() {
+    util.log.debug('RecordList._notifyValue: snap_keys=%s, loadComplete=%s', util.keys(this.snaps), this.loadComplete);
+    if( this.loadComplete ) {
+      this.obs.handler('value')(util.toArray(this.snaps));
+    }
+  },
+
+  _getPrevChild: function(key) {
+    if( !this.recIds.length ) { return null; }
+    var pos = this.findKey(key);
+    if( pos === -1 ) {
+      return this.recIds[this.recIds.length-1];
+    }
+    else if( pos === 0 ) {
+      return null;
+    }
+    else {
+      return this.recIds[pos-1];
+    }
+  },
+
+  _posFor: function(prevKey) {
+    var pos, x;
+    if( prevKey === null ) {
+      pos = 0;
+    }
+    else {
+      x = this.findKey(prevKey);
+      pos = x === -1? this.recIds.length : x+1;
+    }
+    return pos;
+  },
+
+  _putAfter: function(key, prevChild) {
+    var newPos = this._posFor(prevChild);
+    this.recIds.splice(newPos, 0, key);
+  },
+
+  _dropRecord: function(key) {
+    if(util.has(this.recs, key)) {
+      var snap = this.snaps[key];
+      this.recs[key].unwatch('value', this._valueUpdated, this);
+      delete this.recs[key];
+      delete this.snaps[key];
+      delete this.loading[key];
+      util.remove(this.recIds, key);
+      return snap;
+    }
+    return null;
+  },
+
+  /**
+   * Because the initial once('value') will probably trigger before all the child paths
+   * are retrieved (remember that we are monitoring multiple paths per child), we need
+   * to wait for them to load in before triggering our first value event.
+   * @private
+   */
+  _checkLoadState: function(key) {
+    if( this.loadComplete ) { return; }
+    if( key ) {
+      util.remove(this.initialKeysLeft, key);
+    }
+    if( !this.initialKeysLeft.length && this.masterLoaded ) {
+      this.loadComplete = true;
+      if( !key ) {
+        this._notifyValue();
+      }
+    }
+  }
+};
+
+module.exports = RecordSetEventManager;
+},{"../../common":24}],16:[function(require,module,exports){
+'use strict';
+
+var util        = require('../../common');
+var PathManager = require('./PathManager');
+var Path        = require('./Path');
+var FieldMap    = require('./FieldMap');
+var RecordSet   = require('./RecordSet');
+
+module.exports = {
+  replicate: function(record, newMasterRef) {
+    // create a new set of paths
+    var paths = record.getPathManager().getPaths().slice(0);
+    var firstPath = paths[0];
+    paths[0] = new Path([newMasterRef, firstPath.name(), firstPath.getDependency()]);
+    var mgr = new PathManager(util.map(paths, function(p) { return p.clone(); }));
+
+    // create a new field map from the updated paths
+    var fieldMap = new FieldMap(mgr);
+    record.getFieldMap().forEach(fieldMap.add, fieldMap);
+
+    // recreate the AbstractRecord instance
+    var Clazz = record.getClass();
+    var rec;
+    if( Clazz === RecordSet ) {
+      rec = new Clazz(fieldMap, record.filters);
+    }
+    else {
+      rec = new Clazz(fieldMap);
+    }
+
+    // done!
+    return rec;
+  }
+};
+},{"../../common":24,"./FieldMap":4,"./Path":9,"./PathManager":10,"./RecordSet":14}],17:[function(require,module,exports){
+'use strict';
+var util = require('../common');
+var Scroll = require('./libs/Scroll.js');
+var Paginate = require('./libs/Paginate.js');
+var ReadOnlyRef = require('./libs/ReadOnlyRef.js');
+
+var DEFAULTS = {
+  field: null,
+  pageSize: 10,
+  windowSize: 250
+};
+
+exports.Scroll = function(baseRef, sortField, opts) {
+  if( !util.isFirebaseRef(baseRef) ) {
+    throw new Error('First argument to Firebase.util.Scroll must be a valid Firebase ref');
+  }
+  if( typeof sortField !== 'string' ) {
+    throw new Error('Second argument to Firebase.util.Scroll must be a valid string');
+  }
+  if( arguments.length > 2 && !util.isObject(opts) ) {
+    throw new Error('Optional third argument to Firebase.util.Scroll must be an object of key/value pairs');
+  }
+  var ref = new ReadOnlyRef(baseRef);
+  ref.scroll = new Scroll(ref, sortField, calcOpts(opts, 'windowSize', 'Scroll'));
+  return ref;
+};
+
+exports.Paginate = function(baseRef, sortField, opts) {
+  if( !util.isFirebaseRef(baseRef) ) {
+    throw new Error('First argument to Firebase.util.Paginate must be a valid Firebase ref');
+  }
+  if( typeof sortField !== 'string' ) {
+    throw new Error('Second argument to Firebase.util.Paginate must be a valid string');
+  }
+  if( arguments.length > 2 && !util.isObject(opts) ) {
+    throw new Error('Optional third argument to Firebase.util.Paginate must be an object of key/value pairs');
+  }
+  var ref = new ReadOnlyRef(baseRef);
+  ref.page = new Paginate(ref, sortField, calcOpts(opts, 'pageSize', 'Paginate'));
+  return ref;
+};
+
+function calcOpts(opts, maxFromKey, method) {
+  var res = util.extend({}, DEFAULTS, opts);
+  if( !res.maxCacheSize ) {
+    res.maxCacheSize = res[maxFromKey] * 3;
+  }
+  assertNumber(res, maxFromKey, method);
+  assertNumber(res, 'maxCacheSize', method);
+  return res;
+}
+
+function assertNumber(obj, key, method) {
+  if( typeof obj[key] !== 'number' ) {
+    throw new Error('Argument ' + key + ' passed into opts for ' + method + 'must be a number' );
+  }
+}
+},{"../common":24,"./libs/Paginate.js":20,"./libs/ReadOnlyRef.js":21,"./libs/Scroll.js":22}],18:[function(require,module,exports){
+'use strict';
+var util = require('../../common');
+var Offset = require('./Offset');
+
+function Cache(outRef, sortField, maxRecordsLoaded) {
+  util.log.debug('Cache: caching %s using field=%s maxRecordsLoaded=%d', outRef.toString(), sortField, maxRecordsLoaded);
+  this.offset = new Offset({field: sortField, max: maxRecordsLoaded, ref: outRef.ref()});
+  this.outRef = outRef;
+  this.inRef = null;
+  this.queryRef = null;
+  this.countRef = null;
+  this.keys = {};
+  this.start = 0;
+  this.count = -1;
+  this.endCount = -1;
+  this.nextListeners = [];
+  this.offset.observe(this._keyChange, this);
+}
+
+Cache.prototype.moveTo = function(startOffset, numberOfRecords) {
+  util.log.debug('Cache.moveTo: startOffset=%d, numberOfRecords=%d', startOffset, numberOfRecords);
+  var s = this.start, e = this.count;
+  this.start = startOffset;
+  this.count = numberOfRecords;
+  this.endCount = this.start + this.count;
+  if( s !== this.start ) {
+    this.offset.goTo(startOffset, numberOfRecords);
+  }
+  else if( e !== this.count ) {
+    this._refChange();
+  }
+};
+
+Cache.prototype.hasNext = function() {
+  return this.count === -1 || this.endCount > this.start + this.count;
+};
+
+Cache.prototype.hasPrev = function() {
+  return this.start > 0;
+};
+
+Cache.prototype.observeHasNext = function(callback, context) {
+  var list = this.nextListeners;
+  var parts = [callback, context];
+  list.push(parts);
+  return function() {
+    util.remove(list, parts);
+  };
+};
+
+Cache.prototype.destroy = function() {
+  this._unsubscribe();
+  this.offset.destroy();
+  this.offset = null;
+  this.start = 0;
+  this.count = -1;
+  this.inRef = null;
+  this.outRef = null;
+  this.queryRef = null;
+  this.countRef = null;
+  this.keys = null;
+  this.nextListeners = null;
+};
+
+Cache.prototype._keyChange = function(val, key, ref) {
+  this.inRef = ref;
+  util.log.debug('Cache._keyChange: %s %s %s', val, key, ref.toString());
+  this._refChange();
+};
+
+Cache.prototype._unsubscribe = function() {
+  if( this.queryRef ) {
+    this.queryRef.off('child_added', this._add, this);
+    this.queryRef.off('child_removed', this._remove, this);
+    this.queryRef.off('child_moved', this._move, this);
+    this.queryRef.off('child_changed', this._change, this);
+    this.queryRef.off('value', this._value, this);
+    this.queryRef.off('value', this._removeOrphans, this);
+    this.queryRef = null;
+  }
+  if( this.countRef ) {
+    this.countRef.off('value', this._count, this);
+    this.countRef = null;
+  }
+};
+
+Cache.prototype._refChange = function() {
+  this._unsubscribe();
+  if( this.inRef && this.count > -1 ) {
+    this.countRef = this.inRef.limitToFirst(this.count+1);
+    this.countRef.on('value', this._count, this);
+    //todo we should queue all the events until the once('value') is completed
+    //todo so that we can trigger removed before added
+    this.queryRef = this.inRef.limitToFirst(this.count);
+    this.queryRef.on('child_added', this._add, this);
+    this.queryRef.on('child_removed', this._remove, this);
+    this.queryRef.on('child_moved', this._move, this);
+    this.queryRef.on('child_changed', this._change, this);
+    this.queryRef.on('value', this._value, this);
+    this.queryRef.once('value', this._removeOrphans, this);
+  }
+};
+
+Cache.prototype._add = function(snap, prevChild) {
+  var key = snap.key();
+  if( !util.has(this.keys, key) ) {
+    this.keys[key] = snap;
+    this.outRef.$trigger('child_added', snap, prevChild);
+  }
+  else if( !util.isEqual(this.keys[key], snap.val()) ) {
+    this._change(snap);
+  }
+};
+
+Cache.prototype._remove = function(snap) {
+  var key = snap.key();
+  if( util.has(this.keys, key) ) {
+    this.outRef.$trigger('child_removed', snap);
+    delete this.keys[key];
+  }
+};
+
+Cache.prototype._move = function(snap, prevChild) {
+  var key = snap.key();
+  if( util.has(this.keys, key) ) {
+    this.keys[key] = snap;
+    this.outRef.$trigger('child_moved', snap, prevChild);
+  }
+};
+
+Cache.prototype._change = function(snap) {
+  this.keys[snap.key()] = snap;
+  this.outRef.$trigger('child_changed', snap);
+};
+
+Cache.prototype._value = function(snap) {
+  this.outRef.$trigger('value', snap);
+};
+
+Cache.prototype._count = function(snap) {
+  this.endCount = this.start + snap.numChildren();
+  var hasNext = this.hasNext();
+  util.each(this.nextListeners, function(parts) {
+    parts[0].call(parts[1], hasNext);
+  });
+};
+
+Cache.prototype._removeOrphans = function(valueSnap) {
+  util.each(this.keys, function(cachedSnap, key) {
+    if( !valueSnap.hasChild(key) ) {
+      this.outRef.$trigger('child_removed', cachedSnap);
+      delete this.keys[key];
+    }
+  }, this);
+};
+
+module.exports = Cache;
+},{"../../common":24,"./Offset":19}],19:[function(require,module,exports){
+'use strict';
+var util = require('../../common');
+
+function Offset(opts) {
+  this.keys = [];
+  this.field = opts.field;
+  this.ref = baseRef(opts.ref, opts.field);
+  this.max = opts.max;
+  this.listeners = [];
+  this.curr = 0;
+  this.sub = null;
+  this.isSubscribing = false;
+  this.lastNotifyValue = util.undef;
+  this._debouncedRecache = debounce(function() {
+    util.log.debug('Offset._debouncedRecache: recaching keys for offset %d', this.curr);
+    this.keys = [];
+    this._grow(this._listen);
+  }, this, 100, 1000);
+}
+
+Offset.prototype.goTo = function(newOffset) {
+  if( newOffset !== this.curr ) {
+    util.log('Offset.goTo: offset changed from %d to %d', this.curr, newOffset);
+    this.curr = newOffset;
+    this.lastNotifyValue = util.undef;
+    this._listen();
+  }
+};
+
+Offset.prototype.observe = function(callback, context) {
+  this.listeners.push([callback, context]);
+  var key = this.getKey();
+  var ref = offsetRef(this.ref, key);
+  callback.call(context, key && key.val, key && key.key, ref);
+};
+
+Offset.prototype.getKey = function(offset) {
+  if( !arguments.length ) { offset = this.curr; }
+  if( offset === 0 ) { return null; }
+  return this.keys.length > offset && this.keys[offset];
+};
+
+Offset.prototype.destroy = function() {
+  this._unsubscribe();
+  this.curr = 0;
+  this.keys = [];
+  this.lastNotifyValue = util.undef;
+  this.isSubscribing = false;
+};
+
+Offset.prototype._notify = function() {
+  var key = this.getKey();
+  if( !util.isEqual(this.lastNotifyValue, key) ) {
+    util.log('Offset._notify: key at offset %d is %s', this.curr, key && key.key);
+    this.lastNotifyValue = key;
+    var ref = offsetRef(this.ref, key);
+    util.each(this.listeners, function(parts) {
+      parts[0].call(parts[1], key && key.val, key && key.key, ref);
+    });
+  }
+};
+
+Offset.prototype._recache = function() {
+  if( !this.isSubscribing ) {
+    this._debouncedRecache();
+  }
+};
+
+var killCount = 0;
+Offset.prototype._grow = function(callback) {
+  var self = this;
+  var len = self.keys.length;
+  if( self.curr >= len ) {
+    var oldKey = self.getKey();
+    var startAt = lastKey(self.keys);
+    var limit = Math.min(self.curr + (startAt? 2 : 1) - len, self.max);
+    var ref = startAt !== null? self.ref.startAt(startAt.val, startAt.key) : self.ref;
+    ref.limitToFirst(limit).once('value', function(snap) {
+      var skipFirst = startAt !== null;
+      snap.forEach(function(ss) {
+        if( skipFirst ) {
+          skipFirst = false;
+          return;
+        }
+        self.keys.push(extractKey(ss, self.field));
+      });
+      if( killCount++ > 10000 ) {
+        throw new Error('Tried to fetch more than 10,000 pages to determine the correct offset. Giving up now. Sorry.');
+      }
+      if( self.curr >= self.keys.length && snap.numChildren() === limit ) {
+        // prevents recursive scoping
+        setTimeout(util.bind(self._grow, self, callback), 0);
+      }
+      else {
+        killCount = 0;
+        util.log.debug('Offset._grow: Cached %d keys', self.keys.length);
+        callback.call(self, !util.isEqual(self.getKey(), oldKey));
+      }
+    });
+  }
+  else {
+    callback.call(self, false);
+  }
+};
+
+Offset.prototype._startOffset = function() {
+  return Math.max(0, this.curr - this.max, this.curr - 10);
+};
+
+Offset.prototype._queryRef = function() {
+  var start = this._startOffset();
+  var ref = this.ref;
+  if( start > 0 ) {
+    var key = this.getKey(start);
+    ref = ref.startAt(key.val, key.key);
+  }
+  return ref.limitToLast(Math.max(this.curr - start, 1));
+};
+
+Offset.prototype._moved = function(snap) {
+  if( snap.key() === this.getKey() ) {
+    this._recache();
+  }
+};
+
+Offset.prototype._unsubscribe = function() {
+  if( this.sub ) {
+    this.sub.off('child_added', this._recache, this);
+    this.sub.off('child_moved', this._moved, this);
+    this.sub.off('child_removed', this._recache, this);
+    this.sub.off('value', this._doneSubscribing, this);
+    this.sub = null;
+  }
+};
+
+Offset.prototype._subscribe = function() {
+  this._unsubscribe();
+  this.sub = this._queryRef();
+  this.isSubscribing = true;
+  this.sub.on('child_added', this._recache, this);
+  this.sub.on('child_moved', this._moved, this);
+  this.sub.on('child_removed', this._recache, this);
+  this.sub.once('value', this._doneSubscribing, this);
+};
+
+Offset.prototype._doneSubscribing = function() {
+  this.isSubscribing = false;
+  this._notify();
+};
+
+Offset.prototype._monitorEmptyOffset = function() {
+  function fn(snap) {
+    var count = snap.numChildren();
+    if( count > (key === null? 0 : 1) ) {
+      util.log.debug('Offset._monitorEmptyOffset: A value exists now.');
+      ref.off('value', fn);
+      self._grow();
+    }
+  }
+  var self = this;
+  var ref = self.ref;
+  var key = null;
+  if( this.keys.length ) {
+    key = lastKey(this.keys);
+    ref = ref.startAt(key.val, key.key);
+  }
+  util.log.debug('Offset._monitorEmptyOffset: No value exists at offset %d, currently %d keys at this path. Watching for a new value.', this.curr, this.keys.length);
+  ref.limitToFirst(2).on('value', fn);
+};
+
+Offset.prototype._listen = function() {
+  this._unsubscribe();
+  if( this.curr > this.keys.length ) {
+    this._grow(function(/*changed*/) {
+      if( this.keys.length > this.curr ) {
+        this._subscribe();
+      }
+      else {
+        this._monitorEmptyOffset();
+        this._notify();
+      }
+    });
+  }
+  else {
+    this._subscribe();
+  }
+};
+
+function extractKey(snap, field) {
+  var v;
+  switch(field) {
+    case '$key':
+      v = snap.key();
+      break;
+    case '$priority':
+      v = snap.getPriority();
+      break;
+    default:
+      var obj = snap.val();
+      if( !util.isObject(obj) ) {
+        throw new Error('A value of type ' + typeof obj + 'Was found. ' +
+        'But we are attempting to order by child field "' + field + '". ' +
+        'Pagination requires all records to be objects or it can\'t determine an ' +
+        'appropriate offset value.');
+      }
+      else {
+        v = obj[field];
+      }
+  }
+  return {val: v, key: snap.key()};
+}
+
+function offsetRef(baseRef, startKey) {
+  if( startKey === false ) {
+    return null;
+  }
+  else if( startKey === null ) {
+    return baseRef;
+  }
+  else {
+    return baseRef.startAt(startKey.val, startKey.key);
+  }
+}
+
+function baseRef(ref, field) {
+  if( field === '$key' ) {
+    return ref.orderByKey();
+  }
+  else if( field === '$priority' ) {
+    return ref.orderByPriority();
+  }
+  else {
+    return ref.orderByChild(field);
+  }
+}
+
+/**
+ * A rudimentary debounce method
+ * @param {function} fn the function to debounce
+ * @param {object} [ctx] the `this` context to set in fn
+ * @param {int} wait number of milliseconds to pause before sending out after each invocation
+ * @param {int} [maxWait] max milliseconds to wait before sending out, defaults to wait * 10 or 100
+ */
+function debounce(fn, ctx, wait, maxWait) {
+  var start, cancelTimer, args, runScheduledForNextTick;
+  if( typeof(ctx) === 'number' ) {
+    maxWait = wait;
+    wait = ctx;
+    ctx = null;
+  }
+
+  if( typeof wait !== 'number' ) {
+    throw new Error('Must provide a valid integer for wait. Try 0 for a default');
+  }
+  if( typeof(fn) !== 'function' ) {
+    throw new Error('Must provide a valid function to debounce');
+  }
+  if( !maxWait ) { maxWait = wait*10 || 100; }
+
+  // clears the current wait timer and creates a new one
+  // however, if maxWait is exceeded, calls runNow() on the next tick.
+  function resetTimer() {
+    if( cancelTimer ) {
+      cancelTimer();
+      cancelTimer = null;
+    }
+    if( start && Date.now() - start > maxWait ) {
+      if(!runScheduledForNextTick){
+        runScheduledForNextTick = true;
+        setTimeout(runNow, 0);
+      }
+    }
+    else {
+      if( !start ) { start = Date.now(); }
+      var to = setTimeout(runNow, wait);
+      cancelTimer = function() { clearTimeout(to); };
+    }
+  }
+
+  // Clears the queue and invokes the debounced function with the most recent arguments
+  function runNow() {
+    cancelTimer = null;
+    start = null;
+    runScheduledForNextTick = false;
+    fn.apply(ctx, args);
+  }
+
+  function debounced() {
+    args = Array.prototype.slice.call(arguments, 0);
+    resetTimer();
+  }
+  debounced.running = function() {
+    return start > 0;
+  };
+
+  return debounced;
+}
+
+function lastKey(list) {
+  var len = list.length;
+  return len? list[len-1] : null;
+}
+
+module.exports = Offset;
+},{"../../common":24}],20:[function(require,module,exports){
+'use strict';
+var util = require('../../common');
+var Cache = require('./Cache');
+
+/**
+ * @param {Firebase} ref
+ * @param {String} field
+ * @param {object} [opts]
+ * @constructor
+ */
+function Paginate(ref, field, opts) {
+  this.currPage = 0;
+  this.field = field;
+  this.ref = ref;
+  this.pageSize = opts.pageSize;
+  this.max = opts.maxCacheSize;
+  this.subs = [];
+  this.pageChangeListeners = [];
+  this.pageCountListeners = [];
+  this.cache = new Cache(ref, field, opts.maxCacheSize);
+  this.pageCount = -1;
+  this.couldHaveMore = false;
+  this.cache.observeHasNext(this._countPages, this);
+}
+
+/**
+ * Unload current records and load the next page into the PaginatedRef
+ *
+ * @return {Paginate} returns `this`
+ */
+Paginate.prototype.next = function() {
+  if( this.hasNext() ) {
+    this.currPage++;
+    util.log.debug('Paginate.next: current page is %d', this.currPage);
+    this._pageChange();
+  }
+  return this;
+};
+
+/**
+ * Unload current records and load the previous page into the PaginatedRef.
+ *
+ * @return {Paginate} returns `this`
+ */
+Paginate.prototype.prev = function() {
+  if( this.hasPrev() ) {
+    this.currPage--;
+    util.log.debug('Paginate.prev: current page is %d', this.currPage);
+    this._pageChange();
+  }
+  return this;
+};
+
+/**
+ * Skip to a specific page. The pageNumber must be less than pageCount.
+ *
+ * @param {int} pageNumber
+ * @return {Paginate} returns `this`
+ */
+Paginate.prototype.setPage = function(pageNumber) {
+  if( pageNumber > 0 && pageNumber <= this.pageCount ) {
+    this.currPage = pageNumber;
+    util.log.debug('Paginate.setPage: current page is %d', this.currPage);
+    this._pageChange();
+  }
+  else {
+    util.log.warn('Paginate.setPage: invalid page number %d', pageNumber);
+  }
+};
+
+/**
+ * @return {boolean} true if there are more records after the currently loaded page
+ */
+Paginate.prototype.hasNext = function() {
+  return this.cache.hasNext();
+};
+
+/**
+ * @return {boolean} true if there are more records before the currently loaded page
+ */
+Paginate.prototype.hasPrev = function() {
+  return this.currPage > 1;
+};
+
+/**
+ * Invoked whenever the page count changes. This may not be accurate if number of pages
+ * exceeds the maxCacheSize.
+ *
+ * The callback is delivered two arguments. The first is the {int} count, and the second
+ * is a {boolean}couldHaveMore which is true whenever we have run into maxCacheSize (i.e. there
+ * could be more)
+ *
+ * @param {Function} callback
+ * @param {Object} [context]
+ * @return {Function} a dispose function that cancels the listener
+ */
+Paginate.prototype.onPageChange = function(callback, context) {
+  var listeners = this.pageChangeListeners;
+  var parts = [callback, context];
+  listeners.push(parts);
+  callback.call(context, this.currPage);
+  return function() {
+    util.remove(listeners, parts);
+  };
+};
+
+/**
+ * Invoked whenever the local page count is changed. This may not include
+ * all records that exist on the remote server, as it is limited by maxCacheSize
+ */
+Paginate.prototype.onPageCount = function(callback, context) {
+  var listeners = this.pageCountListeners;
+  var parts = [callback, context];
+  listeners.push(parts);
+  if( this.pageCount > -1 ) {
+    callback.call(context, this.pageCount, this.couldHaveMore);
+  }
+  else {
+    this._countPages();
+  }
+  return function() {
+    util.remove(listeners, parts);
+  };
+};
+
+/**
+ * Asynchronously fetch the total page count. This maxes a REST API
+ * call using shallow=true. All the keys must be able to fit in memory at the same time.
+ *
+ * @param {Function} [callback]
+ * @param {Object} [context]
+ */
+Paginate.prototype.getCountByDowloadingAllKeys = function(callback, context) {
+  var self = this;
+  self.downloadingEverything = true;
+  var url = self.ref.ref().toString();
+  if( !url.match(/\/$/) ) { url += '/'; }
+  url += '.json?shallow=true';
+  microAjax(url, function(data) {
+    var count = 0;
+    try {
+      count = util.keys(JSON.parse(data)).length;
+    }
+    catch(e) {
+      util.log.warn(e);
+    }
+    util.log.debug('Paginate.getCountByDownloadingAllKeys: found %d keys', count);
+    self.downloadingEverything = false;
+    self.pageCount = countPages(count, self.pageSize);
+    self.couldHaveMore = false;
+    self._notifyPageCount();
+    if( callback ) { callback.call(context, count); }
+  });
+};
+
+/**
+ * Deletes locally cached data and cancels all listeners. Unloads
+ * records and triggers child_removed events.
+ */
+Paginate.prototype.destroy = function() {
+  this.cache.destroy();
+  this.cache = null;
+  this.ref = null;
+  util.each(this.subs, function(fn) { fn(); });
+  this.subs = [];
+  this.pageCountListeners.length = 0;
+  this.pageChangeListeners.length = 0;
+};
+
+Paginate.prototype._countPages = function() {
+  var self = this;
+  var currPage = self.currPage;
+  if( !this.downloadingEverything ) {
+    if( self.pageCount === -1 ) {
+      var max = self.max;
+      var pageSize = self.pageSize;
+      var ref = this.ref.ref().limitToFirst(max);
+      ref.once('value', function(snap) {
+        if( self.pageCount === -1 ) { // double-null check pattern (may have changed during async op)
+          self.couldHaveMore = snap.numChildren() === max;
+          self.pageCount = Math.ceil(snap.numChildren() / pageSize);
+          self._notifyPageCount();
+          self._countPages();
+        }
+      });
+    }
+    else if( currPage >= self.pageCount ) {
+      self.pageCount = currPage;
+      self.couldHaveMore = self.cache.hasNext();
+      self._notifyPageCount();
+    }
+  }
+};
+
+Paginate.prototype._pageChange = function() {
+  var currPage = this.currPage;
+  var start = (currPage -1) * this.pageSize;
+  this.cache.moveTo(start, this.pageSize);
+  this._countPages();
+  util.each(this.pageChangeListeners, function(parts) {
+    parts[0].call(parts[1], currPage);
+  });
+};
+
+Paginate.prototype._notifyPageCount = function() {
+  var pageCount = this.pageCount;
+  var couldHaveMore = this.couldHaveMore;
+  util.each(this.pageCountListeners, function(parts) {
+    parts[0].call(parts[1], pageCount, couldHaveMore);
+  });
+};
+
+function countPages(recordCount, pageSize) {
+  if( recordCount === 0 ) {
+    return 0;
+  }
+  else {
+    return Math.ceil(recordCount / pageSize);
+  }
+}
+
+// https://code.google.com/p/microajax/
+// new BSD license: http://opensource.org/licenses/BSD-3-Clause
+function microAjax(url,callbackFunction){var o={};o.bindFunction=function(caller,object){return function(){return caller.apply(object,[object]);};};o.stateChange=function(object){if(o.request.readyState==4) o.callbackFunction(o.request.responseText);};o.getRequest=function(){if(window.ActiveXObject) return new ActiveXObject('Microsoft.XMLHTTP');else if(window.XMLHttpRequest) return new XMLHttpRequest();return false;};o.postBody=(arguments[2]||"");o.callbackFunction=callbackFunction;o.url=url;o.request=o.getRequest();if(o.request){var req=o.request;req.onreadystatechange=o.bindFunction(o.stateChange,o);if(o.postBody!==""){req.open("POST",url,true);req.setRequestHeader('X-Requested-With','XMLHttpRequest');req.setRequestHeader('Content-type','application/x-www-form-urlencoded');req.setRequestHeader('Connection','close');}else{req.open("GET",url,true);} req.send(o.postBody);} return o;} // jshint ignore:line
+
+module.exports = Paginate;
+
+},{"../../common":24,"./Cache":18}],21:[function(require,module,exports){
+'use strict';
+var util      = require('../../common');
+
+function ReadOnlyRef(ref) {
+  this._ref = ref;
+  this._obs = new util.Observable(
+    ['value', 'child_added', 'child_removed', 'child_moved', 'child_changed']
+  );
+}
+
+
+ReadOnlyRef.prototype = {
+  'on': function(event, callback, cancel, context) {
+    this._obs.observe(event, callback, cancel, context);
+  },
+
+  'once': function(event, callback, cancel, context) {
+    function fn(snap) {
+      /*jshint validthis:true */
+      this.off(event, fn, this);
+      callback.call(context, snap);
+    }
+    this.on(event, fn, cancel, this);
+  },
+
+  'off': function(event, callback, context) {
+    this._obs.stopObserving(event, callback, context);
+  },
+
+  /****************************
+   * WRAPPER FUNCTIONS
+   ****************************/
+  'ref': function() {
+    return this._ref;
+  },
+  'child': wrapMaster('child'),
+  'parent': wrapMaster('parent'),
+  'root': wrapMaster('root'),
+  'name': wrapMaster('name'),
+  'key': wrapMaster('key'),
+  'toString': wrapMaster('toString'),
+
+  'auth': wrapMaster('auth'),
+  'unauth': wrapMaster('unauth'),
+  'authWithCustomToken': wrapMaster('authWithCustomToken'),
+  'authAnonymously': wrapMaster('authAnonymously'),
+  'authWithPassword': wrapMaster('authWithPassword'),
+  'authWithOAuthPopup': wrapMaster('authWithOAuthPopup'),
+  'authWithOAuthRedirect': wrapMaster('authWithOAuthRedirect'),
+  'authWithOAuthToken': wrapMaster('authWithOAuthToken'),
+  'getAuth': wrapMaster('getAuth'),
+  'onAuth': wrapMaster('onAuth'),
+  'offAuth': wrapMaster('offAuth'),
+  'createUser': wrapMaster('createUser'),
+  'changePassword': wrapMaster('changePassword'),
+  'removeUser': wrapMaster('removeUser'),
+  'resetPassword': wrapMaster('resetPassword'),
+  'changeEmail': wrapMaster('changeEmail'),
+
+  'goOffline': wrapMaster('goOffline'),
+  'goOnline': wrapMaster('goOnline'),
+
+  /****************************
+   * UNSUPPORTED FUNCTIONS
+   ***************************/
+  'set': isReadOnly('set'),
+  'update': isReadOnly('update'),
+  'remove': isReadOnly('remove'),
+  'push': isReadOnly('push'),
+  'setWithPriority': isReadOnly('setWithPriority'),
+  'setPriority': isReadOnly('setPriority'),
+  'transaction': isReadOnly('transaction'),
+
+  /** @deprecated */
+  'limit': notSupported('limit'),
+
+  'onDisconnect': notSupported('onDisconnect'),
+  'orderByChild': notSupported('orderByChild'),
+  'orderByKey': notSupported('orderByKey'),
+  'orderByPriority': notSupported('orderByPriority'),
+  'limitToFirst': notSupported('limitToFirst'),
+  'limitToLast': notSupported('limitToLast'),
+  'startAt': notSupported('startAt'),
+  'endAt': notSupported('endAt'),
+  'equalTo': notSupported('equalTo'),
+
+  /** INTERNAL METHODS */
+  $trigger: function() {
+    this._obs.triggerEvent.apply(this._obs, util.toArray(arguments));
+  }
+};
+
+function wrapMaster(method) {
+  return function() {
+    var args = util.toArray(arguments);
+    var ref = this.ref();
+    return ref[method].apply(ref, args);
+  };
+}
+
+function isReadOnly(method) {
+  return function() {
+    throw new Error(method + ' is not supported. This is a read-only reference. You can ' +
+    'modify child records after calling .child(), or work with the original by using .ref().');
+  };
+}
+
+function notSupported(method) {
+  return function() {
+    throw new Error(method + ' is not supported for Paginate and Scroll references. ' +
+    'Try calling it on the original reference used to create the instance instead.');
+  };
+}
+
+module.exports = ReadOnlyRef;
+},{"../../common":24}],22:[function(require,module,exports){
+'use strict';
+var Cache = require('./Cache');
+
+/**
+ * @param {ReadOnlyRef} readOnlyRef
+ * @param {String} field
+ * @param {Object} [opts]
+ * @constructor
+ */
+function Scroll(readOnlyRef, field, opts) {
+  this.max = opts.windowSize;
+  this.start = 0;
+  this.end = 0;
+  this.cache = new Cache(readOnlyRef, field, opts.maxCacheSize);
+}
+
+/**
+ * Load the next numberToAppend records and trigger child_added events
+ * for them. If the total number of records exceeds maxRecords, then
+ * child_removed events will be triggered for the first items in the list.
+ *
+ * @param {int} numberToAppend
+ */
+Scroll.prototype.next = function(numberToAppend) {
+  if( this.hasNext() ) {
+    this.end = this.end + numberToAppend;
+    this.start = Math.max(0, this.end - this.max, this.start);
+    this.cache.moveTo(this.start, this.end - this.start);
+  }
+};
+
+/**
+ * Load the previous numberToAppend records and trigger child_added events
+ * for them. If the total number of records exceeds maxRecords, then
+ * child_removed events will be triggered for the last items in the list.
+ *
+ * @param {int} numberToPrepend
+ */
+Scroll.prototype.prev = function(numberToPrepend) {
+  if( this.hasPrev() ) {
+    this.start = Math.max(0, this.start - numberToPrepend);
+    this.end = Math.min(this.start + this.max, this.end);
+    this.cache.moveTo(this.start, this.end-this.start);
+  }
+};
+
+/**
+ * @return {boolean} true if there are more records after the currently loaded page
+ */
+Scroll.prototype.hasNext = function() {
+  return this.cache.hasNext();
+};
+
+/**
+ * @return {boolean} true if there are more records before the currently loaded page
+ */
+Scroll.prototype.hasPrev = function() {
+  return this.start > 0;
+};
+
+Scroll.prototype.observeHasNext = function(callback, context) {
+  return this.cache.observeHasNext(callback, context);
+};
+
+/**
+ * Deletes locally cached data and cancels all listeners. Unloads
+ * records and triggers child_removed events.
+ */
+Scroll.prototype.destroy = function() {
+  this.cache.destroy();
+  this.ref = null;
+  this.cache = null;
+};
+
+module.exports = Scroll;
+},{"./Cache":18}],23:[function(require,module,exports){
+/**
+ * This file loads all the public methods from
+ * the common/ library. To fetch all methods
+ * for internal use, just do require('./src/common'),
+ * which loads index.js and includes the private methods.
+ */
+
+var util = require('./index.js');
+exports.log = util.log;
+exports.logLevel = util.logLevel;
+exports.escapeEmail = util.escapeEmail;
+},{"./index.js":24}],24:[function(require,module,exports){
+/**
+ * This file loads the entire common/ package for INTERNAL USE.
+ * The public methods are specified by exports.js
+ */
+
+var util = require('./libs/util.js');
+var log = require('./libs/logger.js');
+
+util.extend(
+  exports,
+  util,
+  {
+    args: require('./libs/args.js'),
+    log: log,
+    logLevel: log.logLevel,
+    Observable: require('./libs/Observable.js'),
+    Observer: require('./libs/Observer.js'),
+    queue: require('./libs/queue.js')
+  }
+);
+},{"./libs/Observable.js":25,"./libs/Observer.js":26,"./libs/args.js":27,"./libs/logger.js":28,"./libs/queue.js":29,"./libs/util.js":30}],25:[function(require,module,exports){
+'use strict';
+
+var util = require('./util.js');
+var getArgs = require('./args.js');
+var log = require('./logger.js');
+var Observer = require('./Observer.js');
+
+/**
+ * A simple observer model for watching events.
+ * @param eventsMonitored
+ * @param [opts] can contain callbacks for onAdd, onRemove, and onEvent, as well as a list of oneTimeEvents
+ * @constructor
+ */
+function Observable(eventsMonitored, opts) {
+  if( !opts ) { opts = {}; }
+  this._observableProps = parseProps(eventsMonitored, opts);
+  this.resetObservers();
+}
+Observable.prototype = {
+  /**
+   * @param {String} event
+   * @param {Function|util.Observer} callback
+   * @param {Function} [cancelFn]
+   * @param {Object} [scope]
+   */
+  observe: function(event, callback, cancelFn, scope) {
+    var args = getArgs('observe', arguments, 2, 4), obs;
+    event = args.nextFromReq(this._observableProps.eventsMonitored);
+    if( event ) {
+      callback = args.nextReq('function');
+      cancelFn = args.next('function');
+      scope = args.next('object');
+      obs = new Observer(this, event, callback, scope, cancelFn);
+      this._observableProps.observers[event].push(obs);
+      this._observableProps.onAdd(event, obs);
+      if( this.isOneTimeEvent(event) ) {
+        checkOneTimeEvents(event, this._observableProps, obs);
+      }
+    }
+    return obs;
+  },
+
+  /**
+   * @param {String|Array} [event]
+   * @returns {boolean}
+   */
+  hasObservers: function(event) {
+    return this.getObservers(event).length > 0;
+  },
+
+  /**
+   * @param {String|Array} events
+   * @param {Function|Observer} callback
+   * @param {Object} [scope]
+   */
+  stopObserving: function(events, callback, scope) {
+    var args = getArgs('stopObserving', arguments);
+    events = args.next(['array', 'string'], this._observableProps.eventsMonitored);
+    callback = args.next(['function']);
+    scope = args.next(['object']);
+    util.each(events, function(event) {
+      var removes = [];
+      var observers = this.getObservers(event);
+      util.each(observers, function(obs) {
+        if( obs.matches(event, callback, scope) ) {
+          obs.notifyCancelled(null);
+          removes.push(obs);
+        }
+      }, this);
+      removeAll(this._observableProps.observers[event], removes);
+      if( removes.length ) {
+        this._observableProps.onRemove(event, removes);
+      }
+    }, this);
+  },
+
+  /**
+   * Turn off all observers and call cancel callbacks with an error
+   * @param {String} error
+   * @returns {*}
+   */
+  abortObservers: function(error) {
+    var removes = [];
+    if( this.hasObservers() ) {
+      var observers = this.getObservers().slice();
+      util.each(observers, function(obs) {
+        obs.notifyCancelled(error);
+        removes.push(obs);
+      }, this);
+      this.resetObservers();
+      if( removes.length ) {
+        this._observableProps.onRemove(this.event, removes);
+      }
+    }
+  },
+
+  /**
+   * @param {String|Array} [events]
+   * @returns {*}
+   */
+  getObservers: function(events) {
+    events = getArgs('getObservers', arguments).listFrom(this._observableProps.eventsMonitored, true);
+    return getObserversFor(this._observableProps, events);
+  },
+
+  triggerEvent: function(event) {
+    var args = getArgs('triggerEvent', arguments);
+    var events = args.listFromWarn(this._observableProps.eventsMonitored, true);
+    var passThruArgs = args.restAsList();
+    if( events ) {
+      util.each(events, function(e) {
+        if( this.isOneTimeEvent(event) ) {
+          if( util.isArray(this._observableProps.oneTimeResults, event) ) {
+            log.warn('One time event was triggered twice, should by definition be triggered once', event);
+            return;
+          }
+          this._observableProps.oneTimeResults[event] = passThruArgs;
+        }
+        var observers = this.getObservers(e), ct = 0;
+        util.each(observers, function(obs) {
+          obs.notify.apply(obs, passThruArgs.slice(0));
+          ct++;
+        });
+        this._observableProps.onEvent.apply(null, [e, ct].concat(passThruArgs.slice(0)));
+      }, this);
+    }
+  },
+
+  resetObservers: function() {
+    util.each(this._observableProps.eventsMonitored, function(key) {
+      this._observableProps.observers[key] = [];
+    }, this);
+  },
+
+  isOneTimeEvent: function(event) {
+    return util.contains(this._observableProps.oneTimeEvents, event);
+  },
+
+  observeOnce: function(event, callback, cancelFn, scope) {
+    var args = getArgs('observeOnce', arguments, 2, 4), obs;
+    event = args.nextFromWarn(this._observableProps.eventsMonitored);
+    if( event ) {
+      callback = args.nextReq('function');
+      cancelFn = args.next('function');
+      scope = args.next('object');
+      obs = new Observer(this, event, callback, scope, cancelFn, true);
+      this._observableProps.observers[event].push(obs);
+      this._observableProps.onAdd(event, obs);
+      if( this.isOneTimeEvent(event) ) {
+        checkOneTimeEvents(event, this._observableProps, obs);
+      }
+    }
+    return obs;
+  }
+};
+
+function removeAll(list, items) {
+  util.each(items, function(x) {
+    var i = util.indexOf(list, x);
+    if( i >= 0 ) {
+      list.splice(i, 1);
+    }
+  });
+}
+
+function getObserversFor(props, events) {
+  var out = [];
+  util.each(events, function(event) {
+    if( !util.has(props.observers, event) ) {
+      log.warn('Observable.hasObservers: invalid event type %s', event);
+    }
+    else {
+      if( props.observers[event].length ) {
+        out = out.concat(props.observers[event]);
+      }
+    }
+  });
+  return out;
+}
+
+function checkOneTimeEvents(event, props, obs) {
+  if( util.has(props.oneTimeResults, event) ) {
+    obs.notify.apply(obs, props.oneTimeResults[event]);
+  }
+}
+
+function parseProps(eventsMonitored, opts) {
+  return util.extend(
+    { onAdd: util.noop, onRemove: util.noop, onEvent: util.noop, oneTimeEvents: [] },
+    opts,
+    { eventsMonitored: eventsMonitored, observers: {}, oneTimeResults: {} }
+  );
+}
+
+module.exports = Observable;
+},{"./Observer.js":26,"./args.js":27,"./logger.js":28,"./util.js":30}],26:[function(require,module,exports){
+'use strict';
+var util = require('./util.js');
+
+/** Observer
+ ***************************************************
+ * @private
+ * @constructor
+ */
+function Observer(observable, event, notifyFn, context, cancelFn, oneTimeEvent) {
+  if( typeof(notifyFn) !== 'function' ) {
+    throw new Error('Must provide a valid notifyFn');
+  }
+  this.observable = observable;
+  this.fn = notifyFn;
+  this.event = event;
+  this.cancelFn = cancelFn||function() {};
+  this.context = context;
+  this.oneTimeEvent = !!oneTimeEvent;
+}
+
+Observer.prototype = {
+  notify: function() {
+    var args = util.toArray(arguments);
+    this.fn.apply(this.context, args);
+    if( this.oneTimeEvent ) {
+      this.observable.stopObserving(this.event, this.fn, this.context);
+    }
+  },
+
+  matches: function(event, fn, context) {
+    if( util.isArray(event) ) {
+      return util.contains(event, function(e) {
+        return this.matches(e, fn, context);
+      }, this);
+    }
+    return (!event || event === this.event) &&
+      (!fn || fn === this || fn === this.fn) &&
+      (!context || context === this.context);
+  },
+
+  notifyCancelled: function(err) {
+    this.cancelFn.call(this.context, err||null);
+  }
+};
+
+module.exports = Observer;
+},{"./util.js":30}],27:[function(require,module,exports){
+'use strict';
+var util = require('./util.js');
+var log = require('./logger.js');
+
+function Args(fnName, args, minArgs, maxArgs) {
+  if( typeof(fnName) !== 'string' || !util.isObject(args) ) {
+    throw new Error('Args requires at least 2 args: fnName, arguments[, minArgs, maxArgs]');
+  }
+  if( !(this instanceof Args) ) { // allow it to be called without `new` prefix
+    return new Args(fnName, args, minArgs, maxArgs);
+  }
+  this.fnName = fnName;
+  this.argList = util.toArray(args);
+  this.origArgs = util.toArray(args);
+  var len = this.length = this.argList.length;
+  this.pos = -1;
+  if(util.isUndefined(minArgs)) { minArgs = 0; }
+  if(util.isUndefined(maxArgs)) { maxArgs = this.argList.length; }
+  if( len < minArgs || len > maxArgs ) {
+    var rangeText = maxArgs > minArgs? util.printf('%d to %d', minArgs, maxArgs) : minArgs;
+    throw Error(util.printf('%s must be called with %s arguments, but received %d', fnName, rangeText, len));
+  }
+}
+
+Args.prototype = {
+  /**
+   * Grab the original list of args
+   * @return {Array} containing the original arguments
+   */
+  orig: function() { return this.origArgs.slice(0); },
+
+  /**
+   * Return whatever args remain as a list
+   * @returns {Array|string|Buffer|Blob|*}
+   */
+  restAsList: function(minLength, types) {
+    var list = this.argList.slice(0);
+    if( minLength || types ) {
+      for (var i = 0, len = list.length; i < len; i++) {
+        this._arg(types||true, null, i < minLength);
+      }
+    }
+    return list;
+  },
+
+  /**
+   * Advance the argument list by one and discard the value
+   * @return {Args}
+   */
+  skip: function() {
+    if( this.argList.length ) {
+      this.pos++;
+      this.argList.shift();
+    }
+    return this;
+  },
+
+  /**
+   * Read the next optional argument, but only if `types` is true, or it is of a type specified
+   * In the case that it is not present, return `defaultValue`
+   * @param {boolean|Array|string} types either `true` or one of array, string, object, number, int, boolean, boolean-like, or function
+   * @param [defaultValue]
+   */
+  next: function(types, defaultValue) {
+    return this._arg(types, defaultValue, false);
+  },
+
+  /**
+   * Read the next optional argument, but only if `types` is true, or it is of a type specified. In the case
+   * that it is not present, return `defaultValue` and log a warning to the console
+   * @param {boolean|Array|string} types either `true` or one of array, string, object, number, int, boolean, boolean-like, or function
+   * @param [defaultValue]
+   */
+  nextWarn: function(types, defaultValue) {
+    return this._arg(types, defaultValue, 'warn');
+  },
+
+  /**
+   * Read the next required argument, but only if `types` is true, or it is of a type specified. In the case
+   * that it is not present, throw an Error
+   * @param {boolean|Array|string} types either `true` or one of array, string, object, number, int, boolean, boolean-like, or function
+   */
+  nextReq: function(types) {
+    return this._arg(types, null, true);
+  },
+
+  /**
+   * Read the next optional argument, which must be one of the values in choices. If it is not present,
+   * return defaultValue.
+   * @param {Array} choices a list of allowed values
+   * @param [defaultValue]
+   */
+  nextFrom: function(choices, defaultValue) {
+    return this._from(choices, defaultValue, false);
+  },
+
+  /**
+   * Read the next optional argument, which must be one of the values in choices. If it is not present,
+   * return defaultValue and log a warning to the console.
+   * @param {Array} choices a list of allowed values
+   * @param [defaultValue]
+   */
+  nextFromWarn: function(choices, defaultValue) {
+    return this._from(choices, defaultValue, 'warn');
+  },
+
+  /**
+   * Read the next optional argument, which must be one of the values in choices. If it is not present,
+   * throw an Error.
+   * @param {Array} choices a list of allowed values
+   */
+  nextFromReq: function(choices) {
+    return this._from(choices, null, true);
+  },
+
+  /**
+   * Read the next optional argument and return it as an array (it can optionally be an array or a single value
+   * which will be coerced into an array). All values in the argument must be in choices or they are removed
+   * from the choices and a warning is logged. If no valid value is present, return defaultValue.
+   * @param {Array} choices a list of allowed values
+   * @param [defaultValue] a set of defaults, setting this to true uses the `choices` as default
+   */
+  listFrom: function(choices, defaultValue) {
+    return this._list(choices, defaultValue, false);
+  },
+
+  /**
+   * Read the next optional argument and return it as an array (it can optionally be an array or a single value
+   * which will be coerced into an array). All values in the argument must be in choices or they are removed
+   * from the choices and a warning is logged. If no valid value is present, return defaultValue and log a warning.
+   * @param {Array} choices a list of allowed values
+   * @param [defaultValue] a set of defaults, setting this to true uses the `choices` as default
+   */
+  listFromWarn: function(choices, defaultValue) {
+    return this._list(choices, defaultValue, 'warn');
+  },
+
+  /**
+   * Read the next optional argument and return it as an array (it can optionally be an array or a single value
+   * which will be coerced into an array). All values in the argument must be in choices or they are removed
+   * from the choices and a warning is logged. If no valid value is present, throw an Error.
+   * @param {Array} choices a list of allowed values
+   */
+  listFromReq: function(choices) {
+    return this._list(choices, null, true);
+  },
+
+  _arg: function(types, defaultValue, required) {
+    this.pos++;
+    if( util.isUndefined(types) || types === null ) { types = true; }
+    if( this.argList.length && isOfType(this.argList[0], types) ) {
+      return format(this.argList.shift(), types);
+    }
+    else {
+      if( required ) {
+        assertRequired(required, this.fnName, this.pos, util.printf('must be of type %s', types));
+      }
+      return defaultValue;
+    }
+  },
+
+  _from: function(choices, defaultValue, required) {
+    this.pos++;
+    if( this.argList.length && util.contains(choices, this.argList[0]) ) {
+      return this.argList.shift();
+    }
+    else {
+      if( required ) {
+        assertRequired(required, this.fnName, this.pos, util.printf('must be one of %s', choices));
+      }
+      return defaultValue;
+    }
+  },
+
+  _list: function(choices, defaultValue, required) {
+    this.pos++;
+    var out = [];
+    var list = this.argList[0];
+    if( this.argList.length && !util.isEmpty(list) && (util.isArray(list) || !util.isObject(list)) ) {
+      this.argList.shift();
+      if( util.isArray(list) ) {
+        out = util.map(list, function(v) {
+          if( util.contains(choices, v) ) {
+            return v;
+          }
+          else {
+            badChoiceWarning(this.fnName, v, choices);
+            return undefined;
+          }
+        }, this);
+      }
+      else {
+        if( util.contains(choices, list) ) {
+          out = [list];
+        }
+        else {
+          badChoiceWarning(this.fnName, list, choices);
+        }
+      }
+    }
+    if( util.isEmpty(out) ) {
+      if( required ) {
+        assertRequired(required, this.fnName, this.pos,
+          util.printf('choices must be in [%s]', choices));
+      }
+      return defaultValue === true? choices : defaultValue;
+    }
+    return out;
+  }
+
+};
+
+function isOfType(val, types) {
+  if( types === true ) { return true; }
+  if( !util.isArray(types) ) { types = [types]; }
+  return util.contains(types, function(type) {
+    switch(type) {
+      case 'array':
+        return util.isArray(val);
+      case 'string':
+        return typeof(val) === 'string';
+      case 'number':
+        return isFinite(parseInt(val, 10));
+      case 'int':
+      case 'integer':
+        return isFinite(parseFloat(val));
+      case 'object':
+        return util.isObject(val);
+      case 'function':
+        return typeof(val) === 'function';
+      case 'bool':
+      case 'boolean':
+        return typeof(val) === 'boolean';
+      case 'boolean-like':
+        return !util.isObject(val); // be lenient here
+      default:
+        throw new Error('Args received an invalid data type: '+type);
+    }
+  });
+}
+
+function assertRequired(required, fnName, pos, msg) {
+  msg = util.printf('%s: invalid argument at pos %d, %s (received %s)', fnName, pos, msg);
+  if( required === true ) {
+    throw new Error(msg);
+  }
+  else if( util.has(log, required) ) {
+    log[required](msg);
+  }
+  else {
+    throw new Error('The `required` value passed to Args methods must either be true or a method name from logger');
+  }
+}
+
+function badChoiceWarning(fnName, val, choices) {
+  log.warn('%s: invalid choice %s, must be one of [%s]', fnName, val, choices);
+}
+
+function format(val, types) {
+  if( types === true ) { return val; }
+  var type = util.isArray(types)? types[0] : types;
+  switch(type) {
+    case 'array':
+      return util.isArray(val)? val : [val];
+    case 'string':
+      return val + '';
+    case 'number':
+      return parseFloat(val);
+    case 'int':
+    case 'integer':
+      return parseInt(val, 10);
+    case 'bool':
+    case 'boolean':
+    case 'boolean-like':
+      return !!val;
+    case 'function':
+    case 'object':
+      return val;
+    default:
+      throw new Error('Args received an invalid data type: '+type);
+  }
+}
+
+module.exports = Args;
+},{"./logger.js":28,"./util.js":30}],28:[function(require,module,exports){
+'use strict';
+/*global window*/
+var DEFAULT_LEVEL = 2; //  errors and warnings
+var oldDebuggingLevel = false;
+var fakeConsole = {
+  error: noop, warn: noop, info: noop, log: noop, debug: noop, time: noop, timeEnd: noop, group: noop, groupEnd: noop
+};
+var util = require('./util.js');
+
+var logger = function() {
+  logger.log.apply(null, util.toArray(arguments));
+};
+
+/** hints for the IDEs */
+logger.warn = noop;
+logger.error = noop;
+logger.info = noop;
+logger.log = noop;
+logger.debug = noop;
+logger.isErrorEnabled = noop;
+logger.isWarnEnabled = noop;
+logger.isInfoEnabled = noop;
+logger.isLogEnabled = noop;
+logger.isDebugEnabled = noop;
+
+/**
+ * @param {int} level use -1 to turn off all logging, use 5 for maximum debugging
+ * @param {string|RegExp} [grep] filter logs to those whose first value matches this text or expression
+ */
+logger.logLevel = function(level, grep) {
+  if( typeof(level) !== 'number' ) { level = levelInt(level); }
+
+  if( oldDebuggingLevel === level ) { return function() {}; }
+
+  util.each(['error', 'warn', 'info', 'log', 'debug'], function(k, i) {
+    var isEnabled = typeof(console) !== 'undefined' && level >= i+1;
+    if( isEnabled ) {
+      // binding is necessary to prevent IE 8/9 from having a spaz when
+      // .apply and .call are used on console methods
+      var fn = util.bind(console[k==='debug'? 'log' : k], console);
+      logger[k] = function() {
+        var args = util.toArray(arguments);
+        if( args.length > 1 && typeof args[0] === 'string' ) {
+          var m = args[0].match(/(%s|%d|%j)/g);
+          if( m ) {
+            var newArgs = [util.printf.apply(util, args)];
+            args = args.length > m.length+1? newArgs.concat(args.slice(m.length+1)) : newArgs;
+          }
+        }
+        if( !grep || !filterThis(grep, args) ) {
+          fn.apply(typeof(console) === 'undefined'? fakeConsole : console, args);
+        }
+      };
+    }
+    else {
+      logger[k] = noop;
+    }
+    logger['is' + ucfirst(k) + 'Enabled'] = function() { return isEnabled; };
+  });
+
+  // provide a way to revert the debugging level if I want to change it temporarily
+  var off = (function(x) {
+    return function() { logger.logLevel(x); };
+  })(oldDebuggingLevel);
+  oldDebuggingLevel = level;
+
+  return off;
+};
+
+function ucfirst(s) {
+  return s.charAt(0).toUpperCase() + s.substr(1);
+}
+
+function getDefaultLevel() {
+  var m;
+  if( typeof(window) !== 'undefined' && window.location && window.location.search ) {
+    m = window.location.search.match('\bdebugLevel=([0-9]+)\b');
+  }
+  return m? parseInt(m[1], 10) : DEFAULT_LEVEL;
+}
+
+function noop() { return true; }
+
+function filterThis(expr, args) {
+  if( !args.length ) {
+    return true;
+  }
+  else if( expr instanceof RegExp ) {
+    return !expr.test(args[0]+'');
+  }
+  else {
+    return !(args[0]+'').match(expr);
+  }
+}
+
+function levelInt(x) {
+  switch(x) {
+    case false: return 0;
+    case 'off': return 0;
+    case 'none': return 0;
+    case 'error': return 1;
+    case 'warn': return 2;
+    case 'warning': return 2;
+    case 'info': return 3;
+    case 'log': return 4;
+    case 'debug': return 5;
+    case true: return DEFAULT_LEVEL;
+    case 'on': return DEFAULT_LEVEL;
+    case 'all': return DEFAULT_LEVEL;
+    default: return DEFAULT_LEVEL;
+  }
+}
+
+logger.logLevel(getDefaultLevel());
+module.exports = logger;
+},{"./util.js":30}],29:[function(require,module,exports){
+'use strict';
+var util = require('./util.js');
+
+function Queue(criteriaFunctions) {
+  this.needs = 0;
+  this.met = 0;
+  this.queued = [];
+  this.errors = [];
+  this.criteria = [];
+  this.processing = false;
+  util.each(criteriaFunctions, this.addCriteria, this);
+}
+
+Queue.prototype = {
+  /**
+   * @param {Function} criteriaFn
+   * @param {Object} [scope]
+   */
+  addCriteria: function(criteriaFn, scope) {
+    if( this.processing ) {
+      throw new Error('Cannot call addCriteria() after invoking done(), fail(), or handler() methods');
+    }
+    this.criteria.push(scope? [criteriaFn, scope] : criteriaFn);
+    return this;
+  },
+
+  /**
+   * Returns a node-like callback to be invoked when an op is completed.
+   * @returns {function}
+   */
+  getHandler: function() {
+    var doneCallback, result;
+    this.addCriteria(function(done) {
+      if( result !== util.undef ) {
+        done(result);
+      }
+      else {
+        doneCallback = done;
+      }
+    });
+    return function(err) {
+      if( doneCallback ) { doneCallback(err); }
+      else { result = err; }
+    };
+  },
+
+  ready: function() {
+    return this.needs === this.met;
+  },
+
+  done: function(fn, context) {
+    if( fn ) {
+      this._runOrStore(function() {
+        if( !this.hasErrors() ) { fn.call(context); }
+      });
+    }
+    return this;
+  },
+
+  fail: function(fn, context) {
+    this._runOrStore(function() {
+      if( this.hasErrors() ) { fn.apply(context, this.getErrors()); }
+    });
+    return this;
+  },
+
+  handler: function(fn, context) {
+    this._runOrStore(function() {
+      fn.apply(context, this.hasErrors()? this.getErrors() : null);
+    });
+    return this;
+  },
+
+  /**
+   * @param {Queue} queue
+   */
+  chain: function(queue) {
+    this.addCriteria(queue.handler, queue);
+    return this;
+  },
+
+  when: function(def) {
+    this._runOrStore(function() {
+      if( this.hasErrors() ) {
+        def.reject.apply(def, this.getErrors());
+      }
+      else {
+        def.resolve();
+      }
+    });
+  },
+
+  addError: function(e) {
+    this.errors.push(e);
+  },
+
+  hasErrors: function() {
+    return this.errors.length;
+  },
+
+  getErrors: function() {
+    return this.errors.slice(0);
+  },
+
+  _process: function() {
+    this.processing = true;
+    this.needs = this.criteria.length;
+    util.each(this.criteria, this._evaluateCriteria, this);
+  },
+
+  _evaluateCriteria: function(criteriaFn) {
+    var scope = null;
+    if( util.isArray(criteriaFn) ) {
+      scope = criteriaFn[1];
+      criteriaFn = criteriaFn[0];
+    }
+    try {
+      criteriaFn.call(scope, util.bind(this._criteriaMet, this));
+    }
+    catch(e) {
+      this.addError(e);
+    }
+  },
+
+  _criteriaMet: function(error) {
+    if( error ) { this.addError(error); }
+    this.met++;
+    if( this.ready() ) {
+      util.each(this.queued, this._run, this);
+    }
+  },
+
+  _runOrStore: function(fn) {
+    if( !this.processing ) { this._process(); }
+    if( this.ready() ) {
+      this._run(fn);
+    }
+    else {
+      this.queued.push(fn);
+    }
+  },
+
+  _run: function(fn) {
+    fn.call(this);
+  }
+};
+
+module.exports = function(criteriaFns, callback) {
+  var q = new Queue(criteriaFns);
+  if( callback ) { q.done(callback); }
+  return q;
+};
+},{"./util.js":30}],30:[function(require,module,exports){
+(function (global){
+/*jshint unused:vars */
+/*jshint bitwise:false */
+
+'use strict';
+
+var undef;
+var util = exports;
+var READ_EVENTS = ['value', 'child_added', 'child_removed', 'child_updated', 'child_changed'];
+
+util.undef = undef;
+util.Firebase = global.Firebase || require('firebase');
+
+util.isDefined = function(v) {
+  return v !== undef;
+};
+
+util.isUndefined = function(v) {
+  return v === undef;
+};
+
+util.isObject = function(v) {
+  return Object.prototype.isPrototypeOf(v);
+};
+
+util.isArray = function(v) {
+  return (Array.isArray || isArray).call(null, v);
+};
+
+/**
+ * @param v value to test or if `key` is provided, the object containing method
+ * @param {string} [key] if provided, v is an object and this is the method we want to find
+ * @returns {*}
+ */
+util.isFunction = function(v, key) {
+  if( typeof(key) === 'string' ) {
+    return util.isObject(v) && util.has(v, key) && typeof(v[key]) === 'function';
+  }
+  else {
+    return typeof(v) === 'function';
+  }
+};
+
+util.toArray = function(vals, startFrom) {
+  var newVals = util.map(vals, function(v, k) { return v; });
+  return startFrom > 0? newVals.slice(startFrom) : newVals;
+};
+
+/**
+ * @param {boolean} [recursive] if true, keys are merged recursively, otherwise, they replace the base
+ * @param {...object} base
+ * @returns {Object}
+ */
+util.extend = function(recursive, base) {
+  var args = util.toArray(arguments);
+  var recurse = typeof args[0] === 'boolean' && args.shift();
+  var out = args.shift();
+  util.each(args, function(o) {
+    if( util.isObject(o) ) {
+      util.each(o, function(v,k) {
+        out[k] = recurse && util.isObject(out[k])? util.extend(true, out[k], v) : v;
+      });
+    }
+  });
+  return out;
+};
+
+util.bind = function(fn, scope) {
+  var args = Array.prototype.slice.call(arguments, 1);
+  return (fn.bind || bind).apply(fn, args);
+};
+
+/**
+ * @param {Object|Array} vals
+ * @returns {boolean}
+ */
+util.isEmpty = function(vals) {
+  return vals === undef || vals === null ||
+    (util.isArray(vals) && vals.length === 0) ||
+    (util.isObject(vals) && !util.contains(vals, function(v) { return true; }));
+};
+
+/**
+ * @param {Object|Array} vals
+ * @returns {Array} of keys
+ */
+util.keys = function(vals) {
+  var keys = [];
+  util.each(vals, function(v, k) { keys.push(k); });
+  return keys;
+};
+
+/**
+ * Create an array using values returned by an iterator. Undefined values
+ * are discarded.
+ *
+ * @param vals
+ * @param iterator
+ * @param [scope]
+ * @returns {*}
+ */
+util.map = function(vals, iterator, scope) {
+  var out = [];
+  util.each(vals, function(v, k) {
+    var res = iterator.call(scope, v, k, vals);
+    if( res !== undef ) { out.push(res); }
+  });
+  return out;
+};
+
+/**
+ *
+ * @param {Object} list
+ * @param {Function} iterator
+ * @param {Object} [scope]
+ */
+util.mapObject = function(list, iterator, scope) {
+  var out = {};
+  util.each(list, function(v,k) {
+    var res = iterator.call(scope, v, k, list);
+    if( res !== undef ) {
+      out[k] = res;
+    }
+  });
+  return out;
+};
+
+/**
+ * Returns the first match
+ * @param {Object|Array} vals
+ * @param {Function} iterator
+ * @param {Object} [scope] set `this` in the callback or undefined
+ */
+util.find = function(vals, iterator, scope) {
+  if( util.isArray(vals) ) {
+    for(var i = 0, len = vals.length; i < len; i++) {
+      if( iterator.call(scope, vals[i], i, vals) === true ) { return vals[i]; }
+    }
+  }
+  else if( util.isObject(vals) ) {
+    var key;
+    for (key in vals) {
+      if (vals.hasOwnProperty(key) && iterator.call(scope, vals[key], key, vals) === true) {
+        return vals[key];
+      }
+    }
+  }
+  return undef;
+};
+
+util.filter = function(list, iterator, scope) {
+  var isArray = util.isArray(list);
+  var out = isArray? [] : {};
+  util.each(list, function(v,k) {
+    if( iterator.call(scope, v, k, list) ) {
+      if( isArray ) {
+        out.push(v);
+      }
+      else {
+        out[k] = v;
+      }
+    }
+  });
+  return out;
+};
+
+util.reduce = function(list, accumulator, iterator) {
+  util.each(list, function(v, k) {
+    accumulator = iterator(accumulator, v, k, list);
+  });
+  return accumulator;
+};
+
+util.has = function(vals, key) {
+  return util.isObject(vals) && vals[key] !== undef;
+};
+
+util.val = function(list, key) {
+  return util.has(list, key)? list[key] : undef;
+};
+
+util.contains = function(vals, iterator, scope) {
+  if( typeof(iterator) !== 'function' ) {
+    if( util.isArray(vals) ) {
+      return util.indexOf(vals, iterator) > -1;
+    }
+    iterator = (function(testVal) {
+      return function(v) { return v === testVal; };
+    })(iterator);
+  }
+  return util.find(vals, iterator, scope) !== undef;
+};
+
+util.each = function(vals, cb, scope) {
+  if( util.isArray(vals) || isArguments(vals) ) {
+    (vals.forEach || forEach).call(vals, cb, scope);
+  }
+  else if( util.isObject(vals) ) {
+    var key;
+    for (key in vals) {
+      if (vals.hasOwnProperty(key)) {
+        cb.call(scope, vals[key], key, vals);
+      }
+    }
+  }
+};
+
+util.indexOf = function(list, item) {
+  return (list.indexOf || indexOf).call(list, item);
+};
+
+util.remove = function(list, item) {
+  var res = false;
+  if( util.isArray(list) ) {
+    var i = util.indexOf(list, item);
+    if( i > -1 ) {
+      list.splice(i, 1);
+      res = true;
+    }
+  }
+  else if( util.isObject(list) ) {
+    var key;
+    for (key in list) {
+      if (list.hasOwnProperty(key) && item === list[key]) {
+        res = true;
+        delete list[key];
+        break;
+      }
+    }
+  }
+  return res;
+};
+
+/**
+ * Invoke a function after a setTimeout(..., 0), to help convert synch callbacks to async ones.
+ * Additional args after `scope` will be passed to the fn when it is invoked
+ *
+ * @param {Function} fn
+ * @param {Object} scope the `this` scope inside `fn`
+ */
+util.defer = function(fn, scope) {
+  var args = util.toArray(arguments);
+  setTimeout(util.bind.apply(null, args), 0);
+};
+
+/**
+ * Call a method on each instance contained in the list. Any additional args are passed into the method.
+ *
+ * @param {Object|Array} list contains instantiated objects
+ * @param {String} methodName
+ * @return {Array}
+ */
+util.call = function(list, methodName) {
+  var args = util.toArray(arguments, 2);
+  var res = [];
+  util.each(list, function(o) {
+    if( typeof(o) === 'function' && !methodName ) {
+      return res.push(o.apply(null, args));
+    }
+    if( util.isObject(o) && typeof(o[methodName]) === 'function' ) {
+      res.push(o[methodName].apply(o, args));
+    }
+  });
+  return res;
+};
+
+/**
+ * Determine if two variables are equal. They must be:
+ *  - of the same type
+ *  - arrays must be same length and all values pass isEqual()
+ *  - arrays must be in same order
+ *  - objects must contain the same keys and their values pass isEqual()
+ *  - object keys do not have to be in same order unless objectsSameOrder === true
+ *  - primitives must pass ===
+ *
+ * @param a
+ * @param b
+ * @param {boolean} [objectsSameOrder]
+ * @returns {boolean}
+ */
+util.isEqual = function(a, b, objectsSameOrder) {
+  if( a === b ) { return true; }
+  else if( typeof(a) !== typeof(b) ) {
+    return false;
+  }
+  else if( util.isObject(a) && util.isObject(b) ) {
+    var isA = util.isArray(a);
+    var isB = util.isArray(b);
+    if( isA || isB ) {
+      return isA && isB && a.length === b.length && !util.contains(a, function(v, i) {
+        return !util.isEqual(v, b[i]);
+      });
+    }
+    else {
+      var aKeys = objectsSameOrder? util.keys(a) : util.keys(a).sort();
+      var bKeys = objectsSameOrder? util.keys(b) : util.keys(b).sort();
+      return util.isEqual(aKeys, bKeys) &&
+        !util.contains(a, function(v, k) { return !util.isEqual(v, b[k]); });
+    }
+  }
+  else {
+    return false;
+  }
+};
+
+util.bindAll = function(context, methods) {
+  util.each(methods, function(m,k) {
+    if( typeof(m) === 'function' ) {
+      methods[k] = util.bind(m, context);
+    }
+  });
+  return methods;
+};
+
+util.printf = function() {
+  var localArgs = util.toArray(arguments);
+  var template = localArgs.shift();
+  var matches = template.match(/(%s|%d|%j)/g);
+  if( matches && localArgs.length ) {
+    util.find(matches, function (m) {
+      template = template.replace(m, format(localArgs.shift(), m));
+      return localArgs.length === 0;
+    });
+  }
+  return template;
+};
+
+util.mergeToString = function(list) {
+  if( list.length === 0 ) { return null; }
+  else if( list.length === 1 ) { return list[0]; }
+  else {
+    return '[' + list.join('][') + ']';
+  }
+};
+
+// credits: http://stackoverflow.com/questions/1606797/use-of-apply-with-new-operator-is-this-possible
+util.construct = function(constructor, args) {
+  function F() {
+    return constructor.apply(this, args);
+  }
+  F.prototype = constructor.prototype;
+  return new F();
+};
+
+util.noop = function() {};
+
+var wrappingClasses = [];
+util.isFirebaseRef = function(x) {
+  // necessary because instanceof won't work on Firebase Query objects
+  // so we can't simply do instanceof here
+  var isObject = util.isObject(x);
+  var proto = isObject? Object.getPrototypeOf(x) : false;
+  if( proto && proto.constructor === util.Firebase.prototype.constructor ) {
+    return true;
+  }
+
+  //todo-hack: SDK 2.2.x no longer works with the above. This is a hack to make that work until fixed
+  if( isObject && typeof(x.ref) === 'function' && typeof(x.ref().transaction) === 'function' ) {
+    return true;
+  }
+
+  return util.find(wrappingClasses, function(C) {
+    return isObject? x instanceof C : x === C;
+  });
+};
+
+// Add a Class as a valid substitute for a Firebase reference, so that it will
+// pass util.isFirebaseRef(). This means that it must provide all the Firebase
+// API methods and behave exactly like a Firebase instance in all cases.
+util.registerFirebaseWrapper = function(WrappingClass) {
+  wrappingClasses.push(WrappingClass);
+};
+
+// for test units
+util._mockFirebaseRef = function(mock) {
+  util.Firebase = mock;
+};
+
+util.escapeEmail = function(email) {
+  return (email||'').replace('.', ',');
+};
+
+
+util.assertValidEvent = function(event) {
+  if( !util.contains(READ_EVENTS, event) ) {
+    throw new Error('Event must be one of ' + READ_EVENTS + ', but received ' + event);
+  }
+};
+
+/**
+ * Inherit prototype of another JS class. Adds an _super() method for the constructor to call.
+ * It takes any number of arguments (whatever the inherited classes constructor methods are),
+ *
+ * Limitations:
+ *    1. Inherited constructor must be callable with no arguments (to make instanceof work), but can be called
+ *       properly during instantiation with arguments by using _super(this, args...)
+ *    2. Can only inherit one super class, no exceptions
+ *    3. Cannot call prototype = {} after using this method
+ *
+ * @param {Function} Child
+ * @param {Function} Parent a class which can be constructed without passing any arguments
+ * @returns {Function}
+ */
+util.inherits = function(Child, Parent) {
+  var methodSets = [Child.prototype].concat(util.toArray(arguments).slice(2));
+  Child.prototype = new Parent();
+  Child.prototype.constructor = Parent;
+  util.each(methodSets, function(fnSet) {
+    util.each(fnSet, function(fn, key) {
+      Child.prototype[key] = fn;
+    });
+  });
+  Child.prototype._super = function() {
+    Parent.apply(this, arguments);
+  };
+  return Child;
+};
+
+util.deepCopy = function(data) {
+  if( !util.isObject(data) ) { return data; }
+  var out = util.isArray(data)? [] : {};
+  util.each(data, function(v,k) {
+    out[k] = util.deepCopy(v);
+  });
+  return out;
+};
+
+util.pick = function(obj, keys) {
+  if( !util.isObject(obj) ) { return {}; }
+  var out = util.isArray(obj)? [] : {};
+  util.each(keys, function(k) {
+    out[k] = obj[k];
+  });
+  return out;
+};
+
+util.eachByPath = function(map, data, callback, context) {
+  var dataByPath = {};
+  util.each(data, function(v,k) {
+    var p = map.pathFor(k);
+    var f = map.getField(k);
+    var key = f? f.id : k;
+    if( !util.has(dataByPath, p.name()) ) {
+      dataByPath[p.name()] = { path: p, data: {} };
+    }
+    dataByPath[p.name()].data[key] = v;
+  });
+
+  util.each(dataByPath, function(collated) {
+    callback.call(context, collated.path, collated.data);
+  });
+};
+
+function format(v, type) {
+  switch(type) {
+    case '%d':
+      return parseInt(v, 10);
+    case '%j':
+      v =  util.isObject(v)? JSON.stringify(v) : v+'';
+      if(v.length > 500) {
+        v = v.substr(0, 500)+'.../*truncated*/...}';
+      }
+      return v;
+    case '%s':
+      return v + '';
+    default:
+      return v;
+  }
+}
+
+function isArguments(o) {
+  return util.isObject(o) && o+'' === '[object Arguments]';
+}
+
+/****************************************
+ * POLYFILLS
+ ****************************************/
+
+// a polyfill for Function.prototype.bind (invoke using call or apply!)
+// credits: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
+function bind(oThis) {
+  /*jshint validthis:true */
+  if (typeof this !== 'function') {
+    // closest thing possible to the ECMAScript 5 internal IsCallable function
+    throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+  }
+
+  var aArgs = Array.prototype.slice.call(arguments, 1),
+    fToBind = this,
+    FNOP = function () {},
+    fBound = function () {
+      return fToBind.apply(
+          this instanceof FNOP && oThis? this : oThis,
+          aArgs.concat(Array.prototype.slice.call(arguments))
+      );
+    };
+
+  FNOP.prototype = this.prototype;
+  fBound.prototype = new FNOP();
+
+  return fBound;
+}
+
+// a polyfill for Array.prototype.forEach (invoke using call or apply!)
+// credits: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+function forEach(fn, scope) {
+  /*jshint validthis:true */
+  var i, len;
+  for (i = 0, len = this.length; i < len; ++i) {
+    if (i in this) {
+      fn.call(scope, this[i], i, this);
+    }
+  }
+}
+
+// a polyfill for Array.isArray
+// credits: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
+function isArray(vArg) {
+  return Object.prototype.toString.call(vArg) === '[object Array]';
+}
+
+// a polyfill for Array.indexOf
+// credits: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
+function indexOf(searchElement, fromIndex) {
+  /*jshint validthis:true */
+  if (this === null) {
+    throw new TypeError();
+  }
+  var n, k, t = Object(this),
+    len = t.length >>> 0;
+
+  if (len === 0) {
+    return -1;
+  }
+  n = 0;
+  if (arguments.length > 1) {
+    n = Number(arguments[1]);
+    if (n !== n) { // shortcut for verifying if it's NaN
+      n = 0;
+    } else if (n !== 0 && n !== Infinity && n !== -Infinity) {
+      n = (n > 0 || -1) * Math.floor(Math.abs(n));
+    }
+  }
+  if (n >= len) {
+    return -1;
+  }
+  for (k = n >= 0 ? n : Math.max(len - Math.abs(n), 0); k < len; k++) {
+    if (k in t && t[k] === searchElement) {
+      return k;
+    }
+  }
+  return -1;
+}
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"firebase":"firebase"}],"firebase-util":[function(require,module,exports){
+/**
+ * This file establishes the Firebase.util namespace and
+ * defines the exports for all packages when using node.js
+ */
+'use strict';
+
+var util = require('./common/index.js');
+
+// put all our public methods into the exported scope
+util.extend(exports,
+  require('./common/exports.js'),
+  require('./NormalizedCollection/exports.js'),
+  require('./Paginate/exports.js')
+);
+
+/*global window */
+if( typeof window !== 'undefined' ) {
+  if( !window.hasOwnProperty('Firebase') ) {
+    console.warn('Firebase not found on the global window instance. Cannot add Firebase.util namespace.');
+  }
+  else {
+    window.Firebase.util = util;
+  }
+}
+},{"./NormalizedCollection/exports.js":2,"./Paginate/exports.js":17,"./common/exports.js":23,"./common/index.js":24}]},{},[1]);
+
+/**
+ * @license videogular v1.2.2 http://videogular.com
  * Two Fucking Developers http://twofuckingdevelopers.com
  * License: MIT
  */
@@ -34082,8 +38763,7 @@ function Nc(a,b){J(!b||!0===a||!1===a,"Can't turn on custom loggers persistently
 angular.module("com.2fdevs.videogular", ["ngSanitize"])
     .run(
     ["$templateCache", function ($templateCache) {
-        $templateCache.put("vg-templates/vg-media-video", "<video></video>");
-        $templateCache.put("vg-templates/vg-media-audio", "<audio></audio>");
+        $templateCache.put("vg-templates/vg-media", "<audio></audio><video></video>");
 
         // Support for browsers that doesn't have .bind()
         if (!Function.prototype.bind) {
@@ -34395,6 +39075,7 @@ angular.module("com.2fdevs.videogular")
         this.stop = function () {
             this.mediaElement[0].pause();
             this.mediaElement[0].currentTime = 0;
+            this.currentTime = 0;
             this.setState(VG_STATES.STOP);
         };
 
@@ -34580,6 +39261,11 @@ angular.module("com.2fdevs.videogular")
             $scope.$watch("vgPlaysInline", function (newValue, oldValue) {
                 this.playsInline = newValue;
             });
+
+            $scope.$watch("vgCuePoints", function (newValue, oldValue) {
+                this.cuePoints = newValue;
+                this.checkCuePoints(this.currentTime);
+            }.bind(this));
         };
 
         this.onFullScreenChange = function (event) {
@@ -34662,7 +39348,6 @@ angular.module("com.2fdevs.videogular")
  * Directive to add a source of videos or audios. This directive will create a &lt;video&gt; or &lt;audio&gt; tag and usually will be above plugin tags.
  *
  * @param {array} vgSrc Bindable array with a list of media sources. A media source is an object with two properties `src` and `type`. The `src` property must contains a trustful url resource.
- * @param {string} vgType String with "video" or "audio" values to set a <video> or <audio> tag inside <vg-media>.
  * <pre>
  * {
  *    src: $sce.trustAsResourceUrl("path/to/video/videogular.mp4"),
@@ -34679,23 +39364,14 @@ angular.module("com.2fdevs.videogular")
             restrict: "E",
             require: "^videogular",
             templateUrl: function (elem, attrs) {
-                var vgType = attrs.vgType || "video";
-                return attrs.vgTemplate || "vg-templates/vg-media-" + vgType;
+                return attrs.vgTemplate || "vg-templates/vg-media" ;
             },
             scope: {
                 vgSrc: "=?",
-                vgType: "=?"
             },
             link: function (scope, elem, attrs, API) {
                 var sources;
 
-                // what type of media do we want? defaults to 'video'
-                if (!attrs.vgType || attrs.vgType === "video") {
-                    attrs.vgType = "video";
-                }
-                else {
-                    attrs.vgType = "audio";
-                }
 
                 // FUNCTIONS
                 scope.onChangeSource = function onChangeSource(newValue, oldValue) {
@@ -34713,29 +39389,18 @@ angular.module("com.2fdevs.videogular")
 
                 scope.changeSource = function changeSource() {
                     var canPlay = "";
-
-                    // It's a cool browser
-                    if (API.mediaElement[0].canPlayType) {
-                        for (var i = 0, l = sources.length; i < l; i++) {
-                            canPlay = API.mediaElement[0].canPlayType(sources[i].type);
-
-                            if (canPlay == "maybe" || canPlay == "probably") {
-                                API.mediaElement.attr("src", sources[i].src);
-                                API.mediaElement.attr("type", sources[i].type);
-                                //Trigger vgChangeSource($source) API callback in vgController
-                                API.changeSource(sources[i]);
-                                break;
-                            }
-                        }
+                    console.log(sources)
+                    if (sources[0].type.indexOf('video') != -1){
+                      API.mediaElement=API.videoElement
+                    }else{
+                      API.mediaElement=API.audioElement
                     }
-                    // It's a crappy browser and it doesn't deserve any respect
-                    else {
-                        // Get H264 or the first one
-                        API.mediaElement.attr("src", sources[0].src);
-                        API.mediaElement.attr("type", sources[0].type);
-                        //Trigger vgChangeSource($source) API callback in vgController
-                        API.changeSource(sources[0]);
-                    }
+                    console.log(API.mediaElement)
+                    // Get H264 or the first one
+                    API.mediaElement.attr("src", sources[0].src);
+                    API.mediaElement.attr("type", sources[0].type);
+                    //Trigger vgChangeSource($source) API callback in vgController
+                    API.changeSource(sources[0]);
 
                     // Android 2.3 support: https://github.com/2fdevs/videogular/issues/187
                     API.mediaElement[0].load();
@@ -34750,7 +39415,9 @@ angular.module("com.2fdevs.videogular")
                 };
 
                 // INIT
-                API.mediaElement = elem.find(attrs.vgType);
+                API.audioElement = elem.find('audio');
+                API.videoElement = elem.find('video');
+                API.mediaElement = API.audioElement
                 API.sources = scope.vgSrc;
 
                 API.addListeners();
@@ -35262,7 +39929,8 @@ angular.module("com.2fdevs.videogular")
              * @param $event
              * @returns {*}
              */
-            if (navigator.userAgent.match(/Firefox/i)) {
+            var matchedFF = navigator.userAgent.match(/Firefox\/(\d+)/i)
+            if (matchedFF && Number.parseInt(matchedFF.pop()) < 39) {
                 var style = $event.currentTarget.currentStyle || window.getComputedStyle($event.target, null);
                 var borderLeftWidth = parseInt(style['borderLeftWidth'], 10);
                 var borderTopWidth = parseInt(style['borderTopWidth'], 10);
@@ -35319,7 +39987,7 @@ angular.module("com.2fdevs.videogular")
     }]);
 
 /**
- * @license videogular v1.2.1 http://videogular.com
+ * @license videogular v1.2.2 http://videogular.com
  * Two Fucking Developers http://twofuckingdevelopers.com
  * License: MIT
  */
@@ -35436,1022 +40104,8 @@ angular.module("com.2fdevs.videogular.plugins.buffering", [])
     ]);
 
 /**
- * @license videogular v1.2.1 http://videogular.com
- * Two Fucking Developers http://twofuckingdevelopers.com
- * License: MIT
- */
-/**
- * @ngdoc directive
- * @name com.2fdevs.videogular.plugins.controls.directive:vgControls
- * @restrict E
- * @description
- * This directive acts as a container and you will need other directives to control the media.
- * Inside this directive you can add other directives like vg-play-pause-button and vg-scrub-bar.
- *
- * <pre>
- * <videogular vg-theme="config.theme.url">
- *    <vg-media vg-src="sources"></vg-media>
- *
- *    <vg-controls vg-autohide='config.autohide' vg-autohide-time='config.autohideTime'></vg-controls>
- * </videogular>
- * </pre>
- *
- * @param {boolean=false} vgAutohide Boolean variable or value to activate autohide.
- * @param {number=2000} vgAutohideTime Number variable or value that represents the time in milliseconds that will wait vgControls until it hides.
- *
- *
- */
-"use strict";
-angular.module("com.2fdevs.videogular.plugins.controls", [])
-    .run(
-    ["$templateCache", function ($templateCache) {
-        $templateCache.put("vg-templates/vg-controls",
-            '<div class="controls-container" ng-mousemove="onMouseMove()" ng-class="animationClass" ng-transclude></div>');
-    }]
-)
-    .directive("vgControls",
-    ["$timeout", "VG_STATES", function ($timeout, VG_STATES) {
-        return {
-            restrict: "E",
-            require: "^videogular",
-            transclude: true,
-            templateUrl: function (elem, attrs) {
-                return attrs.vgTemplate || 'vg-templates/vg-controls';
-            },
-            scope: {
-                vgAutohide: "=?",
-                vgAutohideTime: "=?"
-            },
-            link: function (scope, elem, attr, API) {
-                var w = 0;
-                var h = 0;
-                var autoHideTime = 2000;
-                var hideInterval;
-
-                scope.API = API;
-
-                scope.onMouseMove = function onMouseMove() {
-                    if (scope.vgAutohide) scope.showControls();
-                };
-
-                scope.setAutohide = function setAutohide(value) {
-                    if (value && API.currentState == VG_STATES.PLAY) {
-                        hideInterval = $timeout(scope.hideControls, autoHideTime);
-                    }
-                    else {
-                        scope.animationClass = "";
-                        $timeout.cancel(hideInterval);
-                        scope.showControls();
-                    }
-                };
-
-                scope.setAutohideTime = function setAutohideTime(value) {
-                    autoHideTime = value;
-                };
-
-                scope.hideControls = function hideControls() {
-                    scope.animationClass = "hide-animation";
-                };
-
-                scope.showControls = function showControls() {
-                    scope.animationClass = "show-animation";
-                    $timeout.cancel(hideInterval);
-                    if (scope.vgAutohide && API.currentState == VG_STATES.PLAY) hideInterval = $timeout(scope.hideControls, autoHideTime);
-                };
-
-                if (API.isConfig) {
-                    scope.$watch("API.config",
-                        function () {
-                            if (scope.API.config) {
-                                var ahValue = scope.API.config.plugins.controls.autohide || false;
-                                var ahtValue = scope.API.config.plugins.controls.autohideTime || 2000;
-                                scope.vgAutohide = ahValue;
-                                scope.vgAutohideTime = ahtValue;
-                                scope.setAutohideTime(ahtValue);
-                                scope.setAutohide(ahValue);
-                            }
-                        }
-                    );
-                }
-                else {
-                    // If vg-autohide has been set
-                    if (scope.vgAutohide != undefined) {
-                        scope.$watch("vgAutohide", scope.setAutohide);
-                    }
-
-                    // If vg-autohide-time has been set
-                    if (scope.vgAutohideTime != undefined) {
-                        scope.$watch("vgAutohideTime", scope.setAutohideTime);
-                    }
-                }
-            }
-        }
-    }]
-);
-
-/**
- * @ngdoc directive
- * @name com.2fdevs.videogular.plugins.controls.directive:vgFullscreenButton
- * @restrict E
- * @description
- * Directive to switch between fullscreen and normal mode.
- *
- * <pre>
- * <videogular vg-theme="config.theme.url">
- *    <vg-media vg-src="sources"></vg-media>
- *
- *    <vg-controls vg-autohide='config.autohide' vg-autohide-time='config.autohideTime'>
- *        <vg-fullscreen-button></vg-fullscreen-button>
- *    </vg-controls>
- * </videogular>
- * </pre>
- *
- */
-angular.module("com.2fdevs.videogular.plugins.controls")
-    .run(
-    ["$templateCache", function ($templateCache) {
-        $templateCache.put("vg-templates/vg-fullscreen-button",
-            '<button class="iconButton" ng-click="onClickFullScreen()" ng-class="fullscreenIcon" aria-label="Toggle full screen" type="button"> </button>');
-    }]
-)
-    .directive("vgFullscreenButton",
-    [function () {
-        return {
-            restrict: "E",
-            require: "^videogular",
-            scope: {},
-            templateUrl: function (elem, attrs) {
-                return attrs.vgTemplate || 'vg-templates/vg-fullscreen-button';
-            },
-            link: function (scope, elem, attr, API) {
-                scope.onChangeFullScreen = function onChangeFullScreen(isFullScreen) {
-                    scope.fullscreenIcon = {enter: !isFullScreen, exit: isFullScreen};
-                };
-
-                scope.onClickFullScreen = function onClickFullScreen() {
-                    API.toggleFullScreen();
-                };
-
-                scope.fullscreenIcon = {enter: true};
-
-                scope.$watch(
-                    function () {
-                        return API.isFullScreen;
-                    },
-                    function (newVal, oldVal) {
-                        if (newVal != oldVal) {
-                            scope.onChangeFullScreen(newVal);
-                        }
-                    }
-                );
-            }
-        }
-    }]
-);
-
-/**
- * @ngdoc directive
- * @name com.2fdevs.videogular.plugins.controls.directive:vgPlayPauseButton
- * @restrict E
- * @description
- * Adds a button inside vg-controls to play and pause media.
- *
- * <pre>
- * <videogular vg-theme="config.theme.url">
- *    <vg-media vg-src="sources"></vg-media>
- *
- *    <vg-controls vg-autohide='config.autohide' vg-autohide-time='config.autohideTime'>
- *        <vg-play-pause-button></vg-play-pause-button>
- *    </vg-controls>
- * </videogular>
- * </pre>
- *
- */
-angular.module("com.2fdevs.videogular.plugins.controls")
-    .run(
-    ["$templateCache", function ($templateCache) {
-        $templateCache.put("vg-templates/vg-play-pause-button",
-            '<button class="iconButton" ng-click="onClickPlayPause()" ng-class="playPauseIcon" aria-label="Play/Pause" type="button"></button>');
-    }]
-)
-    .directive("vgPlayPauseButton",
-    ["VG_STATES", function (VG_STATES) {
-        return {
-            restrict: "E",
-            require: "^videogular",
-            scope: {},
-            templateUrl: function (elem, attrs) {
-                return attrs.vgTemplate || 'vg-templates/vg-play-pause-button';
-            },
-            link: function (scope, elem, attr, API) {
-                scope.setState = function setState(newState) {
-                    switch (newState) {
-                        case VG_STATES.PLAY:
-                            scope.playPauseIcon = {pause: true};
-                            break;
-
-                        case VG_STATES.PAUSE:
-                            scope.playPauseIcon = {play: true};
-                            break;
-
-                        case VG_STATES.STOP:
-                            scope.playPauseIcon = {play: true};
-                            break;
-                    }
-                };
-
-                scope.onClickPlayPause = function onClickPlayPause() {
-                    API.playPause();
-                };
-
-                scope.playPauseIcon = {play: true};
-
-                scope.$watch(
-                    function () {
-                        return API.currentState;
-                    },
-                    function (newVal, oldVal) {
-                        if (newVal != oldVal) {
-                            scope.setState(newVal);
-                        }
-                    }
-                );
-            }
-        }
-    }]
-);
-
-/**
- * @ngdoc directive
- * @name com.2fdevs.videogular.plugins.controls.directive:ngPlaybackButton
- * @restrict E
- * @description
- * Directive to display a playback buttom to control the playback rate.
- *
- * <pre>
- * <videogular vg-theme="config.theme.url">
- *    <vg-media vg-src="sources"></vg-media>
- *
- *    <vg-controls vg-autohide='config.autohide' vg-autohide-time='config.autohideTime'>
- *        <vg-playback-button></vg-playback-button>
- *    </vg-controls>
- * </videogular>
- * </pre>
- *
- */
-angular.module("com.2fdevs.videogular.plugins.controls")
-    .run(
-    ["$templateCache", function ($templateCache) {
-        $templateCache.put("vg-templates/vg-playback-button",
-            '<button class="playbackValue iconButton" ng-click="onClickPlayback()">{{playback}}x</button>');
-    }]
-)
-    .directive("vgPlaybackButton",
-    ["VG_UTILS", function (VG_UTILS) {
-        return {
-            restrict: "E",
-            require: "^videogular",
-            templateUrl: function (elem, attrs) {
-                return attrs.vgTemplate || 'vg-templates/vg-playback-button';
-            },
-            link: function (scope, elem, attr, API) {
-
-                scope.playback = '1.0';
-
-                scope.onClickPlayback = function onClickPlayback() {
-
-                    var playbackOptions = ['.5', '1.0', '1.5', '2.0'];
-
-                    var nextPlaybackRate = playbackOptions.indexOf(scope.playback) + 1;
-
-                    if (nextPlaybackRate >= playbackOptions.length) {
-                        scope.playback = playbackOptions[0];
-                    }
-                    else {
-                        scope.playback = playbackOptions[nextPlaybackRate];
-                    }
-
-                    API.setPlayback(scope.playback);
-                };
-
-                scope.$watch(
-                    function () {
-                        return API.playback;
-                    }
-                );
-            }
-        }
-    }]
-);
-/**
- * @ngdoc directive
- * @name com.2fdevs.videogular.plugins.controls.directive:vgScrubBarCuePoints
- * @restrict E
- * @description
- * Layer inside vg-scrub-bar to display a cue point timeline.
- *
- * <pre>
- * <videogular vg-theme="config.theme.url">
- *    <vg-media vg-src="sources"></vg-media>
- *
- *    <vg-controls>
- *        <vg-scrub-bar>
- *            <vg-scrub-bar-cue-points vg-cue-points='config.cuePoints[0]'></vg-scrub-bar-cue-points>
- *        </vg-scrub-bar>
- *    </vg-controls>
- * </videogular>
- * </pre>
- *
- */
-angular.module("com.2fdevs.videogular.plugins.controls")
-    .run(
-    ["$templateCache", function ($templateCache) {
-        $templateCache.put("vg-templates/vg-scrub-bar-cue-points",
-            '<div class="cue-point-timeline" ng-style="timelineWidth">' +
-            '<div ng-repeat="cuePoint in vgCuePoints" class="cue-point" ng-style="cuePoint.$$style"></div>' +
-            '</div>');
-    }]
-)
-    .directive("vgScrubBarCuePoints",
-    [function () {
-        return {
-            restrict: "E",
-            require: "^videogular",
-            templateUrl: function (elem, attrs) {
-                return attrs.vgTemplate || 'vg-templates/vg-scrub-bar-cue-points';
-            },
-            scope: {
-                "vgCuePoints": "="
-            },
-            link: function (scope, elem, attr, API) {
-                var totalTimeWatch;
-
-                scope.onPlayerReady = function onPlayerReady() {
-                    scope.updateCuePoints(scope.vgCuePoints);
-                    totalTimeWatch();
-                };
-
-                scope.updateCuePoints = function onUpdateCuePoints(cuePoints) {
-                    var totalWidth = parseInt(elem[0].clientWidth);
-
-                    for (var i = 0, l = cuePoints.length; i < l; i++) {
-                        var cuePointDuration = (cuePoints[i].timeLapse.end - cuePoints[i].timeLapse.start) * 1000;
-                        var position = (cuePoints[i].timeLapse.start * 100 / API.totalTime * 1000) + "%";
-                        var percentWidth = 0;
-
-                        if (typeof cuePointDuration === 'number' && API.totalTime) {
-                            percentWidth = ((cuePointDuration * 100) / API.totalTime) + "%";
-                        }
-
-                        cuePoints[i].$$style = {
-                            width: percentWidth,
-                            left: position
-                        };
-                    }
-                };
-
-                totalTimeWatch = scope.$watch(
-                    function () {
-                        return API.totalTime;
-                    },
-                    function (newVal, oldVal) {
-                        if (newVal > 0) scope.onPlayerReady(newVal);
-                    }
-                );
-            }
-        }
-    }]
-);
-
-/**
- * @ngdoc directive
- * @name com.2fdevs.videogular.plugins.controls.directive:vgScrubBarCurrentTime
- * @restrict E
- * @description
- * Layer inside vg-scrub-bar to display the current time.
- *
- * <pre>
- * <videogular vg-theme="config.theme.url">
- *    <vg-media vg-src="sources"></vg-media>
- *
- *    <vg-controls vg-autohide='config.autohide' vg-autohide-time='config.autohideTime'>
- *        <vg-scrub-bar>
- *            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
- *        </vg-scrub-bar>
- *    </vg-controls>
- * </videogular>
- * </pre>
- *
- */
-angular.module("com.2fdevs.videogular.plugins.controls")
-    .directive("vgScrubBarCurrentTime",
-    [function () {
-        return {
-            restrict: "E",
-            require: "^videogular",
-            link: function (scope, elem, attr, API) {
-                var percentTime = 0;
-
-                scope.onUpdateTime = function onUpdateTime(newCurrentTime) {
-                    if (typeof newCurrentTime === 'number' && API.totalTime) {
-                        percentTime = 100 * (newCurrentTime / API.totalTime);
-                        elem.css("width", percentTime + "%");
-                    } else {
-                        elem.css("width", 0);
-                    }
-                };
-
-                scope.$watch(
-                    function () {
-                        return API.currentTime;
-                    },
-                    function (newVal, oldVal) {
-                        scope.onUpdateTime(newVal);
-                    }
-                );
-            }
-        }
-    }]
-);
-
-/**
- * @ngdoc directive
- * @name com.2fdevs.videogular.plugins.controls.directive:vgScrubBar
- * @restrict E
- * @description
- * Directive to control the time and display other information layers about the progress of the media.
- * This directive acts as a container and you can add more layers to display current time, cuepoints, buffer or whatever you need.
- *
- * <pre>
- * <videogular vg-theme="config.theme.url">
- *    <vg-media vg-src="sources"></vg-media>
- *
- *    <vg-controls vg-autohide='config.autohide' vg-autohide-time='config.autohideTime'>
- *        <vg-scrub-bar></vg-scrub-bar>
- *    </vg-controls>
- * </videogular>
- * </pre>
- *
- */
-angular.module("com.2fdevs.videogular.plugins.controls")
-    .run(
-    ["$templateCache", function ($templateCache) {
-        $templateCache.put("vg-templates/vg-scrub-bar",
-            '<div role="slider" aria-valuemax="{{ariaTime(API.totalTime)}}" aria-valuenow="{{ariaTime(API.currentTime)}}" aria-valuemin="0" aria-label="Time scrub bar" tabindex="0" ng-transclude ng-keydown="onScrubBarKeyDown($event)"></div>');
-    }]
-)
-    .directive("vgScrubBar",
-    ["VG_STATES", "VG_UTILS", function (VG_STATES, VG_UTILS) {
-        return {
-            restrict: "E",
-            require: "^videogular",
-            transclude: true,
-            templateUrl: function (elem, attrs) {
-                return attrs.vgTemplate || 'vg-templates/vg-scrub-bar';
-            },
-            link: function (scope, elem, attr, API) {
-                var isSeeking = false;
-                var isPlaying = false;
-                var isPlayingWhenSeeking = false;
-                var touchStartX = 0;
-                var LEFT = 37;
-                var RIGHT = 39;
-                var NUM_PERCENT = 5;
-
-                scope.API = API;
-                scope.ariaTime = function (time) {
-                    return Math.round(time / 1000);
-                };
-
-                scope.onScrubBarTouchStart = function onScrubBarTouchStart($event) {
-                    var event = $event.originalEvent || $event;
-                    var touches = event.touches;
-                    var touchX;
-
-                    if (VG_UTILS.isiOSDevice()) {
-                        touchStartX = (touches[0].clientX - event.layerX) * -1;
-                    }
-                    else {
-                        touchStartX = event.layerX;
-                    }
-
-                    touchX = touches[0].clientX + touchStartX - touches[0].target.offsetLeft;
-
-                    isSeeking = true;
-                    if (isPlaying) isPlayingWhenSeeking = true;
-                    API.pause();
-                    API.seekTime(touchX * API.mediaElement[0].duration / elem[0].scrollWidth);
-
-                    scope.$apply();
-                };
-
-                scope.onScrubBarTouchEnd = function onScrubBarTouchEnd($event) {
-                    var event = $event.originalEvent || $event;
-                    if (isPlayingWhenSeeking) {
-                        isPlayingWhenSeeking = false;
-                        API.play();
-                    }
-                    isSeeking = false;
-
-                    scope.$apply();
-                };
-
-                scope.onScrubBarTouchMove = function onScrubBarTouchMove($event) {
-                    var event = $event.originalEvent || $event;
-                    var touches = event.touches;
-                    var touchX;
-
-                    if (isSeeking) {
-                        touchX = touches[0].clientX + touchStartX - touches[0].target.offsetLeft;
-                        API.seekTime(touchX * API.mediaElement[0].duration / elem[0].scrollWidth);
-                    }
-
-                    scope.$apply();
-                };
-
-                scope.onScrubBarTouchLeave = function onScrubBarTouchLeave(event) {
-                    isSeeking = false;
-
-                    scope.$apply();
-                };
-
-                scope.onScrubBarMouseDown = function onScrubBarMouseDown(event) {
-                    event = VG_UTILS.fixEventOffset(event);
-
-                    isSeeking = true;
-                    if (isPlaying) isPlayingWhenSeeking = true;
-                    API.pause();
-
-                    API.seekTime(event.offsetX * API.mediaElement[0].duration / elem[0].scrollWidth);
-
-                    scope.$apply();
-                };
-
-                scope.onScrubBarMouseUp = function onScrubBarMouseUp(event) {
-                    //event = VG_UTILS.fixEventOffset(event);
-
-                    if (isPlayingWhenSeeking) {
-                        isPlayingWhenSeeking = false;
-                        API.play();
-                    }
-                    isSeeking = false;
-                    //API.seekTime(event.offsetX * API.mediaElement[0].duration / elem[0].scrollWidth);
-
-                    scope.$apply();
-                };
-
-                scope.onScrubBarMouseMove = function onScrubBarMouseMove(event) {
-                    if (isSeeking) {
-                        event = VG_UTILS.fixEventOffset(event);
-                        API.seekTime(event.offsetX * API.mediaElement[0].duration / elem[0].scrollWidth);
-                    }
-
-                    scope.$apply();
-                };
-
-                scope.onScrubBarMouseLeave = function onScrubBarMouseLeave(event) {
-                    isSeeking = false;
-
-                    scope.$apply();
-                };
-
-                scope.onScrubBarKeyDown = function onScrubBarKeyDown(event) {
-                    var currentPercent = (API.currentTime / API.totalTime) * 100;
-
-                    if (event.which === LEFT || event.keyCode === LEFT) {
-                        API.seekTime(currentPercent - NUM_PERCENT, true);
-                        event.preventDefault();
-                    }
-                    else if (event.which === RIGHT || event.keyCode === RIGHT) {
-                        API.seekTime(currentPercent + NUM_PERCENT, true);
-                        event.preventDefault();
-                    }
-                };
-
-                scope.setState = function setState(newState) {
-                    if (!isSeeking) {
-                        switch (newState) {
-                            case VG_STATES.PLAY:
-                                isPlaying = true;
-                                break;
-
-                            case VG_STATES.PAUSE:
-                                isPlaying = false;
-                                break;
-
-                            case VG_STATES.STOP:
-                                isPlaying = false;
-                                break;
-                        }
-                    }
-                };
-
-                scope.$watch(
-                    function () {
-                        return API.currentState;
-                    },
-                    function (newVal, oldVal) {
-                        if (newVal != oldVal) {
-                            scope.setState(newVal);
-                        }
-                    }
-                );
-
-                // Touch move is really buggy in Chrome for Android, maybe we could use mouse move that works ok
-                if (VG_UTILS.isMobileDevice()) {
-                    elem.bind("touchstart", scope.onScrubBarTouchStart);
-                    elem.bind("touchend", scope.onScrubBarTouchEnd);
-                    elem.bind("touchmove", scope.onScrubBarTouchMove);
-                    elem.bind("touchleave", scope.onScrubBarTouchLeave);
-                }
-                else {
-                    elem.bind("mousedown", scope.onScrubBarMouseDown);
-                    elem.bind("mouseup", scope.onScrubBarMouseUp);
-                    elem.bind("mousemove", scope.onScrubBarMouseMove);
-                    elem.bind("mouseleave", scope.onScrubBarMouseLeave);
-                }
-            }
-        }
-    }]
-);
-
-/**
- * @ngdoc directive
- * @name com.2fdevs.videogular.plugins.controls.directive:vgTimeDisplay
- * @restrict E
- * @description
- * Adds a time display inside vg-controls to play and pause media.
- * You have three scope variables to show current time, time left and total time.
- *
- * Those scope variables are in milliseconds, you can add a date filter to show the time as you wish.
- *
- * <pre>
- * <videogular vg-theme="config.theme.url">
- *    <vg-media vg-src="sources"></vg-media>
- *
- *    <vg-controls vg-autohide='config.autohide' vg-autohide-time='config.autohideTime'>
- *        <vg-time-display>{{currentTime | date:'hh:mm'}}</vg-time-display>
- *        <vg-time-display>{{timeLeft | date:'mm:ss'}}</vg-time-display>
- *        <vg-time-display>{{totalTime | date:'hh:mm:ss'}}</vg-time-display>
- *    </vg-controls>
- * </videogular>
- * </pre>
- *
- */
-angular.module("com.2fdevs.videogular.plugins.controls")
-    .directive("vgTimeDisplay",
-    [function () {
-        return {
-            require: "^videogular",
-            restrict: "E",
-            link: function (scope, elem, attr, API) {
-                scope.currentTime = API.currentTime;
-                scope.timeLeft = API.timeLeft;
-                scope.totalTime = API.totalTime;
-                scope.isLive = API.isLive;
-
-                scope.$watch(
-                    function () {
-                        return API.currentTime;
-                    },
-                    function (newVal, oldVal) {
-                        scope.currentTime = newVal;
-                    }
-                );
-
-                scope.$watch(
-                    function () {
-                        return API.timeLeft;
-                    },
-                    function (newVal, oldVal) {
-                        scope.timeLeft = newVal;
-                    }
-                );
-
-                scope.$watch(
-                    function () {
-                        return API.totalTime;
-                    },
-                    function (newVal, oldVal) {
-                        scope.totalTime = newVal;
-                    }
-                );
-
-                scope.$watch(
-                    function () {
-                        return API.isLive;
-                    },
-                    function (newVal, oldVal) {
-                        scope.isLive = newVal;
-                    }
-                );
-            }
-        }
-    }]
-);
-
-/**
- * @ngdoc directive
- * @name com.2fdevs.videogular.plugins.controls.directive:vgMuteButton
- * @restrict E
- * @description
- * Directive to display a button to mute volume.
- *
- * <pre>
- * <videogular vg-theme="config.theme.url">
- *    <vg-media vg-src="sources"></vg-media>
- *
- *    <vg-controls vg-autohide='config.autohide' vg-autohide-time='config.autohideTime'>
- *        <vg-volume>
- *            <vg-mute-button><vg-mute-button>
- *        </vg-volume>
- *    </vg-controls>
- * </videogular>
- * </pre>
- *
- */
-angular.module("com.2fdevs.videogular.plugins.controls")
-    .run(
-    ["$templateCache", function ($templateCache) {
-        $templateCache.put("vg-templates/vg-mute-button",
-            '<button type="button" class="iconButton" ng-class="muteIcon" ng-click="onClickMute()" ng-focus="onMuteButtonFocus()" ng-blur="onMuteButtonLoseFocus()" ng-keydown="onMuteButtonKeyDown($event)" aria-label="Mute"></button>');
-    }]
-)
-    .directive("vgMuteButton",
-    [function () {
-        return {
-            restrict: "E",
-            require: "^videogular",
-            templateUrl: function (elem, attrs) {
-                return attrs.vgTemplate || 'vg-templates/vg-mute-button';
-            },
-            link: function (scope, elem, attr, API) {
-                var isMuted = false;
-                var UP = 38;
-                var DOWN = 40;
-                var CHANGE_PER_PRESS = 0.05;
-
-                scope.onClickMute = function onClickMute() {
-                    if (isMuted) {
-                        scope.currentVolume = scope.defaultVolume;
-                    }
-                    else {
-                        scope.currentVolume = 0;
-                        scope.muteIcon = {mute: true};
-                    }
-
-                    isMuted = !isMuted;
-
-                    API.setVolume(scope.currentVolume);
-                };
-
-                scope.onMuteButtonFocus = function onMuteButtonFocus() {
-                    scope.volumeVisibility = "visible";
-                };
-
-                scope.onMuteButtonLoseFocus = function onMuteButtonLoseFocus() {
-                    scope.volumeVisibility = "hidden";
-                };
-
-                scope.onMuteButtonKeyDown = function onMuteButtonKeyDown(event) {
-                    var currentVolume = (API.volume != null) ? API.volume : 1;
-                    var newVolume;
-
-                    if (event.which === UP || event.keyCode === UP) {
-                        newVolume = currentVolume + CHANGE_PER_PRESS;
-                        if (newVolume > 1) newVolume = 1;
-
-                        API.setVolume(newVolume);
-                        event.preventDefault();
-                    }
-                    else if (event.which === DOWN || event.keyCode === DOWN) {
-                        newVolume = currentVolume - CHANGE_PER_PRESS;
-                        if (newVolume < 0) newVolume = 0;
-
-                        API.setVolume(newVolume);
-                        event.preventDefault();
-                    }
-                };
-
-                scope.onSetVolume = function onSetVolume(newVolume) {
-                    scope.currentVolume = newVolume;
-
-                    // if it's not muted we save the default volume
-                    if (!isMuted) {
-                        scope.defaultVolume = newVolume;
-                    }
-                    else {
-                        // if was muted but the user changed the volume
-                        if (newVolume > 0) {
-                            scope.defaultVolume = newVolume;
-                        }
-                    }
-
-                    var percentValue = Math.round(newVolume * 100);
-                    if (percentValue == 0) {
-                        scope.muteIcon = {mute: true};
-                    }
-                    else if (percentValue > 0 && percentValue < 25) {
-                        scope.muteIcon = {level0: true};
-                    }
-                    else if (percentValue >= 25 && percentValue < 50) {
-                        scope.muteIcon = {level1: true};
-                    }
-                    else if (percentValue >= 50 && percentValue < 75) {
-                        scope.muteIcon = {level2: true};
-                    }
-                    else if (percentValue >= 75) {
-                        scope.muteIcon = {level3: true};
-                    }
-                };
-
-                scope.defaultVolume = 1;
-                scope.currentVolume = scope.defaultVolume;
-                scope.muteIcon = {level3: true};
-
-                //Update the mute button on initialization, then watch for changes
-                scope.onSetVolume(API.volume);
-                scope.$watch(
-                    function () {
-                        return API.volume;
-                    },
-                    function (newVal, oldVal) {
-                        if (newVal != oldVal) {
-                            scope.onSetVolume(newVal);
-                        }
-                    }
-                );
-            }
-        }
-    }]
-);
-
-/**
- * @ngdoc directive
- * @name com.2fdevs.videogular.plugins.controls.directive:vgVolumeBar
- * @restrict E
- * @description
- * Directive to display a vertical volume bar to control the volume.
- * This directive must be inside vg-volume directive and requires vg-mute-button to be displayed.
- *
- * <pre>
- * <videogular vg-theme="config.theme.url">
- *    <vg-media vg-src="sources"></vg-media>
- *
- *    <vg-controls vg-autohide='config.autohide' vg-autohide-time='config.autohideTime'>
- *        <vg-volume>
- *            <vg-mute-button><vg-mute-button>
- *            <vg-volume-bar><vg-volume-bar>
- *        </vg-volume>
- *    </vg-controls>
- * </videogular>
- * </pre>
- *
- */
-angular.module("com.2fdevs.videogular.plugins.controls")
-    .run(
-    ["$templateCache", function ($templateCache) {
-        $templateCache.put("vg-templates/vg-volume-bar",
-            '<div class="verticalVolumeBar">\
-              <div class="volumeBackground" ng-click="onClickVolume($event)" ng-mousedown="onMouseDownVolume()" ng-mouseup="onMouseUpVolume()" ng-mousemove="onMouseMoveVolume($event)" ng-mouseleave="onMouseLeaveVolume()">\
-                <div class="volumeValue"></div>\
-                <div class="volumeClickArea"></div>\
-              </div>\
-            </div>');
-    }]
-)
-    .directive("vgVolumeBar",
-    ["VG_UTILS", function (VG_UTILS) {
-        return {
-            restrict: "E",
-            require: "^videogular",
-            templateUrl: function (elem, attrs) {
-                return attrs.vgTemplate || 'vg-templates/vg-volume-bar';
-            },
-            link: function (scope, elem, attr, API) {
-                var isChangingVolume = false;
-                var volumeBackElem = angular.element(elem[0].getElementsByClassName("volumeBackground"));
-                var volumeValueElem = angular.element(elem[0].getElementsByClassName("volumeValue"));
-
-                scope.onClickVolume = function onClickVolume(event) {
-                    event = VG_UTILS.fixEventOffset(event);
-                    var volumeHeight = parseInt(volumeBackElem.prop("offsetHeight"));
-                    var value = event.offsetY * 100 / volumeHeight;
-                    var volValue = 1 - (value / 100);
-
-                    API.setVolume(volValue);
-                };
-
-                scope.onMouseDownVolume = function onMouseDownVolume() {
-                    isChangingVolume = true;
-                };
-
-                scope.onMouseUpVolume = function onMouseUpVolume() {
-                    isChangingVolume = false;
-                };
-
-                scope.onMouseLeaveVolume = function onMouseLeaveVolume() {
-                    isChangingVolume = false;
-                };
-
-                scope.onMouseMoveVolume = function onMouseMoveVolume(event) {
-                    if (isChangingVolume) {
-                        event = VG_UTILS.fixEventOffset(event);
-                        var volumeHeight = parseInt(volumeBackElem.prop("offsetHeight"));
-                        var value = event.offsetY * 100 / volumeHeight;
-                        var volValue = 1 - (value / 100);
-
-                        API.setVolume(volValue);
-                    }
-                };
-
-                scope.updateVolumeView = function updateVolumeView(value) {
-                    value = value * 100;
-                    volumeValueElem.css("height", value + "%");
-                    volumeValueElem.css("top", (100 - value) + "%");
-                };
-
-                scope.onChangeVisibility = function onChangeVisibility(value) {
-                    elem.css("visibility", value);
-                };
-
-                elem.css("visibility", scope.volumeVisibility);
-
-                scope.$watch("volumeVisibility", scope.onChangeVisibility);
-
-                //Update the volume bar on initialization, then watch for changes
-                scope.updateVolumeView(API.volume);
-                scope.$watch(
-                    function () {
-                        return API.volume;
-                    },
-                    function (newVal, oldVal) {
-                        if (newVal != oldVal) {
-                            scope.updateVolumeView(newVal);
-                        }
-                    }
-                );
-            }
-        }
-    }]
-);
-
-/**
- * @ngdoc directive
- * @name com.2fdevs.videogular.plugins.controls.directive:vgVolume
- * @restrict E
- * @description
- * Directive to control the volume.
- * This directive acts as a container and you will need other directives like vg-mutebutton and vg-volumebar to control the volume.
- * In mobile will be hided since volume API is disabled for mobile devices.
- *
- * <pre>
- * <videogular vg-theme="config.theme.url">
- *    <vg-media vg-src="sources"></vg-media>
- *
- *    <vg-controls vg-autohide='config.autohide' vg-autohide-time='config.autohideTime'>
- *        <vg-volume></vg-volume>
- *    </vg-controls>
- * </videogular>
- * </pre>
- *
- */
-angular.module("com.2fdevs.videogular.plugins.controls")
-    .directive("vgVolume",
-    ["VG_UTILS", function (VG_UTILS) {
-        return {
-            restrict: "E",
-            link: function (scope, elem, attr) {
-                scope.onMouseOverVolume = function onMouseOverVolume() {
-                    scope.$evalAsync(function () {
-                        scope.volumeVisibility = "visible";
-                    });
-                };
-
-                scope.onMouseLeaveVolume = function onMouseLeaveVolume() {
-                    scope.$evalAsync(function () {
-                        scope.volumeVisibility = "hidden";
-                    });
-                };
-
-                // We hide volume controls on mobile devices
-                if (VG_UTILS.isMobileDevice()) {
-                    elem.css("display", "none");
-                }
-                else {
-                    scope.volumeVisibility = "hidden";
-
-                    elem.bind("mouseover", scope.onMouseOverVolume);
-                    elem.bind("mouseleave", scope.onMouseLeaveVolume);
-                }
-            }
-        }
-    }]
-);
-
-/**
  * @license
- * lodash 3.9.0 (Custom Build) <https://lodash.com/>
+ * lodash 3.9.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern -o ./lodash.js`
  * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
@@ -36464,7 +40118,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '3.9.0';
+  var VERSION = '3.9.3';
 
   /** Used to compose bitmasks for wrapper metadata. */
   var BIND_FLAG = 1,
@@ -36569,6 +40223,9 @@ angular.module("com.2fdevs.videogular.plugins.controls")
   /** Used to detect host constructors (Safari > 5). */
   var reIsHostCtor = /^\[object .+?Constructor\]$/;
 
+  /** Used to detect unsigned integer values. */
+  var reIsUint = /^\d+$/;
+
   /** Used to match latin-1 supplementary letters (excluding mathematical operators). */
   var reLatin1 = /[\xc0-\xd6\xd8-\xde\xdf-\xf6\xf8-\xff]/g;
 
@@ -36603,9 +40260,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     'Array', 'ArrayBuffer', 'Date', 'Error', 'Float32Array', 'Float64Array',
     'Function', 'Int8Array', 'Int16Array', 'Int32Array', 'Math', 'Number',
     'Object', 'RegExp', 'Set', 'String', '_', 'clearTimeout', 'document',
-    'isFinite', 'parseInt', 'setTimeout', 'TypeError', 'Uint8Array',
-    'Uint8ClampedArray', 'Uint16Array', 'Uint32Array', 'WeakMap',
-    'window'
+    'isFinite', 'parseFloat', 'parseInt', 'setTimeout', 'TypeError', 'Uint8Array',
+    'Uint8ClampedArray', 'Uint16Array', 'Uint32Array', 'WeakMap', 'window'
   ];
 
   /** Used to make template sourceURLs easier to identify. */
@@ -36730,6 +40386,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
    * restricted `window` object, otherwise the `window` object is used.
    */
   var root = freeGlobal || ((freeWindow !== (this && this.window)) && freeWindow) || freeSelf || this;
+
+  /*--------------------------------------------------------------------------*/
 
   /**
    * The base implementation of `compareAscending` which compares values and
@@ -37099,6 +40757,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     return htmlUnescapes[chr];
   }
 
+  /*--------------------------------------------------------------------------*/
+
   /**
    * Create a new pristine `lodash` function using the given `context` object.
    *
@@ -37192,6 +40852,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
         clearTimeout = context.clearTimeout,
         floor = Math.floor,
         getPrototypeOf = getNative(Object, 'getPrototypeOf'),
+        parseFloat = context.parseFloat,
         push = arrayProto.push,
         Set = getNative(context, 'Set'),
         setTimeout = context.setTimeout,
@@ -37224,7 +40885,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
         nativeRandom = Math.random;
 
     /** Used as references for `-Infinity` and `Infinity`. */
-    var POSITIVE_INFINITY = Number.POSITIVE_INFINITY;
+    var NEGATIVE_INFINITY = Number.NEGATIVE_INFINITY,
+        POSITIVE_INFINITY = Number.POSITIVE_INFINITY;
 
     /** Used as references for the maximum length and index of an array. */
     var MAX_ARRAY_LENGTH = 4294967295,
@@ -37245,6 +40907,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
 
     /** Used to lookup unminified function names. */
     var realNames = {};
+
+    /*------------------------------------------------------------------------*/
 
     /**
      * Creates a `lodash` object which wraps `value` to enable implicit chaining.
@@ -37466,6 +41130,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
       }
     };
 
+    /*------------------------------------------------------------------------*/
+
     /**
      * Creates a lazy wrapper object which wraps `value` to enable lazy evaluation.
      *
@@ -37594,6 +41260,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
       return result;
     }
 
+    /*------------------------------------------------------------------------*/
+
     /**
      * Creates a cache object to store key/value pairs.
      *
@@ -37662,6 +41330,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
       return this;
     }
 
+    /*------------------------------------------------------------------------*/
+
     /**
      *
      * Creates a cache object to store unique values.
@@ -37710,6 +41380,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
         data.hash[value] = true;
       }
     }
+
+    /*------------------------------------------------------------------------*/
 
     /**
      * Copies the values of `source` to `array`.
@@ -37794,7 +41466,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     }
 
     /**
-     * A specialized version of `baseExtremum` for arrays whichs invokes `iteratee`
+     * A specialized version of `baseExtremum` for arrays which invokes `iteratee`
      * with one argument: (value).
      *
      * @private
@@ -38566,7 +42238,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
       if (value === other) {
         return true;
       }
-      if (value == null || other == null || (!isObject(value) && !isObject(other))) {
+      if (value == null || other == null || (!isObject(value) && !isObjectLike(other))) {
         return value !== value && other !== other;
       }
       return baseIsEqualDeep(value, other, baseIsEqual, customizer, isLoose, stackA, stackB);
@@ -38743,8 +42415,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     }
 
     /**
-     * The base implementation of `_.matchesProperty` which does not which does
-     * not clone `value`.
+     * The base implementation of `_.matchesProperty` which does not clone `srcValue`.
      *
      * @private
      * @param {string} path The path of the property to get.
@@ -40509,7 +44180,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
      * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
      */
     function isIndex(value, length) {
-      value = typeof value == 'number' ? value : parseFloat(value);
+      value = (typeof value == 'number' || reIsUint.test(value)) ? +value : -1;
       length = length == null ? MAX_SAFE_INTEGER : length;
       return value > -1 && value % 1 == 0 && value < length;
     }
@@ -40566,7 +44237,15 @@ angular.module("com.2fdevs.videogular.plugins.controls")
      */
     function isLaziable(func) {
       var funcName = getFuncName(func);
-      return !!funcName && func === lodash[funcName] && funcName in LazyWrapper.prototype;
+      if (!(funcName in LazyWrapper.prototype)) {
+        return false;
+      }
+      var other = lodash[funcName];
+      if (func === other) {
+        return true;
+      }
+      var data = getData(other);
+      return !!data && func === data[0];
     }
 
     /**
@@ -40882,6 +44561,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
         : new LodashWrapper(wrapper.__wrapped__, wrapper.__chain__, arrayCopy(wrapper.__actions__));
     }
 
+    /*------------------------------------------------------------------------*/
+
     /**
      * Creates an array of elements split into groups the length of `size`.
      * If `collection` can't be split evenly, the final chunk will be the remaining
@@ -40949,8 +44630,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     }
 
     /**
-     * Creates an array excluding all values of the provided arrays using
-     * [`SameValueZero`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-samevaluezero)
+     * Creates an array of unique `array` values not included in the other
+     * provided arrays using [`SameValueZero`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-samevaluezero)
      * for equality comparisons.
      *
      * @static
@@ -41423,8 +45104,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     }
 
     /**
-     * Creates an array of unique values in all provided arrays using
-     * [`SameValueZero`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-samevaluezero)
+     * Creates an array of unique values that are included in all of the provided
+     * arrays using [`SameValueZero`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-samevaluezero)
      * for equality comparisons.
      *
      * @static
@@ -41977,8 +45658,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     }
 
     /**
-     * Creates an array of unique values, in order, of the provided arrays using
-     * [`SameValueZero`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-samevaluezero)
+     * Creates an array of unique values, in order, from all of the provided arrays
+     * using [`SameValueZero`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-samevaluezero)
      * for equality comparisons.
      *
      * @static
@@ -42159,7 +45840,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     });
 
     /**
-     * Creates an array that is the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)
+     * Creates an array of unique values that is the [symmetric difference](https://en.wikipedia.org/wiki/Symmetric_difference)
      * of the provided arrays.
      *
      * @static
@@ -42275,6 +45956,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
       arrays.length = length;
       return unzipWith(arrays, iteratee, thisArg);
     });
+
+    /*------------------------------------------------------------------------*/
 
     /**
      * Creates a `lodash` object that wraps `value` with explicit method
@@ -42525,6 +46208,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     function wrapperValue() {
       return baseWrapperValue(this.__wrapped__, this.__actions__);
     }
+
+    /*------------------------------------------------------------------------*/
 
     /**
      * Creates an array of elements corresponding to the given keys, or indexes,
@@ -43333,8 +47018,20 @@ angular.module("com.2fdevs.videogular.plugins.controls")
         var length = collection.length;
         return length > 0 ? collection[baseRandom(0, length - 1)] : undefined;
       }
-      var result = shuffle(collection);
-      result.length = nativeMin(n < 0 ? 0 : (+n || 0), result.length);
+      var index = -1,
+          result = toArray(collection),
+          length = result.length,
+          lastIndex = length - 1;
+
+      n = nativeMin(n < 0 ? 0 : (+n || 0), length);
+      while (++index < n) {
+        var rand = baseRandom(index, lastIndex),
+            value = result[rand];
+
+        result[rand] = result[index];
+        result[index] = value;
+      }
+      result.length = n;
       return result;
     }
 
@@ -43353,20 +47050,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
      * // => [4, 1, 3, 2]
      */
     function shuffle(collection) {
-      collection = toIterable(collection);
-
-      var index = -1,
-          length = collection.length,
-          result = Array(length);
-
-      while (++index < length) {
-        var rand = baseRandom(0, index);
-        if (index != rand) {
-          result[index] = result[rand];
-        }
-        result[rand] = collection[index];
-      }
-      return result;
+      return sample(collection, POSITIVE_INFINITY);
     }
 
     /**
@@ -43647,6 +47331,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
       return filter(collection, baseMatches(source));
     }
 
+    /*------------------------------------------------------------------------*/
+
     /**
      * Gets the number of milliseconds that have elapsed since the Unix epoch
      * (1 January 1970 00:00:00 UTC).
@@ -43664,6 +47350,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     var now = nativeNow || function() {
       return new Date().getTime();
     };
+
+    /*------------------------------------------------------------------------*/
 
     /**
      * The opposite of `_.before`; this method creates a function that invokes
@@ -44645,6 +48333,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
       return createWrapper(wrapper, PARTIAL_FLAG, null, [value], []);
     }
 
+    /*------------------------------------------------------------------------*/
+
     /**
      * Creates a clone of `value`. If `isDeep` is `true` nested objects are cloned,
      * otherwise they are assigned by reference. If `customizer` is provided it is
@@ -45475,6 +49165,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     function toPlainObject(value) {
       return baseCopy(value, keysIn(value));
     }
+
+    /*------------------------------------------------------------------------*/
 
     /**
      * Assigns own enumerable properties of source object(s) to the destination
@@ -46309,13 +50001,13 @@ angular.module("com.2fdevs.videogular.plugins.controls")
 
       var index = -1,
           length = path.length,
-          endIndex = length - 1,
+          lastIndex = length - 1,
           nested = object;
 
       while (nested != null && ++index < length) {
         var key = path[index];
         if (isObject(nested)) {
-          if (index == endIndex) {
+          if (index == lastIndex) {
             nested[key] = value;
           } else if (nested[key] == null) {
             nested[key] = isIndex(path[index + 1]) ? [] : {};
@@ -46433,6 +50125,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
       return baseValues(object, keysIn(object));
     }
 
+    /*------------------------------------------------------------------------*/
+
     /**
      * Checks if `n` is between `start` and up to but not including, `end`. If
      * `end` is not specified it is set to `start` with `start` then set to `0`.
@@ -46536,6 +50230,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
       }
       return baseRandom(min, max);
     }
+
+    /*------------------------------------------------------------------------*/
 
     /**
      * Converts `string` to [camel case](https://en.wikipedia.org/wiki/CamelCase).
@@ -47402,6 +51098,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
       return string.match(pattern || reWords) || [];
     }
 
+    /*------------------------------------------------------------------------*/
+
     /**
      * Attempts to invoke `func`, returning either the result or the caught error
      * object. Any additional arguments are provided to `func` when it is invoked.
@@ -47519,7 +51217,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     }
 
     /**
-     * Creates a function which performs a deep comparison between a given object
+     * Creates a function that performs a deep comparison between a given object
      * and `source`, returning `true` if the given object has equivalent property
      * values, else `false`.
      *
@@ -47548,7 +51246,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     }
 
     /**
-     * Creates a function which compares the property value of `path` on a given
+     * Creates a function that compares the property value of `path` on a given
      * object to `value`.
      *
      * **Note:** This method supports comparing arrays, booleans, `Date` objects,
@@ -47576,12 +51274,14 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     }
 
     /**
-     * Creates a function which invokes the method at `path` on a given object.
+     * Creates a function that invokes the method at `path` on a given object.
+     * Any additional arguments are provided to the invoked method.
      *
      * @static
      * @memberOf _
      * @category Utility
      * @param {Array|string} path The path of the method to invoke.
+     * @param {...*} [args] The arguments to invoke the method with.
      * @returns {Function} Returns the new function.
      * @example
      *
@@ -47603,13 +51303,15 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     });
 
     /**
-     * The opposite of `_.method`; this method creates a function which invokes
-     * the method at a given path on `object`.
+     * The opposite of `_.method`; this method creates a function that invokes
+     * the method at a given path on `object`. Any additional arguments are
+     * provided to the invoked method.
      *
      * @static
      * @memberOf _
      * @category Utility
      * @param {Object} object The object to query.
+     * @param {...*} [args] The arguments to invoke the method with.
      * @returns {Function} Returns the new function.
      * @example
      *
@@ -47735,7 +51437,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     }
 
     /**
-     * A no-operation function which returns `undefined` regardless of the
+     * A no-operation function that returns `undefined` regardless of the
      * arguments it receives.
      *
      * @static
@@ -47753,7 +51455,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     }
 
     /**
-     * Creates a function which returns the property value at `path` on a
+     * Creates a function that returns the property value at `path` on a
      * given object.
      *
      * @static
@@ -47779,7 +51481,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     }
 
     /**
-     * The opposite of `_.property`; this method creates a function which returns
+     * The opposite of `_.property`; this method creates a function that returns
      * the property value at a given path on `object`.
      *
      * @static
@@ -47933,6 +51635,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
       return baseToString(prefix) + id;
     }
 
+    /*------------------------------------------------------------------------*/
+
     /**
      * Adds two numbers.
      *
@@ -47998,7 +51702,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
      * _.max(users, 'age');
      * // => { 'user': 'fred', 'age': 40 }
      */
-    var max = createExtremum(gt, -Infinity);
+    var max = createExtremum(gt, NEGATIVE_INFINITY);
 
     /**
      * Gets the minimum value of `collection`. If `collection` is empty or falsey
@@ -48047,7 +51751,7 @@ angular.module("com.2fdevs.videogular.plugins.controls")
      * _.min(users, 'age');
      * // => { 'user': 'barney', 'age': 36 }
      */
-    var min = createExtremum(lt, Infinity);
+    var min = createExtremum(lt, POSITIVE_INFINITY);
 
     /**
      * Gets the sum of the values in `collection`.
@@ -48096,6 +51800,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
         ? arraySum(isArray(collection) ? collection : toIterable(collection))
         : baseSum(collection, iteratee);
     }
+
+    /*------------------------------------------------------------------------*/
 
     // Ensure wrappers are instances of `baseLodash`.
     lodash.prototype = baseLodash.prototype;
@@ -48244,6 +51950,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
     // Add functions to `lodash.prototype`.
     mixin(lodash, lodash);
 
+    /*------------------------------------------------------------------------*/
+
     // Add functions that return unwrapped values when chaining.
     lodash.add = add;
     lodash.attempt = attempt;
@@ -48352,6 +52060,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
       return source;
     }()), false);
 
+    /*------------------------------------------------------------------------*/
+
     // Add functions capable of returning wrapped and unwrapped values when chaining.
     lodash.sample = sample;
 
@@ -48363,6 +52073,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
         return sample(value, n);
       });
     };
+
+    /*------------------------------------------------------------------------*/
 
     /**
      * The semantic version number.
@@ -48590,6 +52302,8 @@ angular.module("com.2fdevs.videogular.plugins.controls")
 
     return lodash;
   }
+
+  /*--------------------------------------------------------------------------*/
 
   // Export lodash.
   var _ = runInContext();
@@ -48890,22 +52604,19 @@ angular.module('ngS3upload.directives', []).
 angular.module('ngS3upload').run(['$templateCache', function($templateCache) {
   'use strict';
 
-
   $templateCache.put('theme/image.html',
     "<div class=\"upload-wrap\">\n" +
     "  <button class=\"btn btn-primary\" type=\"button\"><span ng-if=\"!filename\">Choose file</span><span ng-if=\"filename\">Replace file</span></button>\n" +
-    "  <a ng-href=\"{{ filename }}\" target=\"_blank\" class=\"\" ng-if=\"filename\" > Stored file </a>\n" +
-    "  <div class=\"progress\">\n" +
-    "    <div class=\"progress-bar progress-bar-striped\" ng-class=\"{active: uploading}\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: {{ progress }}%; margin-top: 10px\" ng-class=\"barClass()\">\n" +
-    "      <span class=\"sr-only\">{{progress}}% Complete</span>\n" +
+    "  <a ng-href=\"{{ filename  }}\" target=\"_blank\" class=\"\" ng-if=\"filename\" > Stored file </a>\n" +
+    "  <div class=\"progress progress-striped\" ng-class=\"{active: uploading}\" ng-show=\"attempt\" style=\"margin-top: 10px\">\n" +
+    "    <div class=\"bar\" style=\"width: {{ progress }}%;\" ng-class=\"barClass()\"></div>\n" +
     "    </div>\n" +
-    "  </div>\n" +
-    "  <input accept='image/*' type=\"file\" style=\"display: none\"/>\n" +
+    "  <input type=\"file\" style=\"display: none\"/>\n" +
     "</div>"
   );
 
 
-  $templateCache.put('theme/song.html',
+  $templateCache.put('theme/audio.html',
     "<div class=\"upload-wrap\">\n" +
     "  <button class=\"btn btn-primary\" type=\"button\"><span ng-if=\"!filename\">Choose file</span><span ng-if=\"filename\">Replace file</span></button>\n" +
     "  <a ng-href=\"{{ filename }}\" target=\"_blank\" class=\"\" ng-if=\"filename\" > Stored file </a>\n" +
@@ -48914,72 +52625,12 @@ angular.module('ngS3upload').run(['$templateCache', function($templateCache) {
     "      <span class=\"sr-only\">{{progress}}% Complete</span>\n" +
     "    </div>\n" +
     "  </div>\n" +
-    "  <input accept='audio/*' type=\"file\" style=\"display: none\"/>\n" +
+    "  <input type=\"file\" style=\"display: none\"/>\n" +
     "</div>"
   );
 
 }]);
 })(window, document);
-
-/**
- * @license videogular v1.2.1 http://videogular.com
- * Two Fucking Developers http://twofuckingdevelopers.com
- * License: MIT
- */
-/**
- * @ngdoc directive
- * @name com.2fdevs.videogular.plugins.poster.directive:vgPoster
- * @restrict E
- * @description
- * Shows an image when player hasn't been played or has been completed a video.
- * <pre>
- * <videogular vg-theme="config.theme.url" vg-autoplay="config.autoPlay">
- *    <vg-media vg-src="sources"></vg-media>
- *
- *    <vg-poster vg-url='config.plugins.poster.url'></vg-poster>
- * </videogular>
- * </pre>
- *
- * @param {string} vgUrl String with a scope name variable. URL to an image supported by the img tag.
- * **This parameter is required.**
- *
- *
- */
-"use strict";
-angular.module("com.2fdevs.videogular.plugins.poster", [])
-    .run(
-    ["$templateCache", function ($templateCache) {
-        $templateCache.put("vg-templates/vg-poster",
-            '<img ng-src="{{vgUrl}}" ng-class="API.currentState">');
-    }]
-)
-    .directive("vgPoster",
-    [function () {
-        return {
-            restrict: "E",
-            require: "^videogular",
-            scope: {
-                vgUrl: "=?"
-            },
-            templateUrl: function (elem, attrs) {
-                return attrs.vgTemplate || 'vg-templates/vg-poster';
-            },
-            link: function (scope, elem, attr, API) {
-                scope.API = API;
-
-                if (API.isConfig) {
-                    scope.$watch("API.config",
-                        function () {
-                            if (scope.API.config) {
-                                scope.vgUrl = scope.API.config.plugins.poster.url;
-                            }
-                        }
-                    );
-                }
-            }
-        }
-    }]
-);
 
 //! moment.js
 //! version : 2.10.3
@@ -66464,7 +70115,7 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
    * Toggle the left menu to open 100%
    */
   self.toggleLeft = function(shouldOpen) {
-    if (!self.left.isEnabled) return;
+    if (isAsideExposed || !self.left.isEnabled) return;
     var openAmount = self.getOpenAmount();
     if (arguments.length === 0) {
       shouldOpen = openAmount <= 0;
@@ -66481,7 +70132,7 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
    * Toggle the right menu to open 100%
    */
   self.toggleRight = function(shouldOpen) {
-    if (!self.right.isEnabled) return;
+    if (isAsideExposed || !self.right.isEnabled) return;
     var openAmount = self.getOpenAmount();
     if (arguments.length === 0) {
       shouldOpen = openAmount >= 0;
@@ -71217,6 +74868,35 @@ a._data=this._data.clone();return a},_minBufferSize:0});j.Hasher=k.extend({cfg:f
 f)).finalize(b)}}});var s=p.algo={};return p}(Math);
 (function(){var e=CryptoJS,m=e.lib,p=m.WordArray,j=m.Hasher,l=[],m=e.algo.SHA1=j.extend({_doReset:function(){this._hash=new p.init([1732584193,4023233417,2562383102,271733878,3285377520])},_doProcessBlock:function(f,n){for(var b=this._hash.words,h=b[0],g=b[1],e=b[2],k=b[3],j=b[4],a=0;80>a;a++){if(16>a)l[a]=f[n+a]|0;else{var c=l[a-3]^l[a-8]^l[a-14]^l[a-16];l[a]=c<<1|c>>>31}c=(h<<5|h>>>27)+j+l[a];c=20>a?c+((g&e|~g&k)+1518500249):40>a?c+((g^e^k)+1859775393):60>a?c+((g&e|g&k|e&k)-1894007588):c+((g^e^
 k)-899497514);j=k;k=e;e=g<<30|g>>>2;g=h;h=c}b[0]=b[0]+h|0;b[1]=b[1]+g|0;b[2]=b[2]+e|0;b[3]=b[3]+k|0;b[4]=b[4]+j|0},_doFinalize:function(){var f=this._data,e=f.words,b=8*this._nDataBytes,h=8*f.sigBytes;e[h>>>5]|=128<<24-h%32;e[(h+64>>>9<<4)+14]=Math.floor(b/4294967296);e[(h+64>>>9<<4)+15]=b;f.sigBytes=4*e.length;this._process();return this._hash},clone:function(){var e=j.clone.call(this);e._hash=this._hash.clone();return e}});e.SHA1=j._createHelper(m);e.HmacSHA1=j._createHmacHelper(m)})();
+
+/*@author Tushar Borole
+ * @description user has to jsut mention the percent, on completion of that percentage scroll; expression will be fired
+ * for example <div id="fixed" when-scrolled="loadMore()" percent="70">*/
+
+
+
+angular.module('angular-scroll-complete', []).directive('whenScrolled', function () {
+    return function (scope, elm, attr) {
+        var raw = elm[0];
+        var scrollCompleted = true;
+        scope.$on('scrollCompleted', function () {
+            scrollCompleted = true;
+
+        });
+        elm.bind('scroll', function () {
+            var remainingHeight = raw.offsetHeight - raw.scrollHeight;
+            var scrollTop = raw.scrollTop;
+            var percent = Math.abs((scrollTop / remainingHeight) * 100);
+            if (percent > attr.percent) {
+                if (scrollCompleted) {
+                  scrollCompleted = false;
+                    scope.$apply(attr.whenScrolled);
+
+                }
+            }
+        });
+    };
+});
 
 /**
  * @license Angulartics v0.17.2

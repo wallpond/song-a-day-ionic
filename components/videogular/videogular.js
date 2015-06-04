@@ -1,5 +1,5 @@
 /**
- * @license videogular v1.2.1 http://videogular.com
+ * @license videogular v1.2.2 http://videogular.com
  * Two Fucking Developers http://twofuckingdevelopers.com
  * License: MIT
  */
@@ -7,8 +7,7 @@
 angular.module("com.2fdevs.videogular", ["ngSanitize"])
     .run(
     ["$templateCache", function ($templateCache) {
-        $templateCache.put("vg-templates/vg-media-video", "<video></video>");
-        $templateCache.put("vg-templates/vg-media-audio", "<audio></audio>");
+        $templateCache.put("vg-templates/vg-media", "<audio></audio><video></video>");
 
         // Support for browsers that doesn't have .bind()
         if (!Function.prototype.bind) {
@@ -320,6 +319,7 @@ angular.module("com.2fdevs.videogular")
         this.stop = function () {
             this.mediaElement[0].pause();
             this.mediaElement[0].currentTime = 0;
+            this.currentTime = 0;
             this.setState(VG_STATES.STOP);
         };
 
@@ -505,6 +505,11 @@ angular.module("com.2fdevs.videogular")
             $scope.$watch("vgPlaysInline", function (newValue, oldValue) {
                 this.playsInline = newValue;
             });
+
+            $scope.$watch("vgCuePoints", function (newValue, oldValue) {
+                this.cuePoints = newValue;
+                this.checkCuePoints(this.currentTime);
+            }.bind(this));
         };
 
         this.onFullScreenChange = function (event) {
@@ -587,7 +592,6 @@ angular.module("com.2fdevs.videogular")
  * Directive to add a source of videos or audios. This directive will create a &lt;video&gt; or &lt;audio&gt; tag and usually will be above plugin tags.
  *
  * @param {array} vgSrc Bindable array with a list of media sources. A media source is an object with two properties `src` and `type`. The `src` property must contains a trustful url resource.
- * @param {string} vgType String with "video" or "audio" values to set a <video> or <audio> tag inside <vg-media>.
  * <pre>
  * {
  *    src: $sce.trustAsResourceUrl("path/to/video/videogular.mp4"),
@@ -604,23 +608,14 @@ angular.module("com.2fdevs.videogular")
             restrict: "E",
             require: "^videogular",
             templateUrl: function (elem, attrs) {
-                var vgType = attrs.vgType || "video";
-                return attrs.vgTemplate || "vg-templates/vg-media-" + vgType;
+                return attrs.vgTemplate || "vg-templates/vg-media" ;
             },
             scope: {
                 vgSrc: "=?",
-                vgType: "=?"
             },
             link: function (scope, elem, attrs, API) {
                 var sources;
 
-                // what type of media do we want? defaults to 'video'
-                if (!attrs.vgType || attrs.vgType === "video") {
-                    attrs.vgType = "video";
-                }
-                else {
-                    attrs.vgType = "audio";
-                }
 
                 // FUNCTIONS
                 scope.onChangeSource = function onChangeSource(newValue, oldValue) {
@@ -638,29 +633,18 @@ angular.module("com.2fdevs.videogular")
 
                 scope.changeSource = function changeSource() {
                     var canPlay = "";
-
-                    // It's a cool browser
-                    if (API.mediaElement[0].canPlayType) {
-                        for (var i = 0, l = sources.length; i < l; i++) {
-                            canPlay = API.mediaElement[0].canPlayType(sources[i].type);
-
-                            if (canPlay == "maybe" || canPlay == "probably") {
-                                API.mediaElement.attr("src", sources[i].src);
-                                API.mediaElement.attr("type", sources[i].type);
-                                //Trigger vgChangeSource($source) API callback in vgController
-                                API.changeSource(sources[i]);
-                                break;
-                            }
-                        }
+                    console.log(sources)
+                    if (sources[0].type.indexOf('video') != -1){
+                      API.mediaElement=API.videoElement
+                    }else{
+                      API.mediaElement=API.audioElement
                     }
-                    // It's a crappy browser and it doesn't deserve any respect
-                    else {
-                        // Get H264 or the first one
-                        API.mediaElement.attr("src", sources[0].src);
-                        API.mediaElement.attr("type", sources[0].type);
-                        //Trigger vgChangeSource($source) API callback in vgController
-                        API.changeSource(sources[0]);
-                    }
+                    console.log(API.mediaElement)
+                    // Get H264 or the first one
+                    API.mediaElement.attr("src", sources[0].src);
+                    API.mediaElement.attr("type", sources[0].type);
+                    //Trigger vgChangeSource($source) API callback in vgController
+                    API.changeSource(sources[0]);
 
                     // Android 2.3 support: https://github.com/2fdevs/videogular/issues/187
                     API.mediaElement[0].load();
@@ -675,7 +659,9 @@ angular.module("com.2fdevs.videogular")
                 };
 
                 // INIT
-                API.mediaElement = elem.find(attrs.vgType);
+                API.audioElement = elem.find('audio');
+                API.videoElement = elem.find('video');
+                API.mediaElement = API.audioElement
                 API.sources = scope.vgSrc;
 
                 API.addListeners();
@@ -1187,7 +1173,8 @@ angular.module("com.2fdevs.videogular")
              * @param $event
              * @returns {*}
              */
-            if (navigator.userAgent.match(/Firefox/i)) {
+            var matchedFF = navigator.userAgent.match(/Firefox\/(\d+)/i)
+            if (matchedFF && Number.parseInt(matchedFF.pop()) < 39) {
                 var style = $event.currentTarget.currentStyle || window.getComputedStyle($event.target, null);
                 var borderLeftWidth = parseInt(style['borderLeftWidth'], 10);
                 var borderTopWidth = parseInt(style['borderTopWidth'], 10);
