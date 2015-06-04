@@ -1,14 +1,13 @@
 angular.module("songaday")
 
 # A simple controller that shows a tapped item's data
-.controller "TransmitCtrl", ($scope,TransmitService,$timeout,AccountService) ->
+.controller "TransmitCtrl", ($scope,TransmitService,$state,$timeout,AccountService) ->
   $scope.awsParamsURI = TransmitService.awsParamsURI()
   $scope.awsFolder = TransmitService.awsFolder()
   $scope.s3Bucket = TransmitService.s3Bucket()
   $scope.transmission = {media:{}}
   TransmitService.lastTransmission (last_song)->
     AccountService.refresh (myself)->
-      myself.
       $scope.lastTransmission = last_song
   $scope.$on 's3upload:success', (e) ->
     $scope.ready=true
@@ -32,3 +31,4 @@ angular.module("songaday")
       TransmitService.transmit song,(new_id)->
         myself.songs[new_id]=true
         myself.$save()
+        $state.go 'app.song-index'

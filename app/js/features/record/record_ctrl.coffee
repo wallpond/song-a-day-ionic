@@ -1,12 +1,13 @@
 angular.module("songaday")
 
 # A simple controller that shows a tapped item's data
-.controller "RecordCtrl", ($rootScope,$scope,$window, AccountService, $stateParams,TransmitService, RecordService) ->
+.controller "RecordCtrl", ($rootScope,$scope,$state,$window, AccountService, $stateParams,TransmitService, RecordService) ->
   rec_ctrl = this
   audio_context={}
-  $rootScope.stop()
+  try
+    $rootScope.stop()
   recorder = {}
-  $scope.recording = false
+  $rootScope.recording = false
   $rootScope.recording_file_uri=false
   TransmitService.lastTransmission (song)->
     console.log(song)
@@ -16,10 +17,10 @@ angular.module("songaday")
       TransmitService.uploadBlob $rootScope.mp3Blob, (file_uri) ->
         __log 'mp3 uploaded'
         song = {}
+        console.log(file_uri)
         song['media'] = {'src':file_uri,type:'audio/mp3'}
         song['info'] = $scope.transmission.info or ''
         song['title'] = $scope.transmission.title or '~untitled'
-        song['media'] = $scope.transmission.media
         song['user_id'] = myself.user_id
         song['timestamp'] = (new Date()).toISOString()
         song['$priority'] = -1 * Math.floor(new Date().getTime()/1000)
@@ -31,9 +32,14 @@ angular.module("songaday")
           myself.songs[new_id]=true
           myself.$save()
           __log 'complete'
+          $state.go 'app.song-index'
+
 
 
   $rootScope.onCompleteEncode = (e)->
+    if $rootScope.recording
+      return
+
     __log 'encoded.'
     $rootScope.mp3Blob = new Blob([ new Uint8Array(e.data.buf) ], type: 'audio/mp3')
     $scope.readyToTransmit = true
@@ -110,12 +116,13 @@ angular.module("songaday")
 
   $scope.startRecording = (button) ->
     recorder and recorder.record()
-    $scope.recording = yes
+    $rootScope.recording = yes
     __log 'Recording...'
+    $scope.readyToTransmit = no
     return
 
   $scope.stopRecording = (button) ->
-    $scope.recording = no
+    $rootScope.recording = no
     recorder and recorder.stop()
     __log 'Stopped recording.'
     # create WAV download link using audio data blob

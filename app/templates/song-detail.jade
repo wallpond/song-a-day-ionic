@@ -7,11 +7,9 @@ html
         The Songs service returns an array of song data
     ion-view(view-title='{{song.title}}')
       ion-content(has-header='true', padding='true')
-        button.button.button-icon.icon(ng-click='showArtist(song.artist.key)')
-          img.avatar(height='200px',ng-src='{{song.artist.avatar}}')
+        img.avatar(ng-src='{{song.artist.avatar}}?default=404',err-src='/img/song-a-day.png',alt='{{song.artist.alias}}',ng-click='showArtist(song.artist.key)')
+        button.button.button-icon.icon.ion-play(ng-click='play(song)')
+        button.button.button-icon.icon.ion-plus(ng-click='queue(song)')
         h2 {{song.title}}
         p {{song.info}}
-        button.button.button-icon.icon.ion-play(ng-click='play(song)')
         .comments(ng-include="'templates/comments.html'")
-        input.comment(ng-model='newComment')
-        button.button(ng-click='comment(song,newComment)',ng-enter='comment(song,newComment)') comment

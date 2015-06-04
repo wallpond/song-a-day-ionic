@@ -9,7 +9,7 @@ angular.module("songaday")
   # Might use a resource here that returns a JSON array
   ref = new Firebase(FBURL+'songs').limit(4)
   cloudFrontURI:() ->
-    'd1hmps6uc7xmb3.cloudfront.net'
+    'http://d1hmps6uc7xmb3.cloudfront.net/'
   awsParamsURI: () ->
     '/config/aws.json'
   awsFolder: () ->
@@ -19,6 +19,7 @@ angular.module("songaday")
   transmit:(song,callback) ->
     songs = SongService.some()
     songs.$loaded ()->
+      console.log(song)
       songs.$add(song).then (new_ref) ->
         console.log(new_ref)
         callback(new_ref.key())
@@ -26,13 +27,13 @@ angular.module("songaday")
   lastTransmission:(callback) ->
     AccountService.refresh (myself) ->
       ref = new Firebase (FBURL+'/artists/'+myself.$id + '/songs')
-      SongServervice.getList(myself.songs)
-
+      my_songs=SongService.getList(myself.songs)
       last_transmission=$firebaseObject(ref)
       last_transmission.$loaded (err) ->
         if callback
           callback last_transmission
   uploadBlob:(blob,callback)->
+    cloudFront = @cloudFrontURI()
     s3Uri = 'https://' + @s3Bucket() + '.s3.amazonaws.com/'
 
     S3Uploader.getUploadOptions(@awsParamsURI()).then (s3Options) ->
@@ -51,8 +52,6 @@ angular.module("songaday")
       S3Uploader.upload($rootScope, s3Uri,
         key, opts.acl, blob.type,
         s3Options.key, s3Options.policy,
-        s3Options.signature, blob ).then (->
-        file_URL= s3Uri + key
-        callback(file_URL)
-        return
-      )
+        s3Options.signature, blob ).then (obj) ->
+          callback(cloudFront+key)
+          return
