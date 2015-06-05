@@ -26,8 +26,8 @@ angular.module("songaday")
     return
   lastTransmission:(callback) ->
     AccountService.refresh (myself) ->
-      ref = new Firebase (FBURL+'/artists/'+myself.$id + '/songs')
-      my_songs=SongService.getList(myself.songs)
+      console.log(myself)
+      ref = new Firebase (FBURL+'/songs/' + myself.last_transmission)
       last_transmission=$firebaseObject(ref)
       last_transmission.$loaded (err) ->
         if callback

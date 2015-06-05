@@ -6,9 +6,11 @@ angular.module("songaday")
   $scope.awsFolder = TransmitService.awsFolder()
   $scope.s3Bucket = TransmitService.s3Bucket()
   $scope.transmission = {media:{}}
-  TransmitService.lastTransmission (last_song)->
-    AccountService.refresh (myself)->
-      $scope.lastTransmission = last_song
+  TransmitService.lastTransmission (song)->
+    $scope.song=song
+    latest_date=new Date(song.timestamp)
+    if (new Date()).getDay() == latest_date.getDay()
+      $scope.transmitted = yes
   $scope.$on 's3upload:success', (e) ->
     $scope.ready=true
     $timeout (()->
@@ -30,5 +32,7 @@ angular.module("songaday")
         'avatar': myself.avatar or ''
       TransmitService.transmit song,(new_id)->
         myself.songs[new_id]=true
+        myself.last_transmission = new_id
         myself.$save()
-        $state.go 'app.song-index'
+        $scope.latestTransmission = song
+        $scope.transmitted=yes

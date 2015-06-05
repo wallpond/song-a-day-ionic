@@ -1,0 +1,10 @@
+html
+  body
+    ion-view(view-title='Notifications')
+      ion-content(overflow-scroll="true",has-header='true', padding='true')
+        loader
+        ion-list
+          ion-item.item-thumbnail-left(ng-repeat='notification in notifications',ng-click='showNotification(notification)')
+            img.avatar(ng-src='{{notification.author.avatar}}?default=404',err-src='/img/song-a-day.png',alt='{{notification.author.alias}}',ng-click='showArtist(notification.author.key)')
+            h2 {{notification.message}}
+          

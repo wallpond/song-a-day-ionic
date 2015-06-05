@@ -13,12 +13,17 @@ ion-side-menus
               
           ion-nav-buttons(side="right")
             .small-nav.when-small
+              span.badge.badge-assertive(ng-if='notifications') {{notifications.length}}
               button.button.button-icon.icon.ion-navicon-round(menu-toggle="right") 
             .large-nav.when-large
+              button.button.button-light(nav-clear='', menu-close='', ui-sref='app.playlists')
+                | Playlists
               button.button.button-light(nav-clear='', menu-close='', ui-sref='app.transmit')
                 | Transmit
               button.button.button-light(nav-clear='', menu-close='', ui-sref='app.account')
                 | Account
+              button.button.button-assertive(nav-clear='', menu-close='', ui-sref='app.notifications',ng-if='notifications.length > 0')
+                {{notifications.length}}
 
           ion-nav-back-button.button-clear
             i.icon.ion-chevron-left
@@ -35,12 +40,17 @@ ion-side-menus
               | Songwriters
             ion-item(nav-clear='', menu-close='', ui-sref='app.songs')
               | Songs
+            ion-item(nav-clear='', menu-close='', ui-sref='app.playlists')
+              | Playlists
             ion-item(nav-clear='', menu-close='', ui-sref='app.account')
               | Account
             ion-item(nav-clear='', menu-close='', ui-sref='app.mission')
               | Mission
             ion-item(nav-clear='', menu-close='', ui-sref='app.transmit')
               | Transmit 🎼🎶 
+            ion-item(nav-clear='',menu-close='',ui-sref='app.notification')
+              | Notifications 
+              span.badge.badge-assertive(ng-if='notifications') {{notifications.length}}
       ion-side-menu(side='left',enable-menu-with-back-views='true')
         header.bar.bar-header.bar-stable
           h1.title Playlist

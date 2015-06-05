@@ -8,9 +8,13 @@ angular.module("songaday")
     $rootScope.stop()
   recorder = {}
   $rootScope.recording = false
+
   $rootScope.recording_file_uri=false
   TransmitService.lastTransmission (song)->
-    console.log(song)
+    $scope.song=song
+    latest_date=new Date(song.timestamp)
+    if (new Date()).getDay() == latest_date.getDay()
+      $scope.transmitted = yes
   $scope.transmit = () ->
     __log('uploading mp3')
     AccountService.refresh (myself) ->
@@ -32,7 +36,7 @@ angular.module("songaday")
           myself.songs[new_id]=true
           myself.$save()
           __log 'complete'
-          $state.go 'app.song-index'
+          $state.go 'app.songs'
 
 
 

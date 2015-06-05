@@ -75,6 +75,24 @@ angular.module("songaday")
     views:
       "main-content":
         templateUrl: "templates/mission.html"
+  .state "app.notifications",
+    url: "/notifications"
+    views:
+      "main-content":
+        templateUrl: "templates/notifications.html"
+  .state "app.playlists",
+    url: "/playlists"
+    views:
+      "main-content":
+        templateUrl: "templates/playlist-index.html"
+        controller: "PlaylistIndexCtrl"
+  .state "app.playlist-detail",
+    url: "/playlist/:playlistId"
+    views:
+      "main-content":
+        templateUrl: "templates/playlist-detail.html"
+        controller: "PlaylistDetailCtrl"
+
   $urlRouterProvider.otherwise "/app/songs"
 
 

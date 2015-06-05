@@ -17,6 +17,11 @@ angular.module("songaday")
       comment={comment:comment_text,author:{alias:myself.alias,avatar:myself.avatar,key:myself.$id}}
       console.log(comment)
       SongService.comment(song,comment)
+      comment_text=""
+  $rootScope.showNotification = (notice)->
+    $state.go 'app.song-detail',songId:notice.link
+    $rootScope.notifications.$remove(notice)
+
   $rootScope.login = ()->
     console.log('login')
     AccountService.login()
@@ -30,6 +35,8 @@ angular.module("songaday")
     $state.go 'app.artist-detail', artistId: artist.$id
   $rootScope.showSong = (song) ->
     $state.go 'app.song-detail', songId: song.$id
+  $rootScope.showPlaylist = (playlist) ->
+    $state.go 'app.playlist-detail', playlistId: playlist.$id
   $scope.showNowPlaying = () ->
     $state.go 'app.song-detail', songId: ctrl.nowPlaying().$id
 
@@ -59,10 +66,15 @@ angular.module("songaday")
       ctrl.setNowPlaying _.indexOf(ctrl.playlist,song)
   $rootScope.stop = ->
     ctrl.API.stop()
-
+  $rootScope.currentQueue = ()->
+    return ctrl.playlist
+  $rootScope.clearQueue = ()->
+    ctrl.API.stop()
+    ctrl.playlist = []
   $rootScope.queue = (song)->
     if _(ctrl.playlist).includes(song)
       ctrl.setNowPlaying _.indexOf(ctrl.playlist,song)
+      console.log('now')
       return
     ctrl.playlist.push(song)
     if (ctrl.playlist.length==1)

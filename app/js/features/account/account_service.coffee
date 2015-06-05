@@ -3,7 +3,7 @@ A simple example service that returns some data.
 ###
 angular.module("songaday")
 
-.factory "AccountService",($rootScope,$firebaseObject,Auth,FBURL) ->
+.factory "AccountService",($rootScope,$firebaseArray,$firebaseObject,Auth,FBURL) ->
 
   # Might use a resource here that returns a JSON array
   ref = new Firebase(FBURL)
@@ -18,6 +18,9 @@ angular.module("songaday")
         return
       my_id = CryptoJS.SHA1(authObject.google.email).toString().substring 0,11
       me=$firebaseObject(ref.child('artists/'+my_id))
+      $rootScope.notifications=$firebaseArray(ref.child('notices/'+my_id))
+      $rootScope.notifications.$loaded ()->
+        console.log($rootScope.notifications)
       me.$loaded ()->
         cb(me)
   mySelf:->

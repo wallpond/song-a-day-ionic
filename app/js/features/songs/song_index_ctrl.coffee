@@ -10,5 +10,5 @@ angular.module("songaday")
   $scope.loadMore = ()->
     console.log('loading more')
     $scope.loading=true
-    SongService.more ()->
+    SongService.more () ->
       $scope.loading=false

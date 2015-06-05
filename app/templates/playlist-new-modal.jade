@@ -1,0 +1,7 @@
+ion-modal-view
+    ion-header-bar
+      h1.title New Playlist
+    ion-content.text-center
+      input.text-center(type='text',placeholder='playlist title',ng-model='playlistTitle')
+      br
+      button.button.button-light(ng-click='savePlaylist(playlistTitle)') save

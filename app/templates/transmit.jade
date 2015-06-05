@@ -5,7 +5,10 @@ html
         loader
         div(ng-if='!loggedIn')
           button(ng-click='login();loading=true') log in
-        div(ng-hide='song',ng-if='loggedIn')
+        div(ng-if='transmitted')
+          h1 Todays Transmission:
+          ion-item.item-thumbnail-left(ng-include="'templates/song-item.html'")
+        div(ng-hide='song',ng-if='loggedIn && !transmitted')
           h2 Transmit a song
           label.item.item-input
             span.input-label Title
