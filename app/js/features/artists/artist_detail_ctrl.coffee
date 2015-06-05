@@ -5,5 +5,6 @@ angular.module("songaday")
   $scope.artist = ArtistService.get($stateParams.artistId)
   $scope.loading=true
   $scope.artist.$loaded ()->
-    $scope.loading=false
     $scope.songs = SongService.getList($scope.artist.songs)
+    $scope.loading=false
+    

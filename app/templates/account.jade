@@ -4,6 +4,8 @@ html
         This template loads for the 'tab.adopt' state (app.js)
     ion-view(view-title='Account Settings')
       ion-content(has-header='true', has-tabs='true')
+        .list.list-inset(ng-if='!loggedIn')
+          button.button.button-light(ng-click='login()') log in
         .list.list-inset(ng-if='loggedIn')
           label.item.item-input
             span.input-label Alias
@@ -11,6 +13,9 @@ html
           label.item.item-input
             span.input-label Statement
             input(type='text',ng-model='me.statement')
+          label.item.item-input
+            span.input-label Cyber Link
+            input(type='text',ng-model='me.link')
           label.item.item-input
             span.input-label Avatar
             div(theme='image',s3-upload, bucket='s3Bucket', ng-model='me.avatar', s3-upload-options='{ acl:"private",getOptionsUri: awsParamsURI, folder: awsFolder}')

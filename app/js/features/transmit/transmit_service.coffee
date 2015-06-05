@@ -3,13 +3,13 @@ A simple example service that returns some data.
 ###
 angular.module("songaday")
 
-.factory "TransmitService",($firebaseObject,$firebaseArray,FBURL) ->
+.factory "TransmitService",($rootScope,$firebaseObject,
+    $firebaseArray,FBURL,S3Uploader, ngS3Config,SongService,AccountService) ->
 
   # Might use a resource here that returns a JSON array
-  ref = new Firebase(FBURL+'/songs')
-
+  ref = new Firebase(FBURL+'songs').limit(4)
   cloudFrontURI:() ->
-    'd1hmps6uc7xmb3.cloudfront.net'
+    'http://d1hmps6uc7xmb3.cloudfront.net/'
   awsParamsURI: () ->
     '/config/aws.json'
   awsFolder: () ->
@@ -17,14 +17,41 @@ angular.module("songaday")
   s3Bucket:()->
     'songadays'
   transmit:(song,callback) ->
-    ref.push song,(complete)->
-      my_songs = new Firebase(FBURL+'/artists/'+artist.$id+'/songs')
-      my_songs.child(song.$id).set(true)
-      callback(song.$id)
-  lastTransmission:(artist,callback) ->
-    console.log(artist)
-    ref = new Firebase(FBURL+'/artists/'+artist.$id+'/songs')
-    last_transmission=$firebaseObject(ref)
-    last_transmission.$loaded (err) ->
-      callback(last_transmission)
+    songs = SongService.some()
+    songs.$loaded ()->
+      console.log(song)
+      songs.$add(song).then (new_ref) ->
+        console.log(new_ref)
+        callback(new_ref.key())
     return
+  lastTransmission:(callback) ->
+    AccountService.refresh (myself) ->
+      console.log(myself)
+      ref = new Firebase (FBURL+'/songs/' + myself.last_transmission)
+      last_transmission=$firebaseObject(ref)
+      last_transmission.$loaded (err) ->
+        if callback
+          callback last_transmission
+  uploadBlob:(blob,callback)->
+    cloudFront = @cloudFrontURI()
+    s3Uri = 'https://' + @s3Bucket() + '.s3.amazonaws.com/'
+
+    S3Uploader.getUploadOptions(@awsParamsURI()).then (s3Options) ->
+      key = s3Options.folder + (new Date()).getTime() + '-' +
+        S3Uploader.randomString(16) + ".mp3"
+      opts = angular.extend({
+        submitOnChange: true
+        getOptionsUri: '/getS3Options'
+        getManualOptions: null
+        acl: 'private'
+        uploadingKey: 'uploading'
+        folder: 'songs/'
+        enableValidation: true
+        targetFilename: null
+      }, opts)
+      S3Uploader.upload($rootScope, s3Uri,
+        key, opts.acl, blob.type,
+        s3Options.key, s3Options.policy,
+        s3Options.signature, blob ).then (obj) ->
+          callback(cloudFront+key)
+          return

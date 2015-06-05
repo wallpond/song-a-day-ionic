@@ -1,5 +1,12 @@
 app = angular.module(GLOBALS.ANGULAR_APP_NAME)
 
+# app.config ($ionicAppProvider) ->
+#   # Identify app
+#   $ionicAppProvider.identify
+#     app_id: '548e5cc8'
+#     api_key: '98335d2a5c586dbc5074da1bd3d4b71e8c9362533eb71191'
+#   return
+
 
 app.config ($ionicConfigProvider) ->
   # Customize navigation look

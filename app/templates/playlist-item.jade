@@ -1,0 +1,6 @@
+h2 
+  span.alias {{playlist.title}} 
+  span.title {{playlist.count}}
+
+p.right(am-time-ago='playlist.timestamp').when-large
+.comments(ng-include="'templates/comments.html'").when-large

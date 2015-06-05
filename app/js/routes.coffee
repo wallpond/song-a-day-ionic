@@ -56,11 +56,43 @@ angular.module("songaday")
       "main-content":
         templateUrl: "templates/transmit.html"
         controller: "TransmitCtrl"
+
+  .state "app.now-playing",
+    url: "/playing"
+    views:
+      "main-content":
+        templateUrl: "templates/now-playing.html"
+        controller: "PlayerCtrl"
+  .state "app.record",
+    url: "/record"
+    views:
+      "main-content":
+        templateUrl: "templates/record.html"
+        controller: "RecordCtrl"
+
   .state "app.mission",
     url: "/mission"
     views:
       "main-content":
         templateUrl: "templates/mission.html"
+  .state "app.notifications",
+    url: "/notifications"
+    views:
+      "main-content":
+        templateUrl: "templates/notifications.html"
+  .state "app.playlists",
+    url: "/playlists"
+    views:
+      "main-content":
+        templateUrl: "templates/playlist-index.html"
+        controller: "PlaylistIndexCtrl"
+  .state "app.playlist-detail",
+    url: "/playlist/:playlistId"
+    views:
+      "main-content":
+        templateUrl: "templates/playlist-detail.html"
+        controller: "PlaylistDetailCtrl"
+
   $urlRouterProvider.otherwise "/app/songs"
 
 

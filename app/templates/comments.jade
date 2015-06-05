@@ -1,8 +1,7 @@
 ion-list
-  ion-item(ng-repeat='comment in song.comments')
-    .comment.item-input
+  span(ng-repeat='comment in song.comments')
+    p.comment 
       span.alias {{comment.author.alias}}
       span.text {{comment.comment}}
-  ion-item(ng-show='loggedIn')    
-    label.item.item-input
-      input(type='text',ng-model='newComment',placeholder='comment...',enter-submit='comment(song,newComment);newComment=""')
+  label.comment_input.item.item-input(ng-show='loggedIn')
+    input(type='text',placeholder='comment...',ng-model='newComment',enter-submit="comment(song,newComment);newComment=''")

@@ -7,10 +7,9 @@ angular.module("songaday")
 
   # Might use a resource here that returns a JSON array
   ref = new Firebase(FBURL+'artists')
-    .orderByChild("songs")
   this.loading = true
   artists = $firebaseArray(ref)
-  all: ->
+  some: ->
     artists.$loaded( ()->
       this.loading=false
     )

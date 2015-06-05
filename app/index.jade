@@ -65,18 +65,18 @@ html
 
   body(ng-controller='AppCtrl as ctrl')
     //
-            The nav bar that will be updated as we navigate between views
-            Additional attributes set its look, nav-bar animation and icons
-            Icons provided by Ionicons: http://ionicons.com/
-
-    //
-            The views will be rendered in the <nav-view> directive below
-            Templates are in the /templates folder (but you could also
-            have templates inline in this html file if you'd like).
+      The nav bar that will be updated as we navigate between views
+      Additional attributes set its look, nav-bar animation and icons
+      Icons provided by Ionicons: http://ionicons.com/
     ion-nav-view
 
     ion-footer-bar(align-title="center")
-      .buttons
-        button(ng-click='login()',ng-show='!loggedIn') login
-        button(ng-click='logout()',ng-show='loggedIn') logout
-        
+      .buttons.left
+        button(ng-click='ctrl.API.toggleFullScreen()',ng-show='ctrl.playlist.length').button.button-icon.ion-arrow-expand
+      .title
+        a.button.button-icon.ion-button.ion-mic-c(href='#/app/record')
+          
+      .buttons.right
+        button.button.button-light(ng-click='login()',ng-show='!loggedIn') login
+        button.button.button-light(ng-click='logout()',ng-show='loggedIn') logout
+    

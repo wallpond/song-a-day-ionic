@@ -1,7 +1,10 @@
-videogular(vg-player-ready="ctrl.onPlayerReady($API)")
-  vg-media(vg-src='ctrl.config.sources',vg-auto-play='true', vg-tracks='ctrl.config.tracks')
-  vg-volume
-    vg-mute-button
-    vg-volume-bar
-  vg-buffering
-  vg-controls
+html
+  body
+    //
+        This template loads for the 'tab.song-detail' state (app.js)
+        'song' is a $scope variable created in the SongCtrl controller (controllers.js)
+        The SongCtrl pulls data from the Songs service (service.js)
+        The Songs service returns an array of song data
+    ion-view(view-title='{{ctrl.nowPlaying().title}}')
+      ion-content(has-header='true', padding='true')
+        
