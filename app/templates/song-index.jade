@@ -4,7 +4,7 @@ html
       ion-content(overflow-scroll="true",has-header='true', padding='true')
         loader
         ion-list
-          ion-item.item-thumbnail-left(ng-include="'templates/song-item.html'",ng-repeat='song in songs |orderBy:"-timestamp"')
-          ion-item.item-thumbnail-left 
+          .item.item-thumbnail-left(ng-include="'templates/song-item.html'",ng-repeat='song in songs |orderBy:"-timestamp"')
+          .item.item-thumbnail-left 
             button.button.button-light(ng-click='loadMore()',ng-show='!loading') more songs
             

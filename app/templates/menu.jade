@@ -22,8 +22,7 @@ ion-side-menus
                 | Transmit
               button.button.button-light(nav-clear='', menu-close='', ui-sref='app.account')
                 | Account
-              button.button.button-assertive(nav-clear='', menu-close='', ui-sref='app.notifications',ng-if='notifications.length > 0')
-                {{notifications.length}}
+              button.button.button-assertive(nav-clear='', menu-close='', ui-sref='app.notifications',ng-if='notifications.length > 0') {{notifications.length}}
 
           ion-nav-back-button.button-clear
             i.icon.ion-chevron-left

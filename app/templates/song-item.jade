@@ -1,4 +1,4 @@
-img.avatar(ng-src='{{song.artist.avatar}}?default=404',err-src='/img/song-a-day.png',alt='{{song.artist.alias}}',ng-click='showArtist(song.artist.key)')
+img.avatar(ng-src='{{song.artist.avatar}}?default=404',err-src='img/song-a-day.png',alt='{{song.artist.alias}}',ng-click='showArtist(song.artist.key)')
 h2 
   span.alias {{song.artist.alias}} 
   span.title {{song.title}}
@@ -6,5 +6,7 @@ h2
 p.right(am-time-ago='song.timestamp').when-large
 button.when-large.button.button-icon.icon.ion-play(ng-click='play(song)')
 button.when-large.button.button-icon.icon.ion-plus(ng-click='queue(song)')
+button.when-small.button.button-icon.icon.ion-play.float-right(ng-click='play(song)')
+button.when-small.button.button-icon.icon.ion-plus.float-right(ng-click='queue(song)')
 p.info {{song.info}}
 .comments(ng-include="'templates/comments.html'").when-large

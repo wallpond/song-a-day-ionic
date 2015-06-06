@@ -5,7 +5,7 @@ html
         loader
         ul.artists
           li.artist(ng-show='artist.songs',ng-mouseleave="showArtistInfo = false",ng-mouseenter='showArtistInfo = true',ng-repeat='artist in artists',ng-click='showArtist(artist)')
-            img.avatar(ng-src='{{artist.avatar}}?default=404',err-src='/img/song-a-day.png')     
+            img.avatar(ng-src='{{artist.avatar}}?default=404',err-src='img/song-a-day.png')     
             .artist-info(ng-show='showArtistInfo')       
               h2 {{artist.alias}}
               p {{artist.statement}}

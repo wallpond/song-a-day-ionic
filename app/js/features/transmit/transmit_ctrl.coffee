@@ -7,9 +7,9 @@ angular.module("songaday")
   $scope.s3Bucket = TransmitService.s3Bucket()
   $scope.transmission = {media:{}}
   TransmitService.lastTransmission (song)->
-    $scope.song=song
     latest_date=new Date(song.timestamp)
     if (new Date()).getDay() == latest_date.getDay()
+      $scope.song=song
       $scope.transmitted = yes
   $scope.$on 's3upload:success', (e) ->
     $scope.ready=true

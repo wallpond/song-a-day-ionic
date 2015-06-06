@@ -7,7 +7,7 @@ html
         The Songs service returns an array of song data
     ion-view(view-title='{{song.title}}')
       ion-content(has-header='true', padding='true')
-        img.avatar(ng-src='{{song.artist.avatar}}?default=404',err-src='/img/song-a-day.png',alt='{{song.artist.alias}}',ng-click='showArtist(song.artist.key)')
+        img.avatar(ng-src='{{song.artist.avatar}}?default=404',err-src='img/song-a-day.png',alt='{{song.artist.alias}}',ng-click='showArtist(song.artist.key)')
         button.button.button-icon.icon.ion-play(ng-click='play(song)')
         button.button.button-icon.icon.ion-plus(ng-click='queue(song)')
         h2 {{song.title}}
