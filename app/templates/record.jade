@@ -7,13 +7,14 @@ html
         The Songs service returns an array of song data
     ion-view(view-title='Record')
       ion-content(has-header='true', padding='true')              
-      h2 ...
       div(ng-if='!loggedIn')
         button(ng-click='login();loading=true') log in
       div(ng-if='transmitted')
         h1 Todays Transmission:
         ion-item.item-thumbnail-left(ng-include="'templates/song-item.html'")
       .record(ng-if='!transmited||!loggedIn')  
+        br
+        br
         button.button.button-icon.ion-record(ng-class='recording?"assertive":"solid"',ng-click='startRecording()')
         button.button.button-icon.ion-stop(ng-disabled='!recording',ng-click='stopRecording()')        
         h2(ng-bind='message')

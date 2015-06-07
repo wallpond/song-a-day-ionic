@@ -30,9 +30,7 @@ angular.module("songaday")
         'alias': myself.alias or ''
         'key': myself.$id
         'avatar': myself.avatar or ''
-      TransmitService.transmit song,(new_id)->
-        myself.songs[new_id]=true
-        myself.last_transmission = new_id
-        myself.$save()
+      TransmitService.transmit song, (new_id) ->
         $scope.latestTransmission = song
         $scope.transmitted=yes
+        $scope.song=song

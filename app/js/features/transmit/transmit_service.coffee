@@ -18,11 +18,17 @@ angular.module("songaday")
     'songadays'
   transmit:(song,callback) ->
     songs = SongService.some()
-    songs.$loaded ()->
-      console.log(song)
-      songs.$add(song).then (new_ref) ->
-        console.log(new_ref)
-        callback(new_ref.key())
+    songs.$loaded () ->
+      AccountService.refresh (me) ->
+        songs.$add(song).then (new_ref) ->
+          new_id = new_ref.key()
+          if (typeof me.songs == 'undefined')
+            me.songs = {}
+          me.songs[new_id]=true
+          me.last_transmission = new_id
+          me.$save()
+          callback(new_id)
+
     return
   lastTransmission:(callback) ->
     AccountService.refresh (myself) ->

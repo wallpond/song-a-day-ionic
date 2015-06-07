@@ -1,7 +1,7 @@
 angular.module("songaday")
 
 # A simple controller that shows a tapped item's data
-.controller "RecordCtrl", ($rootScope,$scope,$state,$window, AccountService, $stateParams,TransmitService, RecordService) ->
+.controller "RecordCtrl", ($rootScope,$scope,$state,$window, AccountService, $stateParams,TransmitService, RecordService,MultiTrackService) ->
   rec_ctrl = this
   audio_context={}
   try

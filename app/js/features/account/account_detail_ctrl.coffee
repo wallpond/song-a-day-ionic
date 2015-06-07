@@ -8,4 +8,5 @@ angular.module("songaday")
   $scope.s3Bucket = TransmitService.s3Bucket()
 
   AccountService.refresh (myself)->
+    $scope.me=myself
     myself.$bindTo($scope,'me')

@@ -22,6 +22,7 @@ angular.module("songaday")
       $rootScope.notifications.$loaded ()->
         console.log($rootScope.notifications)
       me.$loaded ()->
+        console.log(me)
         cb(me)
   mySelf:->
     me
