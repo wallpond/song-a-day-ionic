@@ -25,10 +25,12 @@ function install_plugin {
 # install_plugin "android ios" org.apache.cordova.device || exit $?
 # install_plugin "android ios" org.apache.cordova.device-orientation || exit $?
 # install_plugin "android ios" org.apache.cordova.geolocation || exit $?
-# install_plugin "android ios" org.apache.cordova.inappbrowser || exit $?
+install_plugin "android ios" org.apache.cordova.inappbrowser || exit $?
 # install_plugin "android ios" org.apache.cordova.network-information || exit $?
 install_plugin "android ios" org.apache.cordova.splashscreen || exit $?
+install_plugin "android ios" https://github.com/apache/cordova-plugin-file.git || exit $?
 
+install_plugin "android ios" https://github.com/17thDimension/cordova-plugin-media-capture || $?
 # Created by authors of Ionic, fixes keyboard issues on iOS
 install_plugin "android ios" vendor/plugins/ionic-plugins-keyboard || exit $?
 

@@ -12,5 +12,5 @@ angular.module("songaday")
     SongService.more () ->
       $scope.loading=false
   $scope.playAll = ()->
-    for song in songs
-      $rootScope.queue song
+    for song in $scope.songs
+      $scope.enQueue song

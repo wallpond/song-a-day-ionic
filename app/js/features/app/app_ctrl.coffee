@@ -71,10 +71,15 @@ angular.module("songaday")
   $rootScope.clearQueue = ()->
     ctrl.API.stop()
     ctrl.playlist = []
+  $rootScope.enQueue = (song)->
+    if _(ctrl.playlist).includes(song)
+      return
+    ctrl.playlist.push(song)
+    if (ctrl.playlist.length==1)
+      ctrl.setNowPlaying 0
   $rootScope.queue = (song)->
     if _(ctrl.playlist).includes(song)
       ctrl.setNowPlaying _.indexOf(ctrl.playlist,song)
-      console.log('now')
       return
     ctrl.playlist.push(song)
     if (ctrl.playlist.length==1)

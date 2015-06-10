@@ -6,6 +6,7 @@ angular.module("songaday")
   audio_context={}
   $scope.transmission={}
   $rootScope.file_type="audio/mp3"
+  $scope.transmitting=false
   try
     $rootScope.stop()
   recorder = {}
@@ -41,8 +42,10 @@ angular.module("songaday")
           myself.$save()
           __log 'complete'
           $scope.latestTransmission = song
-          $scope.transmitted=yes
+          $scope.transmitted = yes
           $scope.song=song
+          $scope.transmitting= no
+
 
 
 

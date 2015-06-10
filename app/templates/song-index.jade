@@ -7,5 +7,5 @@ html
           .item.item-thumbnail-left(ng-include="'templates/song-item.html'",ng-repeat='song in songs |orderBy:"-timestamp"')
           .item.item-thumbnail-left 
             button.button.button-light(ng-click='loadMore()',ng-show='!loading') more songs
-            button.button.button-light(ng-click='playAll()',ng-show='!loading') play All
+            button.button.button-light(ng-click='playAll()',ng-show='!loading') play all
             

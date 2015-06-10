@@ -71,7 +71,7 @@ html
     ion-nav-view
 
     ion-footer-bar(align-title="center")
-      .buttons.left
+      .buttons.left.when-large
         button(ng-click='ctrl.API.toggleFullScreen()',ng-show='ctrl.playlist.length').button.button-icon.ion-arrow-expand
       .title
         a.button.button-icon.ion-button.ion-mic-c(href='#/app/record')

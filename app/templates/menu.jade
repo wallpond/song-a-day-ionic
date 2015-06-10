@@ -49,13 +49,14 @@ ion-side-menus
               | Transmit 🎼🎶 
             ion-item(nav-clear='',menu-close='',ui-sref='app.notification')
               | Notifications 
-              span.badge.badge-assertive(ng-if='notifications') {{notifications.length}}
+              span.badge.badge-assertive(ng-if='notifications.length') {{notifications.length}}
       ion-side-menu(side='left',enable-menu-with-back-views='true')
         header.bar.bar-header.bar-stable
-          h1.title Playlist
+          h1.title Playlist 
         ion-content.has-header
           videogular.cinema(vg-player-ready="ctrl.onPlayerReady($API)",vg-complete='ctrl.next()')
             vg-media(vg-use-native-controls='true',vg-src='ctrl.config.sources',vg-type="video",vg-auto-play='true')
+              
           .list
             ion-item(align-title="center")
               .item-icon-left
@@ -64,6 +65,10 @@ ion-side-menus
                 button.button.button-icon.icon.ion-pause(ng-class='ctrl.API.currentState=="play"?"ion-pause":"ion-play"',ng-click='ctrl.API.playPause()')
               .item-icon-right
                 button.button.button-icon.icon.ion-skip-forward(ng-show='ctrl.playlist.length!="play"',ng-click='ctrl.next()')
-
-            ion-item(ng-class='$index==ctrl.currentSong?"active":""',ng-repeat='song in ctrl.playlist track by song.$id',ng-click='ctrl.setNowPlaying($index);showNowPlaying()')
-              | {{song.title}}
+            .item(ng-class='$index==ctrl.currentSong?"active":""',ng-repeat='song in ctrl.playlist track by song.$id')
+              .item-icon-right 
+                 span(ng-click='ctrl.setNowPlaying($index);showNowPlaying()') {{song.title}}
+                 i.icon.close(ng-click='ctrl.remove($index)') ⨯ 
+                
+            ion-spinner(icon="crescent")
+              
