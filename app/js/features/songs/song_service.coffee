@@ -15,8 +15,12 @@ angular.module("songaday")
   some: ->
     @more()
     songs
-  more: ->
+  more:(cb) ->
+
     scroll.next(limit)
+    if cb
+      cb()
+
   comment: (song,comment)->
     commentsRef=new Firebase(FBURL+'songs/'+song.$id+'/comments')
     comments=$firebaseArray(commentsRef)

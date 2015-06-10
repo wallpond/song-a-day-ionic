@@ -81,13 +81,8 @@ angular.module("songaday")
       ctrl.setNowPlaying 0
 
   ctrl.onPlayerReady = (API) ->
+    console.log(API)
     ctrl.API = API
-    return
-
-  ctrl.onCompleteVideo = ->
-    ctrl.isCompleted = true
-    console.log('COMPLETED')
-    ctrl.next()
     return
 
   ctrl.config =

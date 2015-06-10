@@ -94,7 +94,7 @@ module.exports = new class GulpConfig
       development: {
         ENV: "development"
 
-        BUNDLE_ID: "com.paulwand.songaday.development"
+        BUNDLE_ID: "paulwand.SongADay"
         BUNDLE_NAME: "SongADay"
 
         # Automatically connect to weinre on application's startup

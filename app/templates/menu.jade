@@ -2,7 +2,7 @@ ion-side-menus
       ion-pane(ion-side-menu-content='')
         ion-nav-bar.top-nav
           ion-nav-buttons(side="left",expose-aside-when='large')
-            button.button.button-icon.icon.ion-music-note.when-small(menu-toggle="left")
+            button.button.button-icon.icon.ion-music-note.when-small(menu-toggle="left",ng-show='ctrl.playlist.length')
             .nav.when-large
               button.button.button-light(nav-clear='', menu-close='', ui-sref='app.mission')
                 | Mission
@@ -13,7 +13,7 @@ ion-side-menus
               
           ion-nav-buttons(side="right")
             .small-nav.when-small
-              span.badge.badge-assertive(ng-if='notifications') {{notifications.length}}
+              span.badge.badge-assertive(ng-show='notifications.length') {{notifications.length}}
               button.button.button-icon.icon.ion-navicon-round(menu-toggle="right") 
             .large-nav.when-large
               button.button.button-light(nav-clear='', menu-close='', ui-sref='app.playlists')
@@ -22,7 +22,7 @@ ion-side-menus
                 | Transmit
               button.button.button-light(nav-clear='', menu-close='', ui-sref='app.account')
                 | Account
-              button.button.button-assertive(nav-clear='', menu-close='', ui-sref='app.notifications',ng-if='notifications.length > 0') {{notifications.length}}
+              button.button.button-assertive(nav-clear='', menu-close='', ui-sref='app.notifications',ng-show='notifications.length') {{notifications.length}}
 
           ion-nav-back-button.button-clear
             i.icon.ion-chevron-left
@@ -54,7 +54,7 @@ ion-side-menus
         header.bar.bar-header.bar-stable
           h1.title Playlist
         ion-content.has-header
-          videogular.cinema(vg-player-ready="ctrl.onPlayerReady($API)")
+          videogular.cinema(vg-player-ready="ctrl.onPlayerReady($API)",vg-complete='ctrl.next()')
             vg-media(vg-use-native-controls='true',vg-src='ctrl.config.sources',vg-type="video",vg-auto-play='true')
           .list
             ion-item(align-title="center")

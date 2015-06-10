@@ -4,6 +4,8 @@ angular.module("songaday")
 .controller "RecordCtrl", ($rootScope,$scope,$state,$window, AccountService, $stateParams,TransmitService, RecordService,MultiTrackService) ->
   rec_ctrl = this
   audio_context={}
+  $scope.transmission={}
+  $rootScope.file_type="audio/mp3"
   try
     $rootScope.stop()
   recorder = {}
@@ -11,20 +13,21 @@ angular.module("songaday")
 
   $rootScope.recording_file_uri=false
   TransmitService.lastTransmission (song)->
-    $scope.song=song
     latest_date=new Date(song.timestamp)
-    if (new Date()).getDay() == latest_date.getDay()
+    today=new Date()
+    if today.getDay() == latest_date.getDay()
+      $scope.song=song
       $scope.transmitted = yes
   $scope.transmit = () ->
-    __log('uploading mp3')
+    __log('Uploading Compressed Audio')
     AccountService.refresh (myself) ->
-      TransmitService.uploadBlob $rootScope.mp3Blob, (file_uri) ->
-        __log 'mp3 uploaded'
+      TransmitService.uploadBlob $rootScope.file_blob, (file_uri) ->
+        __log 'Audio uploaded'
         song = {}
-        console.log(file_uri)
-        song['media'] = {'src':file_uri,type:'audio/mp3'}
-        song['info'] = $scope.transmission.info or ''
-        song['title'] = $scope.transmission.title or '~untitled'
+        file_type=$rootScope.file_type
+        song['media'] = {'src':file_uri,type:file_type}
+        song['info'] = $scope.transmission.info or '~'
+        song['title'] = $scope.transmission.title or 'untitled'
         song['user_id'] = myself.user_id
         song['timestamp'] = (new Date()).toISOString()
         song['$priority'] = -1 * Math.floor(new Date().getTime()/1000)
@@ -34,9 +37,12 @@ angular.module("songaday")
           'avatar': myself.avatar or ''
         TransmitService.transmit song, (new_id) ->
           myself.songs[new_id]=true
+          myself.last_transmission=new_id
           myself.$save()
           __log 'complete'
-          $state.go 'app.songs'
+          $scope.latestTransmission = song
+          $scope.transmitted=yes
+          $scope.song=song
 
 
 
@@ -45,9 +51,9 @@ angular.module("songaday")
       return
 
     __log 'encoded.'
-    $rootScope.mp3Blob = new Blob([ new Uint8Array(e.data.buf) ], type: 'audio/mp3')
+    $rootScope.file_blob = new Blob([ new Uint8Array(e.data.buf) ], type: 'audio/mp3')
     $scope.readyToTransmit = true
-    $rootScope.mp3Blob.name=$scope.title+'.mp3'
+    $rootScope.file_blob.name=$scope.title+'.mp3'
 
     $scope.$apply()
 
@@ -55,14 +61,20 @@ angular.module("songaday")
     console.log(fs)
   captureSuccess = (mediaFiles) ->
     $window.file=mediaFiles[0]
-    file_protocol= "file://"
-    #if $ionic.isAndroid()
-    #  file_protocol= "content://"
+    file_protocol = "file://"
     $window.resolveLocalFileSystemURI file_protocol + file.fullPath, (obj) ->
-      window.file_obj = obj
-      RecordService.
-      __log obj
-      $scope.file=obj
+      $rootScope.native = true
+      file_URI=obj.nativeURL
+      obj.file (file_obj) ->
+        $rootScope.wav_file_uri=file_URI
+        $rootScope.file_blob =file_obj
+        $rootScope.file_type = "audio/m4a"
+        $rootScope.readyToTransmit = true
+        $scope.$apply()
+
+
+
+
   captureError = (error) ->
     navigator.notification.alert 'Error: ' + error.code, null, 'Capture Error'
     __log error

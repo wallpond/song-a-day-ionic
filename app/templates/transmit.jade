@@ -20,5 +20,5 @@ html
             span.input-label Media
             div(s3-accept='audio/*' ,theme='audio',s3-upload, bucket='s3Bucket', ng-model='media', s3-upload-options='{ acl:"private",getOptionsUri: awsParamsURI, folder: awsFolder}')
             p {{media}}
-        button.transmit(ng-show='ready',ng-click='transmit(transmission)')
+        button.button.button-light.transmit(ng-show='ready',ng-click='transmit(transmission)')
           | Transmit

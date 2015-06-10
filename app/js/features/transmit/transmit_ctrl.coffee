@@ -8,9 +8,11 @@ angular.module("songaday")
   $scope.transmission = {media:{}}
   TransmitService.lastTransmission (song)->
     latest_date=new Date(song.timestamp)
-    if (new Date()).getDay() == latest_date.getDay()
+    today=new Date()
+    if today.getDay() == latest_date.getDay()
       $scope.song=song
       $scope.transmitted = yes
+
   $scope.$on 's3upload:success', (e) ->
     $scope.ready=true
     $timeout (()->
@@ -30,6 +32,7 @@ angular.module("songaday")
         'alias': myself.alias or ''
         'key': myself.$id
         'avatar': myself.avatar or ''
+      console.log song
       TransmitService.transmit song, (new_id) ->
         $scope.latestTransmission = song
         $scope.transmitted=yes

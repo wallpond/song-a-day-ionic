@@ -40,23 +40,27 @@ angular.module("songaday")
   uploadBlob:(blob,callback)->
     cloudFront = @cloudFrontURI()
     s3Uri = 'https://' + @s3Bucket() + '.s3.amazonaws.com/'
+    awsParams=@awsParamsURI()
+    s3Options=
+      'policy': 'ewogICJleHBpcmF0aW9uIjogIjIwMjAtMDEtMDFUMDA6MDA6MDBaIiwKICAiY29uZGl0aW9ucyI6IFsKICAgIHsiYnVja2V0IjogInNvbmdhZGF5cyJ9LAogICAgWyJzdGFydHMtd2l0aCIsICIka2V5IiwgIiJdLAogICAgeyJhY2wiOiAicHJpdmF0ZSJ9LAogICAgWyJzdGFydHMtd2l0aCIsICIkQ29udGVudC1UeXBlIiwgIiJdLAogICAgWyJzdGFydHMtd2l0aCIsICIkZmlsZW5hbWUiLCAiIl0sCiAgICBbImNvbnRlbnQtbGVuZ3RoLXJhbmdlIiwgMCwgNTI0Mjg4MDAwXQogIF0KfQ=='
+      'signature': 'r+Ci1HbYn4fkyFB0pxwRWx5m0Ss='
+      'key': 'AKIAJ7K34ZKXEV72GYRQ'
 
-    S3Uploader.getUploadOptions(@awsParamsURI()).then (s3Options) ->
-      key = s3Options.folder + (new Date()).getTime() + '-' +
-        S3Uploader.randomString(16) + ".mp3"
-      opts = angular.extend({
-        submitOnChange: true
-        getOptionsUri: '/getS3Options'
-        getManualOptions: null
-        acl: 'private'
-        uploadingKey: 'uploading'
-        folder: 'songs/'
-        enableValidation: true
-        targetFilename: null
-      }, opts)
-      S3Uploader.upload($rootScope, s3Uri,
-        key, opts.acl, blob.type,
-        s3Options.key, s3Options.policy,
-        s3Options.signature, blob ).then (obj) ->
-          callback(cloudFront+key)
-          return
+    key = s3Options.folder + (new Date()).getTime() + '-' +
+      S3Uploader.randomString(16) + ".mp3"
+    opts = angular.extend({
+      submitOnChange: true
+      getOptionsUri: awsParams
+      getManualOptions: null
+      acl: 'private'
+      uploadingKey: 'uploading'
+      folder: 'songs/'
+      enableValidation: true
+      targetFilename: null
+    }, opts)
+    S3Uploader.upload($rootScope, s3Uri,
+      key, opts.acl, blob.type,
+      s3Options.key, s3Options.policy,
+      s3Options.signature, blob ).then (obj) ->
+        callback(cloudFront+key)
+        return

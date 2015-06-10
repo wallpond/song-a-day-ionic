@@ -15,8 +15,9 @@ html
       .record(ng-if='!transmited||!loggedIn')  
         br
         br
-        button.button.button-icon.ion-record(ng-class='recording?"assertive":"solid"',ng-click='startRecording()')
-        button.button.button-icon.ion-stop(ng-disabled='!recording',ng-click='stopRecording()')        
+        .buttons(ng-hide='native')
+          button.button.button-icon.ion-record(ng-class='recording?"assertive":"solid"',ng-click='startRecording()')
+          button.button.button-icon.ion-stop(ng-disabled='!recording',ng-click='stopRecording()')        
         h2(ng-bind='message')
         .recording(ng-show='wav_file_uri')
           label.item.item-input

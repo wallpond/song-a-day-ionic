@@ -8,7 +8,9 @@ angular.module("songaday")
     $scope.loading=false
   )
   $scope.loadMore = ()->
-    console.log('loading more')
     $scope.loading=true
     SongService.more () ->
       $scope.loading=false
+  $scope.playAll = ()->
+    for song in songs
+      $rootScope.queue song

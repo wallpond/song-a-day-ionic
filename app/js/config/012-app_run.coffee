@@ -10,6 +10,10 @@ ionic.Platform.ready ->
 
 app.run ($log, $timeout,$rootScope, Auth,AccountService) ->
   $log.debug "Ionic app \"#{GLOBALS.ANGULAR_APP_NAME}\" has just started (app.run)!" unless GLOBALS.ENV == "test"
+  $timeout ->
+    navigator.splashscreen?.hide()
+
+
   Auth.$onAuth (user)->
     $rootScope.loggedIn = !!user
 
@@ -18,5 +22,3 @@ app.run ($log, $timeout,$rootScope, Auth,AccountService) ->
 
     # Finally, let's show the app, by hiding the splashscreen
   # (it should be visible up until this moment)
-  $timeout ->
-    navigator.splashscreen?.hide()
