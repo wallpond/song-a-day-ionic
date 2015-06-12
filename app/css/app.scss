@@ -7,9 +7,6 @@ loader{
   margin:auto;
   font-size:80px;
 }
-.song_info{
-  cursor:alias;
-}
 
 .song_info .title{
   font-family: fantasy;
@@ -45,13 +42,24 @@ loader{
 .ion-plus:hover{
   color:#26a3e4!important;
 }
+.inline{
+  display:inline!important;
+}
+.vertical-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.song_alias{
+  color:lightGray;
+}
 .avatar{
   border-radius:100%;
-  width:100px;
-  height:100px;
+  width:10vh;
+  height:10vh;
   cursor: pointer;
-
 }
+
 .comment{
   display:block;
 }
@@ -75,10 +83,14 @@ loader{
   -webkit-text-stroke-color: black;
 }
 .artist_song{
-  background-color:rgba(255,255,255,.7)
+  background-color:transparent;
 }
-.artist_song .comment_input{
-  background: transparent;
+.song-header{
+  cursor: pointer;
+}
+.song-header:hover{
+  background-color:#519f6b!important;
+  background-opacity: .2;
 }
 .comment .text:before{
   content:":";
@@ -95,9 +107,37 @@ loader{
 .close:hover{
   color:red;
 }
-.song_title{
-  font-family: fantasy;
+.enqueue{
+  position: absolute;
+  right:20px;
+  top:33px;
+  padding-left: 11px;
 }
+.song{
+}
+.song_title{
+
+  font-family: fantasy;
+  cursor:pointer;
+  color:black!important;
+  line-height:20px;
+  font-size:20px;
+  }
+.song_title:hover{
+  color:#519f6b!important;
+}
+.song_avatar{
+  padding: 4px;
+}
+.song_title:hover:after{
+  content:"\f215"!important;
+  color:#519f6b!important;
+  font-family: "Ionicons";
+  position: relative;
+  left:10px;
+}
+
+
 .alias:hover{
   color:#26a3e4!important;
   cursor:pointer;
