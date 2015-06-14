@@ -10,5 +10,7 @@ html
         loader
         button.button.button-light(ng-click='clearQueue()') Clear Queue
         button.button.button-light(ng-click='playAll()') Play all songs in {{playlist.title}}
-        ion-list
-          ion-item.playlist_song.item-thumbnail-left(ng-include="'templates/song-item.html'",ng-repeat='song in songs')
+        
+        .row.responsive-md
+          .list.col-50.col-offset-25
+            .playlist_song.item-thumbnail-left(ng-include="'templates/song-item.html'",ng-repeat='song in songs')

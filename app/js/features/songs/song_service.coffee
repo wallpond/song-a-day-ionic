@@ -39,8 +39,9 @@ angular.module("songaday")
     ref = new Firebase(FBURL+'/songs/'+songId)
 
     $firebaseObject(ref)
-  getList:(songList) ->
+  getList:(songList,cb) ->
     playlist = []
     for songId of songList
-      playlist.push(this.get(songId))
+      song= @get(songId)
+      playlist.push(song)
     playlist

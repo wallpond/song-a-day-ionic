@@ -11,17 +11,16 @@ loader{
 .song_info .title{
   font-family: fantasy;
 }
-.avatar:hover{
-  border:1px dotted transparent;
-}
 .artist{
   display:inline-block;
 }
 .artist-info{
   position:absolute;
-  background-color:white;
   border-radius: 20px;
-}
+  background-color:white;
+  padding:20px;
+  opacity: .8;
+  pointer-events: none;}
 .artists{
   display:inline-block;
 }
@@ -51,14 +50,29 @@ loader{
   transform: translateY(-50%);
 }
 .song_alias{
-  color:lightGray;
+  color:skyblue;
 }
-.avatar{
-  border-radius:100%;
-  width:10vh;
-  height:10vh;
+.song_alias:hover{
+  color:#26a3e4!important;
   cursor: pointer;
 }
+
+
+.avatar{
+  border-radius:100%;
+  width:100px!important;
+  height:100px!important;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+}
+.avatar:hover{
+/*  width:200px;
+  height:200px;
+  border:1px dotted transparent;
+*/}
+
 
 .comment{
   display:block;
@@ -70,9 +84,9 @@ loader{
   font-weight: bold;
 }
 .artist_statement{
-  -webkit-text-fill-color: black; /* Will override color (regardless of order) */
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-color: black;
   font-size: 2.0em;
   font-weight: bold;
 }
@@ -87,10 +101,12 @@ loader{
 }
 .song-header{
   cursor: pointer;
+
 }
 .song-header:hover{
+  /*
   background-color:#519f6b!important;
-  background-opacity: .2;
+  background-opacity: .2;*/
 }
 .comment .text:before{
   content:":";
@@ -98,14 +114,25 @@ loader{
 .cinema{
   background-color:black;
 }
-.cinema video{
-    pointer-events: none;
+video::-webkit-media-controls-fullscreen-button {
+    display: none;
 }
+.cinema video{
+    opacity:50%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    }
 .close{
   cursor:pointer;
 }
 .close:hover{
-  color:red;
+  /*
+  color:red;*/
+
 }
 .enqueue{
   position: absolute;
@@ -115,32 +142,39 @@ loader{
 }
 .song{
 }
+.song_time{
+  font-size: 10px;
+  padding-right:10px;
+  position: absolute;
+  right:10px;
+  top:20px;
+}
 .song_title{
-
-  font-family: fantasy;
   cursor:pointer;
-  color:black!important;
-  line-height:20px;
-  font-size:20px;
+  color:gray;
+  line-height:50px;
+  font-size:17px!important;
   }
-.song_title:hover{
-  color:#519f6b!important;
-}
-.song_avatar{
-  padding: 4px;
-}
-.song_title:hover:after{
-  content:"\f215"!important;
-  color:#519f6b!important;
-  font-family: "Ionicons";
-  position: relative;
-  left:10px;
-}
+  .song_title:hover{
+    // color:#519f6b!important;
+    }
 
+.avatar{
+}
+.song_heading{
+}
+.song_heading {
+    color:gray;
+    background-color: #d9edf7!important;
+}
+.card{
+  border-radius: 5px;
+  border-color:#d9edf7;
+}
 
 .alias:hover{
-  color:#26a3e4!important;
-  cursor:pointer;
+  // color:#26a3e4!important;
+  // cursor:pointer;
 }
 
 .comments{
@@ -149,10 +183,6 @@ loader{
 .item{
   border-style:none!important;
 }
-.info{
-  white-space: pre!important;
-}
-
 .comment{
   white-space:pre-line!important;
 }
@@ -170,8 +200,17 @@ loader{
       display:none;
 	  }
 	}
+.ion-minus:hover{
+  // color:red!important;
+}
 .always{
   display:inline!important;
+}
+.playlist-item{
+  cursor:pointer;
+}
+.active,.playing{
+  background-color:#D6EBE0!important;
 }
 .transmit {
         animation:myfirst 5s;

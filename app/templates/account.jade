@@ -9,7 +9,7 @@ html
         .list.list-inset(ng-if='loggedIn')
           label.item.item-input
             span.input-label Alias
-            input(type='text',ng-model='me.alias')
+            input(type='text',ng-model='me.alias',ng-blur='propogate()')
           label.item.item-input
             span.input-label Statement
             input(type='text',ng-model='me.statement')
@@ -18,7 +18,10 @@ html
             input(type='text',ng-model='me.link')
           label.item.item-input
             span.input-label Avatar
-            div(theme='image',s3-upload, bucket='s3Bucket', ng-model='me.avatar', s3-upload-options='{ acl:"private",getOptionsUri: awsParamsURI, folder: awsFolder}')
+            div(theme='image',ng-blur='propogate()',s3-upload, bucket='s3Bucket', ng-model='me.avatar', s3-upload-options='{ acl:"private",getOptionsUri: awsParamsURI, folder: awsFolder}')
           label.item.item-input
             span.input-label Banner
             div(theme='image',s3-upload, bucket='s3Bucket', ng-model='me.wall', s3-upload-options='{ acl:"private",getOptionsUri: awsParamsURI, folder: awsFolder}')
+          .row.responsive-md
+            .list.col-50.col-offset-25
+              .item.artist_song(ng-include="'templates/song-item.html'",ng-repeat='song in songs |orderBy:"-timestamp"')

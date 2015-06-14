@@ -23,14 +23,13 @@ angular.module("songaday")
       SongService.comment(song,comment)
       comment_text=""
   $rootScope.showNotification = (notice)->
-    $state.go 'app.song-detail',songId:notice.link
+    songID = notice.link.toString().replace('song/',"")
+    $state.go 'app.song-detail',songId:songID
     $rootScope.notifications.$remove(notice)
 
   $rootScope.login = ()->
-    console.log('login')
     AccountService.login()
   $rootScope.logout = ()->
-    console.log('login')
     AccountService.logout()
   $rootScope.showArtist = (artist) ->
     if typeof artist == 'string'
@@ -118,6 +117,7 @@ angular.module("songaday")
   ctrl.setNowPlaying = (index) ->
     ctrl.API.stop()
     ctrl.currentSong = index
+    ctrl.nowPlaying = ctrl.playlist[index]
     m = ctrl.playlist[index].media
     ctrl.config.sources = [{src:$sce.trustAsResourceUrl(m.src),type:m.type}]
     $timeout (()->

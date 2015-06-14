@@ -8,15 +8,11 @@ html
     ion-view(view-title='{{artist.alias}}')
       ion-content(has-header='true', padding='true',overflow-scroll="true",style='background-image:url("{{artist.wall}}")')
         loader
-        .row.responsive-md
-          .list.col-50.col-offset-25
-            .item.artist_song(ng-include="'templates/song-item.html'",ng-repeat='song in songs |orderBy:"-timestamp"')
-            .item.text-center
-              button.button.button-light(ng-click='loadMore()',ng-show='!loading') more songs
-              button.button.button-light(ng-click='playAll()',ng-show='!loading') play all
-                
-        span
+        span.text-center
+          img.avatar(ng-src='{{artist.avatar}}?default=404',err-src='img/song-a-day.png',alt='{{song.artist.alias}}')
           h1.artist_alias {{artist.alias}}
           p.artist_statement {{artist.statement}}
         .row.responsive-md
           .list.col-50.col-offset-25
+            .item.artist_song(ng-include="'templates/song-item.html'",ng-repeat='song in songs |orderBy:"-timestamp"')
+                

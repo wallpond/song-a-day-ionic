@@ -5,7 +5,8 @@ html
         loader
         ion-list
           ion-item.item-thumbnail-left(ng-repeat='playlist in playlists',ng-click='showPlaylist(playlist)')
-            h1 {{playlist.title}} {{playlist.count}} songs
+            h1 {{playlist.title}} 
+            h2.float-right {{playlist.count}} songs
              
           ion-item.item-thumbnail-left 
             span.button.button-light(ng-click='modal.show()',ng-if='currentQueue().length > 0 && loggedIn') Save Queue

@@ -1,10 +1,13 @@
-.card.song
-  .item-divider
-    span
-      img.song_avatar.avatar(ng-src='{{song.artist.avatar}}?default=404',err-src='img/song-a-day.png',alt='{{song.artist.alias}}',ng-click='showArtist(song.artist.key)')
-      span.song_title(ng-click='play(song)') {{song.title}}
-      button.float-right.button.button-clear.button-icon.ion-plus.enqueue(ng-click='queue(song)') 
+.card.list
+  .item-avatar.song_heading(day="{{song.timestamp | amDateFormat:'D'}}",ng-class='ctrl.nowPlaying.$id === song.$id?"playing":""')
+    img.avatar(ng-src='{{song.artist.avatar}}?default=404',err-src='img/song-a-day.png',alt='{{song.artist.alias}}',ng-click='showArtist(song.artist.key)')
+    h2.song_title(ng-click='showSong(song);play(song)') {{song.title}}
+      span.float-right.song_time Day {{song.timestamp | amDateFormat:'D'}}
+    span.song_alias {{song.artist.alias}}
   .item
+    button.button.button-icon.icon.ion-play(ng-click='play(song)')
+    button.button.button-icon.icon.ion-plus(ng-click='queue(song)')
     h2.song_info   
       pre {{song.info}}      
+  .item
     .comments(ng-include="'templates/comments.html'")

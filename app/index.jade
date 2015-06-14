@@ -64,15 +64,13 @@ html
     //- script(id="cdv-plugin-fb-connect-js" src="cdv-plugin-fb-connect.js")
 
   body(ng-controller='AppCtrl as ctrl',ng-cloak)
-    //
-      The nav bar that will be updated as we navigate between views
-      Additional attributes set its look, nav-bar animation and icons
-      Icons provided by Ionicons: http://ionicons.com/
+    videogular.cinema(vg-player-ready="ctrl.onPlayerReady($API)",vg-complete='ctrl.next()')
+      vg-media(vg-use-native-controls='true',vg-src='ctrl.config.sources',vg-type="video",vg-auto-play='true')              
     ion-nav-view
 
     ion-footer-bar(align-title="center")
       .buttons.left.when-large
-        button(ng-click='ctrl.API.toggleFullScreen()',ng-show='ctrl.playlist.length').button.button-icon.ion-arrow-expand
+        button(ng-click='ctrl.API.toggleFullScreen()',ng-show='ctrl.playlist.length').when-large.button.button-icon.ion-arrow-expand
       .title
         a.button.button-icon.ion-button.ion-mic-c(href='#/app/record')
           

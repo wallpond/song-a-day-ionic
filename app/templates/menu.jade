@@ -2,81 +2,81 @@ videogular.cinema(vg-player-ready="ctrl.onPlayerReady($API)",vg-complete='ctrl.n
   vg-media(vg-use-native-controls='true',vg-src='ctrl.config.sources',vg-type="video",vg-auto-play='true')              
 
 ion-side-menus
-      ion-pane(ion-side-menu-content='')
-        ion-nav-bar.top-nav
-          ion-nav-buttons(side="left")
-            .nav
-              button.button.button-icon.icon.ion-music-note(menu-toggle="left",ng-show='ctrl.playlist.length')
-              
-              button.button.button-light.when-large(nav-clear='', menu-close='', ui-sref='app.mission')
-                | Mission
-              button.button.button-light.when-large(nav-clear='', menu-close='', ui-sref='app.artists')
-                | Songwriters
-              button.button.button-light.when-large(nav-clear='', menu-close='', ui-sref='app.songs')
-                | Songs
-            
-              
-          ion-nav-buttons(side="right")
-            .small-nav.when-small
-              span.badge.badge-assertive(ng-show='notifications.length') {{notifications.length}}
-              button.button.button-icon.icon.ion-navicon-round(menu-toggle="right") 
-            .large-nav.when-large
-              button.button.button-light(nav-clear='', menu-close='', ui-sref='app.playlists')
-                | Playlists
-              button.button.button-light(nav-clear='', menu-close='', ui-sref='app.transmit')
-                | Transmit
-              button.button.button-light(nav-clear='', menu-close='', ui-sref='app.account')
-                | Account
-              button.button.button-assertive(nav-clear='', menu-close='', ui-sref='app.notifications',ng-show='notifications.length') {{notifications.length}}
+  ion-pane(ion-side-menu-content='')
+    ion-nav-bar.top-nav
+      ion-nav-buttons(side="left")
+        .nav
+          button.button.button-icon.icon.ion-music-note(menu-toggle="left",ng-show='ctrl.playlist.length')
+          
+          button.button.button-light.when-large(nav-clear='', menu-close='', ui-sref='app.mission')
+            | Mission
+          button.button.button-light.when-large(nav-clear='', menu-close='', ui-sref='app.artists')
+            | Songwriters
+          button.button.button-light.when-large(nav-clear='', menu-close='', ui-sref='app.songs')
+            | Songs
+        
+          
+      ion-nav-buttons(side="right")
+        .small-nav.when-small
+          span.badge.badge-assertive(ng-show='notifications.length') {{notifications.length}}
+          button.button.button-icon.icon.ion-navicon-round(menu-toggle="right") 
+        .large-nav.when-large
+          button.button.button-light(nav-clear='', menu-close='', ui-sref='app.playlists')
+            | Playlists
+          button.button.button-light(nav-clear='', menu-close='', ui-sref='app.transmit')
+            | Transmit
+          button.button.button-light(nav-clear='', menu-close='', ui-sref='app.account')
+            | Account
+          button.button.button-assertive(nav-clear='', menu-close='', ui-sref='app.notifications',ng-show='notifications.length') {{notifications.length}}
 
-          ion-nav-back-button.button-clear
-            i.icon.ion-chevron-left
-            |  Back
-  
-        ion-nav-view(name='main-content', animation='slide-left-right')
-      ion-side-menu(side='right',enable-menu-with-back-views='true')
-        header.bar.bar-header.bar-stable
-          h1.title Song a Day          
+      ion-nav-back-button.button-clear
+        i.icon.ion-chevron-left
+        |  Back
 
-        ion-content.has-header
-          .list
-            .item(nav-clear='', menu-close='', ui-sref='app.artists')
-              | Songwriters
-            .item(nav-clear='', menu-close='', ui-sref='app.songs')
-              | Songs
-            .item(nav-clear='', menu-close='', ui-sref='app.playlists')
-              | Playlists
-            .item(nav-clear='', menu-close='', ui-sref='app.account')
-              | Account
-            .item(nav-clear='', menu-close='', ui-sref='app.mission')
-              | Mission
-            .item(nav-clear='', menu-close='', ui-sref='app.transmit')
-              | Transmit 🎼🎶 
-            .item(nav-clear='',menu-close='',ui-sref='app.notification')
-              | Notifications 
-              span.badge.badge-assertive(ng-if='notifications.length') {{notifications.length}}
-      ion-side-menu(side='left',enable-menu-with-back-views='true')
-        header.bar.bar-header.bar-stable
-          .buttons
-            button.button.button-icon.ion-minus-round(ng-click="shouldShowDelete=!shouldShowDelete")
-          h1.title Playlist 
-          .buttons
-            button.button.button-icon.ion-navicon(ng-click="shouldShowReorder=!shouldShowReorder")
+    ion-nav-view(name='main-content', animation='slide-left-right')
+  ion-side-menu(side='right',enable-menu-with-back-views='true')
+    ion-header-bar.bar-stable("center")
+      h1.title Song a Day          
 
-        ion-content.has-header
-          .list
-            .item(align-title="center")
-              .item-icon-left
-                button.button.button-icon.icon.ion-skip-backward(ng-click='ctrl.previous()') 
-              .item-icon-center
-                button.button.button-icon.icon.ion-pause(ng-class='ctrl.API.currentState=="play"?"ion-pause":"ion-play"',ng-click='ctrl.API.playPause()')
-              .item-icon-right
-                button.button.button-icon.icon.ion-skip-forward(ng-show='ctrl.playlist.length!="play"',ng-click='ctrl.next()')
-          ion-list(show-delete="shouldShowDelete",show-reorder="shouldShowReorder")      
-             ion-item(ng-class='$index==ctrl.currentSong?"active":""',ng-repeat='song in ctrl.playlist track by song.$id',)
-               h2(ng-click='playSong(song);showSong(song)') {{song.title}}
-               ion-delete-button.ion-minus-circled(ng-click="ctrl.remove($index)")
-               ion-reorder-button.ion-navicon(on-reorder='ctrl.moveSong(song, $fromIndex, $toIndex)')
+    ion-content.has-header
+      .list
+        .item(nav-clear='', menu-close='', ui-sref='app.artists')
+          | Songwriters
+        .item(nav-clear='', menu-close='', ui-sref='app.songs')
+          | Songs
+        .item(nav-clear='', menu-close='', ui-sref='app.playlists')
+          | Playlists
+        .item(nav-clear='', menu-close='', ui-sref='app.account')
+          | Account
+        .item(nav-clear='', menu-close='', ui-sref='app.mission')
+          | Mission
+        .item(nav-clear='', menu-close='', ui-sref='app.transmit')
+          | Transmit 🎼🎶 
+        .item(nav-clear='',menu-close='',ui-sref='app.notification')
+          | Notifications 
+          span.badge.badge-assertive(ng-if='notifications.length') {{notifications.length}}
+  ion-side-menu(side='left',enable-menu-with-back-views='true')
+    header.bar.bar-header.bar-stable
+      .buttons
+        button.button.button-icon.ion-minus(ng-click="shouldShowDelete=!shouldShowDelete")
+      h1.title Playlist 
+      .buttons
+        button.button.button-icon.ion-wand(ng-click="shouldShowReorder=!shouldShowReorder")
 
-            ion-spinner(icon="crescent")
+    ion-content.has-header
+      .list
+        .item(align-title="center")
+          .item-icon-left
+            button.button.button-icon.icon.ion-skip-backward(ng-click='ctrl.previous()') 
+          .item-icon-center
+            button.button.button-icon.icon.ion-pause(ng-class='ctrl.API.currentState=="play"?"ion-pause":"ion-play"',ng-click='ctrl.API.playPause()')
+          .item-icon-right
+            button.button.button-icon.icon.ion-skip-forward(ng-show='ctrl.playlist.length!="play"',ng-click='ctrl.next()')
+      ion-list(show-delete="shouldShowDelete",show-reorder="shouldShowReorder")      
+         ion-item.playlist-item(ng-class='$index==ctrl.currentSong?"active":""',ng-repeat='song in ctrl.playlist track by song.$id',)
+           h2.reorder-adjusted(ng-click='play(song);showSong(song)') {{song.title}}
+           ion-delete-button.ion-minus-circled(ng-click="ctrl.remove($index)")
+           ion-reorder-button.ion-navicon(on-reorder='ctrl.moveSong(song, $fromIndex, $toIndex)')
+
+        ion-spinner(icon="crescent")
               
