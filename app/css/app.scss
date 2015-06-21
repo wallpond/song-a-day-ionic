@@ -14,6 +14,11 @@ loader{
 .artist{
   display:inline-block;
 }
+.artist_index_alias{
+  padding-top: 10px;
+  font-size: 20px!important;
+  line-height: 40px!important;
+}
 .artist-info{
   position:absolute;
   border-radius: 20px;
@@ -82,6 +87,11 @@ loader{
 }
 .alias{
   font-weight: bold;
+}
+.comment_alias{
+  font-weight: bold;
+  color:darkblue;
+  cursor:pointer;
 }
 .artist_statement{
   -webkit-text-fill-color: white; /* Will override color (regardless of order) */
@@ -152,13 +162,30 @@ video::-webkit-media-controls-fullscreen-button {
 .song_title{
   cursor:pointer;
   color:gray;
-  line-height:50px;
-  font-size:17px!important;
+  line-height: 17px;
+  font-size: 17px !important;
+  text-overflow: initial!important;
+  white-space: pre-line!important;
+  padding-top: 10px;
   }
   .song_title:hover{
     // color:#519f6b!important;
     }
-
+.item-delete.active{
+  background-color:transparent!important;
+}
+.item.active, .item.activated, .item-complex.active .item-content, .item-complex.activated .item-content, .item .item-content.active, .item .item-content.activated{
+    background-color:#D6EBE0!important;
+}
+.comment_input{
+  background-color:transparent;
+}
+.comment-box{
+  background-color:whiteSmoke;
+}
+.item-right-edit.item-reorder{
+  background-color:transparent!important;
+}
 .avatar{
 }
 .song_heading{

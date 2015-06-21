@@ -26,7 +26,7 @@ angular.module("songaday")
     comments=$firebaseArray(commentsRef)
     comments.$add(comment)
     console.log(comment)
-    noticesRef=new Firebase(FBURL+'notices/'+song.artist.key)
+    noticesRef=new Firebase(FBURL + 'notices/' + song.artist.key)
     notices=$firebaseArray(noticesRef)
     notification={}
     notices.$loaded ()->
@@ -37,11 +37,13 @@ angular.module("songaday")
       comment={}
   get: (songId) ->
     ref = new Firebase(FBURL+'/songs/'+songId)
-
     $firebaseObject(ref)
-  getList:(songList,cb) ->
+  getList:(songList,calback) ->
     playlist = []
     for songId of songList
       song= @get(songId)
       playlist.push(song)
+      if typeof callback = 'function'
+        song.$loaded callback
+
     playlist

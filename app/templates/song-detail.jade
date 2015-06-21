@@ -9,4 +9,6 @@ html
       ion-content(has-header='true', padding='true')
         .row.responsive-md
           .list.col-50.col-offset-25
+            .loader(ng-show='loading')
+              p loading
             .item(ng-include="'templates/song-item.html'")

@@ -1,13 +1,16 @@
-.card.list
+.card(ng-hide='song.artist')
+  h1.text-center.loading ☕
+.card.list(ng-show='song.artist')
   .item-avatar.song_heading(day="{{song.timestamp | amDateFormat:'D'}}",ng-class='ctrl.nowPlaying.$id === song.$id?"playing":""')
     img.avatar(ng-src='{{song.artist.avatar}}?default=404',err-src='img/song-a-day.png',alt='{{song.artist.alias}}',ng-click='showArtist(song.artist.key)')
-    h2.song_title(ng-click='showSong(song);play(song)') {{song.title}}
+    p.song_title(ng-click='showSong(song);play(song)') {{song.title}}
       span.float-right.song_time Day {{song.timestamp | amDateFormat:'D'}}
-    span.song_alias {{song.artist.alias}}
+    span.song_alias(ng-click='showArtist(song.artist.key)') {{song.artist.alias}}
   .item
-    button.button.button-icon.icon.ion-play(ng-click='play(song)')
-    button.button.button-icon.icon.ion-plus(ng-click='queue(song)')
+    button.button.button-icon.icon(ng-class='songIsPlaying(song) && ctrl.API.currentState == "play" ?"ion-pause":"ion-play"',ng-click='songIsPlaying(song)?ctrl.API.playPause():play(song)')
+    button.button.button-icon.icon.ion-plus(ng-click='enQueue(song)',ng-hide='ctrl.playlist.indexOf(song) !=-1')
+    span.float-right(am-time-ago="song.timestamp")
     h2.song_info   
       pre {{song.info}}      
-  .item
+  .item.comment-box
     .comments(ng-include="'templates/comments.html'")

@@ -8,7 +8,7 @@ module.exports = new class GulpConfig
   constructor: ->
     @_GLOBALS_DEFAULTS = {
       defaults: {
-        BUNDLE_VERSION: "1.0.0"
+        BUNDLE_VERSION: "3.3.7"
 
         # Change to "1" if you want to use Crosswalk on Android.
         #

@@ -59,13 +59,15 @@ html
     script(src="js/app_templates.js?v=#{GLOBALS.DEPLOY_TIME}")
     script(src="js/app.js?v=#{GLOBALS.DEPLOY_TIME}")
 
-    script(id="cordova-js" src="cordova.js")
+    //-script(id="cordova-js" src="cordova.js")
     //- If you need to include any cordova plugins' js files, add them here:
     //- script(id="cdv-plugin-fb-connect-js" src="cdv-plugin-fb-connect.js")
 
   body(ng-controller='AppCtrl as ctrl',ng-cloak)
     videogular.cinema(vg-player-ready="ctrl.onPlayerReady($API)",vg-complete='ctrl.next()')
       vg-media(vg-use-native-controls='true',vg-src='ctrl.config.sources',vg-type="video",vg-auto-play='true')              
+      //-canvas#visualizer
+      
     ion-nav-view
 
     ion-footer-bar(align-title="center")
@@ -74,7 +76,4 @@ html
       .title
         a.button.button-icon.ion-button.ion-mic-c(href='#/app/record')
           
-      .buttons.right
-        button.button.button-light(ng-click='login()',ng-show='!loggedIn') login
-        button.button.button-light(ng-click='logout()',ng-show='loggedIn') logout
     

@@ -1,7 +1,9 @@
 angular.module("songaday")
 
 # A simple controller that shows a tapped item's data
-.controller "AppCtrl", ($sce,SongService,AccountService,$state,$rootScope,$scope, $stateParams,$timeout) ->
+.controller "AppCtrl", ($sce,SongService,
+AccountService,$state,$rootScope,$scope,
+ $stateParams,$timeout) ->
   ctrl = this
   ctrl.state = null
   ctrl.API = null
@@ -9,17 +11,18 @@ angular.module("songaday")
   ctrl.currentMediaType="audio"
   ctrl.playlist = []
   ctrl.playlistMode=false
+  ctrl.nowPlaying={"$id":""}
   ctrl.toggleAside= ()->
     ctrl.playlistMode=true
 
   $timeout (()->
     ionic.trigger('resize')),100
-
+  $rootScope.songIsPlaying = (song)->
+    isPlaying=ctrl.nowPlaying.$id == song.$id
+    return isPlaying
   $rootScope.comment= (song,comment_text)->
     AccountService.refresh (myself) ->
-      console.log(myself)
-      comment={comment:comment_text,author:{alias:myself.alias,avatar:myself.avatar,key:myself.$id}}
-      console.log(comment)
+      comment = {comment:comment_text,author:{alias:myself.alias,avatar:myself.avatar,key:myself.$id}}
       SongService.comment(song,comment)
       comment_text=""
   $rootScope.showNotification = (notice)->
@@ -41,14 +44,8 @@ angular.module("songaday")
   $rootScope.showPlaylist = (playlist) ->
     $state.go 'app.playlist-detail', playlistId: playlist.$id
   $scope.showNowPlaying = () ->
-    $state.go 'app.song-detail', songId: ctrl.nowPlaying().$id
+    $state.go 'app.song-detail', songId: ctrl.nowPlaying.$id
 
-
-  ctrl.nowPlaying = ()->
-    if ctrl.currentSong < ctrl.playlist.length
-      return ctrl.playlist[ctrl.currentSong]
-    else
-      return {artist:{"alias":"","avatar":""},$id:""}
   ctrl.next= ()->
     ctrl.currentSong++
     if ctrl.currentSong >= ctrl.playlist.length
@@ -91,8 +88,8 @@ angular.module("songaday")
       ctrl.setNowPlaying 0
 
   ctrl.onPlayerReady = (API) ->
-    console.log(API)
     ctrl.API = API
+    #VisualizerService.initialize()
     return
 
   ctrl.config =
@@ -107,12 +104,10 @@ angular.module("songaday")
   ctrl.moveSong = (song, fromIndex, toIndex) ->
     if ctrl.currentSong==fromIndex
       ctrl.currentSong=toIndex
-    console.log(fromIndex,toIndex,ctrl.playlist)
     ctrl.playlist.splice fromIndex, 1
     $scope.$apply()
     ctrl.playlist.splice toIndex, 0, song
     $scope.$apply()
-    console.log(ctrl.playlist)
     return
   ctrl.setNowPlaying = (index) ->
     ctrl.API.stop()

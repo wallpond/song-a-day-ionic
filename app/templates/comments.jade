@@ -1,7 +1,7 @@
 ion-list
   span(ng-repeat='comment in song.comments')
     p.comment 
-      span.alias(ng-click='showArtist(comment.author.key)') {{comment.author.alias}}
+      span.comment_alias(ng-click='showArtist(comment.author.key)') {{comment.author.alias}}
       span.text {{comment.comment}}
   label.comment_input.item.item-input(ng-show='loggedIn')
     input(type='text',placeholder='comment...',ng-model='newComment',enter-submit="comment(song,newComment);newComment=''")
