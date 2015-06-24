@@ -12,6 +12,10 @@ angular.module("songaday")
   some: ->
     artists.$loaded( ()->
       this.loading=false
+      for i,artist of artists
+        if typeof artist.songs == 'undefined'
+          console.log(artist)
+          artists.splice(i,1)
     )
     artists
 

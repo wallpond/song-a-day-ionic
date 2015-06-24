@@ -7,7 +7,8 @@ loader{
   margin:auto;
   font-size:80px;
 }
-
+.song-count{
+}
 .song_info .title{
   font-family: fantasy;
 }
@@ -15,9 +16,17 @@ loader{
   display:inline-block;
 }
 .artist_index_alias{
-  padding-top: 10px;
+  margin: auto;
+  font-weight: bold;
   font-size: 20px!important;
-  line-height: 40px!important;
+  padding-top:40px;
+  line-height: 80px!important;
+}
+.song-count{
+  font-weight: normal;
+}
+.song-count:after{
+  content:'♬';
 }
 .artist-info{
   position:absolute;
@@ -31,6 +40,12 @@ loader{
 }
 .record{
   text-align: center;
+}
+.song-title{
+  border-width: 0px;
+}
+.song-alias{
+  border-width: 0px;
 }
 .record .button-icon{
   font-size:xx-large;
@@ -119,7 +134,7 @@ loader{
   background-opacity: .2;*/
 }
 .comment .text:before{
-  content:":";
+  content:": ";
 }
 .cinema{
   background-color:black;

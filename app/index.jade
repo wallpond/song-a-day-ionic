@@ -71,9 +71,13 @@ html
     ion-nav-view
 
     ion-footer-bar(align-title="center")
-      .buttons.left.when-large
-        button(ng-click='ctrl.API.toggleFullScreen()',ng-show='ctrl.playlist.length').when-large.button.button-icon.ion-arrow-expand
+      .buttons.left(ng-show='ctrl.playlist.length')
+        button.button.button-icon.icon.ion-music-note(ng-click="toggleLeft()")
+        button.button.button-light.song-title(ng-bind='ctrl.nowPlaying.title',ng-click='showSong(ctrl.nowPlaying)')   
+        //-button(ng-click='ctrl.API.toggleFullScreen()',ng-show='ctrl.playlist.length').when-large.button.button-icon.ion-arrow-expand
       .title
         a.button.button-icon.ion-button.ion-mic-c(href='#/app/record')
+      .buttons.right(ng-show='ctrl.playlist.length')
+        button.button.button-light.song-alias(ng-bind='ctrl.nowPlaying.artist.alias',ng-click='showArtist(ctrl.nowPlaying.artist.key)')
           
     

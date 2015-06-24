@@ -2,7 +2,7 @@ angular.module("songaday")
 
 # A simple controller that shows a tapped item's data
 .controller "AppCtrl", ($sce,SongService,
-AccountService,$state,$rootScope,$scope,
+AccountService,$state,$rootScope,$scope,$ionicSideMenuDelegate,
  $stateParams,$timeout) ->
   ctrl = this
   ctrl.state = null
@@ -14,12 +14,13 @@ AccountService,$state,$rootScope,$scope,
   ctrl.nowPlaying={"$id":""}
   ctrl.toggleAside= ()->
     ctrl.playlistMode=true
-
   $timeout (()->
     ionic.trigger('resize')),100
   $rootScope.songIsPlaying = (song)->
     isPlaying=ctrl.nowPlaying.$id == song.$id
     return isPlaying
+  $rootScope.toggleLeft=()->
+    $ionicSideMenuDelegate.toggleLeft()
   $rootScope.comment= (song,comment_text)->
     AccountService.refresh (myself) ->
       comment = {comment:comment_text,author:{alias:myself.alias,avatar:myself.avatar,key:myself.$id}}
