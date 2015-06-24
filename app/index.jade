@@ -64,8 +64,11 @@ html
     //- script(id="cdv-plugin-fb-connect-js" src="cdv-plugin-fb-connect.js")
 
   body(ng-controller='AppCtrl as ctrl',ng-cloak)
+    
+    
     videogular.cinema(vg-player-ready="ctrl.onPlayerReady($API)",vg-complete='ctrl.next()')
       vg-media(vg-use-native-controls='true',vg-src='ctrl.config.sources',vg-type="video",vg-auto-play='true')              
+      progress(max='{{ctrl.API.totalTime}}',value="{{ctrl.API.currentTime}}").song-position 
       //-canvas#visualizer
       
     ion-nav-view
