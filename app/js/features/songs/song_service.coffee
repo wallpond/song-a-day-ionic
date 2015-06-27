@@ -40,7 +40,8 @@ angular.module("songaday")
     $firebaseObject(ref)
   getList:(songList,calback) ->
     playlist = []
-    for songId of songList
+    songsInOrder = Object.keys(songList).reverse()
+    for songId in songsInOrder
       song= @get(songId)
       playlist.push(song)
       if typeof callback = 'function'

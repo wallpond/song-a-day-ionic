@@ -8,6 +8,6 @@ html
             img.avatar(ng-src='{{artist.avatar}}?default=404',err-src='img/song-a-day.png',alt='{{artist.alias}}',ng-click='showArtist(artist.$id)')
             span.artist_index_alias
               span {{artist.alias}} 
-              span.float-right.song-count {{artist.songs|length}} 
+              span.when-large.float-right.song-count {{artist.songs|length}}
 
           

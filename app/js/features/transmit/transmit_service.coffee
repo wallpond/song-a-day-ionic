@@ -27,7 +27,7 @@ angular.module("songaday")
           me.songs[new_id]=true
           me.last_transmission = new_id
           me.$save()
-          callback(new_id)
+          callback(new_id,new_ref)
 
     return
   lastTransmission:(callback) ->

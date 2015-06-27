@@ -7,10 +7,9 @@ html
         The Songs service returns an array of song data
     ion-view(view-title='{{playlist.title}}')
       ion-content(has-header='true', padding='true',overflow-scroll="true")
-        loader
-        button.button.button-light(ng-click='clearQueue()') Clear Queue
+        button.button.button-light(ng-if='currentQueue().length > 0',ng-click='clearQueue()') Clear Queue
         button.button.button-light(ng-click='playAll()') Play all songs in {{playlist.title}}
         
         .row.responsive-md
           .list.col-50.col-offset-25
-            .playlist_song.item-thumbnail-left(ng-include="'templates/song-item.html'",ng-repeat='song in songs')
+            .playlist_song.item(ng-include="'templates/song-item.html'",ng-repeat='song in songs')

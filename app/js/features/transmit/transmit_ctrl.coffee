@@ -1,11 +1,24 @@
 angular.module("songaday")
 
 # A simple controller that shows a tapped item's data
-.controller "TransmitCtrl", ($scope,TransmitService,$state,$timeout,AccountService) ->
+.controller "TransmitCtrl", ($scope,
+  SongService,TransmitService,$state,$timeout,AccountService) ->
   $scope.awsParamsURI = TransmitService.awsParamsURI()
   $scope.awsFolder = TransmitService.awsFolder()
   $scope.s3Bucket = TransmitService.s3Bucket()
   $scope.transmission = {media:{}}
+  $scope.ready = false
+  $scope.revoke= ()->
+    console.log($scope.song)
+    if $scope.song
+      AccountService.refresh (myself)->
+        delete myself.songs[$scope.song.$id]
+        myself.$save()
+        $scope.song.$remove()
+        $scope.transmitted=false
+        $scope.ready=false
+        $scope.song=false
+
   TransmitService.lastTransmission (song)->
     latest_date=new Date(song.timestamp)
     today=new Date()
@@ -20,6 +33,7 @@ angular.module("songaday")
       $scope.transmission.media.type = e.targetScope['filetype']),100
     return
   $scope.transmit= (song)->
+    $scope.transmitting=true
     AccountService.refresh (myself)->
       song = {}
       song['info'] = $scope.transmission.info or ''
@@ -27,13 +41,14 @@ angular.module("songaday")
       song['media'] = $scope.transmission.media
       song['user_id'] = myself.user_id
       song['timestamp'] = (new Date()).toISOString()
-      song['$priority'] = -1 * Math.floor(new Date().getTime()/1000)
+      song['$priority'] = -1 * Date.parse(song.timestamp)
       song['artist'] =
         'alias': myself.alias or ''
         'key': myself.$id
         'avatar': myself.avatar or ''
       console.log song
       TransmitService.transmit song, (new_id) ->
-        $scope.latestTransmission = song
         $scope.transmitted=yes
-        $scope.song=song
+        sng=SongService.get(new_id)
+        sng.$loaded ()->
+          $scope.song=sng

@@ -10,7 +10,7 @@ html
         loader
         span.text-center
           img.avatar(ng-src='{{artist.avatar}}?default=404',err-src='img/song-a-day.png',alt='{{song.artist.alias}}')
-          h1.artist_alias {{artist.alias}}
+          h1.artist_alias.when-large {{artist.alias}}
           p.artist_statement {{artist.statement}}
         .row.responsive-md
           .list.col-50.col-offset-25

@@ -6,7 +6,7 @@ angular.module("songaday")
 .factory "ArtistService",($firebaseObject,$firebaseArray,FBURL) ->
 
   # Might use a resource here that returns a JSON array
-  ref = new Firebase(FBURL+'/artists')
+  ref = new Firebase(FBURL+'/artists').orderByPriority()
   this.loading = true
   artists = $firebaseArray(ref)
   some: ->
