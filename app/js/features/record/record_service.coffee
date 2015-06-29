@@ -1,9 +1,10 @@
 angular.module('songaday')
 
 
-.factory 'RecordService', ($rootScope,$window, $http) ->
+.factory 'RecordService', ($rootScope,$window, AudioContextService,$http) ->
   WORKER_PATH = 'js/recorderWorker.js'
   encoderWorker = new Worker('js/mp3Worker.js')
+
   Recorder : (source, cfg) ->
     config = cfg or {}
     bufferLen = config.bufferLen or 4096
@@ -160,7 +161,7 @@ angular.module('songaday')
       fileReader.readAsArrayBuffer blob
       currCallback blob
       return
-
-    source.connect @node
+    source.connect $window.analyser
+    $window.analyser.connect @node
     @node.connect @context.destination
-  #this should not be necessary
+    $window.analyser.fftSize = 2048

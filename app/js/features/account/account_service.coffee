@@ -26,7 +26,15 @@ angular.module("songaday")
         cb(me)
   mySelf:->
     me
-
+  remove_song:(song,cb)->
+    song_uri=FBURL+'/artists/'+me.$id+'/songs/' + song.$id
+    last_song_uri=FBURL+'/artists/'+me.$id+'/last_transmission/'
+    song_ref=new Firebase(song_uri)
+    last_song_ref=new Firebase(last_song_uri)
+    song_ref.remove()
+    last_song_ref.remove()
+    song.$remove()
+    cb()
   logout: ->
     Auth.$unauth()
   login: ->

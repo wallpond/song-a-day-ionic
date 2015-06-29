@@ -1,4 +1,4 @@
-.card(ng-hide='song.artist')
+.card.song-item(ng-hide='song.artist')
   h1.text-center.loading ☕
 .card.list(ng-show='song.artist')
   .item-avatar.song_heading(day="{{song.timestamp | amDateFormat:'D'}}",ng-class='ctrl.nowPlaying.$id === song.$id?"playing":""')

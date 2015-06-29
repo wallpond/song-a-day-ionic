@@ -1,11 +1,14 @@
 angular.module("songaday")
 
 # A simple controller that shows a tapped item's data
-.controller "RecordCtrl", ($rootScope,$scope,$state,$window, AccountService, $stateParams,TransmitService, RecordService,MultiTrackService) ->
+.controller "RecordCtrl", ($rootScope,$scope,$state,SongService,
+$window, AccountService, $stateParams,TransmitService,AudioContextService
+ RecordService,MultiTrackService,AudioVisualizerService) ->
   rec_ctrl = this
   audio_context={}
   $scope.transmission={}
   $rootScope.file_type="audio/mp3"
+  $rootScope.file_ext="mp3"
   $scope.transmitting=false
   try
     $rootScope.stop()
@@ -14,6 +17,7 @@ angular.module("songaday")
 
   $rootScope.recording_file_uri=false
   TransmitService.lastTransmission (song)->
+    console.log(song,'ssss')
     latest_date=new Date(song.timestamp)
     today=new Date()
     if today.getDay() == latest_date.getDay()
@@ -22,7 +26,7 @@ angular.module("songaday")
   $scope.transmit = () ->
     __log('Uploading Compressed Audio')
     AccountService.refresh (myself) ->
-      TransmitService.uploadBlob $rootScope.file_blob, (file_uri) ->
+      TransmitService.uploadBlob $rootScope.file_blob,$rootScope.file_ext, (file_uri) ->
         __log 'Audio uploaded'
         song = {}
         file_type=$rootScope.file_type
@@ -31,19 +35,19 @@ angular.module("songaday")
         song['title'] = $scope.transmission.title or 'untitled'
         song['user_id'] = myself.user_id
         song['timestamp'] = (new Date()).toISOString()
-        song['$priority'] = -1 * Math.floor(new Date().getTime()/1000)
+        song['$priority'] = -1 * Date.parse(song.timestamp)
         song['artist'] =
           'alias': myself.alias or ''
           'key': myself.$id
           'avatar': myself.avatar or ''
         TransmitService.transmit song, (new_id) ->
-          myself.songs[new_id]=true
-          myself.last_transmission=new_id
-          myself.$save()
           __log 'complete'
+          sng=SongService.get(new_id)
+          sng.$loaded ()->
+            $scope.song=sng
+
           $scope.latestTransmission = song
           $scope.transmitted = yes
-          $scope.song=song
           $scope.transmitting= no
 
 
@@ -60,6 +64,23 @@ angular.module("songaday")
 
     $scope.$apply()
 
+
+  reset=()->
+    $scope.transmitted=false
+    $scope.readyToTransmit=false
+    $scope.song=false
+    $rootScope.file_blob=null
+    $rootScope.wav_file_uri=null
+    __log 'reset'
+    if not _(ionic.Platform.platforms).contains('browser')
+      $scope.startNativeRecording()
+
+
+  $scope.revoke= ()->
+    if $scope.song
+      AccountService.remove_song $scope.song ,()->
+        reset()
+
   fetchFile = (fs)->
     console.log(fs)
   captureSuccess = (mediaFiles) ->
@@ -68,9 +89,13 @@ angular.module("songaday")
     $window.resolveLocalFileSystemURI file_protocol + file.fullPath, (obj) ->
       $rootScope.native = true
       file_URI=obj.nativeURL
+      console.log(obj,'file object')
+
       obj.file (file_obj) ->
+        console.log(obj,'file')
         $rootScope.wav_file_uri=file_URI
         $rootScope.file_blob =file_obj
+        console.log(file_obj)
         $rootScope.file_type = "audio/m4a"
         $rootScope.readyToTransmit = true
         $scope.$apply()
@@ -92,13 +117,10 @@ angular.module("songaday")
 
   $scope.tryHTML5Recording = () ->
     __log 'init html5 recording'
-    window.AudioContext = window.AudioContext or window.webkitAudioContext
-    navigator.getUserMedia = navigator.getUserMedia or
-      navigator.webkitGetUserMedia or
-      navigator.mozGetUserMedia or
-      navigator.msGetUserMedia
+    navigator.getUserMedia = navigator.getUserMedia ||
+      navigator.webkitGetUserMedia
     window.URL = window.URL or window.webkitURL
-    audio_context = new AudioContext
+    audio_context = AudioContextService.getContext()
     __log 'Audio context...'
     __log if navigator.getUserMedia then 'ready.' else ':( sad browser!'
     navigator.getUserMedia { audio: true }, startUserMedia, (e) ->
@@ -134,6 +156,8 @@ angular.module("songaday")
 
 
   $scope.startRecording = (button) ->
+    AudioVisualizerService.initialize()
+
     recorder and recorder.record()
     $rootScope.recording = yes
     __log 'Recording...'
@@ -141,6 +165,8 @@ angular.module("songaday")
     return
 
   $scope.stopRecording = (button) ->
+    AudioVisualizerService.$destroy()
+
     $rootScope.recording = no
     recorder and recorder.stop()
     __log 'Stopped recording.'
@@ -150,8 +176,10 @@ angular.module("songaday")
     return
 
 
-
   if _(ionic.Platform.platforms).contains('browser')
     $scope.tryHTML5Recording()
   else
     $scope.startNativeRecording()
+    $rootScope.file_blob=undefined
+    $rootScope.wav_file_uri=undefined
+    $rootScope.file_ext="m4a"

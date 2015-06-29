@@ -7,18 +7,18 @@ angular.module("songaday")
   $scope.awsFolder = TransmitService.awsFolder()
   $scope.s3Bucket = TransmitService.s3Bucket()
   $scope.transmission = {media:{}}
-  $scope.ready = false
-  $scope.revoke= ()->
-    console.log($scope.song)
-    if $scope.song
-      AccountService.refresh (myself)->
-        delete myself.songs[$scope.song.$id]
-        myself.$save()
-        $scope.song.$remove()
-        $scope.transmitted=false
-        $scope.ready=false
-        $scope.song=false
 
+  reset = ()->
+    $scope.transmitted=false
+    $scope.ready=false
+    $scope.song=false
+
+  $scope.revoke= ()->
+    if $scope.song
+      AccountService.remove_song $scope.song ,()->
+        reset()
+
+  reset()
   TransmitService.lastTransmission (song)->
     latest_date=new Date(song.timestamp)
     today=new Date()

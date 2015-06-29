@@ -10,7 +10,7 @@ angular.module("songaday")
   $stateProvider
 
   .state "app",
-    url: "/app"
+    url: ""
     abstract: true
     templateUrl: "templates/menu.html"
 
@@ -93,7 +93,7 @@ angular.module("songaday")
         templateUrl: "templates/playlist-detail.html"
         controller: "PlaylistDetailCtrl"
 
-  $urlRouterProvider.otherwise "/app/songs"
+  $urlRouterProvider.otherwise "/songs"
 
 
   # if none of the above states are matched, use this as the fallback

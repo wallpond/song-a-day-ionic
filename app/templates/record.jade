@@ -14,23 +14,27 @@ html
           p to share your vibration
         div(ng-if='transmitted')
           h1 Todays Transmission:
-          ion-item.item-thumbnail-left(ng-include="'templates/song-item.html'")
+          ion-item(ng-include="'templates/song-item.html'")
         .record(ng-if='!transmitted&&loggedIn')  
-          br
-          br
           .buttons(ng-hide='native')
-            button.button.button-icon.ion-record(ng-class='recording?"assertive":"solid"',ng-click='startRecording()')
             button.button.button-icon.ion-stop(ng-disabled='!recording',ng-click='stopRecording()')        
+            br
+            button.button.button-icon.ion-record(ng-class='recording?"recording":"solid"',ng-click='startRecording()')
           h2(ng-bind='message')
-          .recording(ng-show='wav_file_uri')
-            label.item.item-input
-              span.input-label Title
-              input(ng-model='transmission.title',type='text',placeholder='song title')
-            label.item.item-input
-              span.input-label Info
-              input(ng-model='transmission.info',type='text',placeholder='song information')
+          .recording(ng-show='wav_file_uri && !recording')
+            .meta-input
+              label.item.item-input.text-center
+                span.input-label Title
+                input(ng-model='transmission.title',type='text',placeholder='song title')
+              label.item.item-input.text-center
+                span.input-label Info
+                input(ng-model='transmission.info',type='text',placeholder='song information')
               p {{media}}
             audio(autoplay,ng-src='{{ wav_file_uri | trust }}',controls)
             .transmit(ng-show='readyToTransmit && !transmitting')
-              button.button.ion-send(ng-click='transmit()') transmit
+              br
+              button.button.button-light.ion-send(ng-click='transmit()') transmit
+              br
       
+        button.button.button-assertive.revoke(ng-show='transmitted',ng-click='revoke()')
+          | Revoke

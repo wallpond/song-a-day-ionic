@@ -9,7 +9,7 @@ angular.module("songaday")
   # Might use a resource here that returns a JSON array
   ref = new Firebase(FBURL+'songs').limit(4)
   cloudFrontURI:() ->
-    'http://d1hmps6uc7xmb3.cloudfront.net/'
+    'http://media.songadays.com/'
   awsParamsURI: () ->
     '/config/aws.json'
   awsFolder: () ->
@@ -27,7 +27,7 @@ angular.module("songaday")
           me.songs[new_id]=true
           me.last_transmission = new_id
           me.$save()
-          callback(new_id,new_ref)
+          callback(new_id)
 
     return
   lastTransmission:(callback) ->
@@ -37,7 +37,7 @@ angular.module("songaday")
       last_transmission.$loaded (err) ->
         if callback
           callback last_transmission
-  uploadBlob:(blob,callback)->
+  uploadBlob:(blob,file_ext,callback)->
     cloudFront = @cloudFrontURI()
     s3Uri = 'https://' + @s3Bucket() + '.s3.amazonaws.com/'
     awsParams=@awsParamsURI()
@@ -47,7 +47,7 @@ angular.module("songaday")
       'key': 'AKIAJ7K34ZKXEV72GYRQ'
 
     key = s3Options.folder + (new Date()).getTime() + '-' +
-      S3Uploader.randomString(16) + ".mp3"
+      S3Uploader.randomString(16) + '.' +file_ext
     opts = angular.extend({
       submitOnChange: true
       getOptionsUri: awsParams

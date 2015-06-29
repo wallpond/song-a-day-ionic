@@ -3,12 +3,15 @@ html
   head
     meta(charset='utf-8')
     meta(name='viewport', content='initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, width=device-width, minimal-ui')
-    title Song a Day ☕
+    title Song A Day
     meta(name="apple-mobile-web-app-capable" content="yes")
     meta(name="apple-mobile-web-app-status-bar-style" content="white-translucent")
 
     link(href='css/app.css?v=#{GLOBALS.DEPLOY_TIME}', rel='stylesheet')
-
+    meta(property='og:title', content='Song a Day')
+    meta(property='og:type', content='website')
+    meta(property='og:image', content='http://songadays.com/img/song-a-day.png')
+    meta(property='og:description', content='a Song a Day is fun to play')
     link(rel="icon", type="image/png", href="img/favicon.png")
     link(rel="apple-touch-icon", href="img/favicon.png" )
 
@@ -63,7 +66,7 @@ html
     videogular.cinema(vg-player-ready="ctrl.onPlayerReady($API)",vg-complete='ctrl.next()')
       vg-media(vg-use-native-controls='true',vg-src='ctrl.config.sources',vg-type="video",vg-auto-play='true')              
       progress(max='{{ctrl.API.totalTime}}',value="{{ctrl.API.currentTime}}").song-position 
-      //-canvas#visualizer
+      canvas#visualizer(width='1000',height='200')
       
     ion-nav-view
 
@@ -73,7 +76,7 @@ html
         button.button.button-light.song-title(ng-bind='ctrl.nowPlaying.title',ng-click='showSong(ctrl.nowPlaying)')   
         //-button(ng-click='ctrl.API.toggleFullScreen()',ng-show='ctrl.playlist.length').when-large.button.button-icon.ion-arrow-expand
       .title
-        a.button.button-icon.ion-button.ion-mic-c(href='#/app/record')
+        a.button.button-icon.ion-button.ion-mic-c(href='#/record')
       .buttons.right(ng-show='ctrl.playlist.length')
         button.button.button-light.song-alias(ng-bind='ctrl.nowPlaying.artist.alias',ng-click='showArtist(ctrl.nowPlaying.artist.key)')
           

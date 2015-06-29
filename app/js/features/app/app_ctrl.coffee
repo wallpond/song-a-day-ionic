@@ -3,7 +3,7 @@ angular.module("songaday")
 # A simple controller that shows a tapped item's data
 .controller "AppCtrl", ($sce,SongService,
 AccountService,$state,$rootScope,$scope,$ionicSideMenuDelegate,
- $stateParams,$timeout) ->
+ $stateParams,$timeout,AudioVisualizerService,$window) ->
   ctrl = this
   ctrl.state = null
   ctrl.API = null
