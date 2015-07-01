@@ -38,3 +38,13 @@ html
       
         button.button.button-assertive.revoke(ng-show='transmitted',ng-click='revoke()')
           | Revoke
+        
+        .not_supported(ng-if='recording_not_supported')
+          h1 Recording is not supported with this browser! ˃̣̣̥᷄⌓˂̣̣̥᷅
+          p
+          | Hello! If you'd like to record your song here, you have a couple options.
+          | You can use google chrome, or I can add you to the beta testers for the iphone app.
+          | If you have an android, the android app is available here in the store:
+          a(href='https://play.google.com/store/apps/details?id=paulwand.SongADay') android app
+          button.button.button-light(ng-click='joinBeta()',ng-show='loggedIn') Join Beta
+          button.button.button-light(ui-sref='app.transmit') Upload a song file

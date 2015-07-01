@@ -3,7 +3,8 @@ angular.module("songaday")
 # A simple controller that shows a tapped item's data
 .controller "RecordCtrl", ($rootScope,$scope,$state,SongService,
 $window, AccountService, $stateParams,TransmitService,AudioContextService
- RecordService,MultiTrackService,AudioVisualizerService) ->
+  RecordService,MultiTrackService,$ionicModal,BetaService,
+  AudioVisualizerService) ->
   rec_ctrl = this
   audio_context={}
   $scope.transmission={}
@@ -23,6 +24,15 @@ $window, AccountService, $stateParams,TransmitService,AudioContextService
     if today.getDay() == latest_date.getDay()
       $scope.song=song
       $scope.transmitted = yes
+  $ionicModal.fromTemplateUrl('templates/record-help-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then (modal) ->
+    $scope.modal = modal
+    console.log modal
+  $scope.joinBeta = ()->
+    BetaService.addMe()
+
   $scope.transmit = () ->
     __log('Uploading Compressed Audio')
     AccountService.refresh (myself) ->
@@ -86,19 +96,26 @@ $window, AccountService, $stateParams,TransmitService,AudioContextService
   captureSuccess = (mediaFiles) ->
     $window.file=mediaFiles[0]
     file_protocol = "file://"
+    console.log $window.file,'MEOW'
+
+
     $window.resolveLocalFileSystemURI file_protocol + file.fullPath, (obj) ->
       $rootScope.native = true
       file_URI=obj.nativeURL
-      console.log(obj,'file object')
-
       obj.file (file_obj) ->
-        console.log(obj,'file')
-        $rootScope.wav_file_uri=file_URI
-        $rootScope.file_blob =file_obj
-        console.log(file_obj)
-        $rootScope.file_type = "audio/m4a"
-        $rootScope.readyToTransmit = true
-        $scope.$apply()
+        reader = new FileReader
+
+        reader.onload = (evt) ->
+          file_type = "audio/m4a"
+          $rootScope.file_blob = new Blob([ new Uint8Array(@result) ], type: file_type)
+          $rootScope.file_type = file_type
+          $rootScope.wav_file_uri = file_URI
+          $rootScope.readyToTransmit = true
+          $scope.$apply()
+
+          return
+
+        reader.readAsArrayBuffer file_obj
 
 
 
@@ -115,17 +132,6 @@ $window, AccountService, $stateParams,TransmitService,AudioContextService
     # start audio capture
     navigator.device.capture.captureAudio captureSuccess, captureError, limit: 1
 
-  $scope.tryHTML5Recording = () ->
-    __log 'init html5 recording'
-    navigator.getUserMedia = navigator.getUserMedia ||
-      navigator.webkitGetUserMedia
-    window.URL = window.URL or window.webkitURL
-    audio_context = AudioContextService.getContext()
-    __log 'Audio context...'
-    __log if navigator.getUserMedia then 'ready.' else ':( sad browser!'
-    navigator.getUserMedia { audio: true }, startUserMedia, (e) ->
-      __log 'No live audio input: ' + e
-      return
   startUserMedia = (stream) ->
     input = audio_context.createMediaStreamSource(stream)
     __log 'Media stream created.'
@@ -134,6 +140,24 @@ $window, AccountService, $stateParams,TransmitService,AudioContextService
     __log recorder
     __log 'Recorder initialised.'
     return
+  $scope.showModal = ()->
+    alert('s')
+    #$scope.modal.show()
+
+  $scope.tryHTML5Recording = () ->
+    __log 'init html5 recording'
+    navigator.getUserMedia = navigator.getUserMedia ||
+      navigator.webkitGetUserMedia
+    if typeof navigator.getUserMedia == 'undefined'
+      $scope.recording_not_supported=true
+      return
+    window.URL = window.URL or window.webkitURL
+    audio_context = AudioContextService.getContext()
+    __log 'Audio context...'
+    __log if navigator.getUserMedia then 'ready.' else ':( sad browser!'
+    navigator.getUserMedia { audio: true }, startUserMedia, (e) ->
+      __log 'No live audio input: ' + e
+      return
 
   export_wav = ()->
     recorder && recorder.exportWAV (blob)->
@@ -182,4 +206,4 @@ $window, AccountService, $stateParams,TransmitService,AudioContextService
     $scope.startNativeRecording()
     $rootScope.file_blob=undefined
     $rootScope.wav_file_uri=undefined
-    $rootScope.file_ext="m4a"
+    $rootScope.file_ext="wav"
