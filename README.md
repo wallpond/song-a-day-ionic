@@ -22,8 +22,8 @@
 # How to install
 
 ```
-git clone jtomaszewski/songaday-mobile
-cd songaday-mobile
+git clone wandp/song-a-day-ionic
+cd song-a-day-ionic
 git submodule update --init --recursive
 
 # install dependencies
