@@ -1,9 +1,13 @@
+# Deploy
+
+* Using firebase command line tool to deploy:
+  * `brew install firebase-cli` - install firebase CLI
+  * `firebase deploy` - deploy to firebase
+
 # Features
 
 * Application can be run in a local http server, or emulated/released to Android/iOS
-* A lot of useful gulp tasks, like:
-  * `gulp` - watch for changes + browser-sync (http server with livereload) + weinre debugger
-  * `gulp cordova:emulate:ios` - run application in iOS emulator
+* Application can be run in a local http server, or emulated/released to Android/iOS
   * `gulp cordova:run:android` - run application on Android's devise
   * Run `gulp help` or see `gulp/tasks.coffee` for more information about all tasks
 * Useful hooks and tweaks, which allow you to deploy your cordova app out-of-the-box
